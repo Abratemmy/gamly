@@ -1,0 +1,219 @@
+.sidebar {
+    background: #fff;
+    position: fixed;
+    left: 0;
+    width: 230px;
+    height: 100%;
+    /* overflow-y: auto; */
+    transition: 0.4s;
+    transition-property: left;
+    z-index: 100;
+    font-family: var(--textFamily);
+    /* display: flex;
+    justify-content: ;
+    flex-direction: column; */
+}
+
+.sidebar-logo {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-bottom: 1px solid #DDDDDD;
+}
+.sidebar-logo img{
+    width: 18%
+}
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    justify-content: flex-start;
+}
+
+.sidebar li {
+    padding: 5px 0px;
+}
+
+.sidebar li .sidebar-navlink {
+    color: var(--blackcolor);
+    display: block;
+    width: 100%;
+    line-height: 40px;
+    text-decoration: none;
+    padding-left: 30px;
+    box-sizing: border-box;
+    transition: 0.5s all ease;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar li .sidebar-navlink:hover{
+    background: var(--lightPink);
+    color: var(--primaryColor)
+}
+li .active {
+    color: var(--primaryColor);
+    background: var(--lightPink);
+    color: var(--primaryColor)!important
+}
+.sidebar .sidebar-navlink .icon {
+    margin-right: 5px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .sidebar-navlink .sidebar-icons{
+    /* color: var(--blueColor); */
+    font-size: 17px;
+}
+.sidebarlabel {
+    display: flex;
+    justify-content: end;
+}
+
+.sidebarlabel #sidebar_btn {
+    position: relative;
+    background-color: var(--blueColor2);
+    z-index: 100;
+    color: red;
+    cursor: pointer;
+    font-size: 23px;
+    transition: 0.5s ease;
+    border-radius: 20px;
+}
+
+.sidebarlabel #sidebar_btn:hover {
+    color: var(--blueColor);
+}
+
+.sidebar-signout .sidebar-icons {
+    color: crimson!important;
+    /* background-color: #fff; */
+    height: 15px;
+}
+
+.sidebar-signout span {
+    color: crimson;
+}
+
+#interface-check:checked~.sidebar {
+    left: -120px;
+    overflow: hidden;
+}
+
+#interface-check:checked~.sidebar .sidebar-navlink .text {
+    display: none;
+    opacity: 0;
+   
+}
+
+#interface-check:checked~.sidebar .sidebar-navlink {
+    font-size: 20px;
+    margin-left: 120px;
+    /* width: 100%; */
+}
+
+#interface-check:checked~.sidebar .sidebar-logo>:nth-child(2){
+    display: none;
+}
+#interface-check:checked~.sidebar .sidebar-logo{
+    position: relative;
+    left: 50px;
+}
+.interface-content {
+    margin-left: 230px;
+    background-position: center;
+    background-size: cover;
+    height: auto;
+    transition: 0.4s all ease;
+    padding-left: 5px;
+    position: relative;
+    background: #eee;
+}
+
+#interface-check:checked~.interface-content {
+    margin-left: 120px;
+}
+
+#interface-check {
+    display: none;
+}
+.mobileView{
+    display: none;
+   
+}
+.down-sidebar{
+    position: fixed;
+    width: 230px;
+    bottom: 0px;
+}
+
+@media screen and (max-width:768px) {
+    .mobileView{
+        display: block;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px 5px 15px;
+    }
+    .sidebar {
+        background: #fff;
+        border-bottom-right-radius: 170px;
+        position: fixed;
+        top:0;
+        left: -150%;
+        width: 230px;
+        height: 100%;
+        transition: 0.5s all ease;
+       
+    }
+    .sidebar.active {
+        left:0px;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 1;
+
+    }
+    .interface-content {
+        margin-left: 0px;
+    }
+    .sidebarlabel{
+        display: none;
+    }
+    .sidebar ul{
+        position: relative;
+        height: 80%
+    }
+    .mobile-logout{
+        position: absolute;
+        bottom: 30px
+    }
+    .mobileView .img2{
+        color: var(--blackcolor);
+        font-size: 17px;
+        font-weight: 600
+    }
+    .mobileView .img2 span{
+        color: var(--blueColor);
+        display: block;
+    }
+    .nav-icon .icon{
+        font-size: 30px;
+        color: var(--blueColor);
+        font-weight: 600;
+    }
+    .nav-icon .icon:hover{
+        color: var(--blueColor2);
+    }
+  
+}

@@ -1,0 +1,67 @@
+.Dashboard{
+    position: relative;
+    font-family: var(--textFamily);
+    width: 100%;
+    padding: 20px 0px;
+}
+.Dashboard .top{
+    width: 70%;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+.Dashboard .top .image{
+    background: var(--primaryColor);
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px
+}
+.Dashboard .top img{
+    width: 50%
+}
+.Dashboard .top .text{
+    font-size: 18px;
+    font-weight: 600
+}
+.Dashboard .top .text .gray{
+    color: var(--grayColor);
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px 0px;
+}
+.Dashboard .content{
+    background: #fff;
+    border-radius: 8px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Dashboard .content .text{
+    color: var(--grayColor);
+    font-size: 14px;
+}
+.Dashboard .content .text span{
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--blackColor);
+    display: block;
+    padding: 4px 0px
+}
+.Dashboard .content .image{
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: var(--primaryColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

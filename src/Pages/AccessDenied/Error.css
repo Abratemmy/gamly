@@ -1,0 +1,79 @@
+.accessDenied{
+    font-family: var(--textFamily);
+    position: relative;
+    width: 100%;
+    padding: 70px 0px;
+    color: var(--blackColor)
+}
+.accessDenied .content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.accessDenied .firstContent{
+    flex:1
+}
+.accessDenied .secondContent{
+    flex: 1
+}
+.accessDenied .sm-text{
+    font-size: 15px;
+    color: var(--blackColor);
+    padding-bottom: 10px;
+}
+.accessDenied .bg-text{
+    font-size: 50px;
+    color: var(--blackColor);
+    padding-bottom: 10px;
+}
+.accessDenied .text{
+    color: var(--grayColor);
+    font-size: 16px;
+    line-height: 28px;
+    width: 70%;
+    padding-bottom: 20px;
+}
+.accessDenied .text span{
+    display: block;
+    padding: 10px 0px;
+}
+.accessDenied .nav{
+    border: 1px solid #D0D5DD;
+    color: var(--primaryColor);
+    border-radius: 5px;
+    width: fit-content;
+    padding: 5px 15px;
+    text-decoration: none;
+    transition: 0.8s all ease-in-out
+}
+.accessDenied .nav:hover{
+    background: var(--primaryColor);
+    color: #fff;
+}
+.accessDenied .nav span{
+    padding-right: 10px;
+}
+.accessDenied .secondContent img{
+    width: 100%;
+    object-fit: contain;
+}
+
+@media screen and (max-width:768px){
+    .accessDenied .content{
+        flex-direction: column-reverse;
+    }
+    .accessDenied .firstContent{
+        text-align: center;
+    }
+    .accessDenied .text{
+        color: var(--grayColor);
+        font-size: 16px;
+        margin: auto
+    }
+    .accessDenied .firstContent .nav-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,61 @@
+.Navbar{
+    position: relative;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #bbb9b9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Navbar .navContent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Navbar .navContent .left{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.Navbar .navContent .right{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.Navbar .imageSession .image-session{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Navbar .imageSession .image-session .icon{
+    font-size: 20px;
+    color: #9e9a9a
+}
+.Navbar input{
+    height: 40px
+}
+.Navbar .inputContainer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Navbar .inputSection .icon{
+    position: absolute;
+    top: 13px;
+    left: 16px;
+    color: var(--grayColor)
+}
+.Navbar .navlink{
+    color: var(--blackColor);
+    font-size: 20px;
+}
+.Navbar .notification .icon{
+    cursor: pointer;
+    color: var(--blackColor);
+    font-size: 20px;
+}
