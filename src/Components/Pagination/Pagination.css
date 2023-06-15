@@ -1,0 +1,43 @@
+/* css for pahination */
+.paginationBttns{
+    margin: 40px 0px;
+    width: 100%;
+    height: 50px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .paginationBttns a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px!important;
+    height: 30px;
+    margin: 8px;
+    border-radius: 5px;
+    color: #333333!important;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.4s all ease;
+    font-size: 13px;
+    background: #fff;
+    font-family: var(--textFamily2);
+    font-weight: 600;
+  }
+  .paginationBttns a:hover{
+    color: #fff!important;
+    background: var(--primaryColor)
+  }
+  .paginationActive a{
+    color: #fff!important;
+    background: var(--primaryColor)
+  }
+  .paginationDisabled{
+    pointer-events: none;
+   
+  }
+  .paginationBttns .previousBttn, .paginationBttns .nextBttn{
+    font-size: 15px!important;
+    letter-spacing: 0.2px!important;
+  }

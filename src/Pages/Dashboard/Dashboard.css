@@ -2,7 +2,8 @@
     position: relative;
     font-family: var(--textFamily);
     width: 100%;
-    padding: 20px 0px;
+    padding: var(--interfaceBorder);
+    padding: 30px 30px;
 }
 .Dashboard .top{
     width: 70%;

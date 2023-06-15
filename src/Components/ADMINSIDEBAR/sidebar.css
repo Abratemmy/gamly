@@ -1,17 +1,15 @@
 .sidebar {
-    background: #fff;
+    background: var(--sidebarBackground);
     position: fixed;
     left: 0;
     width: 230px;
     height: 100%;
-    /* overflow-y: auto; */
     transition: 0.4s;
     transition-property: left;
     z-index: 100;
     font-family: var(--textFamily);
-    /* display: flex;
-    justify-content: ;
-    flex-direction: column; */
+    border-right: var(--borderColor);
+    transition: var(--transition);
 }
 
 .sidebar-logo {
@@ -22,7 +20,7 @@
     justify-content: center;
     align-items: center;
     gap: 4px;
-    border-bottom: 1px solid #DDDDDD;
+    border-bottom: var(--borderColor);
 }
 .sidebar-logo img{
     width: 18%
@@ -40,15 +38,15 @@
 }
 
 .sidebar li .sidebar-navlink {
-    color: var(--blackcolor);
+    color: var(--blackColor);
     display: block;
     width: 100%;
     line-height: 40px;
     text-decoration: none;
-    padding-left: 30px;
+    padding-left: 20px;
     box-sizing: border-box;
     transition: 0.5s all ease;
-    font-size: 15px;
+    font-size: 16px;
     display: flex;
     align-items: center;
 }
@@ -63,21 +61,18 @@ li .active {
     color: var(--primaryColor)!important
 }
 .sidebar .sidebar-navlink .icon {
-    margin-right: 5px;
-    width: 28px;
-    height: 28px;
+    padding-right: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .sidebar .sidebar-navlink .sidebar-icons{
-    /* color: var(--blueColor); */
-    font-size: 17px;
+    font-size: 18px;
 }
 .sidebarlabel {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .sidebarlabel #sidebar_btn {
@@ -135,13 +130,13 @@ li .active {
     background-size: cover;
     height: auto;
     transition: 0.4s all ease;
-    padding-left: 5px;
     position: relative;
-    background: #eee;
+    background: var(--background)!important;
+    
 }
 
 #interface-check:checked~.interface-content {
-    margin-left: 120px;
+    margin-left: 100px;
 }
 
 #interface-check {

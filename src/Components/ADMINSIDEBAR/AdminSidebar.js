@@ -8,8 +8,13 @@ import { BsPersonGear, BsGraphUp } from "react-icons/bs";
 import { RiPagesLine, RiMoneyDollarBoxLine } from "react-icons/ri"
 import { MdOutlineKeyboardArrowRight, MdLogout, MdDashboard, MdOutlineShoppingCartCheckout, MdOutlineSettings } from "react-icons/md";
 import { useDispatch } from 'react-redux';
+import useLocalStorage from 'use-local-storage';
 
-function AdminSidebar({ children }) {
+function AdminSidebar({ children, theme }) {
+    // dark theme and light theme
+    //dark mode finished
+
+
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch()
     const navigate = useNavigate();
@@ -20,7 +25,6 @@ function AdminSidebar({ children }) {
             navigate("/")
             setUser(null)
         }, 300)
-
     }
 
     const [click, setClick] = useState(false)
@@ -28,7 +32,7 @@ function AdminSidebar({ children }) {
 
     return (
         <div>
-            <div className='InterfaceWeb'>
+            <div className='InterfaceWeb' data-theme={theme}>
                 <input type="checkbox" id="interface-check" className="headerinput" />
                 <div className={click ? "sidebar active" : "sidebar"}>
 

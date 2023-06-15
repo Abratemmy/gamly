@@ -11,10 +11,10 @@ import icon4 from "../../Assets/icon4.svg"
 import icon5 from "../../Assets/icon5.svg"
 import icon6 from "../../Assets/icon6.svg"
 
-function Dashboard() {
+function Dashboard({ theme, setTheme }) {
     return (
-        <AdminSidebar>
-            <Navbar name="Dashboard" />
+        <AdminSidebar theme={theme}>
+            <Navbar name="Dashboard" theme={theme} setTheme={setTheme} />
             <div className='Dashboard'>
                 <div className="container">
                     <div className='top'>

@@ -1,17 +1,16 @@
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Router from './Components/Router';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import useLocalStorage from 'use-local-storage';
+
 
 function App() {
-  const queryClient = new QueryClient();
-
+  const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <Router />
-      </div>
-    </QueryClientProvider>
+    <div className="App" data-theme={theme}>
+      <Router />
+    </div>
   );
 }
 

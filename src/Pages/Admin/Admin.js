@@ -4,14 +4,14 @@ import { BiPlus, BiSearch, BiRefresh } from "react-icons/bi";
 import { AiFillDelete, AiOutlineEdit } from "react-icons/ai"
 import { BsQuestionCircle } from "react-icons/bs";
 import { FiAlertTriangle } from "react-icons/fi"
-import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllADMIN } from '../../Components/REDUX/ACTION/adminAction';
 import validator from 'validator';
 import AdminSidebar from '../../Components/ADMINSIDEBAR/AdminSidebar';
 import Navbar from '../../Components/Navbar/Navbar';
+import ReactPaginate from 'react-paginate';
 
-function Admin() {
+function Admin({ theme, setTheme }) {
     const dispatch = useDispatch()
     const [pageNumber, setPageNumber] = useState(0);
     const newsPerPage = 4
@@ -79,6 +79,7 @@ function Admin() {
         }
     }
 
+    console.log("error", errors)
 
     // code to delete admin
     // onClick={() => dispatch(deleteProduct(product._id))}
@@ -131,8 +132,8 @@ function Admin() {
     }, [dispatch])
 
     return (
-        <AdminSidebar>
-            <Navbar name="Admin" />
+        <AdminSidebar theme={theme}>
+            <Navbar name="Admin" theme={theme} setTheme={setTheme} />
             <div className='adminPage'>
                 <div className='container'>
                     <div className='first'>
@@ -159,41 +160,43 @@ function Admin() {
                     <section className='tableSection'>
                         <div className='header'>Admin <span> 1000 admins </span></div>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Role <span><BsQuestionCircle className="icon" /> </span></th>
-                                    <th>Email Address</th>
-                                    <th>Access</th>
-                                    <th>Date added</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {getAdminData?.slice ? (
-                                    <>
-                                        {getAdminData?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
-                                            return (
-                                                <tr key={data?.id}>
-                                                    <td width="15%" >{data?.title}</td>
-                                                    <td width="10%" className='grayColor'>{data?.category}</td>
-                                                    <td width="20%" className='grayColor'>{data?.location}</td>
-                                                    <td width="25%" className='grayColor'>{data?.petsAllowed === true ? "true" : "false"}</td>
-                                                    <td width="10%" className='grayColor'>{data?.date}</td>
-                                                    <td width="10%" className='tableAction'>
-                                                        <button onClick={() => deleteContent(data, index)}><AiFillDelete className='action' /></button>
-                                                        <button onClick={() => changeContent(data, index)}><AiOutlineEdit className='action' /></button>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })}
-                                    </>
-                                ) : ("")}
+                        <div className="scroll-container">
+                            <table className="table scroll">
+                                <thead>
+                                    <tr >
+                                        <td>Name</td>
+                                        <td>Role <span><BsQuestionCircle className="icon" /> </span></td>
+                                        <td>Email Address</td>
+                                        <td>Access</td>
+                                        <td>Date added</td>
+                                        <td></td>
+                                    </tr>
+                                </thead>
 
-                            </tbody>
+                                <tbody>
+                                    {getAdminData?.slice ? (
+                                        <>
+                                            {getAdminData?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
+                                                return (
+                                                    <tr key={data?.id}>
+                                                        <td width="15%" >{data?.title}</td>
+                                                        <td width="10%" className='grayColor'>{data?.category}</td>
+                                                        <td width="20%" className='grayColor'>{data?.location}</td>
+                                                        <td width="25%" className='grayColor'>{data?.petsAllowed === true ? "true" : "false"}</td>
+                                                        <td width="10%" className='grayColor'>{data?.date}</td>
+                                                        <td width="10%" className='tableAction'>
+                                                            <button onClick={() => deleteContent(data, index)}><AiFillDelete className='action' /></button>
+                                                            <button onClick={() => changeContent(data, index)}><AiOutlineEdit className='action' /></button>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })}
+                                        </>
+                                    ) : ("")}
+                                </tbody>
+                            </table>
 
-                        </table>
+                        </div>
                     </section>
 
                     {/* pagination starts here */}

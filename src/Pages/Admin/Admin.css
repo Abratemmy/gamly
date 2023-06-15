@@ -2,6 +2,7 @@
     width: 100%;
     position: relative;
     font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
 }
 .first{
     display: flex;
@@ -71,6 +72,7 @@ table .grayColor{
     font-size: 15px;
     color: var(--blackColor);
     padding-bottom: 5px;
+    text-transform: capitalize;
 }
 .formInput input{
     width: 400px;
@@ -128,10 +130,36 @@ table .grayColor{
 .tableAction>:nth-child(2){
     color: var(--grayColor)
 }
+.inputSection .refreshDiv{
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
 .inputSection .refreshDiv button{
     border: 1px solid #dddddd;
     background: #fff;
     color: var(--grayColor);
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-family: var(--textFamily2);
+    font-weight: 600;
+}
+.inputSection .refreshDiv .duration{
+    background: var(--primaryColor);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: normal;
+    background: var(--backgroundColor);
+    border: 0.992798px solid #DCDEE6;
+}
+.inputSection .refreshDiv .duration .iconDropdown{
+    font-size: 20px
+}
+.adminPage .table td .icon{
+    color: #101828;
+    font-size: 14px
 }

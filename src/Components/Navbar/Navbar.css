@@ -2,10 +2,12 @@
     position: relative;
     width: 100%;
     height: 70px;
-    border-bottom: 1px solid #bbb9b9;
+    border-bottom: var(--borderColor);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: var(--interfaceBorder);
+    transition: var(--transition);
 }
 .Navbar .navContent{
     display: flex;
@@ -17,10 +19,26 @@
     gap: 10px;
     align-items: center;
 }
+.Navbar .navContent .left .name{
+    color: var(--blackColor);
+    font-family: var(--textFamily);
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: capitalize;
+}
 .Navbar .navContent .right{
     display: flex;
     gap: 15px;
     align-items: center;
+}
+.Navbar .navContent .right .switchColor .icon{
+    color: #2D3748;
+    cursor: pointer;
+    transition: 0.4s all ease;
+}
+
+.Navbar .navContent .right .switchColor .icon:hover{
+    color: var(--primaryColor);
 }
 .Navbar .imageSession .image-session{
     width: 40px;
