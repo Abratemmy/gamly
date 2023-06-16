@@ -1,0 +1,78 @@
+.ReportPage{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+    // table redesign
+    .tableSection{
+        padding: 5px 10px 0px 10px;
+        
+    }
+    table{
+        font-family: var(--textFamily)!important;
+        thead {
+            td{
+                text-overflow: clip!important;
+                overflow: visible;
+                white-space: normal;
+                color: #1F2937;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+        tbody td{
+            color: #1F2937;
+            font-size: 14px;
+        }
+    }
+
+    .refresh{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-bottom: 20px;
+
+       
+    }
+
+    @media (min-width: 768px) {
+        .filterSession .col-sm-2 {
+           width: 20%;
+         }
+    }
+    .filterSession {
+        label{
+            color: var(--rLabelColor);
+            font-family: 'Noto Sans', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 12.7469px;
+            line-height: 16px;
+            padding-bottom: 7px;
+        }
+        .inputBox{
+            border: 0.671679px solid #D1D5DB;
+            border-radius: 2.68672px;
+            color: var(--rInputColor)!important;
+            letter-spacing: -0.16792px;
+            font-family: var(--textFamily);
+            outline: none;
+            font-weight: 400;
+            font-size: 14px;
+            padding: 7px 10px;
+            background: transparent;
+            width: 100%
+        }
+   
+        .col-sm-2 {
+            // background: #f93;
+            // color: #fff;
+            // font-size: 28px;
+            // font-weight: bold;
+            // padding-top: 6px; 
+       }
+    }
+    
+
+}

@@ -33,3 +33,10 @@ export const fetchPage = () => PAGEAPI.get('/');
 export const createPage = (newPage) => PAGEAPI.post('/', newPage);
 export const updatePage = (id, updatedPage) => PAGEAPI.put(`/${id}`, updatedPage);
 export const deletePage = (id) => PAGEAPI.delete(`/${id}`);
+
+// REPORT
+const REPORTAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
+export const fetchReport = () => REPORTAPI.get('/');
+export const createReport = (newReport) => REPORTAPI.post('/', newReport);
+export const updateReport = (id, updatedReport) => REPORTAPI.put(`/${id}`, updatedReport);
+export const deleteReport = (id) => REPORTAPI.delete(`/${id}`);
