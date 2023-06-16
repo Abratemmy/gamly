@@ -1,6 +1,7 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap"); */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
 :root {
   --backgroundColor: linear-gradient(180deg, #E50F1C -38.3%, rgba(146, 0, 0, 0.89) 198.94%);
   --primaryColor: #DA0D18;
@@ -13,6 +14,8 @@
   --sidebarBackground: #F8F9FA;
   --borderColor: 1px solid #DDDDDD;
   --interfaceBorder: 0px 30px;
+  --rLabelColor:#141519;
+  --rInputColor:#2D3657;
   --transition:0.5s all ease;
 }
 
@@ -28,6 +31,8 @@
   --sidebarBackground: #111c20;
   --borderColor: 1px solid #4b4949a4;
   --interfaceBorder: 0px 30px;
+  --rLabelColor:#b5b6b8;
+   --rInputColor:#2D3657;
   --transition:0.5s all ease;
 }
 * {
@@ -49,9 +54,7 @@
   justify-content: space-between;
   align-items: center;
 }
-.inputSection .inputContainer{
- 
-}
+
 .inputSection .refreshDiv{
   display: flex;
   align-items: flex-end;
@@ -190,145 +193,8 @@
   font-size: 11px
 }
 
-/* css for pahination */
-.paginationBttns{
-  margin: 40px 0px;
-  width: 100%;
-  height: 50px;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.paginationBttns a{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px!important;
-  height: 30px;
-  margin: 8px;
-  border-radius: 5px;
-  color: #333333!important;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.4s all ease;
-  font-size: 13px;
-  background: #fff;
-  font-family: var(--textFamily2);
-  font-weight: 600;
-}
-.paginationBttns a:hover{
-  color: #fff!important;
-  background: var(--primaryColor)
-}
-.paginationActive a{
-  color: #fff!important;
-  background: var(--primaryColor)
-}
-.paginationDisabled{
-  pointer-events: none;
- 
-}
-.paginationBttns .previousBttn, .paginationBttns .nextBttn{
-  font-size: 15px!important;
-  letter-spacing: 0.2px!important;
-}
-/* styling Calender date to my own taste */
-.rdrDefinedRangesWrapper {
-  display: none;
-}
-.rdrDateDisplayWrapper, .rdrMonthAndYearPickers {
-  display: none!important;
-}
-.rdrCalendarWrapper {
-  position: relative;
-}
-.rdrMonths>:nth-child(1) .rdrMonthName{
-  position: absolute;
-  top: 15px;
-  left: 60px
-}
 
-.rdrMonths>:nth-child(2) .rdrMonthName{
-  position: absolute;
-  top: 15px;
-  right: 60px
-}
-.rdrNextPrevButton{
-  /* display: block;
-    width: 24px;
-    height: 24px;
-    margin: 0 0.833em;
-    padding: 0;
-    border: 0;
-    border-radius: 5px; */
-    background: var(--primaryColor)!important
-}
-.rdrPprevButton i{
-  background: url("./Assets/backArrow.png")!important;
-  /* border-width: 4px 6px 4px 4px; */
-  /* border-color: green!important; */
-  /* transform: translate(-3px, 0px); */
-}
-.rdrPprevButton i:before{
-  content:"";
-  background: url("./Assets/backArrow.png")!important;
-}
-.rdrCalendarWrapper {
-  color: #000000;
-  font-size: 12px;
-  width: 400px;
-  box-shadow: 0px 3px 6px -3px rgba(23, 24, 24, 0.08), 0px 8px 20px -4px rgba(23, 24, 24, 0.12);
-  border-radius: 5.41007px;
-}
-.rdrMonthsHorizontal{
-  background: #fff!important;
-  z-index: 999
-}
 
-.rdrDay{
-  border: none!important;
-  color: #202223!important;
-  font-family: var(--textFamily);
-  font-style: normal;
-  font-weight: 600!important;
-  font-size: 13px!important;
-  background: transparent!important;
-}
-
-.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span, 
-.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
-  color:#fff!important;
-  background: var(--primaryColor)!important;
-  padding: 5px!important;
-  height: 1.5rem!important;
-  text-align: center;
-  line-height: 1.3em!important;
-}
-.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span{
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-}
-.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,   
-.rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
-  background: #F2F7FE!important;
-  color: var(--blackColor)!important;
-  height: 1.5rem!important;
-  text-align: center;
-  line-height: 2.0em!important;
-}
-.pageCalendar1 .rdrStartEdge, .pageCalendar1 .rdrEndEdge {
-  background: transparent;
- 
-}
-.pageCalendar1 .rdrSelected,.pageCalendar1 .rdrInRange {
-  background: transparent;
- 
-}
 .tableSection{
   padding: 20px 10px;
   background: #FFFFFF;
@@ -354,7 +220,6 @@
   border-bottom: 1px solid #EAECF0;
   padding: 8px 10px 5px 10px!important;
   font-family: var(--textFamily2);
-  color: var(--primaryColor)
 } 
 .table td span .icon{
   font-size: 25px;
@@ -362,7 +227,7 @@
 }
 .table thead td{
   font-weight: 600;
-  font-size: 15px;
+  font-size: 15px;  
   max-width: 120px;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
@@ -373,6 +238,7 @@
   white-space: nowrap;
   overflow: hidden;
   color: #101828;
+  font-family: var(--textFamily);
 }
 
 .scroll-container {

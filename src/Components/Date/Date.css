@@ -1,0 +1,96 @@
+/* styling Calender date to my own taste */
+.rdrDefinedRangesWrapper {
+    display: none;
+}
+.rdrDateDisplayWrapper, .rdrMonthAndYearPickers {
+    display: none!important;
+}
+.rdrCalendarWrapper {
+    position: relative;
+}
+.rdrMonths>:nth-child(1) .rdrMonthName{
+    position: absolute;
+    top: 15px;
+    left: 60px
+}
+  
+.rdrMonths>:nth-child(2) .rdrMonthName{
+    position: absolute;
+    top: 15px;
+    right: 60px
+}
+.rdrNextPrevButton{
+    /* display: block;
+      width: 24px;
+      height: 24px;
+      margin: 0 0.833em;
+      padding: 0;
+      border: 0;
+      border-radius: 5px; */
+      background: var(--primaryColor)!important
+}
+.rdrPprevButton i{
+    background: url("../../Assets/forwardIcon.svg")!important;
+    /* border-width: 4px 6px 4px 4px; */
+    /* border-color: green!important; */
+    /* transform: translate(-3px, 0px); */
+}
+.rdrPprevButton i:before{
+    content:"";
+    background: url("../../Assets/backwardIcon.svg")!important;
+}
+.rdrCalendarWrapper {
+    color: #000000;
+    font-size: 12px;
+    width: 400px;
+    box-shadow: 0px 3px 6px -3px rgba(23, 24, 24, 0.08), 0px 8px 20px -4px rgba(23, 24, 24, 0.12);
+    border-radius: 5.41007px;
+}
+.rdrMonthsHorizontal{
+    background: #fff!important;
+    z-index: 999
+}
+
+.rdrDay{
+    border: none!important;
+    color: #202223!important;
+    font-family: var(--textFamily);
+    font-style: normal;
+    font-weight: 600!important;
+    font-size: 13px!important;
+    background: transparent!important;
+}
+
+.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span, 
+.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
+    color:#fff!important;
+    background: var(--primaryColor)!important;
+    padding: 5px!important;
+    height: 1.5rem!important;
+    text-align: center;
+    line-height: 1.3em!important;
+}
+.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span{
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,   
+.rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
+    background: #F2F7FE!important;
+    color: var(--blackColor)!important;
+    height: 1.5rem!important;
+    text-align: center;
+    line-height: 2.0em!important;
+}
+.pageCalendar1 .rdrStartEdge, .pageCalendar1 .rdrEndEdge {
+    background: transparent;
+   
+}
+.pageCalendar1 .rdrSelected,.pageCalendar1 .rdrInRange {
+    background: transparent;
+   
+  }

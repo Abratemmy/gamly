@@ -35,8 +35,8 @@
   }
   .paginationDisabled{
     pointer-events: none;
-   
   }
+  
   .paginationBttns .previousBttn, .paginationBttns .nextBttn{
     font-size: 15px!important;
     letter-spacing: 0.2px!important;
