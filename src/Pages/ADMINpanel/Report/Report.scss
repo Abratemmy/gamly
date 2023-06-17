@@ -42,6 +42,8 @@
          }
     }
     .filterSession {
+        position: relative;
+        padding-bottom: 50px;
         label{
             color: var(--rLabelColor);
             font-family: 'Noto Sans', sans-serif;
@@ -65,14 +67,179 @@
             width: 100%
         }
    
-        .col-sm-2 {
-            // background: #f93;
-            // color: #fff;
-            // font-size: 28px;
-            // font-weight: bold;
-            // padding-top: 6px; 
-       }
+        .dateWrapper{
+            position: absolute;
+            top: 68px;
+        }
+        .phone{
+            display: none;
+        }
+        @media screen and (max-width: 500px) {
+            .phone{
+                display: block;
+            }
+            .bigScreen{
+                display: none
+            }
+            .dateWrapper{
+                position: absolute;
+                top: 135px;
+            }
+        }
     }
     
+    .reportAction{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: flex-start;
+        padding-bottom: 30px;
 
+        :nth-child(1){
+            background: var(--backgroundColor);
+            width: 118.72px;
+            height: 39.57px;
+            border-radius: 6.88254px;
+            border: none;
+            color: #fff;
+            font-family: var(--textFamily);
+            font-weight: 500;
+            font-size: 16.4857px;
+        }
+        :nth-child(2){
+            width: 155.04px;
+            height: 39.81px;
+            border-radius: 6.88254px;
+            background: transparent;
+            color: var(--primaryColor);
+            font-size: 16.4857px;
+            border: 1px solid var(--primaryColor)
+        }
+    }
+    .reportpopupBody{
+        background: #fff;
+        position: absolute;
+        top:0;
+        right: 0;
+        width: 350px;
+        height: auto;
+        border-radius: 1px;
+        padding: 10px;
+        font-family: var(--textFamily);
+        
+        .top{
+            border-bottom: 1.3921px solid #EDEDED;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            font-family: var(--textFamily);
+            position: relative;
+            .head{
+                color: #474747;
+                font-weight: 400;
+                font-size: 20px;
+                padding-bottom: 5px;
+            }
+          
+            .bd-text{
+                font-size: 22px;
+                color: #121212;
+                font-weight: 600;
+                padding-bottom: 5px;
+            }
+            .close{
+                position: absolute;
+                top: 53px;
+                right: 12px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+
+                button{
+                    background: #FFFFFF;
+                    border: 1px solid #E5E7EB;
+                    border-radius: 4px;
+                    width: 34px;
+                    height: 34px;
+                }
+            }
+            .sub-text{
+                color: #1F2937;
+                font-weight: 400;
+                font-size: 16px;
+                padding-bottom: 3px;
+            }
+            .sm-text{
+                font-weight: 400;
+                font-size: 14px;
+                color: #4B5563;
+            }
+        }
+
+        .card{
+            border: none;
+            margin-top: 30px;
+            .col-6{
+                padding: 0!important;
+            }
+            .content{
+                border: 1.17252px solid rgba(18, 18, 18, 0.22);
+                border-radius: 7.03515px;
+                width: 92%;
+                padding: 3px 8px;
+                margin-bottom: 5px;
+                .title{
+                    color: #121212;
+                    font-weight: 400;
+                    font-size: 14.0703px;
+                    font-family: 'Poppins', sans-serif;
+                }
+                .text{
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14.864px;
+                    color: #1F2937;
+
+                }
+            }
+        }
+
+        .content{
+            padding: 20px 0px;
+
+            .other{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .left, .right{
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #1F2937;
+                    padding-bottom: 3px;
+                }
+                .right .icon{
+                    color: #44AC21;
+                    font-size: 30px
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .reportpopupBody{
+            width: 55%!important;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .reportpopupBody{
+            width: 100%!important;
+        }
+    }
+
+    
+    
 }
