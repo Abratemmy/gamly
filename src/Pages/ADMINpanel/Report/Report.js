@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import "./Report.scss"
-import AdminSidebar from '../../../Components/SIDEBAR/AdminSidebar';
+import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import { DateRange } from 'react-date-range'
 import format from 'date-fns/format'
 import { addDays } from 'date-fns'
@@ -12,8 +12,6 @@ import { BsDot } from 'react-icons/bs';
 import Pagination from '../../../Components/Pagination/Pagination';
 import Refresh from '../../../Components/Refresh/Refresh';
 import { FiAlertTriangle } from "react-icons/fi"
-import successImg from "../../../Assets/success.svg";
-import { IoIosClose } from "react-icons/io";
 import { SuccessMessage } from '../../../Components/Message/Message';
 
 

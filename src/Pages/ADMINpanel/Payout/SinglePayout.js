@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getAllPAYMENTs, getSinglePayout } from '../../../Components/REDUX/ACTION/paymentAction';
-import AdminSidebar from '../../../Components/SIDEBAR/AdminSidebar';
+import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import { IoIosArrowForward } from "react-icons/io";
 import backNav from "../../../Assets/backNav.svg";
 import whitelogo1 from "../../../Assets/whitelogo1.svg"

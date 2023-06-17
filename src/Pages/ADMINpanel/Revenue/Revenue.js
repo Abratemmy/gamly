@@ -4,15 +4,17 @@ import Table from "../../../Components/Table/Table";
 import "./Revenue.css";
 import { getAllPAGEMANAGEMENT } from '../../../Components/REDUX/ACTION/pageManagementAction';
 import { useDispatch, useSelector } from 'react-redux';
-import AdminSidebar from '../../../Components/SIDEBAR/AdminSidebar';
+import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
+import Text from "../../../Components/Table/Text";
 
 function Revenue() {
     const dispatch = useDispatch()
-
     const getAllPage = useSelector((state) => state.pageManagementReducer);
     console.log("err", getAllPage)
 
-    const data = React.useMemo(() => getAllPage, [])
+    const [getData, setGetData] = useState(getAllPage)
+    console.log("getData", getData)
+    const data = React.useMemo(() => getData, [])
     const columns = useMemo(
         () => [
             {
@@ -54,13 +56,15 @@ function Revenue() {
 
 
     useEffect(() => {
+        setGetData(getData)
         dispatch(getAllPAGEMANAGEMENT())
-    }, [dispatch])
+    }, [dispatch, getData])
 
     return (
         <AdminSidebar name="Revenue">
             <div className="App">
                 <Table columns={columns} data={data} />
+                <Text />
             </div>
         </AdminSidebar>
 

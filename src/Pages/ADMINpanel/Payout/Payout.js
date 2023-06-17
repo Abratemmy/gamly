@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import "./Payout.css";
-import AdminSidebar from '../../../Components/SIDEBAR/AdminSidebar';
-import uparrow from "../../../Assets/uparr.svg";
-import downarrow from "../../../Assets/downarr.svg";
+import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllPAYMENTs } from '../../../Components/REDUX/ACTION/paymentAction';
 import { NavLink } from 'react-router-dom';
-import { BiSearch, BiRefresh } from "react-icons/bi";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import Pagination from '../../../Components/Pagination/Pagination';
 import DateCalendar from '../../../Components/Date/Date';
 import Search from '../../../Components/Search/Search';
 import Refresh from '../../../Components/Refresh/Refresh';
+import TopCard from '../../../Components/TopCard/TopCard';
 
 function Payout() {
     // payout card array
@@ -65,26 +63,8 @@ function Payout() {
         <AdminSidebar name="Payout">
             <div className='Payout'>
                 <div className='container'>
-                    <div className='topCard'>
-                        <div className='header'>PAYOUT</div>
-                        <div className='content'>
-
-                            {payoutCard.map((item, i) => {
-                                return (
-                                    <div className='month'><div className='subtitle'>{item?.subtitle}</div>
-                                        <div className='amount'>${item?.amount}</div>
-                                        {item?.span >= 5 ? (
-                                            <div className='text'>
-                                                <span>{item?.span}%</span> Decrease From Previous month <img src={uparrow} alt="" />
-                                            </div>
-                                        ) : (item?.span >= 1) ? (<div className='text'>
-                                            <span>{item?.span}%</span> Decrease From Previous month <img src={downarrow} alt="" />
-                                        </div>) : ""}
-
-                                    </div>
-                                )
-                            })}
-                        </div>
+                    <div className=''>
+                        <TopCard topCard={payoutCard} cardName="Payout" />
                     </div>
 
                     <div className='GraphSession'></div>
@@ -93,7 +73,7 @@ function Payout() {
                     <div className='tablePage tableSection'>
                         <section>
                             <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                                <Search handleSearch={(e) => setSearch(e.target.value)} search={search} />
+                                <Search setSearch={setSearch} search={search} />
 
                                 <div className='refreshDiv' >
                                     <button onClick={openDateRange} className='duration'>Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span></button>

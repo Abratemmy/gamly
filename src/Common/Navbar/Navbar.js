@@ -4,7 +4,7 @@ import { BiSearch } from 'react-icons/bi';
 import { IoMdPerson } from "react-icons/io"
 import { MdOutlineSettings, MdOutlineNotificationsNone } from "react-icons/md"
 import { useSelector } from 'react-redux';
-import Panel from '../Panel/Panel';
+import PanelDropdown from '../../Components/PanelDropdown/panelDropdown';
 
 
 function Navbar({ name }) {
@@ -24,7 +24,7 @@ function Navbar({ name }) {
                 <div className='navContent'>
                     <div className="left">
                         <div className="name"> {name}</div>
-                        <Panel />
+                        <PanelDropdown />
                     </div>
                     <div className='right'>
                         <div className='inputContainer' >

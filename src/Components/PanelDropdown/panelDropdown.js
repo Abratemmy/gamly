@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-function Panel() {
+function PanelDropdown() {
     const navigate = useNavigate()
     // select option for the 3 panels
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -42,4 +42,4 @@ function Panel() {
     )
 }
 
-export default Panel
+export default PanelDropdown

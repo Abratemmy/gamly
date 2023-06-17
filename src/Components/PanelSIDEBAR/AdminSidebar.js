@@ -1,9 +1,8 @@
 import React from 'react'
-import SIDEBAR from './SIDEBAR';
+import SIDEBAR from '../../Common/Sidebar/SIDEBAR';
 import { BsPersonGear, BsGraphUp } from "react-icons/bs";
 import { RiPagesLine, RiMoneyDollarBoxLine } from "react-icons/ri"
 import { MdDashboard, MdOutlineShoppingCartCheckout } from "react-icons/md";
-import Navbar from '../Navbar/Navbar';
 
 
 function AdminSidebar({ name, children }) {
@@ -17,9 +16,7 @@ function AdminSidebar({ name, children }) {
         { link: "report", icon: <BsGraphUp className="sidebar-icons" />, text: "Report" },
     ]
     return (
-        <SIDEBAR sidebarData={sidebarData}>
-            <Navbar name={name} />
-
+        <SIDEBAR sidebarData={sidebarData} name={name}>
             {children}
         </SIDEBAR>
     )

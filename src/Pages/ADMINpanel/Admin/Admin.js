@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Admin.css";
-import { BiPlus, BiSearch, BiRefresh } from "react-icons/bi";
+import { BiPlus } from "react-icons/bi";
 import { AiFillDelete, AiOutlineEdit } from "react-icons/ai"
 import { BsQuestionCircle } from "react-icons/bs";
 import { FiAlertTriangle } from "react-icons/fi"
@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllADMIN } from '../../../Components/REDUX/ACTION/adminAction';
 import validator from 'validator';
 import Pagination from '../../../Components/Pagination/Pagination';
-import AdminSidebar from '../../../Components/SIDEBAR/AdminSidebar';
+import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import Search from '../../../Components/Search/Search';
 import Refresh from '../../../Components/Refresh/Refresh';
 
@@ -146,7 +146,7 @@ function Admin() {
 
                     <section>
                         <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                            <Search handleSearch={(e) => setSearch(e.target.value)} search={search} />
+                            <Search setSearch={setSearch} search={search} />
                             <div className='refreshDiv' >
                                 <Refresh handleRefresh={() => setSearch("")} />
                             </div>

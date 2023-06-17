@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Dashboard.css"
-import AdminSidebar from '../../../Components/SIDEBAR/AdminSidebar';
 import whitelogo1 from "../../../Assets/whitelogo1.svg"
 import whitelogo2 from "../../../Assets/whitelogo2.svg"
 import icon1 from "../../../Assets/icon1.svg";
@@ -9,10 +8,11 @@ import icon3 from "../../../Assets/icon3.svg"
 import icon4 from "../../../Assets/icon4.svg"
 import icon5 from "../../../Assets/icon5.svg"
 import icon6 from "../../../Assets/icon6.svg"
+import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 
 function Dashboard() {
     return (
-        <AdminSidebar>
+        <AdminSidebar name="Dashboard">
             <div className='Dashboard'>
                 <div className="container">
                     <div className='top'>

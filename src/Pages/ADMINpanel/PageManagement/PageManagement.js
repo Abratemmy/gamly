@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import AdminSidebar from '../../../Components/SIDEBAR/AdminSidebar';
+import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import "./Pmanagement.css";
 import { IoMdAdd } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
@@ -79,7 +79,7 @@ function PManagement() {
 
                                 <div className='tableSection'>
                                     <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                                        <Search handleSearch={(e) => setSearch(e.target.value)} search={search} />
+                                        <Search setSearch={setSearch} search={search} />
 
                                         <div className='refreshDiv' >
                                             <div className='dateInput'>

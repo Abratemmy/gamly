@@ -4,15 +4,13 @@ import { useNavigate, NavLink } from "react-router-dom";
 import logo1 from "../../Assets/logo1.svg";
 import logo2 from "../../Assets/logo2.svg"
 import { AiOutlineMenuFold, AiOutlineClose } from "react-icons/ai"
-import { BsPersonGear, BsGraphUp } from "react-icons/bs";
-import { RiPagesLine, RiMoneyDollarBoxLine } from "react-icons/ri"
-import { MdOutlineKeyboardArrowRight, MdLogout, MdDashboard, MdOutlineShoppingCartCheckout, MdOutlineSettings } from "react-icons/md";
+import { MdOutlineKeyboardArrowRight, MdLogout, MdOutlineSettings } from "react-icons/md";
 import { useDispatch } from 'react-redux';
+import Navbar from '../Navbar/Navbar';
 
-function AdminSidebar({ children, theme }) {
+function SIDEBAR({ children, sidebarData, name }) {
     // dark theme and light theme
     //dark mode finished
-
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch()
@@ -31,9 +29,9 @@ function AdminSidebar({ children, theme }) {
 
     return (
         <div>
-            <div className='InterfaceWeb' data-theme={theme}>
+            <div className='InterfaceWeb'>
                 <input type="checkbox" id="interface-check" className="headerinput" />
-                <div className={click ? "sidebar active" : "sidebar"}>
+                <div className={click ? "sidebarDesign active" : "sidebarDesign"}>
 
                     <ul>
                         <div className='sidebar-logo'>
@@ -45,46 +43,15 @@ function AdminSidebar({ children, theme }) {
                                 <MdOutlineKeyboardArrowRight className="headericon" id="sidebar_btn" />
                             </label>
                         </li>
-                        <li onClick={handleClick}>
-                            <NavLink to='/' exact className="sidebar-navlink " activeClassName="active">
-                                <span className="icon"><MdDashboard className="sidebar-icons" /></span><span className="text">Home</span>
-                            </NavLink>
-                        </li>
-
-                        <li onClick={handleClick}>
-                            <NavLink to='/admin' exact className="sidebar-navlink " activeClassName="active">
-                                <span className="icon"><BsPersonGear className="sidebar-icons" /></span><span className="text">Admins</span>
-                            </NavLink>
-
-                        </li>
-                        <li onClick={handleClick}>
-                            <NavLink to='/revenue' exact className="sidebar-navlink " activeClassName="active">
-                                <span className="icon"><RiMoneyDollarBoxLine className="sidebar-icons" /></span><span className="text">Revenue</span>
-                            </NavLink>
-                        </li>
-                        <li onClick={handleClick}>
-                            <NavLink to='/sales' exact className="sidebar-navlink " activeClassName="active">
-                                <span className="icon"><MdOutlineShoppingCartCheckout className="sidebar-icons" /></span><span className="text">Sales </span>
-                            </NavLink>
-                        </li>
-
-                        <li onClick={handleClick}>
-                            <NavLink to='/payout' exact className="sidebar-navlink " activeClassName="active">
-                                <span className="icon"><MdOutlineShoppingCartCheckout className="sidebar-icons" /></span><span className="text">Payout </span>
-                            </NavLink>
-                        </li>
-
-                        <li onClick={handleClick}>
-                            <NavLink to='/page_management' exact className="sidebar-navlink " activeClassName="active">
-                                <span className="icon"><RiPagesLine className="sidebar-icons" /></span><span className="text">Page Management</span>
-                            </NavLink>
-                        </li>
-
-                        <li onClick={handleClick}>
-                            <NavLink to='/report' exact className="sidebar-navlink " activeClassName="active">
-                                <span className="icon"><BsGraphUp className="sidebar-icons" /></span><span className="text">Report </span>
-                            </NavLink>
-                        </li>
+                        {sidebarData.map((item, index) => {
+                            return (
+                                <li onClick={handleClick} key={index}>
+                                    <NavLink to={`/${item.link}`} exact className="sidebar-navlink " activeClassName="active">
+                                        <span className="icon">{item.icon}</span><span className="text">{item.text}</span>
+                                    </NavLink>
+                                </li>
+                            )
+                        })}
 
                         <div className='down-sidebar'>
                             <li onClick={handleClick}>
@@ -118,6 +85,7 @@ function AdminSidebar({ children, theme }) {
                         </div>
                     </div>
 
+                    <Navbar name={name} />
                     {children}
                 </div>
             </div>
@@ -128,4 +96,4 @@ function AdminSidebar({ children, theme }) {
     )
 }
 
-export default AdminSidebar
+export default SIDEBAR
