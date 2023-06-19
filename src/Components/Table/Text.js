@@ -1,5 +1,5 @@
 import React from 'react'
-import { CTable } from "react-table";
+import { CSmartTable } from "react-table";
 
 function Text() {
     const columns = [
@@ -87,12 +87,12 @@ function Text() {
     ]
     return (
         <div>
-            {/* <CSmartTable
+            <CSmartTable
                 columns={columns}
                 columnFilter
                 columnSorter
                 items={usersData}
-            /> */}
+            />
         </div>
     )
 }

@@ -24,7 +24,7 @@ export const deleteAdmin = (id) => USERAPI.delete(`/${id}`);
 // payout url https://dummy.restapiexample.com/api/v1/employee/${id}
 const PAYMENTAPI = axios.create({ baseURL: 'https://fakestoreapi.com/products' })
 export const fetchPayment = () => PAYMENTAPI.get('/');
-export const fetchsinglepayout = (id) => PAYMENTAPI.get(`/employee/${id}`);
+export const fetchSinglePayout = (id) => PAYMENTAPI.get(`/${id}`);
 
 
 // PAGE MANAGEMENT
@@ -40,3 +40,10 @@ export const fetchReport = () => REPORTAPI.get('/');
 export const createReport = (newReport) => REPORTAPI.post('/', newReport);
 export const updateReport = (id, updatedReport) => REPORTAPI.put(`/${id}`, updatedReport);
 export const deleteReport = (id) => REPORTAPI.delete(`/${id}`);
+
+// Sales
+const SALESAPI = axios.create({ baseURL: 'https://fakestoreapi.com/products' })
+export const fetchSales = () => SALESAPI.get('/');
+export const createSales = (newSales) => SALESAPI.post('/', newSales);
+export const updateSales = (id, updatedSales) => SALESAPI.put(`/${id}`, updatedSales);
+export const deleteSales = (id) => SALESAPI.delete(`/${id}`);

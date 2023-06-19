@@ -33,8 +33,99 @@ table .tableNav:hover{
 
 
 /* css for single payout stats here */
+.payoutDetails{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+}
 .payoutDetails .whiteLogo{
     background: var(--backgroundColor);
-    width: 80px;
+    width: 100px;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5.31667px;
+    gap: 4px
+}
+.payoutDetails .firsttop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+}
+.payoutDetails .firsttop .left{
+    color: #878787;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.payoutDetails .firsttop .left span{
+    color: #2D3748;
+    padding-left: 7px;
+    font-family: 'Inter', sans-serif;
+}
+.payoutDetails .firsttop .left span .icon{
+    position: relative;
+    top: -2px
+}
+.payoutDetails .firsttop .back{
+    width: 179px;
+    height: 54px;
+    background: #fff;
+    border: 1px solid #DCDEE6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payoutDetails .firsttop .backNav{
+    color: #121212;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: var(--textFamily2);
+    text-decoration: none;
+    width: 100%; 
+    text-align: center;  
+}
+.payoutDetails .firsttop .backNav span{
+    padding-left: 20px;
+}
+.payoutDetails .firsttop .backNav img{
+    width: 14%
+}
+.payoutDetails .topCard{
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    top: -35px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.payoutDetails .topCard .name{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 48px;
+    letter-spacing: -0.022em;
+    color: var(--darkGray);
+}
+.payoutDetails .topCard .id{
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--darkGray);
+    padding-bottom: 10px;
+}
+.payoutDetails .topCard p{
+    font-family: var(--textFamily);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #6C6C6C;
 }

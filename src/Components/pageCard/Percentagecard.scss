@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+
+.percentageCard{
+    position: relative;
+    margin: 40px 0px;
+
+    .cardWrapper{
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .cardContent{
+            flex:1;
+            background: #FFFFFF;
+            border: 0.882288px solid #DCDEE6;
+            border-radius: 6.48142px;
+            padding: 10px;
+            width: 100%;
+            .top{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .avg{
+                    font-family: var(--textFamily);
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 11.3425px;
+                    line-height: 19px;
+                    color: #106DEE;
+                    
+                    span{
+                        font-weight: 700;
+                        font-size: 11.3425px;
+                        padding-left: 5px;
+                    }
+                }
+                .date{
+                    width: 199.23px;
+                    height: 37.06px;
+                    left: 264.93px;
+                    top: 12.96px;
+                    background: #FFFFFF;
+                    border: 0.875933px solid #DCDEE6;
+                    border-radius: 7.0583px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: 'Manrope', sans-serif;
+                    color: #121212;
+                    font-size: 13.2631px;
+                    .dateC{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    span{
+                        padding-left: 8px;
+                    }
+                    img{
+                        width: 90%
+                    }
+                }
+            }
+
+            .contentWrapper{ 
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .content{
+                    flex: 1;
+                    padding:10px 0px 2px 0px
+                }
+                .content1{
+                    border-right: 2px solid #B5B5B5;
+                }
+                .content2{
+                    padding-left: 20px;
+                }
+                .lastMonth{
+                    font-family: var(--textFamily);
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 16.9628px;
+                    color: var(--primaryColor);
+                    padding-bottom: 7px;
+                }
+                .total{
+                    color: #2D3121;
+                    font-family: var(--textFamily);
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 35.2915px;
+                }
+                .text{
+                    color: #2D3657;
+                    font-size: 12px;
+                    font-family: var(--textFamily);
+                    font-weight: 400;
+                }
+                
+            }
+            .percentage {
+                padding: 7px;
+                font-size: 10px;
+                font-weight: 600;
+                text-align: center;
+                font-family: var(--textFamily);
+                .increase{
+                    color: #2EDB2B;
+                }
+                .decrease{
+                    color: var(--primaryColor)
+                }
+                span{
+                    color: #b3afaf;
+                    font-weight: normal;
+                }
+                img{
+                    padding-left: 8px;
+                }
+            }
+        }
+
+    }
+    @media screen and (max-width: 768px) {
+        .cardWrapper{
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-direction: column;
+            width: 100%
+        }
+    }
+}

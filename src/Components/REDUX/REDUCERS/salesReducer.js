@@ -1,23 +1,17 @@
-import { CREATEPAYOUT, DELETEPAYOUT, END_LOADING, GETPAYOUT, GETSINGLEPAYOUT, START_LOADING, UPDATEPAYOUT } from "../CONSTANT/actionTypes";
+import { GETSALES, DELETESALES, UPDATESALES, CREATESALES } from "../CONSTANT/actionTypes";
 
-const initialState = { items: [], isLoading: true }
+const initialState = { items: [] }
 
-export const paymentReducer = (state = initialState, action) => {
+export const salesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case START_LOADING:
-            return { ...state, isLoading: true }
-        case END_LOADING:
-            return { ...state, isLoading: false }
-        case GETPAYOUT:
+        case GETSALES:
             return action.payload;
-        case GETSINGLEPAYOUT:
-            return { ...state, payment: action.payload }
-        case CREATEPAYOUT:
+        case CREATESALES:
             return {
                 ...state,
                 items: [...state?.items || [], action.payload]
             };
-        case UPDATEPAYOUT:
+        case UPDATESALES:
             return {
                 items: state.items.map((item) =>
                     item.id === action.payload._id
@@ -25,7 +19,7 @@ export const paymentReducer = (state = initialState, action) => {
                         : item
                 )
             };
-        case DELETEPAYOUT:
+        case DELETESALES:
             return {
                 items: state.items.filter((item) =>
                     item._id !== action.payload

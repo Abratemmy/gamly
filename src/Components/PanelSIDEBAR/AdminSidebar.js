@@ -7,7 +7,7 @@ import { MdDashboard, MdOutlineShoppingCartCheckout } from "react-icons/md";
 
 function AdminSidebar({ name, children }) {
     const sidebarData = [
-        { link: "", icon: <MdDashboard className='sidebar-icons' />, text: "Home" },
+        { link: "dashboard", icon: <MdDashboard className='sidebar-icons' />, text: "Home" },
         { link: "admin", icon: <BsPersonGear className="sidebar-icons" />, text: "Admins" },
         { link: "revenue", icon: <RiMoneyDollarBoxLine className="sidebar-icons" />, text: "Revenue" },
         { link: "sales", icon: <MdOutlineShoppingCartCheckout className="sidebar-icons" />, text: "Sales" },

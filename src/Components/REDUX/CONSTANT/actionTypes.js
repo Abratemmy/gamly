@@ -1,3 +1,6 @@
+export const START_LOADING = "START_LOADING";
+export const END_LOADING = "END_LOADING"
+
 // for admin
 export const CREATEADMIN = "CREATEADMIN";
 export const FETCHADMIN = "FETCHADMIN"
@@ -10,7 +13,7 @@ export const CREATEPAYOUT = "CREATEPAYOUT";
 export const UPDATEPAYOUT = "UPDATEPAYOUT"
 export const DELETEPAYOUT = "DELETEPAYOUT";
 
-export const GETSINGLE = "GETSINGLE"
+export const GETSINGLEPAYOUT = "GETSINGLEPAYOUT"
 
 // page management const
 export const GETPAGEMANAGE = "GETPAGEMANAGE"
@@ -23,3 +26,9 @@ export const GETREPORT = "GETREPORT"
 export const CREATEREPORT = "CREATEREPORT";
 export const UPDATEREPORT = "UPDATEREPORT"
 export const DELETEREPORT = "DELETEREPORT";
+
+// Sale constant
+export const GETSALES = "GETSALES"
+export const CREATESALES = "CREATESALES";
+export const UPDATESALES = "UPDATESALES"
+export const DELETESALES = "DELETESALES";

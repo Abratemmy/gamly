@@ -6,65 +6,85 @@ import { getAllPAGEMANAGEMENT } from '../../../Components/REDUX/ACTION/pageManag
 import { useDispatch, useSelector } from 'react-redux';
 import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import Text from "../../../Components/Table/Text";
+import TopCard from "../../../Components/pageCard/TopCard";
+import PercentageCard from "../../../Components/pageCard/PercentageCard";
+import moment from 'moment'
+import NetProfit from "./NetProfit";
+import GrossProfit from "./grossProfit";
 
 function Revenue() {
-    const dispatch = useDispatch()
-    const getAllPage = useSelector((state) => state.pageManagementReducer);
-    console.log("err", getAllPage)
+    const revenueCard = [
+        { subtitle: "Total", amount: "120000", span: "", text: "" },
+        { subtitle: "Last Month", amount: "30000", span: 3, text: "descrease From Previous Month", avg: "2,600" },
+        { subtitle: "Last Week", amount: "16000", span: 5, text: "Increase From Previous Week", avg: "1,200" },
+        { subtitle: "Today", amount: "78000", span: 7, text: "Increase From Previous Day" }
+    ]
 
-    const [getData, setGetData] = useState(getAllPage)
-    console.log("getData", getData)
-    const data = React.useMemo(() => getData, [])
-    const columns = useMemo(
-        () => [
-            {
-                // first group - TV Show
-                Header: "TV Show",
-                // First group columns
-                columns: [
-                    {
-                        Header: "S/N",
-                        accessor: "username",
-                    },
-                    {
-                        Header: "Name",
-                        accessor: "name",
-                    },
-                    {
-                        Header: "Total Revenue",
-                        accessor: "address.street",
-                    },
-                    {
-                        Header: "Last Month",
-                        accessor: "address.city",
-                    },
-                    {
-                        Header: "Last Week",
-                        accessor: "address.suit",
-                    },
-                    {
-                        Header: "Growth rate",
-                        accessor: "hello hjjkk",
-                    },
-                ],
-            }
-        ],
-        []
-    );
+    // get data percentage
+    const prevMonth = moment().subtract(1, "month").format('MMMM')
 
-    // data state to store the TV Maze API data. Its initial value is an empty array
+    const percentageData = {
+        prevRevenueTotal: 120000,
+        currentRevenueTotal: 170000,
+        prevRGrowthTotal: 600000,
+        currentRGrowthTotal: 700000
+    }
 
-
-    useEffect(() => {
-        setGetData(getData)
-        dispatch(getAllPAGEMANAGEMENT())
-    }, [dispatch, getData])
-
+    // tabs
+    const [toggleState, setToggleState] = useState(1);
+    const toggleTab = (index) => {
+        setToggleState(index);
+    }
+    const [rightToggleState, setRightToggleState] = useState(3);
+    const rightToggleTab = (index) => {
+        setRightToggleState(index);
+    }
     return (
         <AdminSidebar name="Revenue">
-            <div className="App">
-                <Table columns={columns} data={data} />
-                <Text />
+            <div className="Revenue">
+                <div className="container">
+                    <div className="bloc-tabs" style={{ paddingTop: "20px" }}>
+                        <div className="left">
+                            <div className={toggleState === 1 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(1)}>Revenue</div>
+                            <div className={toggleState === 2 ? "tabs active-tabs" : "tabs"} onClick={() => toggleTab(2)}>Profit</div>
+                        </div>
+
+
+                        {toggleState === 2 && (
+                            <div className="right">
+                                <div className={rightToggleState === 3 ? "tabs active-tabs" : "tabs"} onClick={() => rightToggleTab(3)}>Gross Profit</div>
+                                <div className={rightToggleState === 4 ? "tabs active-tabs" : "tabs"} onClick={() => rightToggleTab(4)}>Net Profit</div>
+                            </div>
+                        )}
+                    </div>
+
+                    <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
+                        <TopCard topCard={revenueCard} cardName="Revenue" />
+                        <PercentageCard leftText="Total Revenue" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevRevenueTotal}
+                            currentMonthTotalLeftHandSide={percentageData.currentRevenueTotal} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
+                            currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
+                        />
+
+                        <div className="recharts">
+                            graph is here
+                        </div>
+                    </div>
+
+                    <div className={toggleState === 2 ? "tabContent active-tabContent" : "tabContent"}>
+
+                        <div className={rightToggleState === 3 ? "tabContent active-tabContent" : "tabContent"}>
+                            <GrossProfit />
+                        </div>
+                        <div className={rightToggleState === 4 ? "tabContent active-tabContent" : "tabContent"}>
+                            <NetProfit />
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
             </div>
         </AdminSidebar>
 

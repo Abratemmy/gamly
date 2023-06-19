@@ -9,7 +9,7 @@ import Pagination from '../../../Components/Pagination/Pagination';
 import DateCalendar from '../../../Components/Date/Date';
 import Search from '../../../Components/Search/Search';
 import Refresh from '../../../Components/Refresh/Refresh';
-import TopCard from '../../../Components/TopCard/TopCard';
+import TopCard from '../../../Components/pageCard/TopCard';
 
 function Payout() {
     // payout card array
@@ -67,7 +67,7 @@ function Payout() {
                         <TopCard topCard={payoutCard} cardName="Payout" />
                     </div>
 
-                    <div className='GraphSession'></div>
+                    <div className='GraphSession'>Grapgh</div>
 
                     <div className="tableName">Payouts</div>
                     <div className='tablePage tableSection'>

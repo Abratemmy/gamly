@@ -1,6 +1,6 @@
 import * as api from "../../APIS/API";
 
-import { GETPAYOUT, GETSINGLE } from "../CONSTANT/actionTypes";
+import { END_LOADING, GETPAYOUT, GETSINGLEPAYOUT, START_LOADING } from "../CONSTANT/actionTypes";
 
 export const getAllPAYMENTs = () => async (dispatch) => {
     try {
@@ -11,10 +11,13 @@ export const getAllPAYMENTs = () => async (dispatch) => {
     }
 }
 
-export const getSinglePayout = () => async (dispatch) => {
+export const getSINGLEPAYMENT = (id) => async (dispatch) => {
     try {
-        const { data } = await api.fetchsinglepayout();
-        dispatch({ type: GETSINGLE, payload: data })
+        dispatch({ type: START_LOADING })
+        const { data } = await api.fetchSinglePayout(id);
+
+        dispatch({ type: GETSINGLEPAYOUT, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error.message)
     }

@@ -12,6 +12,8 @@ import Report from '../Pages/ADMINpanel/Report/Report';
 import Sales from '../Pages/ADMINpanel/Sales/Sales';
 import Host from '../Pages/HOSTpanel/HOST/Host';
 import User from '../Pages/USERpanel/USER/User';
+import SignIn from '../Common/Authentication/SignIn';
+import ProtectedRoute from '../util/ProtectedRoute';
 
 const Router = () => {
 
@@ -20,18 +22,24 @@ const Router = () => {
 
     return (
         <Routes location={location} key={location.pathname}>
-            <Route exact path="/" caseSensitive={false} element={<Dashboard />} />
-            <Route exact path="/admin" caseSensitive={false} element={<Admin />} />
-            <Route exact path="/payout" caseSensitive={false} element={<Payout />} />
-            <Route path="/payout/:id" caseSensitive={false} element={<SinglePayout />} />
-            <Route path="/revenue" caseSensitive={false} element={<Revenue />} />
-            <Route path="/sales" caseSensitive={false} element={<Sales />} />
-            <Route path="/page_management" caseSensitive={false} element={<PManagement />} />
-            <Route path="/report" caseSensitive={false} element={<Report />} />
-            <Route path="/host" caseSensitive={false} element={<Host />} />
-            <Route path="/user" caseSensitive={false} element={<User />} />
-            {/* page not found */}
-            <Route path='*' caseSensitive={false} element={<AccessDenied />} />
+            <Route exact path="/" caseSensitive={false} element={<SignIn />} />
+
+
+            <Route element={<ProtectedRoute />}>
+                <Route exact path="/dashboard" caseSensitive={false} element={<Dashboard />} />
+                <Route exact path="/admin" caseSensitive={false} element={<Admin />} />
+                <Route exact path="/payout" caseSensitive={false} element={<Payout />} />
+                <Route path="/payout/:id" caseSensitive={false} element={<SinglePayout />} />
+                <Route path="/revenue" caseSensitive={false} element={<Revenue />} />
+                <Route path="/sales" caseSensitive={false} element={<Sales />} />
+                <Route path="/page_management" caseSensitive={false} element={<PManagement />} />
+                <Route path="/report" caseSensitive={false} element={<Report />} />
+                <Route path="/host" caseSensitive={false} element={<Host />} />
+                <Route path="/user" caseSensitive={false} element={<User />} />
+
+                {/* page not found */}
+                <Route path='*' caseSensitive={false} element={<AccessDenied />} />
+            </Route>
         </Routes>
     )
 }

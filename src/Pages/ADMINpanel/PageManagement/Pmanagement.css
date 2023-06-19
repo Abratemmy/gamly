@@ -43,58 +43,7 @@
     color:  #667085!important
 }
 /* tabs */
-.bloc-tabs {
-    display: flex;
-    margin-left: 20vw;
-}
-.tabs {
-    padding: 15px;
-    text-align: center;
-    width: 30%;
-    background: var(--backgroundColor);
-    cursor: pointer;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.274);
-    box-sizing: content-box;
-    position: relative;
-    outline: none;
-    transition: 0.4s all ease;
-    font-family: var(--textFamily);
-    color: var(--blackColor);
-    font-size: 17px;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-.tabs:not(:last-child){
-    border-right: 1px solid rgba(0, 0, 0, 0.274);
-}
-.active-tabs  {
-background: var(--primaryColor);
-border-bottom: 1px solid transparent;
-color:#fff;
-}
-.active-tabs::before {
-content: "";
-display: block;
-position: absolute;
-top: -5px;
-left: 50%;
-transform: translateX(-50%);
-width: calc(100% + 2px);
-height: 5px;
-background: yellow;
-}
 
-.content-tabs {
-/* flex-grow : 1; */
-}
-.tabContent {
-width: 100%;
-display: none;
-}
-
-.active-tabContent {
-display: block;
-}
 .PManagement .dateInput input{
     width: 200px;
     height: 42px;

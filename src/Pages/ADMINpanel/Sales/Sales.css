@@ -4,3 +4,27 @@
     font-family: var(--textFamily);
     padding: var(--interfaceBorder);
 }
+.Sales .tableName{
+    padding-top: 30px;
+}
+.Sales .tableName span{
+    font-family: var(--textFamily2);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: #25233A;
+    display: block
+}
+.openMonth{
+    position: absolute;
+    top: 60px;
+    background: #fff;
+    box-shadow: 0px 0.922014px 2.76604px rgba(16, 24, 40, 0.1), 0px 0.922014px 1.84403px rgba(16, 24, 40, 0.06);
+    padding: 5px 5px;
+}
+.openMonth .months{
+    cursor: pointer;
+    padding: 3px;
+    font-size: 13px;
+    border-top: var(--borderColor);
+}

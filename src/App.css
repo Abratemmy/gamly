@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 :root {
   --backgroundColor: linear-gradient(180deg, #E50F1C -38.3%, rgba(146, 0, 0, 0.89) 198.94%);
   --primaryColor: #DA0D18;
@@ -19,6 +20,8 @@
   --rLabelColor:#141519;
   --rInputColor:#2D3657;
   --transition:0.5s all ease;
+  --darkGray: #252C32;
+  --grayColor400: #A0AEC0;
 }
 
 [data-theme="dark"]{
@@ -237,10 +240,11 @@
   padding: 10px 10px;
   text-align: left;
   text-transform: capitalize;
-  white-space: nowrap;
-  overflow: hidden;
   color: #101828;
   font-family: var(--textFamily);
+  text-overflow: clip!important;
+  overflow: visible;
+  white-space: normal;
 }
 
 .scroll-container {
@@ -314,4 +318,64 @@
   background: #fff;
   min-height: 200px;
   max-height: 400px;
+}
+
+/* css for tabs */
+.bloc-tabs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.bloc-tabs .left{
+  display: flex;
+}
+.bloc-tabs .right{
+  display: flex;
+}
+.tabs {
+  padding: 5px 50px;
+  text-align: center;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+  transition: 0.4s all ease;
+  font-family: var(--textFamily);
+  color: #6D7175;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: normal;
+  border-bottom: 0.5px solid #DDDDDD;
+}
+/* .tabs:not(:last-child){
+  border-right: 1px solid rgba(0, 0, 0, 0.274);
+} */
+.active-tabs  {
+  background: transparent;
+  /* border-bottom: 1px solid transparent; */
+  color: #202223;
+}
+.active-tabs::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 3px;
+  background: var(--primaryColor);
+  border-radius: 4px 4px 0px 0px;
+}
+
+.tabContent {
+  width: 100%;
+  display: none;
+}
+
+.active-tabContent {
+  display: block;
 }
