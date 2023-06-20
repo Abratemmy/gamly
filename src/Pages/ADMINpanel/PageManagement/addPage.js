@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IoIosArrowForward } from 'react-icons/io'
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
-// import "../../../node_modules/react-quill/dist/quill.snow.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { createPAGEMANAGEMENT, updatePAGEMANAGEMENT } from '../../../Components/REDUX/ACTION/pageManagementAction';
+import { FailedMessage, SuccessMessage } from '../../../Components/Message/Message';
 
-function AddPage({ setToggleState, currentId }) {
+function AddPage({ setToggleState, currentId, setCurrentId }) {
+    const getPageId = useSelector((state) => currentId ? state.pageManagementReducer.pageList.find((p) => p.page_id === currentId) : null);
+
+    console.log("getPageId", getPageId)
+    useEffect(() => {
+        if (getPageId) setValues(getPageId)
+    }, [getPageId])
+
+
     const initialValue = {
-        pageName: "",
-        pageTitle: "",
-        pageUrl: "",
-        pageWeb: "",
-        description: "",
+        page_name: "",
+        Page_title: "",
+        page_url: "",
+        created_by: "",
+        content: "",
     }
     const [values, setValues] = useState(initialValue)
-    const clearPages = () => setValues(initialValue)
+    const clearPages = () => {
+        setCurrentId(null);
+        setValues(initialValue)
+    }
 
     const handleChange = (ev) => {
         setValues({
@@ -26,7 +39,7 @@ function AddPage({ setToggleState, currentId }) {
         setValues((prev) => {
             return {
                 ...prev,
-                description: event
+                content: event
             }
         })
     }
@@ -35,17 +48,22 @@ function AddPage({ setToggleState, currentId }) {
     const [pageErrors, setPageErrors] = useState({});
     const handleError = (targets) => {
         let errorsValue = {};
-        if (!targets.pageName) errorsValue.pageName = "Please enter page name";
-        if (!targets.pageTitle) errorsValue.pageTitle = "Email  is required";
-        if (!targets.pageUrl) errorsValue.pageUrl = "Please enter admin name";
-        if (!targets.pageWeb) errorsValue.pageWeb = "Please enter admin name";
-        if (!targets.description) errorsValue.description = "Please enter admin name";
+        if (!targets.page_name) errorsValue.page_name = "Please enter page name";
+        if (!targets.Page_title) errorsValue.Page_title = "Please enter page title";
+        if (!targets.page_url) errorsValue.page_url = "Please enter page url";
+        if (!targets.created_by) errorsValue.created_by = "Please enter creator name";
+        if (!targets.content) errorsValue.content = "Please add content";
 
         if (Object.keys(errorsValue).length > 0) setPageErrors({ ...errorsValue });
         else setPageErrors({});
 
         return Object.keys(errorsValue).length;
     }
+
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [failure, setFailure] = useState(false);
+    const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -54,9 +72,14 @@ function AddPage({ setToggleState, currentId }) {
             console.log("error");
         }
         else {
-            alert("values", values)
-            console.log("values are", values)
-            clearPages()
+            if (currentId) {
+                setLoading(true)
+                dispatch(updatePAGEMANAGEMENT(currentId, values, setLoading, setSuccess, setFailure, clearPages))
+            } else {
+                setLoading(true)
+                dispatch(createPAGEMANAGEMENT(values, setLoading, setSuccess, setFailure, clearPages));
+                console.log("submitted")
+            }
         }
     }
 
@@ -69,15 +92,15 @@ function AddPage({ setToggleState, currentId }) {
                 <span>{currentId ? "Edit Page" : "Add Page"}</span>
             </div>
 
-            <form onClick={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className='form' style={{ padding: "0px 20px" }}>
                     <div className='row'>
                         <div className='col-lg-3 col-md-6 col-sm-12'>
                             <div className="">
                                 <label>Page Name</label>
                                 <input type="text" placeholder="Enter page name" className='input'
-                                    name="pageName" value={values.pageName} onChange={handleChange} />
-                                {pageErrors ? <span className='error'> {pageErrors.pageName}</span> : ""}
+                                    name="page_name" value={values.page_name} onChange={handleChange} />
+                                {pageErrors ? <span className='error'> {pageErrors.page_name}</span> : ""}
 
                             </div>
                         </div>
@@ -85,24 +108,24 @@ function AddPage({ setToggleState, currentId }) {
                             <div className="">
                                 <label>Page Title</label>
                                 <input type="text" placeholder="Enter page title" className='input'
-                                    name="pageTitle" value={values.pageTitle} onChange={handleChange} />
-                                {pageErrors ? <span className='error'> {pageErrors.pageTitle}</span> : ""}
+                                    name="Page_title" value={values.Page_title} onChange={handleChange} />
+                                {pageErrors ? <span className='error'> {pageErrors.Page_title}</span> : ""}
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12'>
                             <div className="">
                                 <label>Page Url</label>
-                                <input type="text" placeholder="Enter page url" className='input'
-                                    name="pageUrl" value={values.pageUrl} onChange={handleChange} />
-                                {pageErrors ? <span className='error'> {pageErrors.pageUrl}</span> : ""}
+                                <input type="url" placeholder="Enter page url" className='input'
+                                    name="page_url" value={values.page_url} onChange={handleChange} />
+                                {pageErrors ? <span className='error'> {pageErrors.page_url}</span> : ""}
                             </div>
                         </div>
                         <div className='col-lg-3 col-md-6 col-sm-12'>
                             <div className="">
-                                <label>Web title</label>
+                                <label>Creator Name</label>
                                 <input type="text" placeholder="Enter web title" className='input'
-                                    name="pageWeb" value={values.pageWeb} onChange={handleChange} />
-                                {pageErrors ? <span className='error'> {pageErrors.pageWeb}</span> : ""}
+                                    name="created_by" value={values.created_by} onChange={handleChange} />
+                                {pageErrors ? <span className='error'> {pageErrors.created_by}</span> : ""}
                             </div>
                         </div>
                         <div className='col-12' >
@@ -112,21 +135,45 @@ function AddPage({ setToggleState, currentId }) {
                                     modules={AddPage.modules}
                                     formats={AddPage.formats}
                                     onChange={handleQuillEdit}
-                                    value={values.description}
+                                    value={values.content}
                                     unit="word"
                                     className='text-editor'
                                 />
-                                {pageErrors ? <span className='error'> {pageErrors.description}</span> : ""}
+                                {pageErrors ? <span className='error'> {pageErrors.content}</span> : ""}
                                 <div className='word'>Word</div>
                             </div>
                         </div>
 
                         <div className='submit'>
-                            <button type="submit">Submit</button>
+                            {loading ? <>
+                                <button type="submit buttondisabled" style={{ pointerEvents: "none", background: "#bb272f" }}>Submitting...</button>
+                            </> :
+                                <>
+                                    <button type="submit">Submit</button>
+                                </>}
+
                         </div>
                     </div>
                 </div>
             </form>
+
+            {success && (
+                <>
+                    {currentId ? <SuccessMessage message="Page updated successfully" handleClose={() => setSuccess(false)} />
+                        : <SuccessMessage message="Page added successfully" handleClose={() => setSuccess(false)} />
+                    }
+                </>
+
+            )}
+
+            {failure && (
+                <>
+                    {currentId ? <FailedMessage message="Page could not be updated" handleClose={() => setFailure(false)} />
+                        : <FailedMessage message="Page could not be added" handleClose={() => setFailure(false)} />
+                    }
+                </>
+
+            )}
         </div>
     )
 }

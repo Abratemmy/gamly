@@ -3,11 +3,10 @@ import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import "./Pmanagement.css";
 import { IoMdAdd } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllPAGEMANAGEMENT } from '../../../Components/REDUX/ACTION/pageManagementAction';
+import { deletePAGEMANAGEMENT, getAllPAGEMANAGEMENT } from '../../../Components/REDUX/ACTION/pageManagementAction';
 import { MdDeleteOutline, MdOutlineModeEditOutline, MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { FiAlertTriangle } from 'react-icons/fi';
 import AddPage from './addPage';
-import { BiSearch, BiRefresh } from 'react-icons/bi'
 import { BsDot } from 'react-icons/bs'
 import { DateRange } from 'react-date-range'
 import format from 'date-fns/format'
@@ -15,6 +14,7 @@ import { addDays } from 'date-fns'
 import Pagination from '../../../Components/Pagination/Pagination';
 import Search from '../../../Components/Search/Search';
 import Refresh from '../../../Components/Refresh/Refresh';
+import { STATUSACTIVE, STATUSPROCESSING } from '../../../Components/REDUX/CONSTANT/actionTypes';
 
 function PManagement() {
     const [toggleState, setToggleState] = useState(1);
@@ -28,8 +28,8 @@ function PManagement() {
     const newsVisited = pageNumber * newsPerPage
 
     const getAllPage = useSelector((state) => state.pageManagementReducer);
-    console.log("err", getAllPage)
-    const pageCount = Math.ceil(getAllPage?.length / newsPerPage);
+    console.log("AllPages", getAllPage)
+    const pageCount = Math.ceil(getAllPage.pageList?.length / newsPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected)
@@ -49,7 +49,9 @@ function PManagement() {
     }
     const deletePage = (id) => {
         alert("deleted successfully");
+        dispatch(deletePAGEMANAGEMENT(id))
         console.log("id", id)
+        alert("deleted successfully")
     }
 
     // open date dropdown toggle
@@ -64,7 +66,7 @@ function PManagement() {
     ])
     useEffect(() => {
         dispatch(getAllPAGEMANAGEMENT())
-    }, [dispatch])
+    }, [currentId, dispatch])
 
     return (
         <AdminSidebar name="Page Management" >
@@ -119,16 +121,15 @@ function PManagement() {
                                                     <td >Page Title</td>
                                                     <td >Web title</td>
                                                     <td >Created By</td>
-                                                    <td > Modify By</td>
                                                     <td >Status</td>
                                                     <td ></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {/*  */}
-                                                {getAllPage?.slice ? (
+                                                {getAllPage?.pageList?.slice ? (
                                                     <>
-                                                        {getAllPage?.filter((item) => {
+                                                        {getAllPage?.pageList?.filter((item) => {
                                                             return search?.toLowerCase() === "" ? item :
                                                                 (item?.username?.toLowerCase().includes(search.toLowerCase()) || item?.name?.toLowerCase().includes(search.toLowerCase()))
 
@@ -140,15 +141,19 @@ function PManagement() {
                                                                             <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
                                                                         }
                                                                     </td>
-                                                                    <td >{data?.username}</td>
-                                                                    <td  >{data?.name}</td>
-                                                                    <td >{data?.address?.street}</td>
-                                                                    <td >{data?.address?.city}</td>
-                                                                    <td >{data?.address?.suite}</td>
-                                                                    <td><span><BsDot className="icon" /></span> Active</td>
+                                                                    <td >{data?.page_name}</td>
+                                                                    <td  >{data?.Page_title}</td>
+                                                                    <td >{data?.page_url}</td>
+                                                                    <td >{data?.created_by}</td>
+                                                                    <td> {data.status === STATUSACTIVE ? <> <span><BsDot className="iconActive" /></span>Active</> :
+                                                                        data.status === STATUSPROCESSING ? <> <span><BsDot className="iconProcessing" />Processing</span></> :
+                                                                            <> <span><BsDot className="iconPending" /></span>Pending</>
+                                                                    }
+                                                                        {/* <span><BsDot className="icon" /></span> Active */}
+                                                                    </td>
                                                                     <td className='tableAction'>
                                                                         <button onClick={() => deleteContent(data, index)}><MdDeleteOutline className='action' /></button>
-                                                                        <span onClick={() => setToggleState(2)}><button onClick={() => setCurrentId(data.id)}><MdOutlineModeEditOutline className='action' /></button>
+                                                                        <span onClick={() => setToggleState(2)}><button onClick={() => setCurrentId(data.page_id)}><MdOutlineModeEditOutline className='action' /></button>
                                                                         </span>
                                                                     </td>
                                                                 </tr>
@@ -184,7 +189,7 @@ function PManagement() {
                             </div>
                         </div>
                         <div className={toggleState === 2 ? "tabContent active-tabContent" : "tabContent"}>
-                            <AddPage setToggleState={() => setToggleState(1)} currentId={currentId} />
+                            <AddPage setToggleState={() => setToggleState(1)} currentId={currentId} setCurrentId={setCurrentId} />
                         </div>
                     </div>
                 </div>

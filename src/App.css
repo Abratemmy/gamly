@@ -226,9 +226,17 @@
   padding: 8px 10px 5px 10px!important;
   font-family: var(--textFamily2);
 } 
-.table td span .icon{
-  font-size: 25px;
+.table td span .iconActive{
+  font-size: 30px;
   color:#44AC21
+}
+.table td span .iconProcessing{
+  font-size: 30px;
+  color:#f3dc09
+}
+.table td span .iconPending{
+  font-size: 30px;
+  color:#c90b0b
 }
 .table thead td{
   font-weight: 600;

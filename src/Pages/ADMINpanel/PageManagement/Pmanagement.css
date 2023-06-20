@@ -125,14 +125,21 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    padding: 40px 10px 10px 10px
+    padding: 40px 10px 10px 10px;
+    /* width: 150px;
+    margin: auto; */
 }
 .addPageWrapper .form .submit button{
     border: 0.751381px solid #C1C1C1;
     border-radius: 11.2707px;
     background: var(--backgroundColor);
     color:#fff;
-    padding: 5px 25px;
-    font-size:14px
+    padding: 10px 5px;
+    font-size:14px;
+    width: 150px;
 }
 
+.addPageWrapper .form .submit button.buttondisabled{
+    pointer-events: none;
+    background: #bb272f;
+}

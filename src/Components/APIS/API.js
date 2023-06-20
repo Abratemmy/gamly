@@ -28,11 +28,11 @@ export const fetchSinglePayout = (id) => PAYMENTAPI.get(`/${id}`);
 
 
 // PAGE MANAGEMENT
-const PAGEAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
-export const fetchPage = () => PAGEAPI.get('/');
-export const createPage = (newPage) => PAGEAPI.post('/', newPage);
-export const updatePage = (id, updatedPage) => PAGEAPI.put(`/${id}`, updatedPage);
-export const deletePage = (id) => PAGEAPI.delete(`/${id}`);
+const PAGEAPI = axios.create({ baseURL: 'https://10cd252b-feec-4f47-be29-6595c4480f9b.mock.pstmn.io' })
+export const fetchPage = () => PAGEAPI.get('/getAllPage');
+export const createPage = (newPage) => PAGEAPI.post('/addPage', newPage);
+export const updatePage = (id, updatedPage) => PAGEAPI.put(`/updatePage/${id}`, updatedPage);
+export const deletePage = (id) => PAGEAPI.post(`/deletePage`);
 
 // REPORT
 const REPORTAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })

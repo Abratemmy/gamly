@@ -142,7 +142,7 @@ function Chart2() {
     const openDropdown = () => {
         setDropdown(!dropdown)
     }
-    const [selected, setSelected] = useState(1);
+    const [selected, setSelected] = useState("creator");
     const handleClick = (event) => {
         setSelected(event.target.id);
         console.log(event.target.id)

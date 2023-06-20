@@ -228,14 +228,16 @@ function Report() {
                             <div className='editText'>Are you sure you want to download this report ?</div>
                             <div className='actionButton'>
                                 <button onClick={() => setalerttoggle(false)}>No</button>
-                                <button onClick={downloadReport}>Yes, edit</button>
+                                <button onClick={downloadReport}>Yes, download</button>
                             </div>
                         </div>
                     </div>
                 )}
+
                 {messageStatus &&
-                    <SuccessMessage message="Report" handleClose={() => setMessageStatus(false)} />
+                    <SuccessMessage message="Report downloaded successfully" handleClose={() => setMessageStatus(false)} />
                 }
+
                 {openReport && (
                     <div className='popupContainer'>
                         <div className='reportpopupBody' onClick={(e) => e.stopPropagation()}>

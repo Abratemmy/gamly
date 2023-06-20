@@ -20,10 +20,14 @@ export const pageManagementReducer = (state = initialState, action) => {
                 )
             };
         case DELETEPAGEMANAGE:
+            // return {
+            //     items: state.items.filter((item) =>
+            //         item.page_id !== action.payload
+            //     )
+            // };
             return {
-                items: state.items.filter((item) =>
-                    item._id !== action.payload
-                )
+                ...state,
+                items: [...state?.items || [], action.payload]
             };
         default:
             return state;

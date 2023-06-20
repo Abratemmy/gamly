@@ -20,6 +20,9 @@ export const GETPAGEMANAGE = "GETPAGEMANAGE"
 export const CREATEPAGEMANAGE = "CREATEPAGEMANAGE";
 export const UPDATEPAGEMANAGE = "UPDATEPAGEMANAGE"
 export const DELETEPAGEMANAGE = "DELETEPAGEMANAGE";
+export const STATUSACTIVE = "Active";
+export const STATUSPROCESSING = "Processing";
+export const STATUSPENDING = "Pending";
 
 // report const
 export const GETREPORT = "GETREPORT"
