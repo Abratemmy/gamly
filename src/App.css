@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 :root {
-  --backgroundColor: linear-gradient(180deg, #E50F1C -38.3%, rgba(146, 0, 0, 0.89) 198.94%);
+  --backgroundColor: linear-gradient(180deg, #E50F1C -38.3%, #920000e3 198.94%);
   --primaryColor: #DA0D18;
   --lightPink:#FFEDED;
   --textFamily: 'Outfit', sans-serif;
@@ -379,3 +379,4 @@
 .active-tabContent {
   display: block;
 }
+

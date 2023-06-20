@@ -9,6 +9,9 @@ import icon4 from "../../../Assets/icon4.svg"
 import icon5 from "../../../Assets/icon5.svg"
 import icon6 from "../../../Assets/icon6.svg"
 import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
+import Chart1 from './chart1';
+import Chart2 from './chart2';
+import "./chart.css"
 
 function Dashboard() {
     return (
@@ -95,6 +98,21 @@ function Dashboard() {
                                 </div>
                             </div>
                         </div>
+                    </section>
+
+                    <section className='charts' >
+                        <div className='row'>
+                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <Chart1 />
+
+                            </div>
+
+                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <Chart2 />
+
+                            </div>
+                        </div>
+
                     </section>
                 </div>
             </div>

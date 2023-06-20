@@ -1,0 +1,74 @@
+/* recharts */
+.charts{
+    padding: 30px 0px
+}
+.rechartsContainer{
+    width: 100%;
+    height: 370px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .rechartsContainer .tspan {
+    white-space-collapse: inherit;
+    text-wrap: inherit;
+    font-size: 10px!important;
+  }
+  .rechartsContainer .recharts-default-legend{
+    padding-bottom: 20px!important;
+  }
+  .rechartsContainer .title{
+    font-family: var(--textFamily);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10.7544px;
+    color: #2D3748;
+    position: absolute;
+    top: 10px;
+    left: 20px
+  }
+  .rechartsContainer .line-header{
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 30px 20px;
+    border-bottom: 0.81237px solid #E4E5E7;
+    margin-bottom: 20px;
+    color: #4D4D4D;
+    position: relative;
+  }
+  .rechartsContainer .dropdown{
+    transition: var(--transition);
+    color: #0F2552;
+    cursor: pointer;
+    font-family: var(--textFamily);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .rechartsContainer .dropdown .icon{
+    font-size: 20px;
+  }
+  .rechartsContainer .dropdowntoggle{
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background: #fff;
+    z-index:10;
+    box-shadow: 0px 3px 6px -3px rgba(23, 24, 24, 0.08), 0px 8px 20px -4px rgba(23, 24, 24, 0.12);
+    border-radius: 0px 0px 8px 8px;
+    transition: 0.6s all ease;
+    cursor: pointer;
+    width: 80px
+  }
+  .rechartsContainer .dropdowntoggle .list{
+    padding:5px 0px;
+    font-size: 12px;
+    font-family: var(--textFamily);
+    padding: 5px 10px;
+    padding-top: 5px;
+    border-top: 0.61237px solid #E4E5E7;
+  }
+  .rechartsContainer .dropdowntoggle .list:hover{
+    background: var(--lightPink);
+  }
