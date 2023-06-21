@@ -1,14 +1,15 @@
 import React from 'react'
 import UserSidebar from '../../../Components/PanelSIDEBAR/UserSidebar'
 
-function User() {
+function User2() {
     return (
-        <UserSidebar name="Userpage">
+        <UserSidebar name="User2">
             <div className='container'>
-                first user page
+                This is user page 2
             </div>
         </UserSidebar>
+
     )
 }
 
-export default User
+export default User2

@@ -14,6 +14,8 @@ import { getAllSALES } from '../../../Components/REDUX/ACTION/salesAction';
 import increaseImg from "../../../Assets/Increase.svg";
 import decreaseImg from "../../../Assets/decrease.svg";
 import { MdKeyboardArrowDown } from "react-icons/md"
+import AreaChartRechart from '../../../Components/RECHART/AreaChart';
+import BarChartRechart from '../../../Components/RECHART/BarChart';
 
 function Sales() {
     // sales card array
@@ -45,7 +47,6 @@ function Sales() {
         console.log("month clicked", event.target.id)
         setGetMonth(event.target.id)
         setOpenMonth(false)
-
     }
 
 
@@ -92,6 +93,50 @@ function Sales() {
         setActive(active)
     }, [dispatch, active])
 
+    const chartData = [
+        {
+            name: 'May 01',
+            uv: 3000,
+            pv: 1000,
+            amt: 2400,
+        },
+        {
+            name: 'May 05',
+            uv: 500,
+            pv: 1500,
+            amt: 2210,
+        },
+        {
+            name: 'May 10',
+            uv: 1000,
+            pv: 500,
+            amt: 2290,
+        },
+        {
+            name: 'May 15',
+            uv: 1500,
+            pv: 1000,
+            amt: 2000,
+        },
+        {
+            name: 'May 20',
+            uv: 3000,
+            pv: 1000,
+            amt: 2181,
+        },
+        {
+            name: 'May 23',
+            uv: 2500,
+            pv: 2000,
+            amt: 2500,
+        },
+        {
+            name: 'May 30',
+            uv: 2700,
+            pv: 1000,
+            amt: 2100,
+        },
+    ];
     return (
         <AdminSidebar name="sales">
             <div className='Sales'>
@@ -102,8 +147,19 @@ function Sales() {
                         currentMonthTotalRightHandSide={percentageData.currentRevenueTotal}
                     />
 
-                    <div className='Graph'>
-                        <div className=''>Recharts</div>
+                    {/* graph session */}
+                    <div className='Graph' style={{ padding: "10px 0px" }}>
+                        <div className='row gx-5 gy-5'>
+                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <div className='title'>Analytic Report</div>
+                                <BarChartRechart />
+                            </div>
+
+                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <div className='title'>Sales Growth Rate</div>
+                                <AreaChartRechart data={chartData} />
+                            </div>
+                        </div>
                     </div>
 
                     <div className='tableSession'>
@@ -142,7 +198,7 @@ function Sales() {
                                                     {getMonth === "1" ? "January" : getMonth === "2" ? "February" : getMonth === "3" ? "March" : getMonth === "4" ? "April" :
                                                         getMonth === "5" ? "May" : getMonth === "6" ? "June" : getMonth === "7" ? "July" : getMonth === "8" ? "August" :
                                                             getMonth === "9" ? "September" : getMonth === "10" ? "October" : getMonth === "11" ? "November" :
-                                                                getMonth === "12" ? "Decenmber" : getMonth}
+                                                                getMonth === "12" ? "December" : getMonth}
                                                     <span><MdKeyboardArrowDown className="dropdown" /></span></div>
                                                 {openMonth && (
                                                     <div className='openMonth'>

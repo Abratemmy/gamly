@@ -387,4 +387,7 @@
 .active-tabContent {
   display: block;
 }
+select option:hover{
+  box-shadow: 0 0 10px 100px #000 inset!important;
+}
 

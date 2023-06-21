@@ -215,8 +215,9 @@ function Chart2() {
                             </linearGradient>
                         </defs>
                         <CartesianGrid horizontal={false} vertical={false} />
-                        <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }} />
-                        <YAxis axisLine={false} tickLine={{ stroke: "#ffffff" }} unit="k" />
+                        <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }}
+                        />
+                        <YAxis axisLine={false} tickLine={{ stroke: "#ffffff" }} unit="k" tick={{ fontSize: '7', fontFamily: "var(textFamily)" }} />
                         <Tooltip content={<AdminCustomTooltip payload={userData} />} />
                         <Line
                             type="monotone"

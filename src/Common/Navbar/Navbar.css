@@ -16,7 +16,7 @@
 }
 .Navbar .navContent .left{
     display: flex;
-    gap: 10px;
+    gap: 2rem;
     align-items: center;
 }
 .Navbar .navContent .left .name{
@@ -53,20 +53,32 @@
     font-size: 20px;
     color: #9e9a9a
 }
-.Navbar input{
-    height: 40px
+.Navbar .input-group .input-group-text{
+    background: #fff;
+    border: 0.5px solid #E2E8F0!important;
+    border-right: none!important;
+    border-radius: 15px;
 }
-.Navbar .inputContainer{
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.Navbar .right .form-control{
+    border-left: none!important;
+    border-radius: 15px;
+    color: var(--grayColor);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    font-family: var(--textFamily);
+    outline: none;
+    padding: 0.475rem 1px
 }
-.Navbar .inputSection .icon{
-    position: absolute;
-    top: 13px;
-    left: 16px;
-    color: var(--grayColor)
+.Navbar .right .form-control:focus{
+    outline: none;
+    border: 0.5px solid #E2E8F0!important;
+    border-left: none!important;
+    box-shadow: none;
+}
+.Navbar .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--grayColor);
+    opacity: 1; /* Firefox */
 }
 .Navbar .navlink{
     color: var(--blackColor);

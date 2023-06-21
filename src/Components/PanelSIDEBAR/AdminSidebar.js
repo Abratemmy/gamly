@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import SIDEBAR from '../../Common/Sidebar/SIDEBAR';
 import { BsPersonGear, BsGraphUp } from "react-icons/bs";
 import { RiPagesLine, RiMoneyDollarBoxLine } from "react-icons/ri"
@@ -6,6 +6,7 @@ import { MdDashboard, MdOutlineShoppingCartCheckout } from "react-icons/md";
 
 
 function AdminSidebar({ name, children }) {
+    const [panelSelected, setPanelSelected] = useState("admin")
     const sidebarData = [
         { link: "dashboard", icon: <MdDashboard className='sidebar-icons' />, text: "Home" },
         { link: "admin", icon: <BsPersonGear className="sidebar-icons" />, text: "Admins" },
@@ -16,7 +17,7 @@ function AdminSidebar({ name, children }) {
         { link: "report", icon: <BsGraphUp className="sidebar-icons" />, text: "Report" },
     ]
     return (
-        <SIDEBAR sidebarData={sidebarData} name={name}>
+        <SIDEBAR sidebarData={sidebarData} name={name} setPanelSelected={setPanelSelected} panelSelected={panelSelected}>
             {children}
         </SIDEBAR>
     )

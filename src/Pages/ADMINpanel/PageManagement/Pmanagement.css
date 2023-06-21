@@ -139,7 +139,3 @@
     width: 150px;
 }
 
-.addPageWrapper .form .submit button.buttondisabled{
-    pointer-events: none;
-    background: #bb272f;
-}

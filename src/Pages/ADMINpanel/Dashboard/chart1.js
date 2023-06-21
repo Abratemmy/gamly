@@ -15,74 +15,74 @@ function Chart1() {
     const data = [
         {
             name: "2/2",
-            Users: 600,
-            Income: 500,
+            uv: 600,
+            pv: 500,
             amt: 700
         },
         {
             name: "2/12",
-            Users: 650,
-            Income: 550,
+            uv: 650,
+            pv: 550,
             amt: 500
         },
         {
             name: "3/12",
-            Users: 400,
-            Income: 500,
+            uv: 400,
+            pv: 500,
             amt: 2290
         },
         {
             name: "4/12",
-            Users: 550,
-            Income: 600,
+            uv: 550,
+            pv: 600,
             amt: 2000
         },
         {
             name: "5/12",
-            Users: 450,
-            Income: 500,
+            uv: 450,
+            pv: 500,
             amt: 2181
         },
         {
             name: "6/12",
-            Users: 400,
-            Income: 650,
+            uv: 400,
+            pv: 650,
             amt: 2500
         },
         {
             name: "7/12",
-            Users: 700,
-            Income: 500,
+            uv: 700,
+            pv: 500,
             amt: 2100
         },
         {
             name: "8/12",
-            Users: 650,
-            Income: 450,
+            uv: 650,
+            pv: 450,
             amt: 2100
         },
         {
             name: "9/12",
-            Users: 600,
-            Income: 700,
+            uv: 600,
+            pv: 700,
             amt: 2100
         },
         {
             name: "10/12",
-            Users: 500,
-            Income: 700,
+            uv: 500,
+            pv: 700,
             amt: 2100
         },
         {
             name: "11/12",
-            Users: 600,
-            Income: 400,
+            uv: 600,
+            pv: 400,
             amt: 2100
         },
         {
             name: "12/12",
-            Users: 500,
-            Income: 600,
+            uv: 500,
+            pv: 600,
             amt: 2100
         },
 
@@ -91,7 +91,7 @@ function Chart1() {
 
     return (
         <div className='rechartsContainer'>
-            <div className='title'>Income Overview</div>
+            <div className='heading'>Income Overview</div>
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     data={data}
@@ -104,19 +104,25 @@ function Chart1() {
                     barSize={3}
                     borderRadius={10}
                 >
-                    <CartesianGrid strokeWidth={0.5} horizontal={true} vertical={false} verticalFill={['blue', '#444444']} />
+                    <CartesianGrid strokeWidth={0.3} horizontal={true} vertical={false} verticalFill={['blue', '#444444']} />
                     <XAxis dataKey="name" axisLine={false} interval={0} tickCount={5} gridLines={false}
-                        stroke="#bebdbd" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }} />
+                        stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }} />
                     <YAxis axisLine={false} width={30} tickCount={10}
-                        stroke="#bebdbd" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }}
+                        stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }}
 
                     />
                     <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip payload={data} />} />
                     {/* <Tooltip cursor={{ stroke: "red", strokeDasharray: 3 }} /> */}
-                    <Legend layout="horizontal" type="circle" verticalAlign="top" align="right" />
+                    <Legend layout="horizontal" iconType='circle' iconSize='9' verticalAlign="top" align="right"
+                        formatter={(value, entry, index) => {
+                            return (
+                                <>{index === 0 ? <span className='legend'>Users</span> : <span className='legend'>Income</span>} </>
+                            )
+                        }}
+                    />
 
-                    <Bar dataKey="Users" fill="#E8E8E8" radius={[10, 10, 10, 10]} />
-                    <Bar dataKey="Income" fill="var(--primaryColor)" radius={[10, 10, 10, 10]} />
+                    <Bar dataKey="uv" fill="#E8E8E8" radius={[10, 10, 10, 10]} />
+                    <Bar dataKey="pv" fill="var(--primaryColor)" radius={[10, 10, 10, 10]} />
 
                 </BarChart>
             </ResponsiveContainer>

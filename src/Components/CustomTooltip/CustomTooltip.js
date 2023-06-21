@@ -1,12 +1,12 @@
 import './CustomTooltip.scss'
 
-const CustomTooltip = ({ active, payload }) => {
+const CustomTooltip = ({ active, payload, firstData }) => {
     if (active && payload && payload.length) {
         return (
             <div className='customTooltip'>
                 <div className='tooltipDetails'>
                     <div className='label'>Popular Contest</div>
-                    <div className='text'><span>&</span>{(payload[0].payload.Income) + (payload[0].payload.Users)}</div>
+                    <div className='text'><span>&</span>{(payload[0].payload.uv) + (payload[0].payload.pv)}</div>
 
                 </div>
             </div>

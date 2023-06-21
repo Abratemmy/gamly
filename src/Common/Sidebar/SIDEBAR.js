@@ -8,11 +8,11 @@ import { MdOutlineKeyboardArrowRight, MdLogout, MdOutlineSettings } from "react-
 import { useDispatch } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
 
-function SIDEBAR({ children, sidebarData, name }) {
+function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected }) {
     // dark theme and light theme
     //dark mode finished
 
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('userDataToken')));
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
@@ -32,26 +32,27 @@ function SIDEBAR({ children, sidebarData, name }) {
             <div className='InterfaceWeb'>
                 <input type="checkbox" id="interface-check" className="headerinput" />
                 <div className={click ? "sidebarDesign active" : "sidebarDesign"}>
-
                     <ul>
                         <div className='sidebar-logo'>
                             <img src={logo1} alt="" />
                             <img src={logo2} alt="" />
                         </div>
-                        <li>
+                        {/* <li>
                             <label htmlFor="interface-check" className="sidebarlabel">
                                 <MdOutlineKeyboardArrowRight className="headericon" id="sidebar_btn" />
                             </label>
-                        </li>
-                        {sidebarData.map((item, index) => {
-                            return (
-                                <li onClick={handleClick} key={index}>
-                                    <NavLink to={`/${item.link}`} exact className="sidebar-navlink " activeClassName="active">
-                                        <span className="icon">{item.icon}</span><span className="text">{item.text}</span>
-                                    </NavLink>
-                                </li>
-                            )
-                        })}
+                        </li> */}
+                        <div style={{ paddingTop: "20px" }}>
+                            {sidebarData.map((item, index) => {
+                                return (
+                                    <li onClick={handleClick} key={index}>
+                                        <NavLink to={`/${item.link}`} exact className="sidebar-navlink " activeClassName="active">
+                                            <span className="icon">{item.icon}</span><span className="text">{item.text}</span>
+                                        </NavLink>
+                                    </li>
+                                )
+                            })}
+                        </div>
 
                         <div className='down-sidebar'>
                             <li onClick={handleClick}>
@@ -85,7 +86,7 @@ function SIDEBAR({ children, sidebarData, name }) {
                         </div>
                     </div>
 
-                    <Navbar name={name} />
+                    <Navbar name={name} setPanelSelected={setPanelSelected} panelSelected={panelSelected} />
                     {children}
                 </div>
             </div>

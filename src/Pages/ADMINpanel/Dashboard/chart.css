@@ -4,10 +4,11 @@
 }
 .rechartsContainer{
     width: 100%;
-    height: 370px;
+    height: 300px;
     background-color: #fff;
     position: relative;
     border-radius: 10px;
+    padding: 10px 0px
   }
   
   .rechartsContainer .tspan {
@@ -18,15 +19,18 @@
   .rechartsContainer .recharts-default-legend{
     padding-bottom: 20px!important;
   }
-  .rechartsContainer .title{
+  .rechartsContainer .heading{
     font-family: var(--textFamily);
     font-style: normal;
     font-weight: 700;
-    font-size: 10.7544px;
+    font-size: 11.7544px;
     color: #2D3748;
     position: absolute;
-    top: 10px;
-    left: 20px
+    top: 15px;
+    left: 20px;
+    display: flex;
+    gap: 1.3rem;
+    align-items: center;
   }
   .rechartsContainer .line-header{
     height: 10%;
@@ -67,8 +71,132 @@
     font-family: var(--textFamily);
     padding: 5px 10px;
     padding-top: 5px;
-    border-top: 0.61237px solid #E4E5E7;
+    border-bottom: 0.61237px solid #eaebec;
+    font-weight: 400;
   }
   .rechartsContainer .dropdowntoggle .list:hover{
     background: var(--lightPink);
-  }
+}
+
+.recharts-cartesian-axis-tick {    
+  font-size: 10px;
+  font-family: var(--textFamily);
+  color: #838383;
+}
+.rechartsContainer .monthDisplay{
+  position: relative;
+  z-index: 10;
+  color: #666666;
+  font-size: 11px;
+  font-weight: 400;
+}
+.rechartsContainer .monthDisplay span{
+  padding-left: 5px;
+}
+.rechartsContainer .monthDisplay .dropdown{
+  font-size: 16px;
+  color: #666666;
+  position: relative;
+  top:-1px;
+}
+.rechartsContainer .openMonth{
+  top: 19px;
+}
+.rechartsContainer .openMonth .months{
+  font-size: 10px;
+  padding: 5px 10px;
+}
+
+.rechartsContainer .legend{
+  font-weight: 500;
+  font-size: 8.86267px;
+  color: #666666;
+  font-family: var(--textFamily);
+  top:-20px
+}
+.payoutRechart .payoutHeader{
+  position: relative;
+  padding-left: 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* flex-direction: column; */
+}
+.payoutRechart .payoutHeader button{
+  border: none;
+  width: 170.96px;
+  height: 30.26px;
+  background: var(--backgroundColor);
+  color: #fff;
+  border-radius: 3.02588px;
+  font-style: normal;
+  font-weight: 500;
+  font-family: var(--textFamily);
+  font-size: 15.1294px
+}
+.payoutRechart .pRechartToggle{
+  position: absolute;
+  top: 30px;
+  box-shadow: 0px 3px 6px -3px rgba(23, 24, 24, 0.08), 0px 8px 20px -4px rgba(23, 24, 24, 0.12);
+  border-radius: 8px;
+  width: 142px;
+  background: #fff;
+  margin-left: 15px;
+  font-family: var(--textFamily);
+  z-index: 10;
+}
+.payoutRechart .pRechartToggle .list{
+  color: #202223;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 5px 8px;
+  border-bottom: 1px solid #F5F5F5;
+  cursor: pointer;
+}
+.payoutRechart .totalAmount{
+  position: absolute;
+  top: 70px;
+  z-index: 5;
+  left: 15px;
+  font-family: var(--textFamily);
+  font-size: 41.8098px;
+  color: var(--blackColor);
+  display: flex;
+  align-items: center;
+}
+.payoutRechart .totalAmount span{
+  padding-left: 10px;
+  color: var(--primaryColor);
+  font-size: 13.9366px
+}
+.payoutRechart .totalAmount img{
+  padding-right: 7px;
+}
+
+.salesRechartContainer .heading{
+  gap: 10px;
+  cursor: pointer;
+  z-index: 10
+}
+.salesRechartContainer .heading .dropdown{
+  font-size: 20px;
+}
+.salesRechartContainer .heading .dropdowntoggle{
+  z-index: 10;
+  background: #fff;
+  position: absolute;
+  top: 20px;
+  left:0;
+  box-shadow: 0px 3px 6px -3px rgba(23, 24, 24, 0.08), 0px 8px 20px -4px rgba(23, 24, 24, 0.12);
+  border-radius: 8px 8px 8px 8px;
+  width: 142px;
+  padding-top: 6px ;
+}
+.salesRechartContainer .dropdowntoggle .list{
+  border-bottom: 0.61237px solid #eaebec;
+  padding: 7px
+}
+.salesRechartContainer .dropdowntoggle:not(:nth-child(1)){
+  border-top: none;
+}

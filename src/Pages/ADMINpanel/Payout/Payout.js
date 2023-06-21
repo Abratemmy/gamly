@@ -10,6 +10,8 @@ import DateCalendar from '../../../Components/Date/Date';
 import Search from '../../../Components/Search/Search';
 import Refresh from '../../../Components/Refresh/Refresh';
 import TopCard from '../../../Components/pageCard/TopCard';
+import AreaChartRechart from '../../../Components/RECHART/AreaChart';
+import AreaChartRechart2 from '../../../Components/RECHART/AreaChart2';
 
 function Payout() {
     // payout card array
@@ -59,6 +61,89 @@ function Payout() {
         dispatch(getAllPAYMENTs())
     }, [dispatch])
 
+    const chartData1 = [
+        {
+            name: 'May 01',
+            uv: 3000,
+            pv: 1000,
+            amt: 2400,
+        },
+        {
+            name: 'May 05',
+            uv: 500,
+            pv: 1500,
+            amt: 2210,
+        },
+        {
+            name: 'May 10',
+            uv: 1000,
+            pv: 500,
+            amt: 2290,
+        },
+        {
+            name: 'May 15',
+            uv: 1500,
+            pv: 1000,
+            amt: 2000,
+        },
+        {
+            name: 'May 20',
+            uv: 3000,
+            pv: 1000,
+            amt: 2181,
+        },
+        {
+            name: 'May 23',
+            uv: 2500,
+            pv: 2000,
+            amt: 2500,
+        },
+        {
+            name: 'May 30',
+            uv: 2700,
+            pv: 1000,
+            amt: 2100,
+        },
+    ];
+
+    const chartData2 = [
+        {
+            name: 'May 01',
+            uv: 200,
+            amt: 2400,
+        },
+        {
+            name: 'May 05',
+            uv: 100,
+            amt: 2210,
+        },
+        {
+            name: 'May 10',
+            uv: 300,
+            amt: 2290,
+        },
+        {
+            name: 'May 15',
+            uv: 100,
+            amt: 2000,
+        },
+        {
+            name: 'May 20',
+            uv: 400,
+            amt: 2181,
+        },
+        {
+            name: 'May 23',
+            uv: 300,
+            amt: 2500,
+        },
+        {
+            name: 'May 30',
+            uv: 500,
+            amt: 2100,
+        },
+    ];
+
     return (
         <AdminSidebar name="Payout">
             <div className='Payout'>
@@ -67,7 +152,20 @@ function Payout() {
                         <TopCard topCard={payoutCard} cardName="Payout" />
                     </div>
 
-                    <div className='GraphSession'>Grapgh</div>
+                    {/* grapgh session */}
+                    <div className='GraphSession'>
+                        <div className='title'>Monthly Analytic Report</div>
+                        <div className='row gx-5 gy-5'>
+                            <div className='col-lg-6 col-md-12 col-sm-12'>
+
+                                <AreaChartRechart data={chartData1} />
+                            </div>
+
+                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <AreaChartRechart2 data={chartData2} />
+                            </div>
+                        </div>
+                    </div>
 
                     <div className="tableName">Payouts</div>
                     <div className='tablePage tableSection'>
