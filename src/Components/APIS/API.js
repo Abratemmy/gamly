@@ -1,9 +1,9 @@
 import axios from "axios"
 
 
-const USERAPI = axios.create({ baseURL: 'https://my-json-server.typicode.com/Code-Pop/Touring-Vue-Router/events' })
+const ADMINAPI = axios.create({ baseURL: 'https://25957df9-9030-41a8-8c98-7a13ac051f9b.mock.pstmn.io' })
 
-// USERAPI.interceptors.request.use(
+// ADMINAPI.interceptors.request.use(
 //     async config => {
 //         const token = localStorage.getItem(`token`);
 //         config.headers['x-api-key'] = `PAC-TRUSTEES`;
@@ -15,10 +15,10 @@ const USERAPI = axios.create({ baseURL: 'https://my-json-server.typicode.com/Cod
 //     },
 // );
 
-export const fetchAdmin = () => USERAPI.get('/');
-export const createAdmin = (newAdmin) => USERAPI.post('/', newAdmin);
-export const updateAdmin = (id, updatedAdmin) => USERAPI.put(`/${id}`, updatedAdmin);
-export const deleteAdmin = (id) => USERAPI.delete(`/${id}`);
+export const fetchAdmin = () => ADMINAPI.get('/allAdmin');
+export const createAdmin = (newAdmin) => ADMINAPI.post('/createAdmin', newAdmin);
+export const updateAdmin = (id, updatedAdmin) => ADMINAPI.put(`/${id}`, updatedAdmin);
+export const deleteAdmin = (id) => ADMINAPI.delete(`/${id}`);
 
 
 // payout url https://dummy.restapiexample.com/api/v1/employee/${id}

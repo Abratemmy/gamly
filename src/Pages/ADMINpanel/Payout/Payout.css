@@ -39,9 +39,12 @@ table .tableNav:hover{
     font-family: var(--textFamily);
     padding: var(--interfaceBorder);
 }
+.payoutDetails .topCard{
+    width: 70%;
+}
 .payoutDetails .whiteLogo{
     background: var(--backgroundColor);
-    width: 100px;
+    width: 160px;
     padding: 20px;
     display: flex;
     flex-direction: column;

@@ -17,82 +17,229 @@
     border: none;
     background: var(--backgroundColor);
     border-radius: 7px;
-    padding: 8px 20px;
     color:#fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px
-}
-.first .button span{
-    font-size: 14px
-}
-
-.tableSection{
+    gap: 5px;
+    width: 210px;
+    height: 83.78px;
     font-family: var(--textFamily);
 }
-.tableSection .header{
+.first .button span{
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1px;
+}
+.adminPage .first .button .icon{
+    font-size: 18px;
+}
+.AdminTableWrapper{
+    font-family: var(--textFamily);
+    padding: 20px 0px 50px 0px;
+}
+.AdminTableWrapper .firstSession{
+    border-top:1px solid #EAECF0;
+    border-left:1px solid #EAECF0;
+    border-right: 1px solid #EAECF0;
+    padding-left:10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.AdminTableWrapper .firstSession .input{
+    width: 300px;
+}
+.AdminTableWrapper .firstSession .input-group .input-group-text{
+    background: #fff;
+    border: 0.5px solid #E2E8F0!important;
+    border-right: none!important;
+    border-radius: 5px;
+}
+.AdminTableWrapper .firstSession .form-control{
+    border-left: none!important;
+    border-radius: 5px;
+    color: var(--grayColor);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    font-family: var(--textFamily);
+    outline: none;
+    padding: 0.475rem 1px
+}
+.AdminTableWrapper .firstSession .form-control:focus{
+    outline: none;
+    border: 0.5px solid #E2E8F0!important;
+    border-left: none!important;
+    box-shadow: none;
+}
+.AdminTableWrapper .firstSession button{
+    font-size: 13px;
+    width: 120px;
+    border-radius: 5px;
+    height: 40px;
+    color: var(--grayColor);
+    font-weight: 600;
+    font-family: 'Noto Sans', sans-serif;
+}
+.AdminTableWrapper .firstSession button .r-icon{
+    font-size: 22px
+}
+.AdminTable{
+    background: #fff;
+    border: 0.922014px solid #EAECF0;
+    border-radius: 3px;
+    box-shadow: 0px 0.922014px 2.76604px rgba(16, 24, 40, 0.1), 0px 0.922014px 1.84403px rgba(16, 24, 40, 0.06);
+}
+.AdminTable .header{
     padding: 30px;
     color: var(--blackColor);
     font-size: 20px;
+    color: #101828
 }
-.tableSection .header span{
+.AdminTable .header span{
     background: var(--lightPink);
     color: var(--primaryColor);
     border-radius: 50px;
-    padding: 3px 15px 4px 15px;
+    padding: 3px 12px 4px 12px;
+    margin-left: 10px;
+    font-size: 14px;
+    position: relative;
+    top:-3px
 }
-table .grayColor{
+.AdminTable .tableWrapper{
+    padding-right: 70px!important;
+}
+.AdminTable .tableWrapper .table{
+    margin-bottom: 0px!important;
+}
+.AdminTable thead td{
+    background: var(--background);
+    padding: 18px 15px!important;
+    color:var(--grayColor);
+    font-weight: 500
+}
+.AdminTable thead td span{
+    padding-left: 5px;
+    position: relative;
+    top:-1px
+}
+.AdminTable thead td .icon{
+    color: var(--grayColor)!important
+}
+
+.AdminTable tbody td{
+    padding: 18px 15px!important;
+}
+table tbody .grayColor{
     color: var(--grayColor);
     font-size: 15px;
     text-transform: capitalize;
+    padding-top: 28px!important;
+}
+
+
+.AdminTable tbody .green{
+    background: var(--lightGreen);
+    border-radius: 50px;
+    padding: 6px 10px;
+    margin-right: 7px;
+    text-align: center;
+}
+.AdminTable tbody .yellow{
+    background: var(--lightYellow);
+    border-radius: 50px;
+    padding: 6px 10px;
+}
+.AdminTable tbody .access{
+    position: relative;
+    top: -2px;
+    padding-right: 5px;
+}
+.AdminTable .imageSpan{
+    display: inline-block;
+    width: 40px!important;
+    height: 40px!important;
+    background: var(--grayColor400);
+    border-radius: 50%;
+    text-align:center;
+    align-items: center;
+    padding-top: 10px;
 }
 .formpopupBody .heading{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 5px 20px 10px 20px;
+    padding: 5px 20px 20px 30px;
     border-bottom: 1px solid #E1E3E5;
     box-shadow: inset 0px -1px 0px #E1E3E5;
     font-family: var(--textFamily);
+    font-weight: 600;
+    font-size: 22px;
+    color: #374151;
 }
 .formpopupBody .heading button{
     background: none;
     border: none;
-    font-size: 18px;
+    font-size: 20px;
     color: var(--grayColor);
 }
 .formInput{
-    padding: 20px;
+    padding: 20px 30px;
 }
 .formInput label{
     display: block;
     font-size: 15px;
-    color: var(--blackColor);
+    color: #141519;
     padding-bottom: 5px;
     text-transform: capitalize;
+    font-weight: 600;
+    font-family: var(--textFamily2);
 }
 .formInput input{
-    width: 400px;
-    height: 35px;
+    width: 100%;
+    height: 40px;
     border: 1px solid #E1E3E5;
-    color: var(--grayColor);
+    color: #9CA3AF;
     font-size: 14px;
     border-radius: 5px;
-    padding: 5px 8px
+    padding: 5px 8px;
+    font-family: 'Noto Sans', sans-serif;
+    outline: none;
 }
+.formInput input:focus,
+.formInput select:focus
+{
+    border: 1px solid #E1E3E5;
+}
+.formInput input::placeholder{
+    color: #9CA3AF;
+}
+.formInput select option {
+    margin: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0.922014px 2.76604px rgba(16, 24, 40, 0.1), 0px 0.922014px 1.84403px rgba(16, 24, 40, 0.06);
+    background: var(--background);
+    text-align: center;
+    /* text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4); */
+  }
 .formInput .inputfield{
     padding: 7px 0px
 }
 .formInput select{
-    width: 400px;
-    height: 35px;
+    width: 100%;
+    height: 40px;
     border: 1px solid #E1E3E5;
-    color: var(--grayColor);
+    color: #9CA3AF;
     font-size: 14px;
     border-radius: 5px;
+    font-family: 'Noto Sans', sans-serif;
+    outline: none;
+    text-align: left;
 }
 .formInput .submitButton{
     display: flex;
@@ -106,7 +253,7 @@ table .grayColor{
     border: 1px solid var(--grayColor);
     color: var(--primaryColor);
     background: transparent;
-    padding: 2px 10px;
+    padding: 5px 10px;
     border-radius: 5px;
     font-size: 14px;
 }
@@ -114,22 +261,27 @@ table .grayColor{
     border: none;
     color: #fff;
     background: var(--primaryColor);
-    padding: 2px 10px;
+    padding: 5px 10px;
     border-radius: 5px;
     font-size: 14px;
 }
 .tableAction button{
     background: none;
     border: none;
-    padding:0px 8px;
+    padding:0px 2px;
     font-size: 18px;
 }
-.tableAction>:nth-child(1){
-    color: crimson
+.formInput .inner-addon{
+    position: relative;
+    width: 100%;
 }
-.tableAction>:nth-child(2){
-    color: var(--grayColor)
+.formInput .inner-addon .show-icon{
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    cursor: pointer;
 }
+
 .inputSection .refreshDiv{
     display: flex;
     gap: 3rem;
@@ -164,4 +316,64 @@ table .grayColor{
 .adminPage .table td .icon{
     color: #101828;
     font-size: 14px
+}
+
+.selectDropdown{
+    width: 100%;
+    position: relative;
+}
+.selectDropdown .dropdown-btn{
+    border: 1px solid #E1E3E5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    color: #767e8b;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-family: 'Noto Sans', sans-serif;
+}
+.selectDropdown .dropdown-btn .icon{
+    font-size: 20px;
+    color: var(--blackColor)
+}
+.selectDropdown .dropdown-content{
+    position: absolute;
+    top: 40px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0.922014px 2.76604px rgba(16, 24, 40, 0.1), 0px 0.922014px 1.84403px rgba(16, 24, 40, 0.06);
+    background: var(--background);
+    text-align: center;
+    width: 100%;
+    z-index: 10
+}
+.selectDropdown .dropdown-content .dropdown-item{
+    padding: 7px;
+    cursor: pointer;
+    transition:0.4s all ease
+}
+.selectDropdown .dropdown-content .dropdown-item:hover{
+    background: #f4f4f4;
+}
+.selectDropdown .green{
+    background: var(--lightGreen);
+    border-radius: 50px;
+    padding: 4px 10px;
+    margin-right: 10px;
+}
+.selectDropdown .yellow{
+    background: var(--lightYellow);
+    border-radius: 50px;
+    padding: 4px 10px;
+    margin-right: 10px;
+}
+.selectDropdown .green img,
+.selectDropdown .yellow img{
+    position: relative;
+    top:-1px;
 }

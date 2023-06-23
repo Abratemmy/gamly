@@ -16,17 +16,17 @@
 }
 .Dashboard .top .image{
     background: var(--primaryColor);
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
+    width: 160px;
+    height: 113px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 5px
+    gap: 8px
 }
 .Dashboard .top img{
-    width: 50%
+    width: 28%
 }
 .Dashboard .top .text{
     font-size: 18px;
@@ -56,6 +56,24 @@
     color: var(--blackColor);
     display: block;
     padding: 4px 0px
+}
+.Dashboard .content .text span .green{
+    color:#48BB78;
+    padding-left: 5px;
+    font-size: 12.66px;
+    font-weight: 700;
+    font-family: var(--textFamily);
+    position: relative;
+    top:-2px
+}
+.Dashboard .content .text span .red{
+    color:#E53E3E;
+    padding-left: 5px;
+    font-size: 12.66px;
+    font-weight: 700;
+    font-family: var(--textFamily);
+    position: relative;
+    top:-2px
 }
 .Dashboard .content .image{
     width: 30px;

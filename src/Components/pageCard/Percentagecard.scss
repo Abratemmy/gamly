@@ -5,10 +5,6 @@
     margin: 40px 0px;
 
     .cardWrapper{
-        display: flex;
-        gap: 2rem;
-        align-items: center;
-        justify-content: space-between;
         width: 100%;
 
         .cardContent{
@@ -134,5 +130,15 @@
             flex-direction: column;
             width: 100%
         }
+    }
+    @media screen and (min-width:980px) and (max-width: 1050px) {
+        .cardWrapper .cardContent .total{
+            color: #2D3121;
+            font-family: var(--textFamily);
+            font-style: normal;
+            font-weight: 700;
+            font-size: 28.2915px!important;
+        }
+      
     }
 }

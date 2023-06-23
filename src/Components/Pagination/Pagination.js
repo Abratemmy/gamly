@@ -7,7 +7,8 @@ function Pagination({ pageCount, changePage }) {
         <div>
             <ReactPaginate
                 breakLabel="..."
-                previousLabel={<span style={{ letterSpacing: "-2px" }}>{"<<"}</span>}
+
+                previousLabel={<div style={{ letterSpacing: "-2px" }}>{"<<"} </div>}
                 nextLabel={<span style={{ letterSpacing: "-2px" }} >{">>"}</span>}
                 pageCount={pageCount}
                 onPageChange={changePage}

@@ -149,9 +149,11 @@ function BarChartRechart() {
                     >
                         <CartesianGrid strokeWidth={0.2} horizontal={true} vertical={false} verticalFill={['blue', '#444444']} />
                         <XAxis dataKey="name" axisLine={false} interval={0} tickCount={5} gridLines={false}
-                            stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }} />
+                            stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ dy: 8, fontSize: '12', fontFamily: "var(textFamily)" }}
+                            padding={{ left: 7, right: 1 }}
+                        />
                         <YAxis axisLine={false} width={30} tickCount={5}
-                            stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }}
+                            stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ dx: 5, fontSize: '12', fontFamily: "var(textFamily)" }}
                             tickFormatter={(label) => `$${label}k`}
                         />
                         <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip payload={weeklydata} />} />

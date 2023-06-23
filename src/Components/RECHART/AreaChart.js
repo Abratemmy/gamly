@@ -58,12 +58,15 @@ function AreaChartRechart({ data }) {
                             <stop offset="75%" stop-color="#DA0D18" stopOpacity={0.6} />
                         </linearGradient>
                     </defs>
-                    <CartesianGrid strokeWidth={0.5} horizontal={false} vertical={true} />
-                    <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }}
-                        stroke="#9F9F9F"
+                    <CartesianGrid strokeWidth={0.5} horizontal={false} vertical={true}
+
+                    />
+                    <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }} tick={{ dy: 8, fontSize: '12', fontFamily: "var(textFamily)" }}
+                        stroke="#9F9F9F" padding={{ left: -7, right: 1 }}
                     />
                     <YAxis axisLine={false} tickLine={{ stroke: "#ffffff" }} width={70} stroke="#9F9F9F"
-                        tickFormatter={(label) => `$${label}`} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }}
+                        tickFormatter={(label) => `$${label}`} tick={{ dx: -15, fontSize: '12', fontFamily: "var(textFamily)" }}
+                        padding={{ top: 3, bottom: 5 }}
                     />
                     <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip payload={data} />} />
                     <Legend layout="horizontal" iconType='rect' iconSize="9" verticalAlign="top" align="right"

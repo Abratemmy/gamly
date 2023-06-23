@@ -31,83 +31,92 @@ function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, c
         <div>
             <div className='percentageCard'>
                 <div className="cardWrapper">
-                    <div className='cardContent'>
-                        <div className='top'>
-                            <div className='avg'>Avg. <span>$ 15, 000</span></div>
-                            <div className="date">
-                                <div className="dateC">{prevDateMonth}, 01 - {moment().format("MMMM, DD YYYY")}
-                                    <span><img src={dateImg} alt="" /></span>
+                    <div className='row g-5'>
+                        <div className='col-lg-6 col-md-12 col-sm-12'>
+                            <div className='cardContent'>
+                                <div className='top'>
+                                    <div className='avg'>Avg. <span>$ 15, 000</span></div>
+                                    <div className="date">
+                                        <div className="dateC">{prevDateMonth}, 01 - {moment().format("MMMM, DD YYYY")}
+                                            <span><img src={dateImg} alt="" /></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='contentWrapper'>
+                                    <div className='content content1'>
+                                        <div className='lastMonth'>{prevMonth}</div>
+                                        <div className='total'>${previousMonthTotalLeftHandSide}</div>
+                                        <div className='text'>{leftText} as on {prevMonthLastDay}</div>
+
+                                    </div>
+
+                                    <div className='content content2'>
+                                        <div className='lastMonth'>{moment().format("MMMM")}</div>
+                                        <div className='total'>${currentMonthTotalLeftHandSide}</div>
+                                        <div className='text'>{leftText} as on {moment().format("MMMM DD, YYYY")}</div>
+
+                                    </div>
+                                </div>
+
+                                <div className='percentage'>
+                                    {currentMonthTotalLeftHandSide > previousMonthTotalLeftHandSide ? (<div className='increase'>
+                                        {percentageIncrease}% <span>Increase from Previous Month</span>
+                                        <img src={uparrow} alt="" />
+                                    </div>
+                                    ) : (
+                                        <div className='decrease'>
+                                            {percentageDecrease}% <span>Decrease from Previous Month</span>
+                                            <img src={downarrow} alt="" />
+                                        </div>
+                                    )}
                                 </div>
                             </div>
+
                         </div>
 
-                        <div className='contentWrapper'>
-                            <div className='content content1'>
-                                <div className='lastMonth'>{prevMonth}</div>
-                                <div className='total'>${previousMonthTotalLeftHandSide}</div>
-                                <div className='text'>{leftText} as on {prevMonthLastDay}</div>
-
-                            </div>
-
-                            <div className='content content2'>
-                                <div className='lastMonth'>{moment().format("MMMM")}</div>
-                                <div className='total'>${currentMonthTotalLeftHandSide}</div>
-                                <div className='text'>{leftText} as on {moment().format("MMMM DD, YYYY")}</div>
-
-                            </div>
-                        </div>
-
-                        <div className='percentage'>
-                            {currentMonthTotalLeftHandSide > previousMonthTotalLeftHandSide ? (<div className='increase'>
-                                {percentageIncrease}% <span>Increase from Previous Month</span>
-                                <img src={uparrow} alt="" />
-                            </div>
-                            ) : (
-                                <div className='decrease'>
-                                    {percentageDecrease}% <span>Decrease from Previous Month</span>
-                                    <img src={downarrow} alt="" />
+                        <div className='col-lg-6 col-md-12 col-sm-12'>
+                            <div className='cardContent'>
+                                <div className='top'>
+                                    <div className='avg'>Avg. <span>$ 15, 000</span></div>
+                                    <div className="date">{prevDateMonth}, 01 - {moment().format("MMMM, DD YYYY")}
+                                        <span><img src={dateImg} alt="" /></span>
+                                    </div>
                                 </div>
-                            )}
+
+                                <div className='contentWrapper'>
+                                    <div className='content content1'>
+                                        <div className='lastMonth'>{prevMonth}</div>
+                                        <div className='total'>${previousMonthTotalRightHandSide}</div>
+                                        <div className='text'>Revenue growth as on {prevMonthLastDay}</div>
+
+                                    </div>
+
+                                    <div className='content content2'>
+                                        <div className='lastMonth'>{moment().format("MMMM")}</div>
+                                        <div className='total'>${currentMonthTotalRightHandSide}</div>
+                                        <div className='text'>Revenue growth as on {moment().format("MMMM DD, YYYY")}</div>
+
+                                    </div>
+                                </div>
+
+                                <div className='percentage'>
+                                    {currentMonthTotalRightHandSide > previousMonthTotalRightHandSide ? (<div className='increase'>
+                                        {revenueIncrease}% <span>Increase from Previous Month</span>
+                                        <img src={uparrow} alt="" />
+                                    </div>
+                                    ) : (
+                                        <div className='decrease'>
+                                            {revenueDecrease}% <span>Decrease from Previous Month</span>
+                                            <img src={downarrow} alt="" />
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className='cardContent'>
-                        <div className='top'>
-                            <div className='avg'>Avg. <span>$ 15, 000</span></div>
-                            <div className="date">{prevDateMonth}, 01 - {moment().format("MMMM, DD YYYY")}
-                                <span><img src={dateImg} alt="" /></span>
-                            </div>
-                        </div>
 
-                        <div className='contentWrapper'>
-                            <div className='content content1'>
-                                <div className='lastMonth'>{prevMonth}</div>
-                                <div className='total'>${previousMonthTotalRightHandSide}</div>
-                                <div className='text'>Revenue growth as on {prevMonthLastDay}</div>
-
-                            </div>
-
-                            <div className='content content2'>
-                                <div className='lastMonth'>{moment().format("MMMM")}</div>
-                                <div className='total'>${currentMonthTotalRightHandSide}</div>
-                                <div className='text'>Revenue growth as on {moment().format("MMMM DD, YYYY")}</div>
-
-                            </div>
-                        </div>
-
-                        <div className='percentage'>
-                            {currentMonthTotalRightHandSide > previousMonthTotalRightHandSide ? (<div className='increase'>
-                                {revenueIncrease}% <span>Increase from Previous Month</span>
-                                <img src={uparrow} alt="" />
-                            </div>
-                            ) : (
-                                <div className='decrease'>
-                                    {revenueDecrease}% <span>Decrease from Previous Month</span>
-                                    <img src={downarrow} alt="" />
-                                </div>
-                            )}
-                        </div>
-                    </div>
 
 
                 </div>

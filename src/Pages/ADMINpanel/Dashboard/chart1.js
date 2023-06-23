@@ -101,15 +101,17 @@ function Chart1() {
                         left: 20,
                         bottom: 5
                     }}
-                    barSize={3}
+                    barSize={5}
                     borderRadius={10}
                 >
                     <CartesianGrid strokeWidth={0.3} horizontal={true} vertical={false} verticalFill={['blue', '#444444']} />
                     <XAxis dataKey="name" axisLine={false} interval={0} tickCount={5} gridLines={false}
-                        stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }} />
+                        stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }}
+                        padding={{ left: 7, right: 1 }}
+                    />
                     <YAxis axisLine={false} width={30} tickCount={10}
                         stroke="#9F9F9F" tickLine={{ stroke: "#ffffff" }} tick={{ fontSize: '12', fontFamily: "var(textFamily)" }}
-
+                        padding={{ top: 0, bottom: 10 }}
                     />
                     <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip payload={data} />} />
                     {/* <Tooltip cursor={{ stroke: "red", strokeDasharray: 3 }} /> */}

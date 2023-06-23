@@ -11,6 +11,8 @@ import PercentageCard from "../../../Components/pageCard/PercentageCard";
 import moment from 'moment'
 import NetProfit from "./NetProfit";
 import GrossProfit from "./grossProfit";
+import ProgressBar from "../../../Components/RECHART/ProgressBar";
+import AreaChartRechart3 from "../../../Components/RECHART/AreaChart3";
 
 function Revenue() {
     const revenueCard = [
@@ -39,6 +41,10 @@ function Revenue() {
     const rightToggleTab = (index) => {
         setRightToggleState(index);
     }
+
+    // revenue progresschart data
+    const lastMonthTotal = 870000
+    const currentMonthTotal = 300009
     return (
         <AdminSidebar name="Revenue">
             <div className="Revenue">
@@ -66,7 +72,19 @@ function Revenue() {
                         />
 
                         <div className="recharts">
-                            graph is here
+                            <div className='Graph' style={{ padding: "10px 0px" }}>
+                                <div className='row gx-5 gy-5'>
+                                    <div className='col-lg-6 col-md-12 col-sm-12'>
+                                        <ProgressBar lastMonthTotal={lastMonthTotal} currentMonthTotal={currentMonthTotal} />
+                                    </div>
+
+                                    <div className='col-lg-6 col-md-12 col-sm-12'>
+                                        <AreaChartRechart3 />
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
 

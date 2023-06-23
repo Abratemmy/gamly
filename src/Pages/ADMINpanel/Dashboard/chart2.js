@@ -142,7 +142,7 @@ function Chart2() {
     const openDropdown = () => {
         setDropdown(!dropdown)
     }
-    const [selected, setSelected] = useState("creator");
+    const [selected, setSelected] = useState("creators");
     const handleClick = (event) => {
         setSelected(event.target.id);
         console.log(event.target.id)
@@ -152,7 +152,7 @@ function Chart2() {
     return (
         <div className='rechartsContainer lineContainer'>
             <div className='line-header' >
-                <div className='' style={{ color: "#4D4D4D" }}>Overall User Activity</div>
+                <div className='title' style={{ color: "#4D4D4D" }}>Overall User Activity</div>
                 <div className='dropdown' onClick={openDropdown}>{selected} <span><MdArrowDropDown className='icon' /> </span></div>
                 {dropdown && (
                     <div className='dropdowntoggle'>
@@ -185,8 +185,8 @@ function Chart2() {
                             </linearGradient>
                         </defs>
                         <CartesianGrid horizontal={false} vertical={false} />
-                        <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }} />
-                        <YAxis axisLine={false} tickLine={{ stroke: "#ffffff" }} unit="k" />
+                        <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }} padding={{ left: 7, right: 1 }} />
+                        <YAxis axisLine={false} tickLine={{ stroke: "#ffffff" }} unit="k" padding={{ top: 3, bottom: 12 }} />
                         <Tooltip content={<AdminCustomTooltip payload={creatorData} />} />
                         <Line
                             type="monotone"
@@ -215,9 +215,8 @@ function Chart2() {
                             </linearGradient>
                         </defs>
                         <CartesianGrid horizontal={false} vertical={false} />
-                        <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }}
-                        />
-                        <YAxis axisLine={false} tickLine={{ stroke: "#ffffff" }} unit="k" tick={{ fontSize: '7', fontFamily: "var(textFamily)" }} />
+                        <XAxis dataKey="name" axisLine={false} tickLine={{ stroke: "#ffffff" }} padding={{ left: 7, right: 1 }} />
+                        <YAxis axisLine={false} tickLine={{ stroke: "#ffffff" }} unit="k" padding={{ top: 3, bottom: 12 }} />
                         <Tooltip content={<AdminCustomTooltip payload={userData} />} />
                         <Line
                             type="monotone"

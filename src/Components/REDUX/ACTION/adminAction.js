@@ -11,24 +11,18 @@ export const getAllADMIN = () => async (dispatch) => {
     }
 }
 
-export const createADMIN = (roleForm, setLoading, setSuccess, setFailure, clearRoleForm, setApiError) => async (dispatch) => {
+export const createADMIN = (values, setLoading, setSuccess, setFailure, clearAdmin) => async (dispatch) => {
     try {
         setSuccess(false)
         setFailure(false)
-        setApiError(false)
-        const { data } = await api.createAdmin(roleForm);
+        const { data } = await api.createAdmin(values);
         dispatch({ type: CREATEADMIN, payload: data });
         setLoading(false);
-        clearRoleForm()
+        clearAdmin()
         setSuccess(true)
-        setTimeout(() => {
-            setSuccess(false)
-        }, 5000)
-
 
     } catch (error) {
         setLoading(false);
-        setApiError(error)
         setSuccess(false)
         setFailure(true)
         console.log(error)

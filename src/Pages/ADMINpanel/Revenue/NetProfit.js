@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import TopCard from '../../../Components/pageCard/TopCard';
 import PercentageCard from '../../../Components/pageCard/PercentageCard';
+import ProgressBar from '../../../Components/RECHART/ProgressBar';
+import AreaChartRechart3 from '../../../Components/RECHART/AreaChart3';
 
 function NetProfit() {
     const profitCard = [
@@ -20,6 +22,10 @@ function NetProfit() {
         prevRGrowthTotal: 600000,
         currentRGrowthTotal: 700000
     }
+
+    const lastMonthTotal = 990000
+    const currentMonthTotal = 105000
+
     return (
         <div>
             <TopCard topCard={profitCard} cardName="Net Profit" />
@@ -27,6 +33,22 @@ function NetProfit() {
                 currentMonthTotalLeftHandSide={percentageData.currentTotalProfit} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
                 currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
             />
+
+            <div className="recharts">
+                <div className='Graph' style={{ padding: "10px 0px" }}>
+                    <div className='row gx-5 gy-5'>
+                        <div className='col-lg-6 col-md-12 col-sm-12'>
+                            <ProgressBar lastMonthTotal={lastMonthTotal} currentMonthTotal={currentMonthTotal} />
+                        </div>
+
+                        <div className='col-lg-6 col-md-12 col-sm-12'>
+                            <AreaChartRechart3 />
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
     )
 }

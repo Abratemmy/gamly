@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Admin.css";
 import { BiPlus } from "react-icons/bi";
-import { AiFillDelete, AiOutlineEdit } from "react-icons/ai"
 import { BsQuestionCircle } from "react-icons/bs";
 import { FiAlertTriangle } from "react-icons/fi"
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +10,14 @@ import Pagination from '../../../Components/Pagination/Pagination';
 import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
 import Search from '../../../Components/Search/Search';
 import Refresh from '../../../Components/Refresh/Refresh';
+import pointGreen from "../../../Assets/pointGreen.svg";
+import pointYellow from "../../../Assets/pointYellow.svg";
+import deleteImg from "../../../Assets/deleteImg.svg";
+import editImg from "../../../Assets/editImg.svg"
+import AddAdminPage from './addAdmin';
+import { MdOutlineKeyboardArrowDown } from "react-icons/md"
+import { AiOutlineEyeInvisible } from "react-icons/ai";
+import { BiSearch, BiRefresh } from "react-icons/bi"
 
 function Admin() {
     const dispatch = useDispatch()
@@ -20,15 +27,20 @@ function Admin() {
     const [search, setSearch] = useState('')
 
     const getAdminData = useSelector((state) => state.adminReducer);
-    console.log("err", getAdminData)
+    console.log("adminData", getAdminData)
 
-    const pageCount = Math.ceil(getAdminData?.length / newsPerPage);
+    const pageCount = Math.ceil(getAdminData?.adminList?.length / newsPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected)
         // this is to scroll up when 
         // window.scrollTo(0, 0)
     }
+
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    };
 
     // this is to add admin button function
     const [popupcontent, setPopupcontent] = useState({})
@@ -45,8 +57,14 @@ function Admin() {
         setalerttoggle(false)
     }
 
+    const [selectRoleActive, setSelectRoleActive] = useState(false)
+    const [roleSelected, setRoleSelected] = useState(popupcontent.role)
     const roleData = ["Super Admin", "Sub Admin", "Admin"]
 
+    // access
+    const [selectAccessActive, setSelectAccessActive] = useState(false)
+    const [accessSelected, setaccessSelected] = useState("Both")
+    const accessData = ["Both", "Users", "Creators"]
     // validation for edit form
     const [errors, setErrors] = useState({});
 
@@ -102,33 +120,7 @@ function Admin() {
     const AddAdmin = () => {
         setAddAdminForm(true)
     }
-    const initialValue = {
-        title: "",
-        password: "",
-        email: "",
-        access: "",
-        role: ""
-    }
-    const [values, setValues] = useState(initialValue);
 
-    const clearAdmin = () => setValues(initialValue)
-    const handleChange = (ev) => {
-        setValues({
-            ...values,
-            [ev.target.name]: ev.target.value
-        });
-    };
-    const handleAddAdmin = (e) => {
-        e.preventDefault()
-        let v = handleError(values);
-        if (v > 0) {
-            console.log("error");
-        }
-        else {
-            alert("submitted successfully")
-            clearAdmin()
-        }
-    }
     useEffect(() => {
         dispatch(getAllADMIN())
     }, [dispatch])
@@ -144,64 +136,94 @@ function Admin() {
                         </div>
                     </div>
 
-                    <section>
-                        <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                            <Search setSearch={setSearch} search={search} />
-                            <div className='refreshDiv' >
-                                <Refresh handleRefresh={() => setSearch("")} />
+
+                    <section className='AdminTableWrapper'>
+                        <div className='firstSession'>
+                            <div className='input'>
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text"><BiSearch className="icon" style={{ color: 'var(--grayColor)' }} /></span>
+                                    <input type="text" className="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping" />
+                                </div>
                             </div>
 
+                            <div className='RefreshComp'>
+                                <button ><BiRefresh className='r-icon' /> <span>Refresh</span></button>
+                            </div>
                         </div>
-                    </section>
 
-                    <section className='tableSection'>
-                        <div className='header'>Admin <span> 1000 admins </span></div>
+                        <div className="AdminTable">
+                            <div className='header'>Admin <span> 1000 admins </span></div>
+                            <div className='tableWrapper'>
+                                <div className="scroll-container">
+                                    <table className="table scroll">
+                                        <thead>
+                                            <tr >
+                                                <td>Name</td>
+                                                <td>Role <span><BsQuestionCircle className="icon" /> </span></td>
+                                                <td>Email Address</td>
+                                                <td>Access</td>
+                                                <td>Date added</td>
+                                                <td></td>
+                                            </tr>
+                                        </thead>
 
-                        <div className="scroll-container">
-                            <table className="table scroll">
-                                <thead>
-                                    <tr >
-                                        <td>Name</td>
-                                        <td>Role <span><BsQuestionCircle className="icon" /> </span></td>
-                                        <td>Email Address</td>
-                                        <td>Access</td>
-                                        <td>Date added</td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
+                                        <tbody>
+                                            {getAdminData?.adminList?.slice ? (
+                                                <>
+                                                    {getAdminData?.adminList?.filter((item) => {
+                                                        return search?.toLowerCase() === "" ? item :
+                                                            (item?.title?.toLowerCase().includes(search.toLowerCase()) || item?.category?.toLowerCase().includes(search.toLowerCase()))
 
-                                <tbody>
-                                    {getAdminData?.slice ? (
-                                        <>
-                                            {getAdminData?.filter((item) => {
-                                                return search?.toLowerCase() === "" ? item :
-                                                    (item?.title?.toLowerCase().includes(search.toLowerCase()) || item?.category?.toLowerCase().includes(search.toLowerCase()))
+                                                    })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
+                                                        return (
+                                                            <tr key={data?.id}>
+                                                                <td width="25%" className=''>
+                                                                    <div className='imageName'>
+                                                                        {data?.image ? (
+                                                                            <><img src={data?.image} alt="" /> </>
+                                                                        ) : (
+                                                                            <>
+                                                                                <span class="imageSpan" style={{ marginRight: "8px" }}>{data?.name?.split(/\s/).reduce((response, word) => response += word.slice(0, 1), '')}</span>
+                                                                            </>
+                                                                        )}
+                                                                        {data?.name}
+                                                                    </div>
+                                                                </td>
+                                                                <td width="10%" className='grayColor '>{data?.role}</td>
+                                                                <td width="20%" className='grayColor'>{data?.email}</td>
+                                                                <td width="30%" className='grayColor'>{data?.role === "Admin" ?
+                                                                    <div className='left'>
+                                                                        <span className='green'><img src={pointGreen} alt="" className='access' /> Users</span>
+                                                                        <span className='yellow'><img src={pointYellow} alt="" className='access' /> Creators</span>
+                                                                    </div>
+                                                                    :
+                                                                    <div className='right'>
+                                                                        <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
+                                                                    </div>
+                                                                }
 
-                                            })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
-                                                return (
-                                                    <tr key={data?.id}>
-                                                        <td width="15%" >{data?.title}</td>
-                                                        <td width="10%" className='grayColor'>{data?.category}</td>
-                                                        <td width="20%" className='grayColor'>{data?.location}</td>
-                                                        <td width="25%" className='grayColor'>{data?.petsAllowed === true ? "true" : "false"}</td>
-                                                        <td width="10%" className='grayColor'>{data?.date}</td>
-                                                        <td width="10%" className='tableAction'>
-                                                            <button onClick={() => deleteContent(data, index)}><AiFillDelete className='action' /></button>
-                                                            <button onClick={() => changeContent(data, index)}><AiOutlineEdit className='action' /></button>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })}
-                                        </>
-                                    ) : ("")}
-                                </tbody>
-                            </table>
+                                                                </td>
+                                                                <td width="10%" className='grayColor'>2023-06-21</td>
+                                                                <td width="10%" className='tableAction'>
+                                                                    <button onClick={() => deleteContent(data, index)}><img src={deleteImg} alt="" className='' /></button>
+                                                                    <button onClick={() => changeContent(data, index)}><img src={editImg} alt="" className='' /></button>
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })}
+                                                </>
+                                            ) : ("")}
+                                        </tbody>
+                                    </table>
 
+                                </div>
+                            </div>
+
+                            {/* pagination starts here */}
+                            <Pagination pageCount={pageCount} changePage={changePage} />
                         </div>
-                    </section>
 
-                    {/* pagination starts here */}
-                    <Pagination pageCount={pageCount} changePage={changePage} />
+                    </section>
 
                 </div>
 
@@ -224,6 +246,7 @@ function Admin() {
                 {openForm && (
                     <div className='popupContainer'>
                         <div className='formpopupBody' onClick={(e) => e.stopPropagation()}>
+
                             <div className='heading'>
                                 <div className='text'>Edit Admin</div>
                                 <button onClick={() => setopenForm(false)}>x</button>
@@ -233,21 +256,21 @@ function Admin() {
                                 <div className='inputfield'>
                                     <label>Name</label>
                                     <input type="text"
-                                        name="title" value={popupcontent.title}
+                                        name="title" value={popupcontent.name}
                                         onChange={(e) => {
-                                            setPopupcontent({ ...popupcontent, title: e.target.value });
+                                            setPopupcontent({ ...popupcontent, name: e.target.value });
                                         }}
 
                                     />
-                                    {errors ? <span className='error'> {errors.title}</span> : ""}
+                                    {errors ? <span className='error'> {errors.name}</span> : ""}
                                 </div>
 
                                 <div className='inputfield'>
                                     <label>Email</label>
                                     <input type="email"
-                                        name="email" value={popupcontent.category}
+                                        name="email" value={popupcontent.email}
                                         onChange={(e) => {
-                                            setPopupcontent({ ...popupcontent, category: e.target.value });
+                                            setPopupcontent({ ...popupcontent, email: e.target.value });
                                         }}
                                     />
                                     {errors ? <span className='error'> {errors.email}</span> : ""}
@@ -255,40 +278,77 @@ function Admin() {
 
                                 <div className='inputfield'>
                                     <label>Role</label>
-                                    <select name="role" id="role" value={popupcontent.location}
-                                        onChange={(e) => {
-                                            setPopupcontent({ ...popupcontent, location: e.target.value });
-                                        }}
-                                    >
-                                        <option>Select Role</option>
-                                        {roleData?.map((item, index) => {
-                                            return (
-                                                <option key={index} value={popupcontent.location}>{item}</option>
-                                            )
-
-                                        })}
-                                    </select>
-                                    {errors ? <span className='error'> {errors.role}</span> : ""}
+                                    <div className='selectDropdown'>
+                                        <div className='dropdown-btn' onChange={(e) => {
+                                            setPopupcontent({ ...popupcontent, role: e.target.value });
+                                        }} onClick={() => setSelectRoleActive(!selectRoleActive)}>
+                                            {roleSelected} <span><MdOutlineKeyboardArrowDown className='icon' /></span>
+                                        </div>
+                                        {selectRoleActive && (
+                                            <div className='dropdown-content'>
+                                                {roleData?.map((option) => (
+                                                    <div className="dropdown-item"
+                                                        onClick={(e) => {
+                                                            setRoleSelected(option);
+                                                            setSelectRoleActive(false)
+                                                        }}
+                                                    >
+                                                        {option}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
 
                                 <div className='inputfield'>
                                     <label>Access</label>
-                                    <select name="access" id="cars">
-                                        <option value="volvo">Super Admin</option>
-                                        <option value="saab">Sub Admin</option>
-                                        <option value="mercedes">Admin</option>
-                                    </select>
-                                    {errors ? <span className='error'> {errors.access}</span> : ""}
+                                    <div className='selectDropdown'>
+                                        <div className='dropdown-btn' onClick={() => setSelectAccessActive(!selectAccessActive)}>
+                                            {accessSelected === "Both" ? <div className="">
+                                                <span className='green'><img src={pointGreen} alt="" /> Users</span>
+                                                <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
+                                            </div>
+                                                : accessSelected === "Users" ? <div className=''>
+                                                    <span className='green'><img src={pointGreen} alt="" /> Users</span>
+                                                </div>
+                                                    : <div>
+                                                        <span className='yellow'><img src={pointYellow} alt="" /> Users</span>
+                                                    </div>
+                                            }
+                                            <span><MdOutlineKeyboardArrowDown className='icon' /></span>
+                                        </div>
+                                        {selectAccessActive && (
+                                            <div className='dropdown-content'>
+                                                {accessData?.map((option) => (
+                                                    <div className="dropdown-item"
+                                                        onClick={(e) => {
+                                                            setaccessSelected(option);
+                                                            setSelectAccessActive(false)
+                                                        }}
+                                                    >
+                                                        {option}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                    </div>
+
                                 </div>
                                 <div className='inputfield'>
                                     <label>Password</label>
-                                    <input type="text"
-                                        name="password" value={popupcontent.password}
-                                        onChange={(e) => {
-                                            setPopupcontent({ ...popupcontent, password: e.target.value });
-                                        }}
-                                    />
+                                    <div className="inner-addon left-addon">
+                                        <input type={passwordShown ? "text" : "password"} placeholder="Password" value={popupcontent.password} name="password"
+                                            onChange={(e) => {
+                                                setPopupcontent({ ...popupcontent, password: e.target.value });
+                                            }}
+                                        />
+                                        <AiOutlineEyeInvisible onClick={togglePassword} className="show-icon" />
+                                    </div>
+
                                     {errors ? <span className='error'> {errors.password}</span> : ""}
+
                                 </div>
 
                                 <div className='submitButton'>
@@ -301,7 +361,6 @@ function Admin() {
                         </div>
                     </div>
                 )}
-
                 {deleteToggle && (
                     <div className='popupContainer' >
                         <div className='alertBody' onClick={(e) => e.stopPropagation()}>
@@ -322,67 +381,7 @@ function Admin() {
                 {addAdminForm && (
                     <div className='popupContainer'>
                         <div className='formpopupBody' onClick={(e) => e.stopPropagation()}>
-                            <div className='heading'>
-                                <div className='text'>Add Admin</div>
-                                <button onClick={() => setAddAdminForm(false)}>x</button>
-                            </div>
-
-                            <form onSubmit={handleAddAdmin} className='formInput'>
-                                <div className='inputfield'>
-                                    <label>Name</label>
-                                    <input type="text"
-                                        name="title" value={values.title} onChange={handleChange}
-                                    />
-                                    {errors ? <span className='error'> {errors.title}</span> : ""}
-                                </div>
-
-                                <div className='inputfield'>
-                                    <label>Email</label>
-                                    <input type="email"
-                                        name="email" value={values.email} onChange={handleChange}
-                                    />
-                                    {errors ? <span className='error'> {errors.email}</span> : ""}
-                                </div>
-
-                                <div className='inputfield'>
-                                    <label>Role</label>
-                                    <select name="role" id="role" value={values.role} onChange={handleChange}
-                                    >
-                                        <option>Select Role</option>
-                                        {roleData?.map((item, index) => {
-                                            return (
-                                                <option key={index} value={popupcontent.location}>{item}</option>
-                                            )
-
-                                        })}
-                                    </select>
-                                    {errors ? <span className='error'> {errors.role}</span> : ""}
-                                </div>
-
-                                <div className='inputfield'>
-                                    <label>Access</label>
-                                    <select name="access" id="cars" value={values.access} onChange={handleChange}>
-                                        <option value="volvo">Super Admin</option>
-                                        <option value="saab">Sub Admin</option>
-                                        <option value="mercedes">Admin</option>
-                                    </select>
-                                    {errors ? <span className='error'> {errors.access}</span> : ""}
-                                </div>
-                                <div className='inputfield'>
-                                    <label>Password</label>
-                                    <input type="text"
-                                        name="password" value={values.password} onChange={handleChange}
-                                    />
-                                    {errors ? <span className='error'> {errors.password}</span> : ""}
-                                </div>
-
-                                <div className='submitButton'>
-                                    <button onClick={() => setAddAdminForm(false)}>Cancel</button>
-                                    <button type="submit">Add Admin</button>
-                                </div>
-
-                            </form>
-
+                            <AddAdminPage setAddAdminForm={setAddAdminForm} />
                         </div>
                     </div>
                 )}

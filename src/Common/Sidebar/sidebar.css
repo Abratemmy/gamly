@@ -31,14 +31,17 @@
     padding: 0;
     position: relative;
     justify-content: flex-start;
+    width: 100%;
 }
 
 .sidebarDesign li {
     padding: 5px 0px;
+    width: 210px;
+    margin: auto;
 }
 
 .sidebarDesign li .sidebar-navlink {
-    color: var(--blackColor);
+    color:  #2D3657;
     display: block;
     width: 100%;
     line-height: 40px;
@@ -46,9 +49,10 @@
     padding-left: 20px;
     box-sizing: border-box;
     transition: 0.5s all ease;
-    font-size: 16px;
+    font-size: 17px;
     display: flex;
     align-items: center;
+    font-family: var(--textFamily);
 }
 
 .sidebarDesign li .sidebar-navlink:hover{
@@ -61,14 +65,24 @@ li .active {
     color: var(--primaryColor)!important
 }
 .sidebarDesign .sidebar-navlink .icon {
-    padding-right: 8px;
+    padding-right: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.sidebarDesign .sidebar-navlink svg{
+    width: 20px
+}
 
-.sidebarDesign .sidebar-navlink .sidebar-icons{
-    font-size: 18px;
+.sidebarDesign .sidebar-navlink:hover .icon svg path,
+li .active svg path
+ {
+    fill: var(--primaryColor);
+}
+.sidebarDesign .sidebar-navlink:hover .icon .revenueSvg path,
+li .active .revenueSvg path{
+    fill: transparent;
+    stroke: var(--primaryColor)
 }
 .sidebarlabel {
     display: flex;
@@ -79,7 +93,7 @@ li .active {
     position: relative;
     background-color: var(--blueColor2);
     z-index: 100;
-    color: red;
+    color: rgb(238, 12, 12);
     cursor: pointer;
     font-size: 23px;
     transition: 0.5s ease;

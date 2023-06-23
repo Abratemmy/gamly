@@ -46,7 +46,8 @@ function Dashboard() {
                             <div className='col-lg-4 col-md-6 col-sm-12'>
                                 <div className='content'>
                                     <div className='text'>
-                                        Sign up Last 24 Hours<span>$53, 000</span>
+                                        Sign up Last 24 Hours
+                                        <span>$53, 000 <tt className="green">+5%</tt></span>
                                     </div>
                                     <div className='image'>
                                         <img src={icon2} alt="icon" />
@@ -57,7 +58,7 @@ function Dashboard() {
                             <div className='col-lg-4 col-md-6 col-sm-12'>
                                 <div className='content'>
                                     <div className='text'>
-                                        Active creators<span>$13, 000</span>
+                                        Active creators<span>$13, 000 <tt className="red">-5%</tt></span>
                                     </div>
                                     <div className='image'>
                                         <img src={icon3} alt="icon" />
