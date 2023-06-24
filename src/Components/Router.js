@@ -14,8 +14,13 @@ import Host from '../Pages/HOSTpanel/HOST/Host';
 import User from '../Pages/USERpanel/USER/User';
 import SignIn from '../Common/Authentication/SignIn';
 import ProtectedRoute from '../util/ProtectedRoute';
-import Host2 from '../Pages/HOSTpanel/HOST/Host2';
 import User2 from '../Pages/USERpanel/USER/user2';
+import CodeManagement from '../Pages/HOSTpanel/codeManagement/codeManagement';
+import Creators from '../Pages/HOSTpanel/Creators/Creators';
+import GameMetrics from '../Pages/HOSTpanel/GameMetrics/GameMetrics';
+import WithdrawalManagement from '../Pages/HOSTpanel/WithdrawalManagement/WithdrawalManagement';
+import Contest from '../Pages/HOSTpanel/Contest/Contest';
+import KYC from '../Pages/HOSTpanel/KYC/KYC';
 
 const Router = () => {
     const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
@@ -35,8 +40,13 @@ const Router = () => {
                 <Route exact path="/report" caseSensitive={false} element={<Report />} />
 
                 {/* host */}
-                <Route exact path="/host" caseSensitive={false} element={<Host />} />
-                <Route exact path="/host2" caseSensitive={false} element={<Host2 />} />
+                <Route exact path="/host_dashboard" caseSensitive={false} element={<Host />} />
+                <Route exact path="/code_management" caseSensitive={false} element={<CodeManagement />} />
+                <Route exact path="/creators" caseSensitive={false} element={<Creators />} />
+                <Route exact path="/game_metrics" caseSensitive={false} element={<GameMetrics />} />
+                <Route exact path="/kyc" caseSensitive={false} element={<KYC />} />
+                <Route exact path="/withdrawal_management" caseSensitive={false} element={<WithdrawalManagement />} />
+                <Route exact path="/contest" caseSensitive={false} element={<Contest />} />
 
                 {/* user */}
                 <Route exact path="/user" caseSensitive={false} element={<User />} />

@@ -132,6 +132,16 @@ table .tableNav:hover{
     font-size: 14px;
     color: #6C6C6C;
 }
+.SP-payoutDetails .downloadReport{
+    width:163px;
+    height:41px;
+    border-radius: 8px;
+    border: 1px solid var(--primaryColor);
+    color: var(--primaryColor);
+    gap: 8px;
+    background: #fff;
+
+}
 .GraphSession{
     padding: 40px 0px
 }

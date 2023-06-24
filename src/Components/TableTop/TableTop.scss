@@ -1,0 +1,86 @@
+.tableTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+.tableTop .input-group .input-group-text{
+    background: #F8F9FA;
+    border: 0.5px solid #E2E8F0!important;
+    border-right: none!important;
+    border-radius: 5px;
+}
+.tableTop .form-control{
+    border-left: none!important;
+    border-radius: 5px;
+    color: var(--grayColor);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: var(--textFamily);
+    outline: none;
+    padding: 0.475rem 1px;
+    width: 270px;
+    background: #F8F9FA;
+}
+.tableTop .form-control:focus{
+    outline: none;
+    border: 0.5px solid #E2E8F0!important;
+    border-left: none!important;
+    box-shadow: none;
+}
+.tableTop .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--grayColor);
+    opacity: 1; /* Firefox */
+}
+.tableTop .right{
+    display: flex;
+    gap: 15px;
+    position: relative;
+
+    .duration{
+        border: 1px solid #dcdee6;
+        border-radius: 8px;
+        background: var(--backgroundColor);
+        color:#fff;
+        width: 180px;
+        height: 42px;
+        font-size: 14px;
+        font-family: 'Noto Sans', sans-serif;;
+        .iconDropdown{
+            font-size: 23px;
+            position: relative;
+            top:-1px
+        }
+    }
+    .refresh{
+        border: 1px solid #dcdee6;
+        width: 159.8px;
+        height: 42px;
+        border-radius: 8px;
+        font-family: var(--textFamily);
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: 0px;
+        text-align: center;
+        color:#525252;
+        background: #fff;
+        .r-icon{
+            font-size: 34px;
+            font-weight: 500!important;
+        }
+    }
+    .calendar{
+        position: absolute;
+        top: 50px;
+        right: 5px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .tableTop{
+        flex-direction: column;
+        gap: 15px
+    }
+}

@@ -7,10 +7,10 @@ import AreaChartRechart3 from '../../../Components/RECHART/AreaChart3';
 
 function GrossProfit() {
     const profitCard = [
-        { subtitle: "Total", amount: "120000", span: "", text: "" },
-        { subtitle: "Last Month", amount: "30000", span: 3, text: "descrease From Previous Month", avg: "2,600" },
-        { subtitle: "Last Week", amount: "16000", span: 5, text: "Increase From Previous Week", avg: "1,200" },
-        { subtitle: "Today", amount: "78000", span: 7, text: "Increase From Previous Day" }
+        { subtitle: "Total", amount: 120000, span: "", text: "" },
+        { subtitle: "Last Month", amount: 30000, span: 3, text: "descrease From Previous Month", avg: "2,600" },
+        { subtitle: "Last Week", amount: 16000, span: 5, text: "Increase From Previous Week", avg: "1,200" },
+        { subtitle: "Today", amount: 78000, span: 7, text: "Increase From Previous Day" }
     ]
 
     // get data percentage

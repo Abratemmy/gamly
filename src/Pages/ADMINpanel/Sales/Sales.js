@@ -9,21 +9,21 @@ import Pagination from '../../../Components/Pagination/Pagination';
 import DateCalendar from '../../../Components/Date/Date';
 import Search from '../../../Components/Search/Search';
 import Refresh from '../../../Components/Refresh/Refresh';
-import { MdOutlineKeyboardArrowDown } from "react-icons/md"
+import { MdOutlineKeyboardArrowDown, MdKeyboardArrowDown } from "react-icons/md"
 import { getAllSALES } from '../../../Components/REDUX/ACTION/salesAction';
 import increaseImg from "../../../Assets/Increase.svg";
 import decreaseImg from "../../../Assets/decrease.svg";
-import { MdKeyboardArrowDown } from "react-icons/md"
 import AreaChartRechart from '../../../Components/RECHART/AreaChart';
 import BarChartRechart from '../../../Components/RECHART/BarChart';
+import TableTop from '../../../Components/TableTop/TableTop';
 
 function Sales() {
     // sales card array
     const salesCard = [
-        { subtitle: "Total", amount: "120000", span: "", text: "" },
-        { subtitle: "Last Month", amount: "30000", span: 3, text: "descrease From Previous Month", avg: "2,600" },
-        { subtitle: "Last Week", amount: "16000", span: 5, text: "Increase From Previous Week", avg: "1,200" },
-        { subtitle: "Today", amount: "78000", span: 7, text: "Increase From Previous Day" }
+        { subtitle: "Total", amount: 120000, span: "", text: "" },
+        { subtitle: "Last Month", amount: 30000, span: 3, text: "descrease From Previous Month", avg: "2,600" },
+        { subtitle: "Last Week", amount: 16000, span: 5, text: "Increase From Previous Week", avg: "1,200" },
+        { subtitle: "Today", amount: 78000, span: 7, text: "Increase From Previous Day" }
     ]
 
     // get data percentage
@@ -141,7 +141,7 @@ function Sales() {
         <AdminSidebar name="sales">
             <div className='Sales'>
                 <div className='container'>
-                    <TopCard topCard={salesCard} cardName="Payout" />
+                    <TopCard topCard={salesCard} cardName="Sales" />
                     <PercentageCard leftText="Total Sales" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevSaleTotal}
                         currentMonthTotalLeftHandSide={percentageData.currentSaleTotal} previousMonthTotalRightHandSide={percentageData.prevRevenueTotal}
                         currentMonthTotalRightHandSide={percentageData.currentRevenueTotal}
@@ -151,7 +151,7 @@ function Sales() {
                     <div className='Graph' style={{ padding: "10px 0px" }}>
                         <div className='row gx-5 gy-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
-                                <div className='title'>Analytic Report</div>
+                                <div className='title'>Analytics Report</div>
                                 <BarChartRechart />
                             </div>
 
@@ -168,22 +168,9 @@ function Sales() {
                         </div>
 
                         <div className='tablePage tableSection'>
-                            <section>
-                                <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                                    <Search setSearch={setSearch} search={search} />
-
-                                    <div className='refreshDiv' >
-                                        <button onClick={openDateRange} className='duration'>Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span></button>
-                                        <Refresh handleRefresh={() => setSearch("")} />
-                                        {dateToggle && (
-                                            <div className='calendar'>
-                                                <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
-                                            </div>
-
-                                        )}
-                                    </div>
-                                </div>
-                            </section>
+                            <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                                handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
+                            />
                             <div className="scroll-container">
                                 <table className="table scroll">
                                     <thead>
@@ -210,7 +197,12 @@ function Sales() {
                                                     </div>
                                                 )}
                                             </td>
-                                            <td>Net profit rate <br /> {prevMonth} - {moment().format("MMMM")}</td>
+                                            <td>
+                                                <div className='rateDropdown'>
+                                                    <span>Net profit rate <br /> {prevMonth} - {moment().format("MMMM")}</span>
+                                                    <span><MdOutlineKeyboardArrowDown className='icon' /> </span>
+                                                </div>
+                                            </td>
 
                                         </tr>
                                     </thead>

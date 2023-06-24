@@ -13,6 +13,7 @@ import Pagination from '../../../Components/Pagination/Pagination';
 import Refresh from '../../../Components/Refresh/Refresh';
 import { FiAlertTriangle } from "react-icons/fi"
 import { SuccessMessage } from '../../../Components/Message/Message';
+// import ReportDatePicker from './reportDatePicker';
 
 
 
@@ -79,6 +80,7 @@ function Report() {
                                 <Refresh handleRefresh={handleRefresh} />
                             </div>
 
+                            {/* <ReportDatePicker /> */}
                             <div className='filterSession'>
                                 <div className='row gx-3'>
                                     <div className="col-sm-2">
@@ -92,6 +94,8 @@ function Report() {
                                             />
                                         </div>
                                     </div>
+
+
                                     <div className="col-sm-2">
                                         <div className='content dateContent'>
                                             <label>End Date</label>
@@ -134,7 +138,7 @@ function Report() {
                                         </div>
                                     </div>
                                 </div>
-                                {open &&
+                                {/* {open &&
                                     <>
                                         <div className='dateWrapper bigScreen'>
                                             <DateRange
@@ -159,7 +163,7 @@ function Report() {
                                             />
                                         </div>
                                     </>
-                                }
+                                } */}
                             </div>
                         </div>
 

@@ -4,17 +4,14 @@ import "./Pmanagement.css";
 import { IoMdAdd } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 import { deletePAGEMANAGEMENT, getAllPAGEMANAGEMENT } from '../../../Components/REDUX/ACTION/pageManagementAction';
-import { MdDeleteOutline, MdOutlineModeEditOutline, MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
 import { FiAlertTriangle } from 'react-icons/fi';
 import AddPage from './addPage';
 import { BsDot } from 'react-icons/bs'
-import { DateRange } from 'react-date-range'
-import format from 'date-fns/format'
-import { addDays } from 'date-fns'
 import Pagination from '../../../Components/Pagination/Pagination';
-import Search from '../../../Components/Search/Search';
-import Refresh from '../../../Components/Refresh/Refresh';
 import { STATUSACTIVE, STATUSPROCESSING } from '../../../Components/REDUX/CONSTANT/actionTypes';
+import TableTop from '../../../Components/TableTop/TableTop';
+import deleteImg from "../../../Assets/blackDelete.svg"
 
 function PManagement() {
     const [toggleState, setToggleState] = useState(1);
@@ -36,6 +33,7 @@ function PManagement() {
         // this is to scroll up when 
         // window.scrollTo(0, 0)
     }
+    const progressWidth = ((newsVisited + newsPerPage) / getAllPage.pageList?.length) * 100
     const [currentId, setCurrentId] = useState(null);
 
     const [popupcontent, setPopupcontent] = useState({})
@@ -54,16 +52,23 @@ function PManagement() {
         alert("deleted successfully")
     }
 
-    // open date dropdown toggle
-    const [dateToggle, setDateToggle] = useState(false);
+    // open selection toggle
+    const [products, setProducts] = useState(getAllPage?.pageList);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
-    const [range, setRange] = useState([
-        {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 7),
-            key: 'selection'
-        }
-    ])
+    // date select
+    const handleSelect = (date) => {
+        let filtered = products?.filter((product) => {
+            let productDate = new Date(product["createdAt"]);
+            return (productDate >= date.selection.startDate &&
+                productDate <= date.selection.endDate);
+        })
+        setStartDate(date.selection.startDate);
+        setEndDate(date.selection.endDate);
+        setProducts(filtered);
+    };
+
     useEffect(() => {
         dispatch(getAllPAGEMANAGEMENT())
     }, [currentId, dispatch])
@@ -80,38 +85,9 @@ function PManagement() {
                                 </div>
 
                                 <div className='tableSection'>
-                                    <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                                        <Search setSearch={setSearch} search={search} />
-
-                                        <div className='refreshDiv' >
-                                            <div className='dateInput'>
-                                                <input
-                                                    value={`${format(range[0].startDate, "MMM, dd")} - ${format(range[0].endDate, "MMM, dd yyyy")}`}
-                                                    readOnly
-                                                    className="inputBox"
-                                                    onClick={() => setDateToggle(dateToggle => !dateToggle)}
-                                                />
-                                                <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
-                                            </div>
-
-                                            <Refresh handleRefresh={() => setSearch("")} />
-
-                                            {dateToggle &&
-                                                <div className='calendar pageCalendar1'>
-                                                    <DateRange
-                                                        onChange={item => setRange([item.selection])}
-                                                        editableDateInputs={true}
-                                                        moveRangeOnFirstSelection={false}
-                                                        ranges={range}
-                                                        months={2}
-                                                        direction="horizontal"
-                                                        className="calendarElement"
-                                                    />
-                                                </div>
-
-                                            }
-                                        </div>
-                                    </div>
+                                    <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                                        handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
+                                    />
                                     <div className="scroll-container">
                                         <table className="table scroll">
                                             <thead>
@@ -152,7 +128,7 @@ function PManagement() {
                                                                         {/* <span><BsDot className="icon" /></span> Active */}
                                                                     </td>
                                                                     <td className='tableAction'>
-                                                                        <button onClick={() => deleteContent(data, index)}><MdDeleteOutline className='action' /></button>
+                                                                        <button onClick={() => deleteContent(data, index)}><img src={deleteImg} alt="" className='action' /></button>
                                                                         <span onClick={() => setToggleState(2)}><button onClick={() => setCurrentId(data.page_id)}><MdOutlineModeEditOutline className='action' /></button>
                                                                         </span>
                                                                     </td>
@@ -166,6 +142,23 @@ function PManagement() {
                                         </table>
                                     </div>
                                 </div>
+                                {
+                                    getAllPage.pageList?.length <= newsPerPage ? (
+                                        <div className='tableProgressBar'>
+                                            <div className='displayProgress'>
+                                                <div className='progress-line decrease' data-percent="90%">
+                                                    <span style={{ width: "100%" }}></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ) : <div className='tableProgressBar'>
+                                        <div className='displayProgress'>
+                                            <div className='progress-line decrease' data-percent="90%">
+                                                <span style={{ width: `${progressWidth}%` }}></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
 
                                 {/* pagination starts here */}
                                 <Pagination pageCount={pageCount} changePage={changePage} />
@@ -175,9 +168,9 @@ function PManagement() {
                                         <div className='alertBody' onClick={(e) => e.stopPropagation()}>
                                             <div className='editSession'>
                                                 <span><FiAlertTriangle className='icon' /> </span>
-                                                Delete  {popupcontent?.username} page
+                                                Delete {popupcontent?.page_name} page?
                                             </div>
-                                            <div className='editText'>Are you sure you want to delete the {popupcontent?.username} page?</div>
+                                            <div className='editText'>Are you sure you want to delete the {popupcontent?.page_name} page?</div>
                                             <div className='actionButton'>
                                                 <button onClick={() => setDeletetoggle(false)}>No</button>
                                                 <button onClick={() => deletePage(popupcontent.id)}>Yes, Delete</button>

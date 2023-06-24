@@ -120,16 +120,16 @@ function BarChartRechart() {
 
     return (
         <div className='rechartsContainer salesRechartContainer'>
-            <div className='heading headingDropdown' onClick={openDropdown}>Weekly Comparison
+            <div className='heading headingDropdown' onClick={openDropdown}>{selected} Comparison
                 <span><MdKeyboardArrowDown className="dropdown" /></span>
                 {dropdown && (
                     <div className='dropdowntoggle'>
-                        <div className={selected === "1" ? "active list" : "list"} onClick={handleClick}
+                        <div className={selected === "Weekly" ? "active list" : "list"} onClick={handleClick}
                             id={"Weekly"}>
                             Weekly
                         </div>
-                        <div className={selected === "2" ? "active list" : "list"} onClick={handleClick}
-                            id={"user"}>
+                        <div className={selected === "Monthly" ? "active list" : "list"} onClick={handleClick}
+                            id={"Monthly"}>
                             Monthly
                         </div>
                     </div>

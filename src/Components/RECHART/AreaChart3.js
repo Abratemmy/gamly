@@ -56,7 +56,7 @@ function AreaChartRechart3() {
     return (
         <div className="rechartsContainer revenueChart">
             <div className='top' >
-                <div className='title'>Gross Profit growth rate</div>
+                <div className='title'>Gross Profit Growth Rate</div>
                 <div className='dateFilter'>
                     <span className='image'><img src={filterImg} alt="" /></span>
                     <div className='date'>May, 01 - June 22 2023</div>

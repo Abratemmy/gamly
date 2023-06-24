@@ -1,0 +1,236 @@
+.HostDashboard{
+    position: relative;
+    font-family: var(--textFamily);
+    padding: 30px;
+    .topRow .card{
+        border: none;
+        background: #fff;
+        border-radius: 15px;
+        height: 147px;
+        width: 100%;
+    }
+    .cardWrapper .cardContent1{
+        padding: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left .title{
+            color: var(--grayColor700);
+            font-family: var(--textFamily);
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 25.2px;
+            padding-bottom: 15px;
+        }
+        .left .text{
+            font-family: var(--textFamily);
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: var(--grayColor400);
+            width: 80%;
+        }
+        .right{
+            display: flex;
+            border: 1px solid #DADADA;
+            border-radius: 7px;
+            width: 182px;
+            height: 79.22px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+            .text{
+                font-family: var(--textFamily);
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 16px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: var(--grayColor400);
+                padding-bottom: 5px;
+            }
+            .total{
+                font-family:var(--textFamily);
+                font-size: 21px;
+                font-weight: 700;
+                line-height: 29px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: var(--grayColor700)
+            }
+            img{
+                width: 34.460432052612305px;
+                height: 34.460432052612305px;
+            }
+        }
+    }
+    .topRow .card2{
+        padding: 15px 15px;
+
+        .title-head{
+            font-family: var(--textFamily);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #525256;
+            padding-bottom: 20px;
+        }
+        .cardContent2{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .wrapper{
+                width: 125px;
+                height: 65px;
+                border-radius: 5px;
+                border: 0.65px solid #DADADA;
+                padding: 10px;
+                .text{
+                    font-family: var(--textFamily);
+                    font-size: 10px;
+                    font-weight: 400;
+                    line-height: 16px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: var(--grayColor400);
+                }
+                .total{
+                    font-family: Outfit;
+                    font-size: 21px;
+                    font-weight: 700;
+                    line-height: 29px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: var(--grayColor700);
+                }
+            }
+        }
+    }
+    .Session {
+        margin-top: 50px;
+        .header{
+            font-family: var(--textFamily);
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: left;
+            padding-bottom: 5px;
+            color: #000;
+        }
+        .topCard{
+            background: transparent;
+            border: 0;
+            border-radius: 0px;
+            box-sizing: border-box;
+            padding: 0px;
+            margin-top: 0px;
+            .content{
+                display: flex;
+                justify-content: space-evenly;
+                border: 1px solid #E7E7E7;
+            }
+            .content>:nth-child(1),
+            .content>:nth-child(2),
+            .content>:nth-child(3),
+            .content>:nth-child(4){
+                flex:1;
+                padding: 20px 0px 20px 20px
+            }
+            .content>:nth-child(2),
+            .content>:nth-child(3){
+                border-right:1px solid #E7E7E7;
+            }
+            .content>:nth-child(2) .amount,
+            .content>:nth-child(3) .amount,
+            .content>:nth-child(4) .amount{
+                padding-bottom: 18px;
+            }
+        }
+        .rightContent{
+            padding: 10px 20px;
+
+            .topHeader{
+                position: relative;
+                padding-bottom: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transition: var(--transition);
+                .text{
+                    font-family: var(--textFamily);
+                    font-size: 15px;
+                    font-weight: 700;
+                    line-height: 22px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color:#525256
+                }
+                button{
+                    background: #E8E8E8;
+                    padding: 7.369565010070801px 14.739130020141602px 7.369565010070801px 14.739130020141602px;
+                    border-radius: 3.6847825050354004px;
+                    border: 0.9211956262588501px;
+                    gap: 7.369565010070801px;
+                    color:#666666;
+                    font-size:12px;
+                    font-family: var(--textFamily);
+                    font-weight: 500;
+                    .icon{
+                        font-size: 18px;
+                        position: relative;
+                        top: -1px
+                    }
+                }
+
+            }
+            .hCardToggle{
+                position: absolute;
+                top: 35px;
+                width: 112px;
+                padding: 8px 0px 8px 0px;
+                border-radius: 0px 0px 8px 8px;
+                gap: 4px;
+                background: #fff;
+                right: 0px;
+                transition: var(--transition);
+                z-index:10
+            }
+            .list{
+                padding: 5px 7px;
+                border-bottom : 1px solid #f5f5f5;
+                font-size: 12px;
+                font-weight: 400;
+                font-family: var(--textFamily);
+                color: #202223
+            }
+            .SignupContent{
+                width: 100%;
+                height: 125px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .header{
+                    text-align: center;
+                }
+                span{
+                    color: #2EDB2B;
+                    font-family: var(--textFamily);
+                    font-size: 17px;
+                    font-weight: 700;
+                    line-height: 19px;
+                    letter-spacing: 0px;
+
+                }
+            }
+            
+        }
+    }
+}

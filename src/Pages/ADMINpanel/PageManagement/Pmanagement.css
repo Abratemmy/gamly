@@ -18,26 +18,29 @@
     cursor: pointer;
     color: #fff;
     border-radius: 7px;
-    padding: 10px 30px;
-    font-size: 15px;
+    font-size: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 5px;
     transition: var(--transition);
+    width: 250px;
+    height: 62px;
+    font-family: var(--textFamily);
 }
 .PManagement .AddPage span .icon{
     font-size: 20px;
     font-weight: 900;
 }
-.PManagement .tableAction>:nth-child(1) .action{
-    color:  #667085!important
+.PManagement .tableAction>:nth-child(1) img{
+    width: 100%
 }
 .PManagement .tableAction>:nth-child(2){
     background:  #F1F1F1;
     border-radius: 5px;
-    padding: 7px 3px;
-    color: #667085!important
+    padding: 5px 3px;
+    color: #667085!important;
+    font-size: 20px;
 }
 .PManagement .tableAction>:nth-child(2) .action{
     color:  #667085!important

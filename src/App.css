@@ -22,6 +22,7 @@
   --transition:0.5s all ease;
   --darkGray: #252C32;
   --grayColor400: #A0AEC0;
+  --grayColor700: #2D3748;
   --lightGreen: #D7F0D3;
   --lightYellow: #F5E3C0;
 }
@@ -145,8 +146,8 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(36, 37, 39, 0.747);
-  text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.12);
+  background-color: rgba(36, 37, 39, 0.548);
+  /* text-shadow: 0px 7px 10px rgba(0, 0, 0, 0.12); */
   z-index: 999;
   overflow-y: auto;
   width: 100%;
@@ -224,7 +225,7 @@
   font-size: 14px;
   font-weight: 400;
   border-bottom: 1px solid #EAECF0;
-  padding: 8px 10px 5px 10px!important;
+  padding: 10px 10px 5px 10px!important;
   font-family: var(--textFamily2);
 } 
 .table td span .iconActive{
@@ -254,6 +255,17 @@
   text-overflow: clip!important;
   overflow: visible;
   white-space: normal;
+}
+.table td .rateDropdown{
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.table td .rateDropdown .icon{
+  font-size: 25px;
+  font-weight: 400;
+  color: var(--grayColor)
 }
 
 .scroll-container {
@@ -392,3 +404,21 @@ select option:hover{
   box-shadow: 0 0 10px 100px #000 inset!important;
 }
 
+
+.doNotShowDate .duration{
+  display: none;
+}
+.tableProgressBar{
+  position: relative;
+  top: 20px;
+  width: 100%;
+}
+.tableProgressBar .displayProgress .decrease{
+  background: #DBDBDB;
+}
+.tableProgressBar .displayProgress .decrease span{
+  background: #D3030F;
+}
+.doNotShowTableBar .tableProgressBar{
+  display: none;
+}

@@ -16,7 +16,7 @@ function TopCard({ topCard, cardName }) {
                                     {item?.avg ? <>Avg. <span>${item?.avg}</span></> : ""}
                                 </span>
                             </div>
-                            <div className='amount'>${item?.amount}</div>
+                            <div className='amount'>$ {item?.amount.toLocaleString('en')}</div>
                             <div className='checkPercentage'>
                                 {item?.span >= 5 ? (
                                     <div className='text'>

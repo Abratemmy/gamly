@@ -2,7 +2,7 @@
     background: var(--sidebarBackground);
     position: fixed;
     left: 0;
-    width: 230px;
+    width: 250px;
     height: 100%;
     transition: 0.4s;
     transition-property: left;
@@ -35,8 +35,8 @@
 }
 
 .sidebarDesign li {
-    padding: 5px 0px;
-    width: 210px;
+    padding: 2px 0px;
+    width: 230px;
     margin: auto;
 }
 
@@ -46,10 +46,10 @@
     width: 100%;
     line-height: 40px;
     text-decoration: none;
-    padding-left: 20px;
+    padding-left: 10px;
     box-sizing: border-box;
     transition: 0.5s all ease;
-    font-size: 17px;
+    font-size: 15px;
     display: flex;
     align-items: center;
     font-family: var(--textFamily);
@@ -139,14 +139,13 @@ li .active .revenueSvg path{
     left: 50px;
 }
 .interface-content {
-    margin-left: 230px;
+    margin-left: 250px;
     background-position: center;
     background-size: cover;
     height: auto;
     transition: 0.4s all ease;
     position: relative;
     background: var(--background)!important;
-    
 }
 
 #interface-check:checked~.interface-content {
@@ -162,7 +161,7 @@ li .active .revenueSvg path{
 }
 .down-sidebar{
     position: fixed;
-    width: 230px;
+    width: 250px;
     bottom: 0px;
 }
 

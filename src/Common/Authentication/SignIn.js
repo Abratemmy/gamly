@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import whitelogo1 from "../../Assets/whitelogo1.svg";
 import whitelogo2 from "../../Assets/whitelogo2.svg";
-import { AiOutlineEyeInvisible } from "react-icons/ai"
+import Passwordeye from "../../Assets/passwordEye.svg"
 import { NavLink, useNavigate } from 'react-router-dom';
 import "./auth.css"
 
@@ -46,17 +46,16 @@ function SignIn() {
     const handleSubmit = (ev) => {
         ev.preventDefault()
         let v = handleError(values);
-        setLoading(true)
-        console.log("LS", loading)
         if (v > 0) {
             console.log("error");
         }
         else {
+            setLoading(true)
             setTimeout(() => {
                 localStorage.setItem('userDataToken', JSON.stringify(values));
                 navigate('/dashboard')
             }, 2000);
-            setLoading(false)
+
 
         }
     }
@@ -86,7 +85,7 @@ function SignIn() {
                                 <label>Password</label>
                                 <div className="inner-addon left-addon">
                                     <input type={passwordShown ? "text" : "password"} placeholder="Your password" value={values.password} name="password" onChange={handleChange} />
-                                    <AiOutlineEyeInvisible onClick={togglePassword} className="show-icon" />
+                                    <img src={Passwordeye} alt="" onClick={togglePassword} className="show-icon" />
                                 </div>
                                 {errors ? <p className='error'> {errors.password}</p> : ""}
                             </div>
@@ -94,7 +93,7 @@ function SignIn() {
 
                             {loading === true ? (
                                 <div className='button ' style={{ paddingTop: "30px" }}>
-                                    <button type="submit" className='disable'>SIGN IN </button>
+                                    <button type="submit" className='disable'>SIGNING IN ... </button>
                                 </div>) :
                                 (
                                     <div className='button ' style={{ paddingTop: "30px" }}>

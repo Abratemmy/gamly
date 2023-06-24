@@ -35,3 +35,9 @@ export const GETSALES = "GETSALES"
 export const CREATESALES = "CREATESALES";
 export const UPDATESALES = "UPDATESALES"
 export const DELETESALES = "DELETESALES";
+
+// Revenue constant
+export const GETREVENUE = "GETREVENUE"
+export const CREATEREVENUE = "CREATEREVENUE";
+export const UPDATEREVENUE = "UPDATEREVENUE"
+export const DELETEREVENUE = "DELETEREVENUE";

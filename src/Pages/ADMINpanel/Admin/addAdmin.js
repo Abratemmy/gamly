@@ -24,6 +24,21 @@ function AddAdminPage({ setAddAdminForm }) {
     const togglePassword = () => {
         setPasswordShown(!passwordShown);
     };
+    const [checks, setChecks] = useState({
+        emailCheck: false
+    });
+    const [pwdRequiste, setPWDRquisite] = useState(false);
+    const handleOnBlur = () => {
+        setPWDRquisite(true);
+    };
+    const handleOnKeyUp = (e) => {
+        const { value } = e.target;
+        const emailCheck = /\S+@\S+\.\S+/.test(value);
+        setChecks({
+            emailCheck
+        });
+    };
+
     // validation for edit form
     const [errors, setErrors] = useState({});
 
@@ -97,8 +112,16 @@ function AddAdminPage({ setAddAdminForm }) {
                 <div className='inputfield'>
                     <label>Email</label>
                     <input type="email"
-                        name="email" placeholder="Enter member email" value={values.email} onChange={handleChange}
+                        name="email" placeholder="Enter member email" value={values.email}
+                        onChange={handleChange}
+                        onKeyUp={handleOnKeyUp}
+                        onBlur={handleOnBlur}
+                        autocomplete="off"
                     />
+                    {pwdRequiste ? <>
+                        {checks.emailCheck ? <div className='valid'>email Id correct</div> : <div className='invalid'> email Id wrong</div>}
+                    </> : null}
+
                     {errors ? <span className='error'> {errors.email}</span> : ""}
                 </div>
 

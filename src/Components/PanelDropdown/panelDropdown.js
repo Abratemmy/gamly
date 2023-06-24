@@ -17,8 +17,8 @@ function PanelDropdown({ panelSelected, setPanelSelected }) {
         if (user) {
             if (event.target.id === "admin") {
                 navigate('/dashboard')
-            } else if (event.target.id === "host") {
-                navigate('/host')
+            } else if (event.target.id === "creator") {
+                navigate('/host_dashboard')
 
             } else if (event.target.id === 'user') {
                 navigate('/user')
@@ -38,7 +38,7 @@ function PanelDropdown({ panelSelected, setPanelSelected }) {
     // }, [panelSelected])
     return (
         <div>
-            <div className='panel' onClick={openDropdown}>{panelSelected === "admin" ? "Admin" : panelSelected === "host" ? "Host" : "User"}
+            <div className='panel' onClick={openDropdown}>{panelSelected === "admin" ? "Admin" : panelSelected === "creator" ? "Creator" : "User"}
                 <span><MdKeyboardArrowDown className="dropdownIcon" /></span>
                 {dropdown && (
                     <div className='dropdowntoggle'>
@@ -46,9 +46,9 @@ function PanelDropdown({ panelSelected, setPanelSelected }) {
                             id={"admin"}>
                             Admin
                         </div>
-                        <div className={panelSelected === "host" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
-                            id={"host"}>
-                            Host
+                        <div className={panelSelected === "creator" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
+                            id={"creator"}>
+                            Creator
                         </div>
                         <div className={panelSelected === "user" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
                             id={"user"}>

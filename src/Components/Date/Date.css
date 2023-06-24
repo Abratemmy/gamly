@@ -1,96 +1,149 @@
 /* styling Calender date to my own taste */
-.rdrDefinedRangesWrapper {
+.pagesDateRange .rdrDefinedRangesWrapper {
     display: none;
 }
-.rdrDateDisplayWrapper, .rdrMonthAndYearPickers {
+.pagesDateRange .rdrDateDisplayWrapper, .rdrMonthAndYearPickers {
     display: none!important;
 }
-.rdrCalendarWrapper {
+ .rdrCalendarWrapper {
     position: relative;
+    color: #000000;
+    font-size: 12px;
+    width: 500px;
+    border-radius: 5.41007px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 12
 }
-.rdrMonths>:nth-child(1) .rdrMonthName{
+
+ .rdrMonths>:nth-child(1) .rdrMonthName{
     position: absolute;
     top: 15px;
     left: 60px
 }
   
-.rdrMonths>:nth-child(2) .rdrMonthName{
+ .rdrMonths>:nth-child(2) .rdrMonthName{
     position: absolute;
     top: 15px;
     right: 60px
 }
-.rdrNextPrevButton{
-    /* display: block;
-      width: 24px;
-      height: 24px;
-      margin: 0 0.833em;
-      padding: 0;
-      border: 0;
-      border-radius: 5px; */
-      background: var(--primaryColor)!important
+ .rdrNextPrevButton{
+    background:transparent!important;
 }
-.rdrPprevButton i{
-    background: url("../../Assets/forwardIcon.svg")!important;
-    /* border-width: 4px 6px 4px 4px; */
-    /* border-color: green!important; */
-    /* transform: translate(-3px, 0px); */
+ .rdrPprevButton i,
+ .rdrNextButton i{
+    border-width: 0!important;
+    border-color: transparent!important;
+    transform: translate(-6px, 0px);
+    position: relative!important;
+    width: 100%!important;
+    display: block;
 }
-.rdrPprevButton i:before{
+ .rdrPprevButton i::before,
+ .rdrNextButton i::before{
     content:"";
-    background: url("../../Assets/backwardIcon.svg")!important;
+    content:'';
+    position: absolute;
+    top: 50%!important;
+    transform:translateY(-55%);
+    width: 20px;
+    height: 20px;  
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.4s ease;;
 }
-.rdrCalendarWrapper {
-    color: #000000;
-    font-size: 12px;
-    width: 400px;
-    box-shadow: 0px 3px 6px -3px rgba(23, 24, 24, 0.08), 0px 8px 20px -4px rgba(23, 24, 24, 0.12);
-    border-radius: 5.41007px;
+.rdrPprevButton i::before{
+    background-image: url("../../Assets/backwardIcon.svg")!important;
 }
-.rdrMonthsHorizontal{
+.rdrNextButton i::before{
+    background-image: url("../../Assets/forwardIcon.svg")!important;
+    right: 15px;
+}
+ .rdrMonthsHorizontal{
     background: #fff!important;
-    z-index: 999
+    z-index: 999;
+}
+.rdrWeekDay {
+    font-weight: 400;
+    line-height: 1.667em!important;
+    padding-top: 5px!important;
+    color: #6D7175;
+    font-size: 12px;
+    flex-basis: calc(100% / 30);
+    box-sizing: inherit;
+    text-align: center;
 }
 
-.rdrDay{
+ .rdrDay{
     border: none!important;
     color: #202223!important;
     font-family: var(--textFamily);
     font-style: normal;
     font-weight: 600!important;
-    font-size: 13px!important;
+    font-size: 12px!important;
     background: transparent!important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    line-height: 2.50em!important;
+    height: 2.2em!important;
+    text-align: center;
+}
+ .rdrDayNumber {
+    outline: none!important;
+    font-weight: 300;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    top: 5px;
+    bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span, 
-.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
+ .rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span, 
+ .rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
     color:#fff!important;
     background: var(--primaryColor)!important;
-    padding: 5px!important;
-    height: 1.5rem!important;
+    width: 100%!important;
+    height: 1.3rem!important;
     text-align: center;
-    line-height: 1.3em!important;
+    line-height: 1.7em!important;
 }
-.rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span{
+ .rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span{
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
 }
-.rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
+ .rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span{
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
 }
-.rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span,   
-.rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
+ .rdrDayToday .rdrDayNumber span:after {
+    background: var(--primaryColor)!important;
+    bottom: 1px!important;
+}
+
+ .rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span, .rdrDay:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span, .rdrDay:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span, .rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span {
+    color: #202223!important;
+}
+    
+ .rdrDay:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber,   
+ .rdrDay:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber {
     background: #F2F7FE!important;
     color: var(--blackColor)!important;
-    height: 1.5rem!important;
+    height: 1.8em!important;
     text-align: center;
-    line-height: 2.0em!important;
+    line-height: 1.3em!important;
+    top:2px!important
 }
-.pageCalendar1 .rdrStartEdge, .pageCalendar1 .rdrEndEdge {
+/* .pageCalendar1 .rdrStartEdge, .pageCalendar1 .rdrEndEdge {
     background: transparent;
    
 }
 .pageCalendar1 .rdrSelected,.pageCalendar1 .rdrInRange {
     background: transparent;
    
-  }
+  } */

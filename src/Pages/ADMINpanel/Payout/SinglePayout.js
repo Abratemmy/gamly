@@ -8,10 +8,7 @@ import backNav from "../../../Assets/backNav.svg";
 import whitelogo1 from "../../../Assets/whitelogo1.svg"
 import whitelogo2 from "../../../Assets/whitelogo2.svg"
 import Pagination from '../../../Components/Pagination/Pagination';
-import Search from '../../../Components/Search/Search';
-import DateCalendar from '../../../Components/Date/Date';
-import Refresh from '../../../Components/Refresh/Refresh';
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import TableTop from '../../../Components/TableTop/TableTop';
 
 function SinglePayout() {
     const dispatch = useDispatch();
@@ -83,7 +80,7 @@ function SinglePayout() {
 
                     <div className='topCard'>
                         <div className='detail'>
-                            <div className='name'>{payment?.title}</div>
+                            <div className='name' style={{ textTransform: "capitalize" }}>{payment?.category}</div>
                             <div className='id'>ID: {payment?.id}</div>
 
                             <p>Here’s all your payment history</p>
@@ -96,21 +93,12 @@ function SinglePayout() {
                     </div>
 
                     <div className='tablePage tableSection'>
-                        <section>
-                            <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                                <Search setSearch={setSearch} search={search} />
-
-                                <div className='refreshDiv' >
-                                    <button onClick={openDateRange} className='duration'>Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span></button>
-                                    <Refresh handleRefresh={() => setSearch("")} />
-                                    {dateToggle && (
-                                        <div className='calendar'>
-                                            <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
-                                        </div>
-
-                                    )}
-                                </div>
-                            </div>
+                        <section className='SP-payoutDetails'>
+                            <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                                handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search with payment Id"
+                            >
+                                <button className='downloadReport'>Download report</button>
+                            </TableTop>
                         </section>
                         <div className="scroll-container">
                             <table className="table scroll">

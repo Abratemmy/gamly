@@ -13,13 +13,16 @@ import NetProfit from "./NetProfit";
 import GrossProfit from "./grossProfit";
 import ProgressBar from "../../../Components/RECHART/ProgressBar";
 import AreaChartRechart3 from "../../../Components/RECHART/AreaChart3";
+import RevenueTable from "./RevenueTable";
+import MonthCalendar from "../../../Components/Date/MonthCalendar";
+import CalendarMonth from "../../../Components/Date/calendar";
 
 function Revenue() {
     const revenueCard = [
-        { subtitle: "Total", amount: "120000", span: "", text: "" },
-        { subtitle: "Last Month", amount: "30000", span: 3, text: "descrease From Previous Month", avg: "2,600" },
-        { subtitle: "Last Week", amount: "16000", span: 5, text: "Increase From Previous Week", avg: "1,200" },
-        { subtitle: "Today", amount: "78000", span: 7, text: "Increase From Previous Day" }
+        { subtitle: "Total", amount: 120000, span: "", text: "" },
+        { subtitle: "Last Month", amount: 30000, span: 3, text: "descrease From Previous Month", avg: "2,600" },
+        { subtitle: "Last Week", amount: 16000, span: 5, text: "Increase From Previous Week", avg: "1,200" },
+        { subtitle: "Today", amount: 78000, span: 7, text: "Increase From Previous Day" }
     ]
 
     // get data percentage
@@ -43,8 +46,11 @@ function Revenue() {
     }
 
     // revenue progresschart data
-    const lastMonthTotal = 870000
-    const currentMonthTotal = 300009
+    const lastMonthTotal = 400000
+    const currentMonthTotal = 800009
+
+    const [showDateInPage, setshowDateInPage] = useState(false)
+
     return (
         <AdminSidebar name="Revenue">
             <div className="Revenue">
@@ -70,6 +76,8 @@ function Revenue() {
                             currentMonthTotalLeftHandSide={percentageData.currentRevenueTotal} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
                             currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
                         />
+                        {/* <CalendarMonth />
+                        <MonthCalendar /> */}
 
                         <div className="recharts">
                             <div className='Graph' style={{ padding: "10px 0px" }}>
@@ -86,15 +94,30 @@ function Revenue() {
 
                             </div>
                         </div>
+                        <div className="revenueTableSession">
+                            <div className="title">Creators Revenue</div>
+                            <RevenueTable />
+                        </div>
+
                     </div>
 
                     <div className={toggleState === 2 ? "tabContent active-tabContent" : "tabContent"}>
 
                         <div className={rightToggleState === 3 ? "tabContent active-tabContent" : "tabContent"}>
                             <GrossProfit />
+                            <div className="revenueTableSession doNotShowTableBar">
+                                <div className="title">Creators Gross Profit</div>
+                                <div className="text">Overview of creators gross profit</div>
+                                <RevenueTable />
+                            </div>
                         </div>
                         <div className={rightToggleState === 4 ? "tabContent active-tabContent" : "tabContent"}>
                             <NetProfit />
+                            <div className="revenueTableSession doNotShowDate doNotShowTableBar">
+                                <div className="title">Creators Net Profit</div>
+                                <div className="text">Overview of creators Net profit</div>
+                                <RevenueTable />
+                            </div>
                         </div>
 
                     </div>

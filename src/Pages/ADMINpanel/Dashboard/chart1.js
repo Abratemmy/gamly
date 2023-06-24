@@ -51,7 +51,7 @@ function Chart1() {
         },
         {
             name: "7/12",
-            uv: 700,
+            uv: 670,
             pv: 500,
             amt: 2100
         },
@@ -64,7 +64,7 @@ function Chart1() {
         {
             name: "9/12",
             uv: 600,
-            pv: 700,
+            pv: 550,
             amt: 2100
         },
         {

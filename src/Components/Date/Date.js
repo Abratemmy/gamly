@@ -13,7 +13,7 @@ function DateCalendar({ handleSelect, startDate, endDate }) {
         key: 'selection',
     }
     return (
-        <div>
+        <div className='pagesDateRange'>
             <DateRangePicker
                 ranges={[selectionRange]}
                 onChange={handleSelect}
@@ -23,7 +23,8 @@ function DateCalendar({ handleSelect, startDate, endDate }) {
                 moveRangeOnFirstSelection={true}
                 monthDisplayFormat="MMMM yyyy"
                 weekdayDisplayFormat="EEEEEE"
-                rangeColors={['#F2F7FE', '#000000']}
+                rangeColors={['#F2F7FE']}
+                maxDetail="year"
             />
         </div>
     )

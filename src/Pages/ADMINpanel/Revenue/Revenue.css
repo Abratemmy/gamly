@@ -4,3 +4,27 @@
     font-family: var(--textFamily);
     padding: var(--interfaceBorder);
 }
+.revenueTableSession{
+    padding: 40px 0px;
+}
+.revenueTableSession .title{
+    font-family: var(--textFamily);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: #110011;
+    padding-bottom: 5px;
+}
+.revenueTableSession .text{
+    position: relative;
+    top: -5px;
+    font-family: var(--textFamily2);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color:#23233A
+}

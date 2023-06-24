@@ -41,9 +41,16 @@ export const createReport = (newReport) => REPORTAPI.post('/', newReport);
 export const updateReport = (id, updatedReport) => REPORTAPI.put(`/${id}`, updatedReport);
 export const deleteReport = (id) => REPORTAPI.delete(`/${id}`);
 
-// Sales
+// sales
 const SALESAPI = axios.create({ baseURL: 'https://fakestoreapi.com/products' })
 export const fetchSales = () => SALESAPI.get('/');
 export const createSales = (newSales) => SALESAPI.post('/', newSales);
 export const updateSales = (id, updatedSales) => SALESAPI.put(`/${id}`, updatedSales);
 export const deleteSales = (id) => SALESAPI.delete(`/${id}`);
+
+// revenue
+const REVENUEAPI = axios.create({ baseURL: 'https://fakestoreapi.com/products' })
+export const fetchRevenue = () => REVENUEAPI.get('/');
+export const createRevenue = (newRevenue) => REVENUEAPI.post('/', newRevenue);
+export const updateRevenue = (id, updatedRevenue) => REVENUEAPI.put(`/${id}`, updatedRevenue);
+export const deleteRevenue = (id) => REVENUEAPI.delete(`/${id}`);

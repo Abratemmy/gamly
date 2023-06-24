@@ -253,7 +253,7 @@ table tbody .grayColor{
     border: 1px solid var(--grayColor);
     color: var(--primaryColor);
     background: transparent;
-    padding: 5px 10px;
+    padding: 8px 20px;
     border-radius: 5px;
     font-size: 14px;
 }
@@ -261,9 +261,27 @@ table tbody .grayColor{
     border: none;
     color: #fff;
     background: var(--primaryColor);
-    padding: 5px 10px;
+    padding: 7px 20px;
     border-radius: 5px;
     font-size: 14px;
+}
+.formInput .valid{
+    color:  #0E7E34;
+    font-family: var(--textFamily);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.25px;
+    text-align: left;
+}
+.formInput .invalid{
+    color:  crimson;
+    font-family: var(--textFamily);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: -0.25px;
+    text-align: left;
 }
 .tableAction button{
     background: none;

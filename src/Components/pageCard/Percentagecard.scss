@@ -32,31 +32,36 @@
                         padding-left: 5px;
                     }
                 }
-                .date{
-                    width: 199.23px;
-                    height: 37.06px;
-                    left: 264.93px;
-                    top: 12.96px;
+                .dateCardWrapper{
                     background: #FFFFFF;
-                    border: 0.875933px solid #DCDEE6;
-                    border-radius: 7.0583px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     font-family: 'Manrope', sans-serif;
                     color: #121212;
                     font-size: 13.2631px;
-                    .dateC{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
+                    position: relative;
+                   .duration{
+                    width: 100%;
+                    border:none;
+                    background: var(--backgroundColor);
+                    width: 199.23px;
+                    height: 37.06px;
+                    border: 0.875933px solid #DCDEE6;
+                    border-radius: 7.0583px;
+                    color:#fff;font-size: 14px;
+                    font-family: 'Noto Sans', sans-serif;;
+                    .iconDropdown{
+                        font-size: 23px;
+                        position: relative;
+                        top:-1px
                     }
-                    span{
-                        padding-left: 8px;
-                    }
-                    img{
-                        width: 90%
-                    }
+                   }
+                   .calendarToggle{
+                    position: absolute;
+                    top: 40px;
+                    right: 0px
+                   }
                 }
             }
 

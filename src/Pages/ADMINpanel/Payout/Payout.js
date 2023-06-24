@@ -12,24 +12,30 @@ import Refresh from '../../../Components/Refresh/Refresh';
 import TopCard from '../../../Components/pageCard/TopCard';
 import AreaChartRechart from '../../../Components/RECHART/AreaChart';
 import AreaChartRechart2 from '../../../Components/RECHART/AreaChart2';
+import TableTop from '../../../Components/TableTop/TableTop';
 
 function Payout() {
     // payout card array
     const payoutCard = [
-        { subtitle: "Total", amount: "120000", span: "", text: "" },
-        { subtitle: "Last Month", amount: "30000", span: 3, text: "descrease From Previous Month" },
-        { subtitle: "Last Week", amount: "16000", span: 5, text: "Increase From Previous Week" },
-        { subtitle: "Today", amount: "78000", span: 7, text: "Increase From Previous Day" }
+        { subtitle: "Total", amount: 120000, span: "", text: "" },
+        { subtitle: "Last Month", amount: 30000, span: 3, text: "descrease From Previous Month" },
+        { subtitle: "Last Week", amount: 16000, span: 5, text: "Increase From Previous Week" },
+        { subtitle: "Today", amount: 78000, span: 7, text: "Increase From Previous Day" }
     ]
     const dispatch = useDispatch()
     const [pageNumber, setPageNumber] = useState(0);
     const newsPerPage = 10
     const newsVisited = pageNumber * newsPerPage
+    console.log("newsVisited", newsVisited)
 
     const getPaymentData = useSelector((state) => state.paymentReducer);
     console.log("payment", getPaymentData)
 
     const pageCount = Math.ceil(getPaymentData?.length / newsPerPage);
+    console.log("PAGECOUNT", pageCount)
+
+    // newsVisited, newsVisited + newsPerPage
+    const progressWidth = ((newsVisited + newsPerPage) / getPaymentData?.length) * 100
 
     const changePage = ({ selected }) => {
         setPageNumber(selected)
@@ -40,11 +46,7 @@ function Payout() {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
-    // open date dropdown toggle
-    const [dateToggle, setDateToggle] = useState(false);
-    const openDateRange = () => {
-        setDateToggle(prev => !prev)
-    }
+
     const handleSelect = (date) => {
         let filtered = products?.filter((product) => {
             let productDate = new Date(product["createdAt"]);
@@ -169,22 +171,9 @@ function Payout() {
 
                     <div className="tableName">Payouts</div>
                     <div className='tablePage tableSection'>
-                        <section>
-                            <div className='inputSection' style={{ padding: "10px 0px 30px 0px" }}>
-                                <Search setSearch={setSearch} search={search} />
-
-                                <div className='refreshDiv' >
-                                    <button onClick={openDateRange} className='duration'>Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span></button>
-                                    <Refresh handleRefresh={() => setSearch("")} />
-                                    {dateToggle && (
-                                        <div className='calendar'>
-                                            <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
-                                        </div>
-
-                                    )}
-                                </div>
-                            </div>
-                        </section>
+                        <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                            handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
+                        />
                         <div className="scroll-container">
                             <table className="table scroll">
                                 <thead>
@@ -229,6 +218,24 @@ function Payout() {
                             </table>
                         </div>
                     </div>
+                    {
+                        getPaymentData?.length <= newsPerPage ? (
+                            <div className='tableProgressBar'>
+                                <div className='displayProgress'>
+                                    <div className='progress-line decrease' data-percent="90%">
+                                        <span style={{ width: "100%" }}></span>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : <div className='tableProgressBar'>
+                            <div className='displayProgress'>
+                                <div className='progress-line decrease' data-percent="90%">
+                                    <span style={{ width: `${progressWidth}%` }}></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
                     <Pagination pageCount={pageCount} changePage={changePage} />
 
                 </div>

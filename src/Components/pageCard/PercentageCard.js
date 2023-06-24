@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import dateImg from '../../Assets/date.svg'
 import uparrow from "../../Assets/uparr.svg";
 import downarrow from "../../Assets/downarr.svg";
 import "./Percentagecard.scss"
+import DateCalendar from '../Date/Date';
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
-function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, currentMonthTotalLeftHandSide, previousMonthTotalRightHandSide, currentMonthTotalRightHandSide }) {
+function PercentageCard({ getDateData, showThisCard, leftText, prevMonth, previousMonthTotalLeftHandSide, currentMonthTotalLeftHandSide, previousMonthTotalRightHandSide, currentMonthTotalRightHandSide }) {
 
     const prevDateMonth = moment().subtract(1, "month").format('MMMM')
 
@@ -27,6 +29,32 @@ function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, c
     const revenueIncrease = Math.round((RightHandSideDifference / previousMonthTotalRightHandSide) * 100) * 100 / 100
     const revenueDecrease = Math.round(-(RightHandSideDifference / currentMonthTotalRightHandSide) * 100) * 100 / 100
 
+    const [dateToggle, setDateToggle] = useState(false);
+    const openDateRange = () => {
+        setDateToggle(prev => !prev)
+    }
+
+    const [dateToggle2, setDateToggle2] = useState(false);
+    const openDateRange2 = () => {
+        setDateToggle2(prev => !prev)
+    }
+
+    const [products, setProducts] = useState(getDateData?.data);
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+
+    // date select
+    const handleSelect = (date) => {
+        let filtered = products?.filter((product) => {
+            let productDate = new Date(product["createdAt"]);
+            return (productDate >= date.selection.startDate &&
+                productDate <= date.selection.endDate);
+        })
+        setStartDate(date.selection.startDate);
+        setEndDate(date.selection.endDate);
+        setProducts(filtered);
+    };
+
     return (
         <div>
             <div className='percentageCard'>
@@ -36,24 +64,31 @@ function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, c
                             <div className='cardContent'>
                                 <div className='top'>
                                     <div className='avg'>Avg. <span>$ 15, 000</span></div>
-                                    <div className="date">
-                                        <div className="dateC">{prevDateMonth}, 01 - {moment().format("MMMM, DD YYYY")}
-                                            <span><img src={dateImg} alt="" /></span>
-                                        </div>
+                                    <div className="dateCardWrapper">
+                                        <button onClick={openDateRange} className='duration'>
+                                            Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
+                                        </button>
+                                        {dateToggle && (
+                                            <div className='calendarToggle'>
+                                                <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
+                                            </div>
+
+                                        )}
                                     </div>
                                 </div>
 
                                 <div className='contentWrapper'>
                                     <div className='content content1'>
                                         <div className='lastMonth'>{prevMonth}</div>
-                                        <div className='total'>${previousMonthTotalLeftHandSide}</div>
+                                        <div className='total'>${previousMonthTotalLeftHandSide.toLocaleString()}</div>
                                         <div className='text'>{leftText} as on {prevMonthLastDay}</div>
 
                                     </div>
 
+
                                     <div className='content content2'>
                                         <div className='lastMonth'>{moment().format("MMMM")}</div>
-                                        <div className='total'>${currentMonthTotalLeftHandSide}</div>
+                                        <div className='total'>${currentMonthTotalLeftHandSide.toLocaleString()}</div>
                                         <div className='text'>{leftText} as on {moment().format("MMMM DD, YYYY")}</div>
 
                                     </div>
@@ -75,45 +110,62 @@ function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, c
 
                         </div>
 
-                        <div className='col-lg-6 col-md-12 col-sm-12'>
-                            <div className='cardContent'>
-                                <div className='top'>
-                                    <div className='avg'>Avg. <span>$ 15, 000</span></div>
-                                    <div className="date">{prevDateMonth}, 01 - {moment().format("MMMM, DD YYYY")}
-                                        <span><img src={dateImg} alt="" /></span>
-                                    </div>
-                                </div>
+                        {
+                            showThisCard !== false ? (
+                                <div className='col-lg-6 col-md-12 col-sm-12'>
+                                    <div className='cardContent'>
+                                        <div className='top'>
+                                            <div className='avg'>Avg. <span>$ 15, 000</span></div>
+                                            <div className="dateCardWrapper">
+                                                <button onClick={openDateRange2} className='duration'>
+                                                    Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
+                                                </button>
+                                                {dateToggle2 && (
+                                                    <div className='calendarToggle'>
+                                                        <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
+                                                    </div>
 
-                                <div className='contentWrapper'>
-                                    <div className='content content1'>
-                                        <div className='lastMonth'>{prevMonth}</div>
-                                        <div className='total'>${previousMonthTotalRightHandSide}</div>
-                                        <div className='text'>Revenue growth as on {prevMonthLastDay}</div>
-
-                                    </div>
-
-                                    <div className='content content2'>
-                                        <div className='lastMonth'>{moment().format("MMMM")}</div>
-                                        <div className='total'>${currentMonthTotalRightHandSide}</div>
-                                        <div className='text'>Revenue growth as on {moment().format("MMMM DD, YYYY")}</div>
-
-                                    </div>
-                                </div>
-
-                                <div className='percentage'>
-                                    {currentMonthTotalRightHandSide > previousMonthTotalRightHandSide ? (<div className='increase'>
-                                        {revenueIncrease}% <span>Increase from Previous Month</span>
-                                        <img src={uparrow} alt="" />
-                                    </div>
-                                    ) : (
-                                        <div className='decrease'>
-                                            {revenueDecrease}% <span>Decrease from Previous Month</span>
-                                            <img src={downarrow} alt="" />
+                                                )}
+                                            </div>
                                         </div>
-                                    )}
+
+                                        <div className='contentWrapper'>
+                                            <div className='content content1'>
+                                                <div className='lastMonth'>{prevMonth}</div>
+                                                <div className='total'>${previousMonthTotalRightHandSide.toLocaleString()}</div>
+                                                <div className='text'>Revenue growth as on {prevMonthLastDay}</div>
+
+                                            </div>
+
+                                            <div className='content content2'>
+                                                <div className='lastMonth'>{moment().format("MMMM")}</div>
+                                                <div className='total'>${currentMonthTotalRightHandSide.toLocaleString()}</div>
+                                                <div className='text'>Revenue growth as on {moment().format("MMMM DD, YYYY")}</div>
+
+                                            </div>
+                                        </div>
+
+                                        <div className='percentage'>
+                                            {currentMonthTotalRightHandSide > previousMonthTotalRightHandSide ? (<div className='increase'>
+                                                {revenueIncrease}% <span>Increase from Previous Month</span>
+                                                <img src={uparrow} alt="" />
+                                            </div>
+                                            ) : (
+                                                <div className='decrease'>
+                                                    {revenueDecrease}% <span>Decrease from Previous Month</span>
+                                                    <img src={downarrow} alt="" />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            )
+
+                                : (
+                                    "hello"
+                                )
+                        }
+
                     </div>
 
 

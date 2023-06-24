@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: var(--interfaceBorder);
+    padding-right: 30px;
     transition: var(--transition);
 }
 .Navbar .navContent{
