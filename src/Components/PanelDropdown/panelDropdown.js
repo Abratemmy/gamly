@@ -40,22 +40,55 @@ function PanelDropdown({ panelSelected, setPanelSelected }) {
         <div>
             <div className='panel' onClick={openDropdown}>{panelSelected === "admin" ? "Admin" : panelSelected === "creator" ? "Creator" : "User"}
                 <span><MdKeyboardArrowDown className="dropdownIcon" /></span>
-                {dropdown && (
-                    <div className='dropdowntoggle'>
-                        <div className={panelSelected === "admin" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
-                            id={"admin"}>
-                            Admin
-                        </div>
-                        <div className={panelSelected === "creator" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
-                            id={"creator"}>
-                            Creator
-                        </div>
-                        <div className={panelSelected === "user" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
-                            id={"user"}>
-                            User
-                        </div>
-                    </div>
-                )}
+                {panelSelected === "admin" ? (
+                    <>
+                        {dropdown && (
+                            <div className='dropdowntoggle'>
+                                <div className={panelSelected === "creator" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
+                                    id={"creator"}>
+                                    Creators
+                                </div>
+                                <div className={panelSelected === "user" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
+                                    id={"user"}>
+                                    Users
+                                </div>
+                            </div>
+                        )}
+                    </>
+                ) : panelSelected === "creator" ? (
+                    <>
+                        {dropdown && (
+                            <div className='dropdowntoggle'>
+                                <div className={panelSelected === "admin" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
+                                    id={"admin"}>
+                                    Admin
+                                </div>
+                                <div className={panelSelected === "user" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
+                                    id={"user"}>
+                                    Users
+                                </div>
+                            </div>
+                        )}
+                    </>
+                ) :
+                    <>
+                        {dropdown && (
+                            <div className='dropdowntoggle'>
+                                <div className={panelSelected === "admin" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
+                                    id={"admin"}>
+                                    Admin
+                                </div>
+
+                                <div className={panelSelected === "creator" ? "activePanel listPanel" : "listPanel"} onClick={handleClick}
+                                    id={"creator"}>
+                                    Creators
+                                </div>
+
+                            </div>
+                        )}
+                    </>
+                }
+
             </div>
 
 

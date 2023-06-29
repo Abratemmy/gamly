@@ -127,10 +127,10 @@
 }
 .payoutRechart .payoutHeader{
   position: relative;
-  padding-left: 15px;
+  /* padding-left: 15px;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: center; */
   /* flex-direction: column; */
 }
 .payoutRechart .payoutHeader button{
@@ -143,7 +143,9 @@
   font-style: normal;
   font-weight: 500;
   font-family: var(--textFamily);
-  font-size: 15.1294px
+  font-size: 15.1294px;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 .payoutRechart .pRechartToggle{
   position: absolute;
@@ -184,7 +186,13 @@
 .payoutRechart .totalAmount img{
   padding-right: 7px;
 }
-
+.payoutRechart .dropdown span{
+  padding-left: 7px;
+}
+.payoutRechart .dropdown span .iconImg{
+  width: 15.13px;
+height: 15.123px;
+}
 .salesRechartContainer .heading{
   gap: 10px;
   cursor: pointer;
@@ -384,7 +392,7 @@
   margin: 0px 10px!important;
   padding: 3px 2px 15px 2px
 }
-.revenueChart .top .dateFilter{
+.revenueChart .top .dateFilter22{
   display: flex;
   border: 0.577266px solid #DCDEE6;
   border-radius: 32.3269px;
@@ -392,6 +400,7 @@
   font-family: var(--textFamily2);
   padding: 6px 7px;
   cursor: pointer;
+  position: relative;
 }
 .revenueChart .top .dateFilter .image{
   padding-right: 7px;
@@ -402,4 +411,10 @@
 }
 .revenueChart .top .dateFilter .icon{
   font-size: 20px;
+}
+.revenueDateChart .revenueDatetoggle{
+  position: absolute;
+  top: 50px;
+  right: 0px;
+  z-index:13
 }

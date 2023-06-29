@@ -1,5 +1,5 @@
 .sidebarDesign {
-    background: var(--sidebarBackground);
+    background: #F8F9FA;
     position: fixed;
     left: 0;
     width: 250px;
@@ -49,7 +49,7 @@
     padding-left: 10px;
     box-sizing: border-box;
     transition: 0.5s all ease;
-    font-size: 15px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     font-family: var(--textFamily);
@@ -61,17 +61,18 @@
 }
 li .active {
     color: var(--primaryColor);
-    background: var(--lightPink);
+    background: #FABABA;
     color: var(--primaryColor)!important
 }
 .sidebarDesign .sidebar-navlink .icon {
-    padding-right: 12px;
+    padding-right: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .sidebarDesign .sidebar-navlink svg{
-    width: 20px
+    width: 22px;
+    height: 22px;
 }
 
 .sidebarDesign .sidebar-navlink:hover .icon svg path,
@@ -102,16 +103,6 @@ li .active .revenueSvg path{
 
 .sidebarlabel #sidebar_btn:hover {
     color: var(--blueColor);
-}
-
-.sidebar-signout .sidebar-icons {
-    color: crimson!important;
-    /* background-color: #fff; */
-    height: 15px;
-}
-
-.sidebar-signout span {
-    color: crimson;
 }
 
 #interface-check:checked~.sidebar {

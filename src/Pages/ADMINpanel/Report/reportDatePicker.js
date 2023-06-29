@@ -1,57 +1,75 @@
-import { useEffect, useRef, useState } from 'react'
-import DatePicker from "react-datepicker";
-import format from 'date-fns/format'
-import { Calendar } from 'react-date-range'
-import "react-datepicker/dist/react-datepicker.css";
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import "./date.scss"
 
-// CSS Modules, react-datepicker-cssmodules.css
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-const ReportDatePicker = () => {
-    const [calendar, setCalendar] = useState('')
-    // open close
-    const [open, setOpen] = useState(false)
-    // get the target element to toggle 
-    const refOne = useRef(null)
-
-    // on date change, store date in state
-    const handleSelect = (date) => {
-        setCalendar(format(date, 'MM/dd/yyyy'))
-    }
-
+function ReportDatePicker() {
     const [startDate, setStartDate] = useState(new Date());
-    const [reactOpen, setReactOpen] = useState(false)
+    const [endDate, setEndDate] = useState(null);
+    const minDate = startDate;
 
-    const onChange = (date) => {
-        setStartDate(format(date, 'MM/dd/yyyy'))
-    }
+    const handleDateChange = (date) => {
+        if (!startDate) {
+            setStartDate(date);
+        } else if (startDate && !endDate) {
+            if (date >= startDate) {
+                setEndDate(date);
+            } else {
+                setEndDate(startDate);
+                setStartDate(date);
+            }
+        } else {
+            setStartDate(date);
+            setEndDate(null);
+        }
+    };
+
+    const filterPastDates = (date) => {
+        return date >= startDate; // Disable dates before startDate
+    };
+
+    const customDayClassNames = (date) => {
+        return date < minDate ? 'disabled' : ''; // Add a custom class for disabled dates
+    };
     return (
-        <div className="reportDatePicker">
+        <div>
+            <div className='singleDatePicker'>
+                <div className='dateStyle'>
+                    <label htmlFor="startdatepicker" className="datepicker-label">Start Date:</label>
+                    <DatePicker
+                        id="startdatepicker"
+                        selected={startDate}
+                        onChange={handleDateChange}
+                        selectsStart
+                        startDate={startDate}
+                        endDate={endDate}
+                        className='datepicker-input'
+                        dayClassName={customDayClassNames}
+                    // inline
+                    />
+                </div>
+                <div className='dateStyle'>
+                    <label htmlFor="enddatepicker" className="datepicker-label">End Date:</label>
+                    <DatePicker
+                        id="enddatepicker"
+                        selected={endDate}
+                        onChange={handleDateChange}
+                        selectsEnd
+                        startDate={startDate}
+                        endDate={endDate}
+                        minDate={startDate}
+                        // inline
+                        className='datepicker-input'
+                        filterDate={filterPastDates} // Pass the filterDate function
+                        dayClassName={customDayClassNames}
+                    />
+                </div>
 
-            <input
-                value={calendar}
-                readOnly
-                className="inputBox"
-                onClick={() => setOpen(open => !open)}
-            />
-
-            <div ref={refOne} className='reportDateshape'>
-                {/* {open && */}
-                <Calendar
-                    date={new Date()}
-                    onChange={handleSelect}
-                    monthDisplayFormat="MMMM yyyy"
-                    weekdayDisplayFormat="EEEEEE"
-                    selectable={true}
-                />
-                {/* } */}
             </div>
-
-
         </div>
-    );
-};
+    )
+}
 
 export default ReportDatePicker
+

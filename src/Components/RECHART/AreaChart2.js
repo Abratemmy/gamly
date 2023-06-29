@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { AreaChart, Area, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
-import { MdArrowDropDown } from "react-icons/md";
 import graphIcon from "../../Assets/graphIcon.svg"
+import dropdownImg from "../../Assets/dropdown.svg";
 
 function AreaChartRechart2({ data }) {
 
@@ -20,8 +20,8 @@ function AreaChartRechart2({ data }) {
 
     return (
         <div className="rechartsContainer payoutRechart">
-            <div className='payoutHeader'>
-                <button className='dropdown' onClick={openDropdown}>Payout ({selected}) <span><MdArrowDropDown className='icon' /> </span></button>
+            <div className='payoutHeader' style={{ height: '40%' }}>
+                <button className='dropdown' onClick={openDropdown}>Payout ({selected}) <span><img src={dropdownImg} alt="" className='iconImg' /> </span></button>
                 {dropdown && (
                     <div className='pRechartToggle'>
                         <div className={selected === "1" ? "drop-active list" : "list"} onClick={handleClick}
@@ -52,8 +52,12 @@ function AreaChartRechart2({ data }) {
                         </div>
                     </div>
                 )}
+
+                <div className='totalAmount'>$10,887.89  <span className='grapgIcon'>
+                    <img src={graphIcon} alt="" />-10.4% </span>
+                </div>
             </div>
-            <ResponsiveContainer width="100%" height="80%">
+            <ResponsiveContainer width="100%" height="55%">
                 <AreaChart
                     data={data}
                     margin={{
@@ -72,14 +76,12 @@ function AreaChartRechart2({ data }) {
                     <CartesianGrid strokeWidth={0.5} horizontal={false} vertical={false} />
                     <Tooltip cursor={{ fill: 'transparent' }} content={<CustomTooltip payload={data} />} />
 
-                    <Area type="monotone" dataKey="uv" stroke="var(--primaryColor)" fill="url(#linear)" />
+                    <Area type="monotone" dataKey={selected === "24h" ? "uv" : selected === "1h" ? "onehrUv" : selected === "24min" ? "twentyfourMinUv" :
+                        selected === "30m" ? "thirtyminUv" : selected === "10m" ? "tenminUv" : selected === "5m" ? "fineminUv" : "uv"}
+                        stroke="var(--primaryColor)" fill="url(#linear)" />
 
                 </AreaChart>
             </ResponsiveContainer>
-
-            <div className='totalAmount'>$10,887.89  <span className='grapgIcon'>
-                <img src={graphIcon} alt="" />-10.4% </span>
-            </div>
 
         </div>
     )

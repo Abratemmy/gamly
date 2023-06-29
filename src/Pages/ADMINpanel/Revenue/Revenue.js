@@ -14,8 +14,6 @@ import GrossProfit from "./grossProfit";
 import ProgressBar from "../../../Components/RECHART/ProgressBar";
 import AreaChartRechart3 from "../../../Components/RECHART/AreaChart3";
 import RevenueTable from "./RevenueTable";
-import MonthCalendar from "../../../Components/Date/MonthCalendar";
-import CalendarMonth from "../../../Components/Date/calendar";
 
 function Revenue() {
     const revenueCard = [
@@ -49,10 +47,10 @@ function Revenue() {
     const lastMonthTotal = 400000
     const currentMonthTotal = 800009
 
-    const [showDateInPage, setshowDateInPage] = useState(false)
+    // const [showDateInPage, setshowDateInPage] = useState(false)
 
     return (
-        <AdminSidebar name="Revenue">
+        <AdminSidebar name="Revenue" defaultToggleState={() => setToggleState(1)}>
             <div className="Revenue">
                 <div className="container">
                     <div className="bloc-tabs" style={{ paddingTop: "20px" }}>
@@ -76,8 +74,10 @@ function Revenue() {
                             currentMonthTotalLeftHandSide={percentageData.currentRevenueTotal} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
                             currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
                         />
-                        {/* <CalendarMonth />
-                        <MonthCalendar /> */}
+                        {/* <NewMonth /> */}
+                        {/* <CalendarMonth /> */}
+
+                        {/* <CalendarMonth /> */}
 
                         <div className="recharts">
                             <div className='Graph' style={{ padding: "10px 0px" }}>
@@ -113,7 +113,7 @@ function Revenue() {
                         </div>
                         <div className={rightToggleState === 4 ? "tabContent active-tabContent" : "tabContent"}>
                             <NetProfit />
-                            <div className="revenueTableSession doNotShowDate doNotShowTableBar">
+                            <div className="revenueTableSession  doNotShowTableBar">
                                 <div className="title">Creators Net Profit</div>
                                 <div className="text">Overview of creators Net profit</div>
                                 <RevenueTable />

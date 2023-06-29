@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import CustomTooltip from '../CustomTooltip/CustomTooltip';
 import moment from 'moment';
-import { MdKeyboardArrowDown } from "react-icons/md"
+import { MdOutlineKeyboardArrowDown } from "react-icons/md"
+import GraphDate from '../Date/GraphDate';
 
 function AreaChartRechart({ data }) {
 
@@ -20,25 +21,40 @@ function AreaChartRechart({ data }) {
     }
     console.log("open", openMonth)
 
+
+    // for month calendar
+    const prevMonth = moment().subtract(1, "month").format('MMMM')
+
+    const [open, setOpen] = useState(false);
+    const [startMonthDate, setStartMonthDate] = useState(null)
+    const [endMonthDate, setEndMonthDate] = useState(null)
+    const [confirmDate, setConfirmDate] = useState(false);
+    const confirmDateMonth = () => {
+        setConfirmDate(true);
+        setOpen(false)
+    }
+
+    console.log("open", open)
+    const cancelMonthDate = () => {
+        setConfirmDate(false);
+        setOpen(false)
+    }
+
     return (
         <div className="rechartsContainer">
             <div className='heading'>Gross Profit growth rate
-                <div className='monthDisplay' onClick={() => setOpenMonth(!openMonth)} style={{ position: "relative", cursor: "pointer" }}>
-                    {getMonth === "1" ? "January" : getMonth === "2" ? "February" : getMonth === "3" ? "March" : getMonth === "4" ? "April" :
-                        getMonth === "5" ? "May" : getMonth === "6" ? "June" : getMonth === "7" ? "July" : getMonth === "8" ? "August" :
-                            getMonth === "9" ? "September" : getMonth === "10" ? "October" : getMonth === "11" ? "November" :
-                                getMonth === "12" ? "December" : getMonth}
-                    <span><MdKeyboardArrowDown className="dropdown" /></span>
+                <div className='rateDropdown' onClick={() => setOpen(!open)} style={{ position: 'relative', cursor: 'pointer', zIndex: "20", color: "#666666", fontSize: '11px', fontWeight: '400' }}>
+                    <span>
+                        {confirmDate ? (
+                            <>
+                                {startMonthDate.toLocaleDateString('en-us', { month: "short", year: "numeric" })}
+                            </>
+                        ) :
+                            <>{moment().format("MMM YYYY")}</>
+                        }
+                    </span>
 
-                    {openMonth && (
-                        <div className='openMonth'>
-                            {tableMonth?.map((month, index) => {
-                                return (
-                                    <div className='months' id={index + 1} key={index} onClick={handleClickMonth}>{month}</div>
-                                )
-                            })}
-                        </div>
-                    )}
+                    <span style={{ paddingLeft: '5px' }}><MdOutlineKeyboardArrowDown className='icon' style={{ fontSize: '16px', position: 'relative', top: '-1px' }} /> </span>
                 </div>
 
             </div>
@@ -82,8 +98,14 @@ function AreaChartRechart({ data }) {
                 </AreaChart>
             </ResponsiveContainer>
 
+            {open && (
+                <div style={{ position: 'absolute', top: '40px', left: '0px' }}>
+                    <GraphDate startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
+                        endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} />
+                </div>
+            )}
 
-        </div>
+        </div >
     )
 }
 

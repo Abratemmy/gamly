@@ -1,56 +1,56 @@
 import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { startOfMonth, endOfMonth, format } from 'date-fns';
 
-function CalendarMonth() {
 
-    // const getDate = (date.getMonth() + 1) + '' + date.getFullYear()
-    const [date, setDate] = useState(new Date());
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+const CalendarRangePicker = () => {
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
 
-    const selectionRange = {
-        startDate: startDate,
-        endDate: endDate,
-        key: 'selection',
-    }
-    // const [show]
-    const showDate = (date) => {
-        return (
-            <>
-                {date[0].toDateString()}
-                <br />
-                <span className='bold' style={{ fontSize: "50px" }}>End:</span> {date[1].toDateString()}
-            </>
-        )
-    }
+    const handleDateRangeChange = (dates) => {
+        const [start, end] = dates;
+        setStartDate(start);
+        setEndDate(end);
+    };
+
+    const highlightWithRange = (date) => {
+        if (!startDate || !endDate) return false;
+        const start = startOfMonth(startDate);
+        const end = endOfMonth(endDate);
+        return date >= start && date <= end;
+    };
+
+    const renderDayContents = (day, date) => {
+        const isFirstMonth = date.getMonth() === startOfMonth(startDate).getMonth();
+        const isLastMonth = date.getMonth() === endOfMonth(endDate).getMonth();
+
+        let cellClass = '';
+        if (isFirstMonth) {
+            cellClass += ' first-month';
+        }
+        if (isLastMonth) {
+            cellClass += ' last-month';
+        }
+
+        return <div className={`custom-cell ${cellClass}`}>{day}</div>;
+    };
 
     return (
-        <div>
-            <Calendar
-                onChange={setDate}
-                value={date}
-                selectRange={true}
-                maxDetail='year'
-                navigationAriaLabel={"Go up"} activeStartDate={null}
+        <div className="date-range-picker">
+            <DatePicker
+                selected={startDate}
+                onChange={handleDateRangeChange}
+                startDate={startDate}
+                endDate={endDate}
+                selectsRange
+                inline
+                showMonthYearPicker
+                highlightDates={highlightWithRange}
+                renderDayContents={renderDayContents}
             />
-
-            {date.length > 0 ? (
-                <p className='text-center'>
-                    <span className='bold'>Start:</span>{' '}
-                    {date[0].toDateString()}
-                    <br />
-                    <span className='bold' style={{ fontSize: "50px" }}>End:</span> {date[1].toDateString()}
-                </p>
-            ) : (
-                <p className='text-center'>
-                    <span className='bold'>Default selected date:</span>{' '}
-                    {date.toDateString()}
-                </p>
-            )}
-
-            <h1><button onClick={showDate}></button></h1>
-
         </div>
     );
-}
-export default CalendarMonth
+};
+
+export default CalendarRangePicker;

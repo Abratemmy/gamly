@@ -9,9 +9,22 @@ import whitelogo1 from "../../../Assets/whitelogo1.svg"
 import whitelogo2 from "../../../Assets/whitelogo2.svg"
 import Pagination from '../../../Components/Pagination/Pagination';
 import TableTop from '../../../Components/TableTop/TableTop';
+import { GETPENDING, GETSUCCESS } from '../../../Components/REDUX/CONSTANT/actionTypes';
+import pointGreen from "../../../Assets/pointGreen.svg";
+import pointYellow from "../../../Assets/pointYellow.svg";
+import pointRed from "../../../Assets/pointRed.svg";
 
 function SinglePayout() {
     const dispatch = useDispatch();
+    const singleData = [
+        { date: "22/06/2023", payout_amount: 376.89, payment_id: 23456, payment_method: "Bank transfer", payout_id: 68890, payment_status: "Successful" },
+        { date: "22/06/2023", payout_amount: 456.19, payment_id: 11256, payment_method: "Bank transfer", payout_id: 18890, payment_status: "Pending" },
+        { date: "22/06/2023", payout_amount: 896.12, payment_id: 56756, payment_method: "Bank transfer", payout_id: 65630, payment_status: "Failed" },
+        { date: "22/06/2023", payout_amount: 376.89, payment_id: 97456, payment_method: "Bank transfer", payout_id: 45890, payment_status: "Successful" },
+        { date: "22/06/2023", payout_amount: 766.15, payment_id: 23456, payment_method: "Bank transfer", payout_id: 68890, payment_status: "Successful" },
+        { date: "22/06/2023", payout_amount: 376.89, payment_id: 32456, payment_method: "Bank transfer", payout_id: 23890, payment_status: "Pending" },
+        { date: "22/06/2023", payout_amount: 346.89, payment_id: 19456, payment_method: "Bank transfer", payout_id: 61890, payment_status: "Failed" },
+    ]
     const { payment, isLoading } = useSelector((state) => state.paymentReducer);
     console.log("singlepayment", payment)
     const { id } = useParams()
@@ -24,7 +37,7 @@ function SinglePayout() {
     const getPaymentData = useSelector((state) => state.paymentReducer);
     console.log("payment", getPaymentData)
 
-    const pageCount = Math.ceil(getPaymentData?.length / newsPerPage);
+    const pageCount = Math.ceil(singleData?.length / newsPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected)
@@ -114,9 +127,9 @@ function SinglePayout() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {/* {getPaymentData?.slice ? (
+                                    {singleData?.slice ? (
                                         <>
-                                            {getPaymentData?.filter((item) => {
+                                            {singleData?.filter((item) => {
                                                 return search?.toLowerCase() === "" ? item :
                                                     (item?.title?.toLowerCase().includes(search.toLowerCase()))
 
@@ -127,19 +140,28 @@ function SinglePayout() {
                                                             <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
                                                         }
                                                         </td>
-                                                        <td  >Date is here</td>
-                                                        <td  >{item?.title}</td>
-                                                        <td >{item?.id}</td>
-                                                        <td >{item?.rating.count}</td>
-                                                        <td  >$  {item?.price}</td>
-                                                        <td>Completed</td>
-                                                        <td><NavLink to={`/payout/${item.id}`} className="tableNav">View</NavLink></td>
+                                                        <td  >{item?.date}</td>
+                                                        <td  >${item?.payout_amount}</td>
+                                                        <td >{item?.payment_id}</td>
+                                                        <td >{item?.payment_method}</td>
+                                                        <td  > {item?.payout_id}</td>
+                                                        <td className='payout-status'>
+                                                            {item?.payment_status === GETSUCCESS ? <div className='success'>
+                                                                <img src={pointGreen} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Successful</span>
+                                                            </div> :
+                                                                item?.payment_status === GETPENDING ? <div className='pending'>
+                                                                    <img src={pointYellow} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Pending</span>
+                                                                </div> :
+                                                                    <div className='failed'>
+                                                                        <img src={pointRed} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Failed</span>
+                                                                    </div>
+                                                            }
+                                                        </td>
                                                     </tr>
                                                 )
                                             })}
                                         </>
-                                    ) : ("")} */}
-                                    table body here
+                                    ) : ("")}
                                 </tbody>
                             </table>
                         </div>

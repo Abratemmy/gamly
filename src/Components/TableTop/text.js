@@ -3,8 +3,6 @@ import "./TableTop.scss";
 import { BiSearch, BiRefresh } from "react-icons/bi";
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import DateCalendar from '../Date/Date';
-import DurationMonth from '../Date/durationMonth';
-import Duration from '../Duration/Duration';
 
 function TableTop({ handleRefresh, setSearch, search, handleSelect, startDate, endDate, children, placeHolder }) {
 
@@ -25,9 +23,18 @@ function TableTop({ handleRefresh, setSearch, search, handleSelect, startDate, e
             </div>
 
             <div className='right'>
-                <Duration />
+                <button onClick={openDateRange} className='duration'>
+                    Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
+                </button>
                 <div className=''>{children}</div>
                 <button onClick={handleRefresh} className='refresh'><BiRefresh className='r-icon' /> <span>Refresh</span></button>
+
+                {dateToggle && (
+                    <div className='calendar'>
+                        <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
+                    </div>
+
+                )}
             </div>
         </div>
     )

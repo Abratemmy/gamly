@@ -49,9 +49,9 @@
     align-items: center;
     padding: 10px;
 }
-.AdminTableWrapper .firstSession .input{
+/* .AdminTableWrapper .firstSession .input{
     width: 300px;
-}
+} */
 .AdminTableWrapper .firstSession .input-group .input-group-text{
     background: #fff;
     border: 0.5px solid #E2E8F0!important;
@@ -67,7 +67,9 @@
     font-size: 13px;
     font-family: var(--textFamily);
     outline: none;
-    padding: 0.475rem 1px
+    padding: 0.475rem 1px;
+    width: 477px!important;
+    height: 36.8px
 }
 .AdminTableWrapper .firstSession .form-control:focus{
     outline: none;
@@ -115,9 +117,10 @@
 .AdminTable .tableWrapper .table{
     margin-bottom: 0px!important;
 }
+
 .AdminTable thead td{
     background: var(--background);
-    padding: 18px 15px!important;
+    padding: 18px 18px!important;
     color:var(--grayColor);
     font-weight: 500
 }
@@ -131,13 +134,18 @@
 }
 
 .AdminTable tbody td{
-    padding: 18px 15px!important;
+    padding: 18px 18px!important;
+    height: 66.38px!important;
+    font-size: 12.91px;
+    font-family: var(--textFamily);
+    font-weight: 500;
 }
 table tbody .grayColor{
     color: var(--grayColor);
-    font-size: 15px;
+    font-size: 12.91px;
     text-transform: capitalize;
     padding-top: 28px!important;
+    font-weight: 400;
 }
 
 
@@ -169,17 +177,20 @@ table tbody .grayColor{
     padding-top: 10px;
 }
 .formpopupBody .heading{
-    display: flex;
+    display: flex;  
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 5px 20px 20px 30px;
-    border-bottom: 1px solid #E1E3E5;
-    box-shadow: inset 0px -1px 0px #E1E3E5;
+   
     font-family: var(--textFamily);
     font-weight: 600;
-    font-size: 22px;
+    font-size: 20px;
     color: #374151;
+    box-shadow: 0px -1px 0px 0px #E1E3E5 inset;
+
+    /* box-shadow: 0px -1px 0px 0px #E1E3E5 inset; */
+
 }
 .formpopupBody .heading button{
     background: none;
@@ -241,29 +252,41 @@ table tbody .grayColor{
     outline: none;
     text-align: left;
 }
-.formInput .submitButton{
+.formWrapper .submitButton{
     display: flex;
     width: 100%;
     justify-content: flex-end;
     align-items: center;
     gap: 2rem;
-    padding: 20px 0px 10px 0px
+    padding: 20px 30px 10px 0px;
+    box-shadow: 0px 1px 0px 0px #E4E5E7 inset;
+
 }
-.formInput .submitButton>:nth-child(1){
-    border: 1px solid var(--grayColor);
+.formWrapper .submitButton>:nth-child(1){
+    border: 1px solid #DCDEE6;
     color: var(--primaryColor);
     background: transparent;
     padding: 8px 20px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
+    width: 99px;
+    height: 40px;
+    font-family: 'Noto Sans', sans-serif;;
 }
-.formInput .submitButton>:nth-child(2){
+.formWrapper .submitButton>:nth-child(2){
     border: none;
     color: #fff;
     background: var(--primaryColor);
     padding: 7px 20px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
+    width: 131px;
+    height: 40px;
+    font-family: 'Noto Sans', sans-serif;
+/* padding: 8px 24px 8px 24px
+border-radius: 4px
+gap: 8px */
+
 }
 .formInput .valid{
     color:  #0E7E34;
@@ -383,12 +406,24 @@ table tbody .grayColor{
     border-radius: 50px;
     padding: 4px 10px;
     margin-right: 10px;
+    width: 83.9px!important;
+    height: 30.25px;
+    display: inline-block;
+    font-size: 15.13px;
+    font-family: var(--textFamily);
+    font-weight: 400;
 }
 .selectDropdown .yellow{
     background: var(--lightYellow);
     border-radius: 50px;
     padding: 4px 10px;
     margin-right: 10px;
+    width: 105.9px!important;
+    height: 30.25px;
+    display: inline-block;
+    font-size: 15.13px;
+    font-family: var(--textFamily);
+    font-weight: 400;
 }
 .selectDropdown .green img,
 .selectDropdown .yellow img{

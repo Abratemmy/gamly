@@ -32,6 +32,7 @@
     width: 120px;
     box-shadow: 0px 10px 16px -3px rgba(23, 24, 24, 0.08), 0px 8px 20px -4px rgba(23, 24, 24, 0.12);
     border-radius: 5px;
+    height: 84px
 }
 .panel .listPanel{
     padding: 4px 7px;
@@ -40,6 +41,7 @@
     font-weight: normal;
     font-size: 15px;
     letter-spacing: 0.2px;
+    height: 34px
 }
 .panel .activePanel{
     background: var(--lightPink);

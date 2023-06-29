@@ -14,6 +14,9 @@ export const UPDATEPAYOUT = "UPDATEPAYOUT"
 export const DELETEPAYOUT = "DELETEPAYOUT";
 
 export const GETSINGLEPAYOUT = "GETSINGLEPAYOUT"
+export const GETSUCCESS = "Successful"
+export const GETFAILED = "Pending"
+export const GETPENDING = "Failed"
 
 // page management const
 export const GETPAGEMANAGE = "GETPAGEMANAGE"

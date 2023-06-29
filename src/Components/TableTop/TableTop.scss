@@ -20,7 +20,7 @@
     font-family: var(--textFamily);
     outline: none;
     padding: 0.475rem 1px;
-    width: 270px;
+    width: 370px;
     background: #F8F9FA;
 }
 .tableTop .form-control:focus{
@@ -78,9 +78,11 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
     .tableTop{
         flex-direction: column;
-        gap: 15px
+        gap: 20px;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
 }

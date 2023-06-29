@@ -64,7 +64,39 @@
             font-size: 14px;
             padding: 7px 10px;
             background: transparent;
-            width: 100%
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            .drop-icon{
+                font-size: 20px
+            }
+            .dropdown-content{
+                position: absolute;
+                width: 100%;
+                top: 37px;
+                left:0px;
+                z-index: 10;
+                border-radius: 6px;
+                background: #fff;
+                box-shadow: 0px 0.922014px 2.76604px rgba(16, 24, 40, 0.1), 0px 0.922014px 1.84403px rgba(16, 24, 40, 0.06);
+                .dropdown-item{
+                    border-bottom: 0.61237px solid #eaebec;
+                    padding: 5px 10px;
+                    background: #fff;
+                }
+                .dropdown-item:hover{
+                    background: var(--lightPink)!important;
+                   
+                }
+            }
+        }
+        .reportDate{
+            position: absolute;
+            top: 40px;
+            left: -3px
         }
    
         .dateWrapper{
@@ -121,11 +153,23 @@
         position: absolute;
         top:0;
         right: 0;
-        width: 350px;
+        width: 407px;
         height: auto;
         border-radius: 1px;
-        padding: 10px;
         font-family: var(--textFamily);
+        animation: rightsidebar 1s;
+
+        @keyframes rightsidebar {
+            0% {
+                opacity: 0.5;
+                transform: translateX(30px);
+            }
+            
+            100% {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
         
         .top{
             border-bottom: 1.3921px solid #EDEDED;
@@ -135,6 +179,19 @@
             padding: 8px;
             font-family: var(--textFamily);
             position: relative;
+            height: 136.76px;
+            padding: 10px;
+            border-bottom: 1.39px solid #EDEDED;
+            .left{
+                flex: 10;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .close{
+                flex: 2;
+            }
             .head{
                 color: #474747;
                 font-weight: 400;
@@ -147,6 +204,7 @@
                 color: #121212;
                 font-weight: 600;
                 padding-bottom: 5px;
+                text-align: center;
             }
             .close{
                 position: absolute;
@@ -155,14 +213,14 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                
-
+        
                 button{
-                    background: #FFFFFF;
-                    border: 1px solid #E5E7EB;
-                    border-radius: 4px;
-                    width: 34px;
-                    height: 34px;
+                    border: none;
+                    background: none;
+                    img{
+                        width: 40px;
+                        height: 40px
+                    }
                 }
             }
             .sub-text{
@@ -170,11 +228,15 @@
                 font-weight: 400;
                 font-size: 16px;
                 padding-bottom: 3px;
+                font-family: var(--textFamily);
+                font-weight: 400;
             }
             .sm-text{
                 font-weight: 400;
                 font-size: 14px;
                 color: #4B5563;
+                font-family: var(--textFamily);
+                font-weight: 400;
             }
         }
 
@@ -182,14 +244,19 @@
             border: none;
             margin-top: 30px;
             .col-6{
-                padding: 0!important;
+                padding: 0px 10px;
             }
             .content{
                 border: 1.17252px solid rgba(18, 18, 18, 0.22);
-                border-radius: 7.03515px;
-                width: 92%;
-                padding: 3px 8px;
                 margin-bottom: 5px;
+                width:176.46px;
+                height: 65.83px;
+                padding: 14.070290565490723px;
+                border-radius: 7.035145282745361px;
+                border: 1.1725239753723145px;
+                gap: 4.690095901489258px;
+                border: 1.17px solid #12121238;
+
                 .title{
                     color: #121212;
                     font-weight: 400;
@@ -207,7 +274,7 @@
         }
 
         .content{
-            padding: 20px 0px;
+            padding: 20px 20px;
 
             .other{
                 display: flex;
@@ -220,6 +287,7 @@
                     font-size: 14px;
                     color: #1F2937;
                     padding-bottom: 3px;
+                    font-family: var(--textFamily);
                 }
                 .right .icon{
                     color: #44AC21;
@@ -241,78 +309,10 @@
     }
     
 }
-// .reportDateshape{
-//     position: relative;
-//     width: 280px
-// }
-// .reportDatePicker .rdrCalendarWrapper{
-//     width: 100%
-// }
-// .reportDatePicker .rdrMonths {
-//     display: flex;
-//     width: 100%!important;;
-//     align-items: center;
-// }
 
-// .reportDatePicker .rdrMonthsVertical{
-//     flex-direction: column-reverse!important;
-// }
-// .reportDatePicker .rdrMonthAndYearWrapper {
-//     align-items: center;
-//     height: 50px;
-//     padding-top: 10px;
-// }
-// .reportDatePicker .rdrMonthAndYearPickers {
-//     display: block!important;
-//     text-align: center!important;
-
-// }
-// .reportDatePicker .rdrMonthAndYearPickers select{
-//     appearance: none;
-//     -webkit-appearance: none;
-//     border: 0;
-//     background: transparent;
-//     padding: 0px;
-//     border-radius: 4px;
-//     outline: 0;
-//     color: #202223!important;
-//     background: transparent !important ;
-//     font-family: var(--textFamily);
-//     font-weight: 400;
-//     font-size: 12px;
-//     cursor: default;
-//     text-align: center;
-//     text-wrap: nowrap;
-// }
-// .reportDatePicker .rdrMonthPicker, .rdrYearPicker {
-//     margin: 0px!important;
-// }
-// .reportDatePicker select option {
-//     min-height: 0!important;
-//     padding: 15px!important;
-//     white-space-collapse:none;
-//     text-wrap: nowrap;
-//     border: 1px solid green!important
-// }
-// .reportDatePicker .rdrMonth {
-//     padding: 0 0em 1.666em 0.383em;
-//     width: 20.667em;
-
-//    button.rdrDay{
-//        select{
-//         background: indigo!important;
-//        }
-//     }
-//     [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
-//         cursor: pointer;
-        
-//     }
-//     [type=button], [type=reset], [type=submit], button {
-//         -webkit-appearance: none!important;
-//     }
-
-//     .react-datepicker__time-container   .react-datepicker__time  
-// .react-datepicker__time-box   ul.react-datepicker__time-list {  
-//      padding: 0; 
-// }
-// }
+.dateColumn{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,6 +1,7 @@
 .topCard{
     margin-top: 50px;
-    width: 860px;
+    width: 891px;
+    height: 211px;
     background: #FFFFFF;
     border: 1px solid #F4F4F4;
     border-radius: 8px;
@@ -9,11 +10,11 @@
     
 }
 .topCard .header{
-    letter-spacing: -0.02em;
+    letter-spacing: -2%;
     color: #25233A;
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     font-family: var(--textFamily2);
     padding-bottom: 10px;
     text-transform: uppercase;
@@ -23,22 +24,26 @@
     justify-content: space-evenly;
     border: 1px solid #F4F4F4;
     border-radius: 8px;
+    width: 860px;
+    height: 150px;
+    border-radius: 8px
+    
 }
 .topCard .content>:nth-child(1),
 .topCard .content>:nth-child(2),
 .topCard .content>:nth-child(3),
 .topCard .content>:nth-child(4){
     flex:1;
-    padding: 10px 0px 10px 10px
+    padding: 20px 0px 10px 10px
 }
 .topCard .content .subtitle{
     text-transform: capitalize;
-    font-family: var(--textFamily2);
+    font-family: var(--textFamily);
     color: #6D7D93;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
-    padding-bottom: 12px;
+    padding-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,7 +88,7 @@
     font-size: 28px;
     line-height: 24px;
     color: #6D7D93;
-    padding-bottom: 12px;
+    padding-bottom: 20px;
 }
 
 .topCard .content>:nth-child(2) .text,

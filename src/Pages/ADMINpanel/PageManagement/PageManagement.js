@@ -12,6 +12,10 @@ import Pagination from '../../../Components/Pagination/Pagination';
 import { STATUSACTIVE, STATUSPROCESSING } from '../../../Components/REDUX/CONSTANT/actionTypes';
 import TableTop from '../../../Components/TableTop/TableTop';
 import deleteImg from "../../../Assets/blackDelete.svg"
+import pointGreen from "../../../Assets/pointGreen.svg";
+import pointYellow from "../../../Assets/pointYellow.svg";
+import pointRed from "../../../Assets/pointRed.svg";
+
 
 function PManagement() {
     const [toggleState, setToggleState] = useState(1);
@@ -74,14 +78,16 @@ function PManagement() {
     }, [currentId, dispatch])
 
     return (
-        <AdminSidebar name="Page Management" >
+        <AdminSidebar name="Page Management" defaultToggleState={() => setToggleState(1)}>
             <div className='PManagement'>
                 <div className='container'>
                     <div className='pageContainer'>
                         <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
                             <div className="tabWrapper">
                                 <div className='AddPage'>
-                                    <span onClick={() => setToggleState(2)}><IoMdAdd className="icon" />Add Page</span>
+                                    <span onClick={() => setToggleState(2)}>
+                                        <IoMdAdd className="icon" />Add Page
+                                    </span>
                                 </div>
 
                                 <div className='tableSection'>
@@ -97,6 +103,7 @@ function PManagement() {
                                                     <td >Page Title</td>
                                                     <td >Web title</td>
                                                     <td >Created By</td>
+                                                    <td >Modified By</td>
                                                     <td >Status</td>
                                                     <td ></td>
                                                 </tr>
@@ -121,16 +128,16 @@ function PManagement() {
                                                                     <td  >{data?.Page_title}</td>
                                                                     <td >{data?.page_url}</td>
                                                                     <td >{data?.created_by}</td>
-                                                                    <td> {data.status === STATUSACTIVE ? <> <span><BsDot className="iconActive" /></span>Active</> :
-                                                                        data.status === STATUSPROCESSING ? <> <span><BsDot className="iconProcessing" />Processing</span></> :
-                                                                            <> <span><BsDot className="iconPending" /></span>Pending</>
+                                                                    <td >modifier name</td>
+                                                                    <td className='PM_Status'> {data.status === STATUSACTIVE ? <> <span><img src={pointGreen} alt="" className="iconActive" /></span>Active</> :
+                                                                        data.status === STATUSPROCESSING ? <> <span><img src={pointYellow} alt="" className="iconProcessing" /></span>Processing</> :
+                                                                            <> <span><img src={pointRed} alt="" className="iconPending" /></span>Deactivated</>
                                                                     }
-                                                                        {/* <span><BsDot className="icon" /></span> Active */}
                                                                     </td>
                                                                     <td className='tableAction'>
                                                                         <button onClick={() => deleteContent(data, index)}><img src={deleteImg} alt="" className='action' /></button>
-                                                                        <span onClick={() => setToggleState(2)}><button onClick={() => setCurrentId(data.page_id)}><MdOutlineModeEditOutline className='action' /></button>
-                                                                        </span>
+                                                                        <div onClick={() => setToggleState(2)}><button onClick={() => setCurrentId(data.page_id)}><MdOutlineModeEditOutline className='action' /></button>
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                             )

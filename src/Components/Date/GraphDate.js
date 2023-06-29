@@ -1,25 +1,28 @@
-import React, { useState } from 'react'
-import { getMonth, getYear } from "date-fns";
+import React from 'react'
+import { getYear } from "date-fns";
 import range from "lodash/range";
 import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import './newMonth.scss'
+import lessthan from "../../Assets/lessthan.svg";
+import greaterthan from "../../Assets/greaterthan.svg"
 
-function MonthCalendar() {
+function GraphDate({ confirmDate, cancelMonthDate, startMonthDate, setStartMonthDate, endMonthDate, setEndMonthDate }) {
 
-    const years = range(1990, getYear(new Date()) + 1, 1);
+    const years = range(1990, getYear(new Date()) + 100, 1);
 
-    const [startDate, setStartDate] = useState(null)
-    const [endDate, setEndDate] = useState(null)
-    const onChangeDateHandler = (value) => {
-        setStartDate(value[0])
-        setEndDate(value[1])
-    }
+    const ExampleCustomInput = ({ value, onClick }) => (
+        <span className="example-custom-input" onClick={onClick}>
+            {value}
+        </span>
+    );
 
-    console.log("date",)
     const renderMonthContent = (month, shortMonth, longMonth) => {
         const tooltipText = `Tooltip for month: ${longMonth}`;
         return <span title={tooltipText}>{shortMonth}</span>;
     };
 
+    // const [open, setOpen] = useState(false);
     return (
         <div className='monthCalendar'>
             <DatePicker
@@ -29,8 +32,7 @@ function MonthCalendar() {
                     changeYear,
                     decreaseYear,
                     increaseYear,
-                    prevMonthButtonDisabled,
-                    nextMonthButtonDisabled,
+                    // prevYearButtonDisabled,
                 }) => (
                     <div className='monthHeader'>
                         <select
@@ -50,32 +52,35 @@ function MonthCalendar() {
                         <div className='dateArrow'>
                             <button
                                 onClick={decreaseYear}
-                                disabled={prevMonthButtonDisabled}
                             >
-                                {"<"}
+                                <img src={lessthan} alt="" />
                             </button>
 
                             <button
                                 onClick={increaseYear}
-                                disabled={nextMonthButtonDisabled}
                             >
-                                {">"}
+                                <img src={greaterthan} alt="" />
                             </button>
                         </div>
                     </div>
                 )}
-                selectsRange={true}
-                startDate={startDate}
-                endDate={endDate}
-                onChange={onChangeDateHandler}
-                dateFormat="MM/yyyy"
+                startDate={startMonthDate}
+                onChange={(date) => setStartMonthDate(date)}
+                dateFormat="MMM"
                 renderMonthContent={renderMonthContent}
                 showMonthYearPicker
-            />
+                shouldCloseOnSelect={false}
+                customInput={<ExampleCustomInput />}
+                inline
+            >
+                <div className='buttonAction67' >
+                    <span onClick={confirmDate}>Confirm</span>
+                    <span onClick={cancelMonthDate}>Cancel</span>
+                </div>
+            </DatePicker>
 
-            <h1>{startDate !== null ? <>{startDate.toDateString()}</> : ""}</h1>
         </div>
     )
 }
 
-export default MonthCalendar
+export default GraphDate 

@@ -87,7 +87,11 @@ function ProgressBar({ lastMonthTotal, currentMonthTotal }) {
                         <div className='progressContent'>
                             <div className='wrapper'>
                                 <div className='text'>
-                                    {getPrevMonth}
+                                    {getPrevMonth === "1" ? "January" : getPrevMonth === "2" ? "February" : getPrevMonth === "3" ? "March" : getPrevMonth === "4" ? "April" :
+                                        getPrevMonth === "5" ? "May" : getPrevMonth === "6" ? "June" : getPrevMonth === "7" ? "July" : getPrevMonth === "8" ? "August" :
+                                            getPrevMonth === "9" ? "September" : getPrevMonth === "10" ? "October" : getPrevMonth === "11" ? "November" :
+                                                getPrevMonth === "12" ? "December" : getPrevMonth}
+
                                     <span className='s-decrease'>${lastMonthTotal}</span>
                                 </div>
                                 <div className='progress-line decrease' data-percent="90%">
@@ -97,7 +101,10 @@ function ProgressBar({ lastMonthTotal, currentMonthTotal }) {
 
                             <div className='wrapper'>
                                 <div className='text'>
-                                    {getCurrentMonth}
+                                    {getCurrentMonth === "1" ? "January" : getCurrentMonth === "2" ? "February" : getCurrentMonth === "3" ? "March" : getCurrentMonth === "4" ? "April" :
+                                        getCurrentMonth === "5" ? "May" : getCurrentMonth === "6" ? "June" : getCurrentMonth === "7" ? "July" : getCurrentMonth === "8" ? "August" :
+                                            getCurrentMonth === "9" ? "September" : getCurrentMonth === "10" ? "October" : getCurrentMonth === "11" ? "November" :
+                                                getCurrentMonth === "12" ? "December" : getCurrentMonth}
                                     <span className='s-increase'>${currentMonthTotal}</span>
                                 </div>
                                 <div className='progress-line increase' data-percent="90%">
@@ -110,7 +117,10 @@ function ProgressBar({ lastMonthTotal, currentMonthTotal }) {
                             <div className='progressContent'>
                                 <div className='wrapper'>
                                     <div className='text'>
-                                        {getPrevMonth}
+                                        {getPrevMonth === "1" ? "January" : getPrevMonth === "2" ? "February" : getPrevMonth === "3" ? "March" : getPrevMonth === "4" ? "April" :
+                                            getPrevMonth === "5" ? "May" : getPrevMonth === "6" ? "June" : getPrevMonth === "7" ? "July" : getPrevMonth === "8" ? "August" :
+                                                getPrevMonth === "9" ? "September" : getPrevMonth === "10" ? "October" : getPrevMonth === "11" ? "November" :
+                                                    getPrevMonth === "12" ? "December" : getPrevMonth}
                                         <span className='s-increase'>${lastMonthTotal}</span>
                                     </div>
                                     <div className='progress-line increase' data-percent="90%">
@@ -120,7 +130,10 @@ function ProgressBar({ lastMonthTotal, currentMonthTotal }) {
 
                                 <div className='wrapper'>
                                     <div className='text'>
-                                        {getCurrentMonth}
+                                        {getCurrentMonth === "1" ? "January" : getCurrentMonth === "2" ? "February" : getCurrentMonth === "3" ? "March" : getCurrentMonth === "4" ? "April" :
+                                            getCurrentMonth === "5" ? "May" : getCurrentMonth === "6" ? "June" : getCurrentMonth === "7" ? "July" : getCurrentMonth === "8" ? "August" :
+                                                getCurrentMonth === "9" ? "September" : getCurrentMonth === "10" ? "October" : getCurrentMonth === "11" ? "November" :
+                                                    getCurrentMonth === "12" ? "December" : getCurrentMonth}
                                         <span className='s-decrease'>${currentMonthTotal}</span>
                                     </div>
                                     <div className='progress-line decrease' data-percent="90%">

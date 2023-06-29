@@ -7,6 +7,8 @@ import increaseImg from "../../../Assets/Increase.svg";
 import decreaseImg from "../../../Assets/decrease.svg";
 import TableTop from '../../../Components/TableTop/TableTop';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import NewMonthCalendar from '../../../Components/Date/newMonth';
+import CalendarMonth from '../../../Components/Date/calendar';
 
 function RevenueTable() {
     const dispatch = useDispatch()
@@ -44,6 +46,21 @@ function RevenueTable() {
     const [search, setSearch] = useState('')
     const prevMonth = moment().subtract(1, "month").format('MMMM')
     const [active, setActive] = useState(null);
+
+    // for month calendar
+    const [open, setOpen] = useState(false);
+    const [startMonthDate, setStartMonthDate] = useState(null)
+    const [endMonthDate, setEndMonthDate] = useState(null)
+    const [confirmDate, setConfirmDate] = useState(false);
+    const confirmDateMonth = () => {
+        setConfirmDate(true);
+        setOpen(false)
+    }
+
+    const cancelMonthDate = () => {
+        setConfirmDate(false);
+        setOpen(false)
+    }
     useEffect(() => {
         dispatch(getAllREVENUE())
         setActive(active)
@@ -59,22 +76,42 @@ function RevenueTable() {
                         />
 
                     </section>
+
                     <div className="scroll-container">
                         <table className="table scroll">
                             <thead>
-                                <tr>
+                                <tr style={{ position: 'relative', width: '100%' }}>
                                     <td>S/N</td>
                                     <td>Name</td>
                                     <td>Total Gross Profit</td>
                                     <td>Last Month</td>
                                     <td>Last Week</td>
-                                    <td>
-                                        <div className='rateDropdown'>
-                                            <span>Growth rate <br /> {prevMonth} - {moment().format("MMMM")}</span>
-                                            <span><MdOutlineKeyboardArrowDown className='icon' /> </span>
-                                        </div>
-                                    </td>
+                                    <td style={{ position: 'relative' }}>
+                                        <div className='rateDropdown' onClick={() => setOpen(!open)}>
 
+                                            <span><span style={{ textTransform: 'none' }}>Growth rate</span> <br />
+                                                {confirmDate ? (
+                                                    <>
+                                                        {startMonthDate.toLocaleDateString('en-us', { month: "short" })} - {endMonthDate.toLocaleDateString('en-us', { month: "short" })}
+                                                    </>
+                                                ) :
+                                                    <>{prevMonth} - {moment().format("MMMM")}</>
+                                                }
+                                            </span>
+
+                                            <span><MdOutlineKeyboardArrowDown className='icon' /> </span>
+
+                                        </div>
+
+
+
+                                    </td>
+                                    {open && (
+                                        <div style={{ position: 'absolute', top: '55px', right: '0px' }}>
+                                            <NewMonthCalendar startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
+                                                endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} />
+                                        </div>
+                                    )}
                                 </tr>
                             </thead>
                             <tbody>

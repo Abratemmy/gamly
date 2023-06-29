@@ -3,10 +3,11 @@ import validator from 'validator';
 import pointGreen from "../../../Assets/pointGreen.svg";
 import pointYellow from "../../../Assets/pointYellow.svg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { AiOutlineEyeInvisible } from "react-icons/ai"
 import { useDispatch } from 'react-redux';
 import { createADMIN } from '../../../Components/REDUX/ACTION/adminAction';
 import { FailedMessage, SuccessMessage } from '../../../Components/Message/Message';
+import cancelImg from "../../../Assets/cancel.svg";
+import Passwordeye from "../../../Assets/passwordEye.svg"
 
 function AddAdminPage({ setAddAdminForm }) {
     const dispatch = useDispatch();
@@ -97,104 +98,107 @@ function AddAdminPage({ setAddAdminForm }) {
         <div>
             <div className='heading'>
                 <div className='text'>Add Admin</div>
-                <button onClick={() => setAddAdminForm(false)}>X</button>
+                <button onClick={() => setAddAdminForm(false)}>
+                    <img src={cancelImg} alt="" />
+                </button>
             </div>
 
-            <form onSubmit={handleAddAdmin} className='formInput'>
-                <div className='inputfield'>
-                    <label>Name</label>
-                    <input type="text"
-                        name="title" placeholder='Enter full name' value={values.title} onChange={handleChange}
-                    />
-                    {errors ? <span className='error'> {errors.title}</span> : ""}
-                </div>
-
-                <div className='inputfield'>
-                    <label>Email</label>
-                    <input type="email"
-                        name="email" placeholder="Enter member email" value={values.email}
-                        onChange={handleChange}
-                        onKeyUp={handleOnKeyUp}
-                        onBlur={handleOnBlur}
-                        autocomplete="off"
-                    />
-                    {pwdRequiste ? <>
-                        {checks.emailCheck ? <div className='valid'>email Id correct</div> : <div className='invalid'> email Id wrong</div>}
-                    </> : null}
-
-                    {errors ? <span className='error'> {errors.email}</span> : ""}
-                </div>
-
-                <div className='inputfield'>
-                    <label>Role</label>
-                    <div className='selectDropdown'>
-                        <div className='dropdown-btn' onChange={handleChange} onClick={() => setSelectRoleActive(!selectRoleActive)}>
-                            {roleSelected} <span><MdOutlineKeyboardArrowDown className='icon' /></span>
-                        </div>
-                        {selectRoleActive && (
-                            <div className='dropdown-content'>
-                                {roleData?.map((option) => (
-                                    <div className="dropdown-item"
-                                        onClick={(e) => {
-                                            setRoleSelected(option);
-                                            setSelectRoleActive(false)
-                                        }}
-                                    >
-                                        {option}
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-
+            <form onSubmit={handleAddAdmin} className='formWrapper'>
+                <div className='formInput'>
+                    <div className='inputfield'>
+                        <label>Name</label>
+                        <input type="text"
+                            name="title" placeholder='Enter full name' value={values.title} onChange={handleChange}
+                        />
+                        {errors ? <span className='error'> {errors.title}</span> : ""}
                     </div>
-                </div>
 
-                <div className='inputfield'>
-                    <label>Access</label>
-                    <div className='selectDropdown'>
-                        <div className='dropdown-btn' onChange={handleChange} onClick={() => setSelectAccessActive(!selectAccessActive)}>
-                            {accessSelected === "Both" ? <div className="">
-                                <span className='green'><img src={pointGreen} alt="" /> Users</span>
-                                <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
+                    <div className='inputfield'>
+                        <label>Email</label>
+                        <input type="email"
+                            name="email" placeholder="Enter member email" value={values.email}
+                            onChange={handleChange}
+                            onKeyUp={handleOnKeyUp}
+                            onBlur={handleOnBlur}
+                            autocomplete="off"
+                        />
+                        {pwdRequiste ? <>
+                            {checks.emailCheck ? <div className='valid'>email Id correct</div> : <div className='invalid'> email Id wrong</div>}
+                        </> : null}
+
+                        {errors ? <span className='error'> {errors.email}</span> : ""}
+                    </div>
+
+                    <div className='inputfield'>
+                        <label>Role</label>
+                        <div className='selectDropdown'>
+                            <div className='dropdown-btn' onChange={handleChange} onClick={() => setSelectRoleActive(!selectRoleActive)}>
+                                {roleSelected} <span><MdOutlineKeyboardArrowDown className='icon' /></span>
                             </div>
-                                : accessSelected === "Users" ? <div className=''>
-                                    <span className='green'><img src={pointGreen} alt="" /> Users</span>
+                            {selectRoleActive && (
+                                <div className='dropdown-content'>
+                                    {roleData?.map((option) => (
+                                        <div className="dropdown-item"
+                                            onClick={(e) => {
+                                                setRoleSelected(option);
+                                                setSelectRoleActive(false)
+                                            }}
+                                        >
+                                            {option}
+                                        </div>
+                                    ))}
                                 </div>
-                                    : <div>
-                                        <span className='yellow'><img src={pointYellow} alt="" /> Users</span>
-                                    </div>
-                            }
-                            <span><MdOutlineKeyboardArrowDown className='icon' /></span>
+                            )}
+
                         </div>
-                        {selectAccessActive && (
-                            <div className='dropdown-content'>
-                                {accessData?.map((option) => (
-                                    <div className="dropdown-item"
-                                        onClick={(e) => {
-                                            setaccessSelected(option);
-                                            setSelectAccessActive(false)
-                                        }}
-                                    >
-                                        {option}
+                    </div>
+
+                    <div className='inputfield'>
+                        <label>Access</label>
+                        <div className='selectDropdown'>
+                            <div className='dropdown-btn' onChange={handleChange} onClick={() => setSelectAccessActive(!selectAccessActive)}>
+                                {accessSelected === "Both" ? <div className="">
+                                    <span className='green'><img src={pointGreen} alt="" /> Users</span>
+                                    <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
+                                </div>
+                                    : accessSelected === "Users" ? <div className=''>
+                                        <span className='green'><img src={pointGreen} alt="" /> Users</span>
                                     </div>
-                                ))}
+                                        : <div>
+                                            <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
+                                        </div>
+                                }
+                                <span><MdOutlineKeyboardArrowDown className='icon' /></span>
                             </div>
-                        )}
+                            {selectAccessActive && (
+                                <div className='dropdown-content'>
+                                    {accessData?.map((option) => (
+                                        <div className="dropdown-item"
+                                            onClick={(e) => {
+                                                setaccessSelected(option);
+                                                setSelectAccessActive(false)
+                                            }}
+                                        >
+                                            {option}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
 
+                        </div>
+                    </div>
+
+                    <div className='inputfield'>
+                        <label>Password</label>
+
+                        <div className="inner-addon left-addon">
+                            <input type={passwordShown ? "text" : "password"} placeholder="Password" value={values.password} name="password" onChange={handleChange} />
+                            <img src={Passwordeye} alt="" onClick={togglePassword} className="show-icon" />
+                        </div>
+
+                        {errors ? <span className='error'> {errors.password}</span> : ""}
                     </div>
                 </div>
-
-                <div className='inputfield'>
-                    <label>Password</label>
-
-                    <div className="inner-addon left-addon">
-                        <input type={passwordShown ? "text" : "password"} placeholder="Password" value={values.password} name="password" onChange={handleChange} />
-                        <AiOutlineEyeInvisible onClick={togglePassword} className="show-icon" />
-                    </div>
-
-                    {errors ? <span className='error'> {errors.password}</span> : ""}
-                </div>
-
                 <div className='submitButton'>
                     <button onClick={() => setAddAdminForm(false)}>Cancel</button>
                     {loading ? <>

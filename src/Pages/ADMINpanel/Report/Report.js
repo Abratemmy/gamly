@@ -13,23 +13,34 @@ import Pagination from '../../../Components/Pagination/Pagination';
 import Refresh from '../../../Components/Refresh/Refresh';
 import { FiAlertTriangle } from "react-icons/fi"
 import { SuccessMessage } from '../../../Components/Message/Message';
-// import ReportDatePicker from './reportDatePicker';
-
-
+import pointGreen from "../../../Assets/pointGreen.svg";
+import ReportDatePicker, { ReportEndDatePicker, ReportStartDatePicker } from './reportDatePicker';
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import closeBox from '../../../Assets/closebox.svg'
 
 
 function Report() {
     // date state
-    const [range, setRange] = useState([
-        {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 7),
-            key: 'selection'
-        }
-    ])
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
     // open close
-    const [open, setOpen] = useState(false)
+    const [openStartDate, setOpenStartDate] = useState(false)
+    const [openEndDate, setOpenEndDate] = useState(false)
+
+    const openStartDateToggle = () => {
+        setOpenStartDate(prev => !prev);
+        setOpenEndDate(false)
+    }
+
+    const openEndDateToggle = () => {
+        setOpenEndDate(prev => !prev);
+        setOpenStartDate(false)
+    }
+
+    const [selectSportActive, setSelectSportActive] = useState(false)
+    const [sportSelected, setSportSelected] = useState("Select sport")
+    const sportType = ["Horse Racing", "F1", "Golf", "Darts", "Basketball", "MMA/UFC", "NetBall", "Rudby League"]
 
     const dispatch = useDispatch()
     const [pageNumber, setPageNumber] = useState(0);
@@ -63,7 +74,6 @@ function Report() {
         setMessageStatus(true)
     }
 
-    const sportType = ["Horse Racing", "F1", "Golf", "Darts", "Basketball", "MMA/UFC", "NetBall", "Rudby League"]
     useEffect(() => {
         dispatch(getAllREPORT())
     }, [dispatch])
@@ -80,91 +90,67 @@ function Report() {
                                 <Refresh handleRefresh={handleRefresh} />
                             </div>
 
-                            {/* <ReportDatePicker /> */}
-                            <div className='filterSession'>
-                                <div className='row gx-3'>
-                                    <div className="col-sm-2">
-                                        <div className='content dateContent'>
-                                            <label>Start date</label>
-                                            <input
-                                                value={`${format(range[0].startDate, "MM/dd/yyyy")}`}
-                                                readOnly
-                                                className="inputBox"
-                                                onClick={() => setOpen(open => !open)}
-                                            />
-                                        </div>
+                            <div className='row filterSession gy-4'>
+                                <div className='col-lg-5  col-md-6'>
+                                    <div className='dateColumn'>
+                                        <ReportDatePicker />
                                     </div>
+                                </div>
 
+                                <div className='col-lg-7 col-md-12 col' >
+                                    <div className=''>
+                                        <div className='row gx-3'>
+                                            <div className="col-4">
+                                                <div className='content'>
+                                                    <label>Match Id</label>
+                                                    <input className='inputBox' />
+                                                </div>
+                                            </div>
+                                            <div className="col-4">
+                                                <div className='content'>
+                                                    <label>Challenge Id</label>
+                                                    <input className='inputBox' />
+                                                </div>
+                                            </div>
+                                            <div className="col-4">
+                                                <div className='content'>
+                                                    <label>Sport Type</label>
+                                                    <div className='inputBox' onClick={() => setSelectSportActive(!selectSportActive)}>
+                                                        {sportSelected} <span><MdOutlineKeyboardArrowDown className='drop-icon' /></span>
+                                                        {selectSportActive && (
+                                                            <div className='dropdown-content'>
+                                                                {sportType?.map((option) => (
+                                                                    <div className="dropdown-item"
+                                                                        onClick={(e) => {
+                                                                            setSportSelected(option);
+                                                                            setSelectSportActive(false)
+                                                                        }}
+                                                                    >
+                                                                        {option}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        )}
 
-                                    <div className="col-sm-2">
-                                        <div className='content dateContent'>
-                                            <label>End Date</label>
-                                            <input
-                                                value={`${format(range[0].endDate, "MM/dd/yyyy")}`}
-                                                readOnly
-                                                className="inputBox"
-                                                onClick={() => setOpen(open => !open)}
-                                            />
-                                        </div>
-                                    </div>
+                                                    </div>
 
-                                    <div className="col-sm-2">
-                                        <div className='content'>
-                                            <label>Match Id</label>
-                                            <input className='inputBox' />
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-2">
-                                        <div className='content'>
-                                            <label>Challenge Id</label>
-                                            <input className='inputBox' />
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-2">
-                                        <div className='content'>
-                                            <label>Sport Type</label>
-                                            <select name="sportType" id="sportType" value="sportType"
-                                                className='inputBox'
-
-                                            >
-                                                <option>Select Sport Type</option>
+                                                    {/* <option>Select Sport Type</option>
                                                 {sportType?.map((item, index) => {
                                                     return (
                                                         <option key={index} value={item}>{item}</option>
                                                     )
 
-                                                })}
-                                            </select>
+                                                })} */}
+                                                </div>
+                                            </div>
                                         </div>
+
                                     </div>
                                 </div>
-                                {/* {open &&
-                                    <>
-                                        <div className='dateWrapper bigScreen'>
-                                            <DateRange
-                                                onChange={item => setRange([item.selection])}
-                                                editableDateInputs={true}
-                                                moveRangeOnFirstSelection={true}
-                                                ranges={range}
-                                                months={2}
-                                                direction="horizontal"
-                                                className="calendarElement"
-                                            />
-                                        </div>
-                                        <div className='dateWrapper phone'>
-                                            <DateRange
-                                                onChange={item => setRange([item.selection])}
-                                                editableDateInputs={true}
-                                                moveRangeOnFirstSelection={true}
-                                                ranges={range}
-                                                months={1}
-                                                direction="horizontal"
-                                                className="calendarElement"
-                                            />
-                                        </div>
-                                    </>
-                                } */}
                             </div>
+
+
+
                         </div>
 
                         <div className='reportAction'>
@@ -193,7 +179,7 @@ function Report() {
                                             <>
                                                 {getAllReports?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
                                                     return (
-                                                        <tr key={data?.id}>
+                                                        <tr key={data?.id} onClick={openReportHandler} style={{ cursor: 'pointer' }}>
                                                             <td >
                                                                 {((pageNumber * 10) + index + 1).toString().length === 1 ?
                                                                     <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
@@ -201,12 +187,12 @@ function Report() {
                                                             </td>
                                                             <td >{data?.address?.geo?.lat}</td>
                                                             <td  >18/06/2023</td>
-                                                            <td >{data?.address?.suite}</td>
+                                                            <td >ID: {data?.address?.suite}</td>
                                                             <td >{data?.address?.city}</td>
                                                             <td >${data?.id}0.00</td>
                                                             <td>{data?.address?.city}</td>
-                                                            <td><span><BsDot className="icon" /></span> Active</td>
-                                                            <td>{data?.address?.geo?.lng}</td>
+                                                            <td><span style={{ paddingRight: '5px' }}><img src={pointGreen} alt="" style={{ width: '9px' }} /></span> Active</td>
+                                                            <td>$ {data?.address?.geo?.lng}</td>
                                                         </tr>
                                                     )
                                                 })}
@@ -246,18 +232,19 @@ function Report() {
                     <div className='popupContainer'>
                         <div className='reportpopupBody' onClick={(e) => e.stopPropagation()}>
                             <div className='top'>
-                                <div>
+                                <div className='left'>
                                     <div className='head'>Report</div>
                                     <div className='text'>
                                         <div className='bd-text'>Invoice No: 972777</div>
-                                        <div className="close">
-                                            <button onClick={() => setOpenReport(false)}>x</button>
-                                        </div>
                                     </div>
                                     <div className='sub-text'>GAA Football</div>
                                     <div className='sm-text'>Adam Country, ND</div>
+                                </div>
 
-
+                                <div className="close">
+                                    <button onClick={() => setOpenReport(false)}>
+                                        <img src={closeBox} alt="" />
+                                    </button>
                                 </div>
                             </div>
 

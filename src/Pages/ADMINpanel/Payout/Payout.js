@@ -113,36 +113,71 @@ function Payout() {
             name: 'May 01',
             uv: 200,
             amt: 2400,
+            onehrUv: 100,
+            twentyfourMinUv: 200,
+            thirtyminUv: 300,
+            tenminUv: 50,
+            fineminUv: 100
         },
         {
             name: 'May 05',
             uv: 100,
             amt: 2210,
+            onehrUv: 40,
+            twentyfourMinUv: 90,
+            thirtyminUv: 120,
+            tenminUv: 10,
+            fineminUv: 150
         },
         {
             name: 'May 10',
             uv: 300,
             amt: 2290,
+            onehrUv: 200,
+            twentyfourMinUv: 100,
+            thirtyminUv: 150,
+            tenminUv: 300,
+            fineminUv: 100
         },
         {
             name: 'May 15',
             uv: 100,
             amt: 2000,
+            onehrUv: 50,
+            twentyfourMinUv: 150,
+            thirtyminUv: 250,
+            tenminUv: 50,
+            fineminUv: 100
         },
         {
             name: 'May 20',
             uv: 400,
             amt: 2181,
+            onehrUv: 300,
+            twentyfourMinUv: 200,
+            thirtyminUv: 50,
+            tenminUv: 350,
+            fineminUv: 100
         },
         {
             name: 'May 23',
             uv: 300,
             amt: 2500,
+            onehrUv: 200,
+            twentyfourMinUv: 100,
+            thirtyminUv: 50,
+            tenminUv: 150,
+            fineminUv: 300
         },
         {
             name: 'May 30',
             uv: 500,
             amt: 2100,
+            onehrUv: 400,
+            twentyfourMinUv: 200,
+            thirtyminUv: 300,
+            tenminUv: 100,
+            fineminUv: 300
         },
     ];
 

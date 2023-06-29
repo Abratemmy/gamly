@@ -14,6 +14,7 @@
             border-radius: 6.48142px;
             padding: 10px;
             width: 100%;
+            height: 209.85px;
             .top{
                 display: flex;
                 align-items: center;
@@ -42,14 +43,14 @@
                     font-size: 13.2631px;
                     position: relative;
                    .duration{
-                    width: 100%;
                     border:none;
                     background: var(--backgroundColor);
-                    width: 199.23px;
-                    height: 37.06px;
+                    width: 176.45px;
+                    height: 42px;
                     border: 0.875933px solid #DCDEE6;
                     border-radius: 7.0583px;
-                    color:#fff;font-size: 14px;
+                    color:#fff;
+                    font-size: 13.9px;
                     font-family: 'Noto Sans', sans-serif;;
                     .iconDropdown{
                         font-size: 23px;
@@ -94,7 +95,8 @@
                     font-style: normal;
                     font-weight: 700;
                     font-size: 35.2915px;
-                }
+                    padding-bottom: 10px;
+                }   
                 .text{
                     color: #2D3657;
                     font-size: 12px;

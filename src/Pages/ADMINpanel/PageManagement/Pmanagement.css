@@ -32,15 +32,38 @@
     font-size: 20px;
     font-weight: 900;
 }
+.PManagement .table thead td,
+.PManagement .table td{
+    font-weight: 400;
+    font-size: 16px;
+}
+.PManagement .table td{
+    color: #374151
+}
+
+.PManagement .PM_Status span{
+    padding-right: 7px
+}
+.PManagement .PM_Status span img{
+    width: 9px
+}
+.PManagement .tableAction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .PManagement .tableAction>:nth-child(1) img{
     width: 100%
 }
 .PManagement .tableAction>:nth-child(2){
     background:  #F1F1F1;
     border-radius: 5px;
-    padding: 5px 3px;
-    color: #667085!important;
-    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f1f1;
 }
 .PManagement .tableAction>:nth-child(2) .action{
     color:  #667085!important

@@ -1,0 +1,34 @@
+.daysCalendar{
+  .react-datepicker {
+    display: flex;
+    justify-content: center;
+    z-index: 10
+}
+  
+.react-datepicker__month-container {
+    flex: 1;
+     background:blue!important;
+}
+  
+  .react-datepicker__month {
+    width: 100%;
+  }
+  .first-date {
+    background-color: #e8e8e8;
+    color: #000000;
+    /* Add any other custom styling for the first date */
+  }
+  
+  .last-date {
+    background-color: #b2b2b2;
+    color: #ffffff;
+    /* Add any other custom styling for the last date */
+  }
+  .in-between {
+    background-color: red;
+    color: #333333;
+    /* Add any other custom styling for the in-between dates */
+  }
+
+
+}
