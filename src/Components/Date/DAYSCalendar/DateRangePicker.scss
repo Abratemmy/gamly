@@ -2,32 +2,141 @@
   .react-datepicker {
     display: flex;
     justify-content: center;
-    z-index: 10
+    z-index: 10;
+    font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+    font-size: 0.8rem;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 0.3rem;
+    position: relative;
+    width: fit-content;
+    padding: 1px!important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .react-datepicker__navigation {
+    align-items: center;
+    background: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    padding: 0;
+    border: none;
+    z-index: 1;
+    text-indent: -999em;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+  .react-datepicker__navigation-icon--previous::before,
+  .react-datepicker__navigation-icon--next::before {
+    border-color: none!important;
+    border-style: none!important;
+    border-width: none!important;
+    content: "";
+    display: block;
+    height: 32px;
+    position: absolute;
+    width: 32px;
+  }
+  .react-datepicker__navigation--previous {
+    background: url("../../../Assets/backwardIcon.svg") no-repeat ;
+    width: 45px;
+    height: 25px;
+    border: none;
+    z-index:2!important;
+    margin-left:10px;
+    top:-1px;
+    background-size: 18px 18px;
+  }
+  .react-datepicker__navigation--next {
+    background: url("../../../Assets/forwardIcon.svg") no-repeat ;
+    width: 15;
+    height: 25px;
+    border: none;
+    z-index:2!important;
+    top:-1px;
+    background-size: 18px 18px;
+  }
+  .react-datepicker__header {
+    text-align: center;
+    background-color: #fff;
+    border-bottom: none;
+    border-top-left-radius: 0.3rem;
+    padding: 8px 0;
+    position: relative;
+  }
+
+  .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+    margin-top: 0;
+    color: #202223;
+    font-weight: bold;
+    font-size: 14px;
+    padding-bottom: 8px!important;
+    font-family: var(--textFamily2);
+    font-weight:400
 }
   
 .react-datepicker__month-container {
     flex: 1;
-     background:blue!important;
+    background:#fff!important;
+   
 }
-  
   .react-datepicker__month {
     width: 100%;
   }
+  .react-datepicker__day--selected,
+  .react-datepicker__day--in-range {
+    border-radius: 0.3rem;
+    background-color: transparent;
+    color: #fff;
+  }
+  .react-datepicker__day-names {
+    margin-bottom: -9px!important;
+    padding-left: 10px!important;
+}
+  .daysCalendar .react-datepicker__day-name {
+    color: #000;
+    display: inline-block;
+    width: 1.9rem;
+    line-height: 1.7rem;
+    text-align: center;
+    margin: 0rem;
+    margin-bottom: 3px;
+    font-family: var(--textFamily2);
+    font-size: 12px!important;
+    font-weight: 400;
+  }
+  .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+    color: #000;
+    display: inline-block;
+    width: 1.9rem;
+    line-height: 1.7rem;
+    text-align: center;
+    margin: 0rem;
+    margin-bottom: 3px;
+}
+  .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range{
+    padding:0!important
+  }
   .first-date {
-    background-color: #e8e8e8;
-    color: #000000;
-    /* Add any other custom styling for the first date */
+    background-color: var(--primaryColor);
+    color: #fff;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
   }
   
   .last-date {
-    background-color: #b2b2b2;
-    color: #ffffff;
-    /* Add any other custom styling for the last date */
+    background-color: var(--primaryColor);
+    color: #fff;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
   }
   .in-between {
-    background-color: red;
+    background-color: #F2F7FE;
     color: #333333;
-    /* Add any other custom styling for the in-between dates */
   }
 
 

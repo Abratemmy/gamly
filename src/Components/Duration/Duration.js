@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import './Duration.scss'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import DurationMonth from '../Date/durationMonth';
-import DateCalendar from '../Date/Date';
 import DateRangePicker from '../Date/DAYSCalendar/DateRangePicker';
+import moment from 'moment'
 
 function Duration({ getDateData }) {
     const [dateToggle, setDateToggle] = useState(false);
@@ -29,8 +29,8 @@ function Duration({ getDateData }) {
         } else {
             setDateError(true)
         }
-
     }
+
     const cancelMonthDate = () => {
         setConfirmDate(false);
         setDateToggle(false);
@@ -82,7 +82,8 @@ function Duration({ getDateData }) {
             )}
 
             {openDatewithDays && (
-                <DateRangePicker />
+                <DateRangePicker startDate={startMonthDate} endDate={endMonthDate} onChange={onChangeDateHandler} setStartDate={setStartMonthDate}
+                    setEndDate={setEndMonthDate} />
                 // <DateCalendar />
             )}
         </div>

@@ -40,12 +40,13 @@ function ReportDatePicker() {
                     <DatePicker
                         id="startdatepicker"
                         selected={startDate}
-                        onChange={handleDateChange}
+                        onChange={(date) => setStartDate(date)}
                         selectsStart
                         startDate={startDate}
                         endDate={endDate}
                         className='datepicker-input'
                         dayClassName={customDayClassNames}
+                        dateFormat="yyyy - MM - dd"
                     // inline
                     />
                 </div>
@@ -54,15 +55,16 @@ function ReportDatePicker() {
                     <DatePicker
                         id="enddatepicker"
                         selected={endDate}
-                        onChange={handleDateChange}
+                        onChange={(date => setEndDate(date))}
                         selectsEnd
                         startDate={startDate}
                         endDate={endDate}
                         minDate={startDate}
                         // inline
                         className='datepicker-input'
-                        filterDate={filterPastDates} // Pass the filterDate function
+                        //filterDate={filterPastDates} // Pass the filterDate function
                         dayClassName={customDayClassNames}
+                        dateFormat="yyyy - MM - dd"
                     />
                 </div>
 

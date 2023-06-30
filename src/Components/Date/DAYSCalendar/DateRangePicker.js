@@ -3,21 +3,16 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import "./DateRangePicker.scss";
 
-const DateRangePicker = () => {
-    const [selectedRange, setSelectedRange] = useState({
-        startDate: null,
-        endDate: null
-    });
-
-    const handleDateChange = (dates) => {
-        const [startDate, endDate] = dates;
-        setSelectedRange({ startDate, endDate });
-    };
+const DateRangePicker = ({ startDate, endDate, setStartDate, setEndDate, onChange }) => {
+    const handleDateChange = (range) => {
+        setStartDate(range[0]);
+        setEndDate(range[1]);
+    }
 
     const renderDayContents = (day, date) => {
-        const isStartDate = selectedRange.startDate && selectedRange.startDate.toDateString() === date.toDateString();
-        const isEndDate = selectedRange.endDate && selectedRange.endDate.toDateString() === date.toDateString();
-        const isInBetween = selectedRange.startDate && selectedRange.endDate && date > selectedRange.startDate && date < selectedRange.endDate;
+        const isStartDate = startDate && startDate.toDateString() === date.toDateString();
+        const isEndDate = endDate && endDate.toDateString() === date.toDateString();
+        const isInBetween = startDate && endDate && date > startDate && date < endDate;
 
         return (
             <div className={`custom-day ${isStartDate ? 'first-date' : ''} ${isEndDate ? 'last-date' : ''} ${isInBetween ? 'in-between' : ''}`}>
@@ -26,7 +21,17 @@ const DateRangePicker = () => {
         );
     };
 
+    const getMonthsInRange = () => {
+        const months = [];
+        let currentDate = new Date(startDate);
 
+        while (currentDate <= endDate) {
+            months.push(new Date(currentDate));
+            currentDate.setMonth(currentDate.getMonth() + 1);
+        }
+
+        return months;
+    };
 
     return (
         <div className='daysCalendar'>
@@ -43,7 +48,7 @@ const DateRangePicker = () => {
                             className={
                                 "react-datepicker__navigation react-datepicker__navigation--previous"
                             }
-                            style={customHeaderCount === 1 ? { visibility: "hidden" } : null}
+                            style={customHeaderCount === 1 || customHeaderCount >= 1 ? { visibility: "hidden" } : null}
                             onClick={decreaseMonth}
                         >
                             <span
@@ -79,17 +84,16 @@ const DateRangePicker = () => {
                     </div>
                 )}
 
-                selected={selectedRange.startDate}
+                selected={startDate || undefined}
                 onChange={handleDateChange}
-                startDate={selectedRange.startDate}
-                endDate={selectedRange.endDate}
+                startDate={startDate || undefined}
+                endDate={endDate}
+                dateFormat="MM-yyyy"
                 selectsRange
                 inline
-                monthsShown={2}
+                monthsShown={getMonthsInRange().length}
+                includeDates={getMonthsInRange()}
                 renderDayContents={renderDayContents} // Custom renderDayContents function
-
-
-
             />
         </div>
     );
