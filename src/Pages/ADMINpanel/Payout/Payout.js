@@ -6,13 +6,11 @@ import { getAllPAYMENTs } from '../../../Components/REDUX/ACTION/paymentAction';
 import { NavLink } from 'react-router-dom';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import Pagination from '../../../Components/Pagination/Pagination';
-import DateCalendar from '../../../Components/Date/Date';
-import Search from '../../../Components/Search/Search';
-import Refresh from '../../../Components/Refresh/Refresh';
 import TopCard from '../../../Components/pageCard/TopCard';
 import AreaChartRechart from '../../../Components/RECHART/AreaChart';
 import AreaChartRechart2 from '../../../Components/RECHART/AreaChart2';
 import TableTop from '../../../Components/TableTop/TableTop';
+import TableProgressBar from '../../../Components/TableProgressBar/TableProgressBar';
 
 function Payout() {
     // payout card array
@@ -203,7 +201,6 @@ function Payout() {
                             </div>
                         </div>
                     </div>
-
                     <div className="tableName">Payouts</div>
                     <div className='tablePage tableSection'>
                         <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
@@ -253,23 +250,8 @@ function Payout() {
                             </table>
                         </div>
                     </div>
-                    {
-                        getPaymentData?.length <= newsPerPage ? (
-                            <div className='tableProgressBar'>
-                                <div className='displayProgress'>
-                                    <div className='progress-line decrease' data-percent="90%">
-                                        <span style={{ width: "100%" }}></span>
-                                    </div>
-                                </div>
-                            </div>
-                        ) : <div className='tableProgressBar'>
-                            <div className='displayProgress'>
-                                <div className='progress-line decrease' data-percent="90%">
-                                    <span style={{ width: `${progressWidth}%` }}></span>
-                                </div>
-                            </div>
-                        </div>
-                    }
+                    <TableProgressBar data={getPaymentData} newsPerPage={newsPerPage} progressWidth={progressWidth} />
+
 
                     <Pagination pageCount={pageCount} changePage={changePage} />
 

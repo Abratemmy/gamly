@@ -21,6 +21,7 @@ function DurationMonth({ dateError, onChangeDateHandler, confirmDate, cancelMont
         return <span title={tooltipText}>{shortMonth}</span>;
     };
 
+
     // const [open, setOpen] = useState(false);
     return (
         <div className='monthCalendar'>

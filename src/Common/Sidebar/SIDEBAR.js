@@ -7,6 +7,7 @@ import { AiOutlineMenuFold, AiOutlineClose } from "react-icons/ai"
 import { MdOutlineKeyboardArrowRight, MdLogout, MdOutlineSettings } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import Navbar from '../Navbar/Navbar';
+import { AlertToggle } from '../../Components/Message/Message';
 
 function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected, defaultToggleState }) {
     // dark theme and light theme
@@ -16,11 +17,13 @@ function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected,
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
+    const [userlogout, setUserLogout] = useState(false)
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
         setTimeout(() => {
             navigate("/")
             setUser(null)
+            localStorage.clear('userDataToken')
         }, 300)
     }
 
@@ -69,7 +72,7 @@ function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected,
                             </li>
 
                             <li className="mobile-logout">
-                                <button onClick={logout} exact className="sidebar-navlink "
+                                <button onClick={() => setUserLogout(true)} exact className="sidebar-navlink "
                                     style={{ border: "none", background: "transparent", textAlign: "left" }}
                                 >
                                     <span className="icon">
@@ -102,7 +105,11 @@ function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected,
                 </div>
             </div>
 
-
+            {userlogout && (
+                <AlertToggle topic="Log Out" text="Are you sure you want to log out of your account ?"
+                    closeAlertToggle={() => setUserLogout(false)} performAction={logout} subText="logout"
+                />
+            )}
 
         </div >
     )

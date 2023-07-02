@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react'
 import "./Report.scss"
 import AdminSidebar from '../../../Components/PanelSIDEBAR/AdminSidebar';
-import { DateRange } from 'react-date-range'
-import format from 'date-fns/format'
-import { addDays } from 'date-fns'
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -89,6 +86,7 @@ function Report() {
                             <div className='refresh'>
                                 <Refresh handleRefresh={handleRefresh} />
                             </div>
+
 
                             <div className='row filterSession gy-4'>
                                 <div className='col-lg-5  col-md-6'>

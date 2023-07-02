@@ -6,9 +6,6 @@ import PercentageCard from '../../../Components/pageCard/PercentageCard';
 import moment from "moment";
 import { useDispatch, useSelector } from 'react-redux';
 import Pagination from '../../../Components/Pagination/Pagination';
-import DateCalendar from '../../../Components/Date/Date';
-import Search from '../../../Components/Search/Search';
-import Refresh from '../../../Components/Refresh/Refresh';
 import { MdOutlineKeyboardArrowDown, MdKeyboardArrowDown } from "react-icons/md"
 import { getAllSALES } from '../../../Components/REDUX/ACTION/salesAction';
 import increaseImg from "../../../Assets/Increase.svg";
@@ -17,7 +14,7 @@ import AreaChartRechart from '../../../Components/RECHART/AreaChart';
 import BarChartRechart from '../../../Components/RECHART/BarChart';
 import TableTop from '../../../Components/TableTop/TableTop';
 import NewMonthCalendar from '../../../Components/Date/newMonth';
-import CalendarRangePicker from '../../../Components/Date/calendar';
+import GraphDate from '../../../Components/Date/GraphDate';
 
 function Sales() {
     // sales card array
@@ -104,6 +101,20 @@ function Sales() {
         setOpen(false)
     }
 
+    // for a singleMonth
+    const [openSingleMonth, setOpenSingleMonth] = useState(false);
+    // const [startMonthDate, setStartMonthDate] = useState(null)
+    // const [endMonthDate, setEndMonthDate] = useState(null)
+    const [confirmSingleDate, setConfirmSingleDate] = useState(false);
+    const confirmSingleDateMonth = () => {
+        setConfirmSingleDate(true);
+        setOpenSingleMonth(false)
+    }
+    const cancelSingleMonthDate = () => {
+        setConfirmSingleDate(false);
+        setOpenSingleMonth(false)
+    }
+
     useEffect(() => {
         dispatch(getAllSALES())
         setActive(active)
@@ -162,7 +173,6 @@ function Sales() {
                         currentMonthTotalLeftHandSide={percentageData.currentSaleTotal} previousMonthTotalRightHandSide={percentageData.prevRevenueTotal}
                         currentMonthTotalRightHandSide={percentageData.currentRevenueTotal}
                     />
-                    <CalendarRangePicker />
                     <div className='Graph' style={{ padding: "10px 0px" }}>
                         <div className='row gx-5 gy-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
@@ -195,29 +205,34 @@ function Sales() {
                                             <td>Total Gross Profit</td>
                                             <td>Last Month</td>
                                             <td>Last Week</td>
-                                            <td style={{ position: "relative", cursor: "pointer" }}>
-                                                <div className='' onClick={() => setOpenMonth(!openMonth)}>
-                                                    {getMonth === "1" ? "January" : getMonth === "2" ? "February" : getMonth === "3" ? "March" : getMonth === "4" ? "April" :
-                                                        getMonth === "5" ? "May" : getMonth === "6" ? "June" : getMonth === "7" ? "July" : getMonth === "8" ? "August" :
-                                                            getMonth === "9" ? "September" : getMonth === "10" ? "October" : getMonth === "11" ? "November" :
-                                                                getMonth === "12" ? "December" : getMonth}
-                                                    <span><MdKeyboardArrowDown className="dropdown" /></span></div>
-                                                {openMonth && (
-                                                    <div className='openMonth'>
-                                                        {tableMonth?.map((month, index) => {
-                                                            return (
-                                                                <div className='months' id={index + 1} key={index} onClick={handleClickMonth}>{month}</div>
-                                                            )
-                                                        })}
+                                            <td >
+                                                <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setOpenSingleMonth(!openSingleMonth)}>
+                                                    <span>
+                                                        {confirmSingleDate && confirmSingleDate ? (
+                                                            <>
+                                                                {startMonthDate.toLocaleDateString('en-us', { month: "short" })}
+                                                            </>
+                                                        ) :
+                                                            <>{moment().format("MMMM")}</>
+                                                        }
+                                                    </span>
+
+                                                    <span style={{ paddingLeft: '5px' }}><MdOutlineKeyboardArrowDown className='icon' style={{ fontSize: '16px', position: 'relative', top: '-1px' }} /> </span>
+                                                </div>
+                                                {openSingleMonth && (
+                                                    <div style={{ position: 'absolute', top: '70px', right: '0px' }}>
+                                                        <GraphDate startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
+                                                            endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmSingleDateMonth} cancelMonthDate={cancelSingleMonthDate} />
                                                     </div>
                                                 )}
                                             </td>
+
                                             <td>
                                                 <div className='rateDropdown' onClick={() => setOpen(!open)}>
                                                     <span><span style={{ textTransform: 'none' }}>Net profit rate</span> <br />
                                                         {confirmDate ? (
                                                             <>
-                                                                {startMonthDate.toLocaleDateString('en-us', { month: "short" })} - {endMonthDate.toLocaleDateString('en-us', { month: "short" })}
+                                                                {startMonthDate && startMonthDate.toLocaleDateString('en-us', { month: "short" })} - {endMonthDate && endMonthDate.toLocaleDateString('en-us', { month: "short" })}
                                                             </>
                                                         ) :
                                                             <>{prevMonth} - {moment().format("MMMM")}</>

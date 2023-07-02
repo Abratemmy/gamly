@@ -54,3 +54,10 @@ export const fetchRevenue = () => REVENUEAPI.get('/');
 export const createRevenue = (newRevenue) => REVENUEAPI.post('/', newRevenue);
 export const updateRevenue = (id, updatedRevenue) => REVENUEAPI.put(`/${id}`, updatedRevenue);
 export const deleteRevenue = (id) => REVENUEAPI.delete(`/${id}`);
+
+// code Management
+const CODEMANAGEMENTAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
+export const fetchCodeManagement = () => CODEMANAGEMENTAPI.get('/');
+export const createCodeManagement = (newCodeManagement) => CODEMANAGEMENTAPI.post('/', newCodeManagement);
+export const updateCodeManagement = (id, updatedCodeManagement) => CODEMANAGEMENTAPI.put(`/${id}`, updatedCodeManagement);
+export const deleteCodeManagement = (id) => CODEMANAGEMENTAPI.delete(`/${id}`);

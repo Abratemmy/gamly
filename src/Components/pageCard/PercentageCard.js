@@ -6,6 +6,7 @@ import downarrow from "../../Assets/downarr.svg";
 import "./Percentagecard.scss"
 import DateCalendar from '../Date/Date';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import Duration from '../Duration/Duration';
 
 function PercentageCard({ getDateData, showThisCard, leftText, prevMonth, previousMonthTotalLeftHandSide, currentMonthTotalLeftHandSide, previousMonthTotalRightHandSide, currentMonthTotalRightHandSide }) {
 
@@ -65,7 +66,8 @@ function PercentageCard({ getDateData, showThisCard, leftText, prevMonth, previo
                                 <div className='top'>
                                     <div className='avg'>Avg. <span>$ 15, 000</span></div>
                                     <div className="dateCardWrapper">
-                                        <button onClick={openDateRange} className='duration'>
+                                        <Duration />
+                                        {/* <button onClick={openDateRange} className='duration'>
                                             Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
                                         </button>
                                         {dateToggle && (
@@ -73,7 +75,7 @@ function PercentageCard({ getDateData, showThisCard, leftText, prevMonth, previo
                                                 <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
                                             </div>
 
-                                        )}
+                                        )} */}
                                     </div>
                                 </div>
 
@@ -117,7 +119,8 @@ function PercentageCard({ getDateData, showThisCard, leftText, prevMonth, previo
                                         <div className='top'>
                                             <div className='avg'>Avg. <span>$ 15, 000</span></div>
                                             <div className="dateCardWrapper">
-                                                <button onClick={openDateRange2} className='duration'>
+                                                <Duration />
+                                                {/* <button onClick={openDateRange2} className='duration'>
                                                     Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
                                                 </button>
                                                 {dateToggle2 && (
@@ -125,7 +128,7 @@ function PercentageCard({ getDateData, showThisCard, leftText, prevMonth, previo
                                                         <DateCalendar handleSelect={handleSelect} startDate={startDate} endDate={endDate} />
                                                     </div>
 
-                                                )}
+                                                )} */}
                                             </div>
                                         </div>
 

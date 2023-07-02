@@ -15,6 +15,8 @@ import deleteImg from "../../../Assets/blackDelete.svg"
 import pointGreen from "../../../Assets/pointGreen.svg";
 import pointYellow from "../../../Assets/pointYellow.svg";
 import pointRed from "../../../Assets/pointRed.svg";
+import { AlertToggle } from '../../../Components/Message/Message';
+import TableProgressBar from '../../../Components/TableProgressBar/TableProgressBar';
 
 
 function PManagement() {
@@ -114,7 +116,7 @@ function PManagement() {
                                                     <>
                                                         {getAllPage?.pageList?.filter((item) => {
                                                             return search?.toLowerCase() === "" ? item :
-                                                                (item?.username?.toLowerCase().includes(search.toLowerCase()) || item?.name?.toLowerCase().includes(search.toLowerCase()))
+                                                                (item?.page_name?.toLowerCase().includes(search.toLowerCase()) || item?.Page_title?.toLowerCase().includes(search.toLowerCase()))
 
                                                         })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
                                                             return (
@@ -149,41 +151,17 @@ function PManagement() {
                                         </table>
                                     </div>
                                 </div>
-                                {
-                                    getAllPage.pageList?.length <= newsPerPage ? (
-                                        <div className='tableProgressBar'>
-                                            <div className='displayProgress'>
-                                                <div className='progress-line decrease' data-percent="90%">
-                                                    <span style={{ width: "100%" }}></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ) : <div className='tableProgressBar'>
-                                        <div className='displayProgress'>
-                                            <div className='progress-line decrease' data-percent="90%">
-                                                <span style={{ width: `${progressWidth}%` }}></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
+                                <TableProgressBar data={getAllPage.pageList} newsPerPage={newsPerPage} progressWidth={progressWidth} />
+
 
                                 {/* pagination starts here */}
                                 <Pagination pageCount={pageCount} changePage={changePage} />
 
                                 {deleteToggle && (
-                                    <div className='popupContainer' >
-                                        <div className='alertBody' onClick={(e) => e.stopPropagation()}>
-                                            <div className='editSession'>
-                                                <span><FiAlertTriangle className='icon' /> </span>
-                                                Delete {popupcontent?.page_name} page?
-                                            </div>
-                                            <div className='editText'>Are you sure you want to delete the {popupcontent?.page_name} page?</div>
-                                            <div className='actionButton'>
-                                                <button onClick={() => setDeletetoggle(false)}>No</button>
-                                                <button onClick={() => deletePage(popupcontent.id)}>Yes, Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <AlertToggle topic={`Delete ${popupcontent?.page_name} page?`} text={`Are you sure you want to delete the ${popupcontent?.page_name} page ?`}
+                                        closeAlertToggle={() => setDeletetoggle(false)} performAction={() => deletePage(popupcontent.id)} subText="delete"
+                                    />
+
                                 )}
 
                             </div>

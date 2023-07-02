@@ -7,6 +7,7 @@ import { pageManagementReducer } from "./REDUCERS/pageManagementReducer";
 import { reportReducer } from "./REDUCERS/reportReducer";
 import { salesReducer } from "./REDUCERS/salesReducer";
 import { revenueReducer } from "./REDUCERS/revenueReducer";
+import { codeManagementReducer } from "./REDUCERS/codeManagementReducer";
 
 const composeEnhancers = composeWithDevTools({
 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     pageManagementReducer,
     reportReducer,
     salesReducer,
-    revenueReducer
+    revenueReducer,
+    codeManagementReducer
 })
 const store = createStore(
     rootReducer,

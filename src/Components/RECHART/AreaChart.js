@@ -6,22 +6,6 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import GraphDate from '../Date/GraphDate';
 
 function AreaChartRechart({ data }) {
-
-    // month array for table
-    const tableMonth = ["January", "February", 'March', "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    const [openMonth, setOpenMonth] = useState(false);
-    const [getMonth, setGetMonth] = useState(moment().format("MMMM"))
-    const [active, setActive] = useState(null);
-    console.log("time", active);
-    const handleClickMonth = (event) => {
-        setActive(event.target.id);
-        console.log("month clicked", event.target.id)
-        setGetMonth(event.target.id)
-        setOpenMonth(false)
-    }
-    console.log("open", openMonth)
-
-
     // for month calendar
     const prevMonth = moment().subtract(1, "month").format('MMMM')
 

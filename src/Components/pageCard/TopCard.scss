@@ -7,7 +7,6 @@
     border-radius: 8px;
     box-sizing: border-box;
     padding: 10px;
-    
 }
 .topCard .header{
     letter-spacing: -2%;
@@ -26,7 +25,8 @@
     border-radius: 8px;
     width: 860px;
     height: 150px;
-    border-radius: 8px
+    border-radius: 8px;
+    flex-wrap: nowrap;
     
 }
 .topCard .content>:nth-child(1),

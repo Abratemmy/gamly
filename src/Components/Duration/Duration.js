@@ -4,12 +4,11 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import DurationMonth from '../Date/durationMonth';
 import DateRangePicker from '../Date/DAYSCalendar/DateRangePicker';
 import moment from 'moment'
+import MonthYearRangePicker from '../Date/calendar';
 
 function Duration({ getDateData }) {
     const [dateToggle, setDateToggle] = useState(false);
-    const openDateRange = () => {
-        setDateToggle(prev => !prev)
-    }
+
     // month Calendar
     const [startMonthDate, setStartMonthDate] = useState(null)
     const [endMonthDate, setEndMonthDate] = useState(null)
@@ -19,6 +18,13 @@ function Duration({ getDateData }) {
     const onChangeDateHandler = (value) => {
         setStartMonthDate(value[0])
         setEndMonthDate(value[1])
+    }
+
+    const openDateRange = () => {
+        setDateToggle(prev => !prev);
+        setOpenDatewithDays(false);
+        setStartMonthDate(null)
+        setEndMonthDate(null)
     }
     const confirmDateMonth = () => {
         if (startMonthDate && endMonthDate) {
@@ -59,19 +65,20 @@ function Duration({ getDateData }) {
     };
     return (
         <div className='durationMonth'>
+            {/* <MonthYearRangePicker /> */}
             <button onClick={openDateRange} className='duration'>
                 Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
             </button>
 
-            {confirmDate && (
+            {/* {confirmDate && (
                 <>
-                    {startMonthDate.toLocaleDateString('en-us', { day: "numeric", month: "short", year: "numeric" })} - {endMonthDate.toLocaleDateString('en-us', { month: "short", year: "numeric" })}
+                    {startMonthDate && startMonthDate.toLocaleDateString('en-us', { day: "numeric", month: "short", year: "numeric" })} - {endMonthDate && endMonthDate.toLocaleDateString('en-us', { month: "short", year: "numeric" })}
                 </>
             )
-            }
+            } */}
 
             {dateToggle && (
-                <div className=''>
+                <div className='' style={{ right: "-10px", position: 'absolute' }}>
                     <DurationMonth startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
                         endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate}
                         confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} dateError={dateError}
@@ -82,9 +89,11 @@ function Duration({ getDateData }) {
             )}
 
             {openDatewithDays && (
-                <DateRangePicker startDate={startMonthDate} endDate={endMonthDate} onChange={onChangeDateHandler} setStartDate={setStartMonthDate}
-                    setEndDate={setEndMonthDate} />
-                // <DateCalendar />
+                <div style={{}} className='DaysStyling'>
+                    <DateRangePicker startDate={startMonthDate} endDate={endMonthDate} setStartDate={setStartMonthDate}
+                        setEndDate={setEndMonthDate} onChangeDateHandler={onChangeDateHandler} />
+
+                </div>
             )}
         </div>
     )

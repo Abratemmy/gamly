@@ -9,6 +9,7 @@ import TableTop from '../../../Components/TableTop/TableTop';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import NewMonthCalendar from '../../../Components/Date/newMonth';
 import CalendarMonth from '../../../Components/Date/calendar';
+import TableProgressBar from '../../../Components/TableProgressBar/TableProgressBar';
 
 function RevenueTable() {
     const dispatch = useDispatch()
@@ -92,7 +93,7 @@ function RevenueTable() {
                                             <span><span style={{ textTransform: 'none' }}>Growth rate</span> <br />
                                                 {confirmDate ? (
                                                     <>
-                                                        {startMonthDate.toLocaleDateString('en-us', { month: "short" })} - {endMonthDate.toLocaleDateString('en-us', { month: "short" })}
+                                                        {startMonthDate && startMonthDate.toLocaleDateString('en-us', { month: "short" })} - {endMonthDate && endMonthDate.toLocaleDateString('en-us', { month: "short" })}
                                                     </>
                                                 ) :
                                                     <>{prevMonth} - {moment().format("MMMM")}</>
@@ -147,23 +148,7 @@ function RevenueTable() {
                     </div>
                 </div>
 
-                {
-                    getRevenueData.pageList?.length <= newsPerPage ? (
-                        <div className='tableProgressBar'>
-                            <div className='displayProgress'>
-                                <div className='progress-line decrease' data-percent="90%">
-                                    <span style={{ width: "100%" }}></span>
-                                </div>
-                            </div>
-                        </div>
-                    ) : <div className='tableProgressBar'>
-                        <div className='displayProgress'>
-                            <div className='progress-line decrease' data-percent="90%">
-                                <span style={{ width: `${progressWidth}%` }}></span>
-                            </div>
-                        </div>
-                    </div>
-                }
+                <TableProgressBar data={getRevenueData} newsPerPage={newsPerPage} progressWidth={progressWidth} />
 
                 <Pagination pageCount={pageCount} changePage={changePage} />
 

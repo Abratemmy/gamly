@@ -5,7 +5,7 @@ import { RiPagesLine, RiMoneyDollarBoxLine } from "react-icons/ri"
 import { MdDashboard, MdOutlineShoppingCartCheckout } from "react-icons/md";
 
 
-function HostSidebar({ name, children }) {
+function HostSidebar({ name, children, defaultToggleState }) {
     const [panelSelected, setPanelSelected] = useState("creator")
     const sidebarData = [
         {
@@ -75,7 +75,7 @@ function HostSidebar({ name, children }) {
         },
     ]
     return (
-        <SIDEBAR sidebarData={sidebarData} name={name} setPanelSelected={setPanelSelected} panelSelected={panelSelected}>
+        <SIDEBAR sidebarData={sidebarData} name={name} setPanelSelected={setPanelSelected} panelSelected={panelSelected} defaultToggleState={defaultToggleState}>
             {children}
         </SIDEBAR>
     )

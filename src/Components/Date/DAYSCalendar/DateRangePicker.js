@@ -3,11 +3,18 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import "./DateRangePicker.scss";
 
-const DateRangePicker = ({ startDate, endDate, setStartDate, setEndDate, onChange }) => {
-    const handleDateChange = (range) => {
-        setStartDate(range[0]);
-        setEndDate(range[1]);
-    }
+const DateRangePicker = ({ onChangeDateHandler, startDate, endDate, setStartDate, setEndDate }) => {
+
+    const handleDateChange = (date) => {
+        if (!startDate) {
+            setStartDate(date);
+        } else if (startDate && !endDate) {
+            setEndDate(date);
+        } else {
+            setStartDate(date);
+            setEndDate(null);
+        }
+    };
 
     const renderDayContents = (day, date) => {
         const isStartDate = startDate && startDate.toDateString() === date.toDateString();
@@ -31,6 +38,22 @@ const DateRangePicker = ({ startDate, endDate, setStartDate, setEndDate, onChang
         }
 
         return months;
+    };
+
+    // Function to set the hours to 0 for a given date
+    const resetHours = (date) => {
+        const newDate = new Date(date);
+        newDate.setHours(0, 0, 0, 0);
+        return newDate;
+    };
+
+    const enableDates = (date) => {
+        return (
+            startDate &&
+            endDate &&
+            date >= startDate.setHours(0, 0, 0, 0) &&
+            date <= endDate.setHours(0, 0, 0, 0)
+        );
     };
 
     return (
@@ -83,17 +106,21 @@ const DateRangePicker = ({ startDate, endDate, setStartDate, setEndDate, onChang
                         </button>
                     </div>
                 )}
-
-                selected={startDate || undefined}
-                onChange={handleDateChange}
-                startDate={startDate || undefined}
+                // selected={null}
+                // onChange={handleDateChange}
+                selected={startDate}
+                onChange={onChangeDateHandler}
+                startDate={startDate}
                 endDate={endDate}
-                dateFormat="MM-yyyy"
-                selectsRange
+                // dateFormat="MM-yyyy"
+                selectsRange={true}
                 inline
                 monthsShown={getMonthsInRange().length}
-                includeDates={getMonthsInRange()}
+                shouldCloseOnSelect={!endDate}
+                // includeDates={getMonthsInRange()}
                 renderDayContents={renderDayContents} // Custom renderDayContents function
+            // filterDate={enableDates}
+
             />
         </div>
     );

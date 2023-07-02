@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import "./Admin.css";
 import { BiPlus } from "react-icons/bi";
 import { BsQuestionCircle } from "react-icons/bs";
-import { FiAlertTriangle } from "react-icons/fi"
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllADMIN } from '../../../Components/REDUX/ACTION/adminAction';
 import validator from 'validator';
@@ -17,6 +16,7 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import { BiSearch, BiRefresh } from "react-icons/bi"
 import cancelImg from "../../../Assets/cancel.svg"
 import Passwordeye from '../../../Assets/passwordEye.svg'
+import { AlertToggle } from '../../../Components/Message/Message';
 
 function Admin() {
     const dispatch = useDispatch()
@@ -144,12 +144,14 @@ function Admin() {
                             <div className='input'>
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text"><BiSearch className="icon" style={{ color: 'var(--grayColor)' }} /></span>
-                                    <input type="text" className="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping" />
+                                    <input type="text" className="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping"
+                                        onChange={(e) => setSearch(e.target.value)} value={search}
+                                    />
                                 </div>
                             </div>
 
                             <div className='RefreshComp'>
-                                <button ><BiRefresh className='r-icon' /> <span>Refresh</span></button>
+                                <button onClick={() => setSearch(" ")}><BiRefresh className='r-icon' /> <span>Refresh</span></button>
                             </div>
                         </div>
 
@@ -174,7 +176,7 @@ function Admin() {
                                                 <>
                                                     {getAdminData?.adminList?.filter((item) => {
                                                         return search?.toLowerCase() === "" ? item :
-                                                            (item?.title?.toLowerCase().includes(search.toLowerCase()) || item?.category?.toLowerCase().includes(search.toLowerCase()))
+                                                            (item?.email?.toLowerCase().includes(search.toLowerCase()) || item?.name?.toLowerCase().includes(search.toLowerCase()))
 
                                                     })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
                                                         return (
@@ -230,19 +232,9 @@ function Admin() {
                 </div>
 
                 {alerttoggle && (
-                    <div className='popupContainer' >
-                        <div className='alertBody' onClick={(e) => e.stopPropagation()}>
-                            <div className='editSession'>
-                                <span><FiAlertTriangle className='icon' /> </span>
-                                Edit Admin?
-                            </div>
-                            <div className='editText'>Are you sure you want to edit this admin?</div>
-                            <div className='actionButton'>
-                                <button onClick={() => setalerttoggle(false)}>No</button>
-                                <button onClick={formToggle}>Yes, edit</button>
-                            </div>
-                        </div>
-                    </div>
+                    <AlertToggle topic="Edit Admin?" text="Are you sure you want to edit this admin ?"
+                        closeAlertToggle={() => setalerttoggle(false)} performAction={formToggle} subText="edit"
+                    />
                 )}
 
                 {openForm && (
@@ -367,19 +359,10 @@ function Admin() {
                     </div>
                 )}
                 {deleteToggle && (
-                    <div className='popupContainer' >
-                        <div className='alertBody' onClick={(e) => e.stopPropagation()}>
-                            <div className='editSession'>
-                                <span><FiAlertTriangle className='icon' /> </span>
-                                Delete  Admin?
-                            </div>
-                            <div className='editText'>Are you sure you want to delete {popupcontent?.title}?</div>
-                            <div className='actionButton'>
-                                <button onClick={() => setDeletetoggle(false)}>No</button>
-                                <button onClick={() => deleteAdmin(popupcontent.id)}>Yes, Delete</button>
-                            </div>
-                        </div>
-                    </div>
+                    <AlertToggle topic="Delete Admin?" text="Are you sure you want to delete this admin ? "
+                        closeAlertToggle={() => setDeletetoggle(false)} performAction={() => deleteAdmin(popupcontent.id)} subText="delete"
+                    />
+
                 )}
 
                 {/* main form to add admin code is down here */}

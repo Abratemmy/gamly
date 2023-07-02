@@ -1,0 +1,215 @@
+.codeManagement{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+    .top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 35px 0px 50px 0px;
+        .left{
+            font-family: var(--textFamily);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: -0.02em;
+            text-align: left;
+            color: #000000;
+
+        }
+        .right{
+            display: flex;
+            gap: 12px;
+            .button{
+                border: 1px solid #DA0D18;
+                border-radius: 4px;
+                height: 40px;
+                font-family: var(--textFamily);
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 24px;
+                letter-spacing: -0.25px;
+                text-align: center;
+                background: transparent;
+                color: var(--primaryColor)
+            }
+            .firstb{
+                width: 162px;
+            }
+            .second{
+                width: 126px
+            }
+        }
+        
+    }
+    @media screen and (max-width: 500px) {
+        .top{
+            flex-direction: column;
+        }
+        
+    }
+    .tableSection .table td{
+        font-size: 15.1px
+    }
+    .tableSection .table td span{
+        font-size: 14.28px
+    }
+    .tableSection .table thead td{
+        font-size: 16.99px;
+    }
+    .sendInvitePopupBody{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        
+        .codeform{
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            transform: translate(-40px, -40px);
+            background:#fff;
+            border-radius: 8px;
+            width: 379px;
+            height: 420px;
+            border-radius: 8px;
+            border: 1px solid #E7E7E7;
+            padding: 20px 30px;
+            .title{
+                font-family: var(--textFamily);
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 23px;
+                letter-spacing: -0.02em;
+                text-align: left;
+                color: #000000;
+                padding-bottom: 30px;
+            }
+            .inputDiv{
+                padding: 6px 0px;
+                label{
+                    font-family: var(--textFamily);
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 18px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: #2D3657;
+                    padding-bottom: 5px;
+                    display: block;
+                }
+                input{
+                    width: 100%;
+                    height: 40px;
+                    border: 0.8px solid #E7E7E7;
+                    border-radius: 3px;
+                    padding: 6px 10px;
+                    background: linear-gradient(0deg, #F3F4F6, #F3F4F6);
+                    font-family: var(--textFamily);
+                    font-size: 13px;
+                    font-weight: 500;
+                    line-height: 15px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: #a5a2a2;
+                    outline: none;
+                }
+                input:focus{
+                    outline: none;
+                    border: 0.8px solid #E7E7E7;
+                    border-radius: 3px;
+                }
+                
+            }
+            .submitButton{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding-top: 17px;
+                button{
+                    width: 180.65px;
+                    height: 42px;
+                    border-radius: 7.999999523162842px;
+                    gap: 7.942380905151367px;
+                    background: var(--backgroundColor);
+                    border: 0.99px solid #DCDEE6;
+                    color: #fff;
+                    font-family: 'Noto Sans', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 25px;
+                    letter-spacing: 0px;
+                    text-align: center;
+
+                }
+            }
+        }
+       
+    }
+
+
+    //styling for pending components
+    .pendingRequest{
+        
+
+        .pendingTop {
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #878787;
+            padding: 30px 0px 50px 0px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            .left{
+                cursor: pointer;
+            }
+            .icon{
+                color: var(--blackColor);
+                position: relative;
+                top:-2px;
+                font-size: 15px
+            }
+            .right{
+                font-family: var(--textFamily);
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 25px;
+                letter-spacing: 0em;
+                text-align: left;
+                color:  var(--grayColor700)
+            }
+        }
+
+        .pendingTableAction{
+            display: flex;
+            gap: 5px
+        }
+        .pendingTableAction button{
+            width: 84px;
+            height: 26.25px;
+            border-radius: 7.000040054321289px;
+            border: 1px;
+            font-family: var(--textFamily);
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0em;
+            text-align: center;
+            background: none;
+
+        }
+        .pendingTableAction .approve{
+            border: 1px solid #258E22;
+            color: #258E22;
+        }
+        .pendingTableAction .decline{
+            border: 0.88px solid var(--primaryColor); 
+            color: var(--primaryColor);
+
+        }
+    }
+}

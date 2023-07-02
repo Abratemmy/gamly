@@ -25,4 +25,16 @@
             height: 19.86px
         }
     }
+    .DaysStyling{
+        right: -10px;
+         position: absolute;
+        //  width: 650px;
+          max-width: 450px;
+        overflow-x: auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background: #fff;
+        padding: 0px;
+        z-index:10
+
+    }
 }
