@@ -9,6 +9,9 @@
         height: 147px;
         width: 100%;
     }
+    .percentageCard .cardContent{
+        min-height: 222px!important;
+    }
     .cardWrapper .cardContent1{
         padding: 25px;
         display: flex;
@@ -112,47 +115,9 @@
             }
         }
     }
+
     .Session {
         margin-top: 50px;
-        .header{
-            font-family: var(--textFamily);
-            font-size: 24px;
-            font-weight: 600;
-            line-height: 30px;
-            letter-spacing: 0em;
-            text-align: left;
-            padding-bottom: 5px;
-            color: #000;
-        }
-        .topCard{
-            background: transparent;
-            border: 0;
-            border-radius: 0px;
-            box-sizing: border-box;
-            padding: 0px;
-            margin-top: 0px;
-            .content{
-                display: flex;
-                justify-content: space-evenly;
-                border: 1px solid #E7E7E7;
-            }
-            .content>:nth-child(1),
-            .content>:nth-child(2),
-            .content>:nth-child(3),
-            .content>:nth-child(4){
-                flex:1;
-                padding: 20px 0px 20px 20px
-            }
-            .content>:nth-child(2),
-            .content>:nth-child(3){
-                border-right:1px solid #E7E7E7;
-            }
-            .content>:nth-child(2) .amount,
-            .content>:nth-child(3) .amount,
-            .content>:nth-child(4) .amount{
-                padding-bottom: 18px;
-            }
-        }
         .rightContent{
             padding: 10px 20px;
 
@@ -212,7 +177,7 @@
             }
             .SignupContent{
                 width: 100%;
-                height: 125px;
+                height: 145px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -231,6 +196,47 @@
                 }
             }
             
+        }
+    }
+}
+.hostStyleforTopCard{
+    .header{
+        font-family: var(--textFamily);
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: left;
+        padding-bottom: 5px;
+        color: #000;
+    }
+    .topCard{
+        background: transparent;
+        border: 0;
+        border-radius: 0px;
+        box-sizing: border-box;
+        padding: 0px;
+        margin-top: 0px;
+        .content{
+            display: flex;
+            justify-content: space-evenly;
+            border: 1px solid #E7E7E7;
+        }
+        .content>:nth-child(1),
+        .content>:nth-child(2),
+        .content>:nth-child(3),
+        .content>:nth-child(4){
+            flex:1;
+            padding: 20px 0px 20px 20px
+        }
+        .content>:nth-child(2),
+        .content>:nth-child(3){
+            border-right:1px solid #E7E7E7;
+        }
+        .content>:nth-child(2) .amount,
+        .content>:nth-child(3) .amount,
+        .content>:nth-child(4) .amount{
+            padding-bottom: 18px;
         }
     }
 }

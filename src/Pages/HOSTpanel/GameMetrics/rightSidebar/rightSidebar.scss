@@ -1,0 +1,115 @@
+.gameMetric_rightSidebar{
+    padding: 30px 0px;
+    .closeButton{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 0px 15px;
+        button{
+            border: 1px solid #E5E7EB;
+            border-radius: 4px;
+            background: #fff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          svg path{
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    .profile{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom:1.41px solid #EAECF0;
+        padding: 10px 20px 3px 20px;
+
+        .image{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                border-radius: 50%;
+            }
+        }
+        .name{
+            font-family: var(--interFamily);
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 28px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #101828;
+            span{
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 28px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #667085;
+            display: block;
+            }
+        }
+
+    }
+    .rightSidebarContent{
+        padding: 2px 13px;
+        .title{
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 23px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #2D3657;
+            padding: 10px 15px 10px 15px;
+        }
+      
+        .content{
+            border: 1.41px solid #F1F1F1;
+            border-radius: 18px;
+            padding: 15px 10px;
+            .heading{
+                font-family:var(--textFamily);
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 15px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:#0B0B0B;
+                padding-bottom: 4px;
+            }
+            .total{
+                font-family: var(--textFamily);
+                font-size: 28px;
+                font-weight: 600;
+                line-height: 35px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:#0B0B0B;
+            }
+            .imagespan{
+                text-align: center;
+                svg{
+                    font-weight: 900;
+                }
+            }
+            span{
+                font-family: var(--textFamily);
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 16px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:#20BF52
+            }
+        }
+    }
+}

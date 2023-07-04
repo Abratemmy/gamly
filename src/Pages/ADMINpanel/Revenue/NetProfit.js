@@ -4,6 +4,7 @@ import TopCard from '../../../Components/pageCard/TopCard';
 import PercentageCard from '../../../Components/pageCard/PercentageCard';
 import ProgressBar from '../../../Components/RECHART/ProgressBar';
 import AreaChartRechart3 from '../../../Components/RECHART/AreaChart3';
+import PercentageCard2 from '../../../Components/pageCard/PercentageCard2';
 
 function NetProfit() {
     const profitCard = [
@@ -20,7 +21,7 @@ function NetProfit() {
         prevTotalProfit: 120000,
         currentTotalProfit: 170000,
         prevRGrowthTotal: 600000,
-        currentRGrowthTotal: 700000
+        currentRGrowthTotal: 500000
     }
 
     const lastMonthTotal = 990000
@@ -29,10 +30,19 @@ function NetProfit() {
     return (
         <div>
             <TopCard topCard={profitCard} cardName="Net Profit" />
-            <PercentageCard leftText="Total profit" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevTotalProfit}
-                currentMonthTotalLeftHandSide={percentageData.currentTotalProfit} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
-                currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
-            />
+            <div className="row">
+                <div className="col-lg-6 col-md-12 col-sm-12">
+                    <PercentageCard leftText="Total profit" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevTotalProfit}
+                        currentMonthTotalLeftHandSide={percentageData.currentTotalProfit}
+                    />
+                </div>
+
+                <div className="col-lg-6 col-md-12 col-sm-12">
+                    <PercentageCard2 prevMonth={prevMonth} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
+                        currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
+                    />
+                </div>
+            </div>
 
             <div className="recharts">
                 <div className='Graph' style={{ padding: "10px 0px" }}>
@@ -42,7 +52,7 @@ function NetProfit() {
                         </div>
 
                         <div className='col-lg-6 col-md-12 col-sm-12'>
-                            <AreaChartRechart3 />
+                            <AreaChartRechart3 title="Gross Profit Growth Rate" />
                         </div>
                     </div>
 

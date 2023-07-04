@@ -6,7 +6,7 @@ import { MdKeyboardArrowDown } from "react-icons/md"
 import DateCalendar from '../Date/Date';
 import { useSelector } from 'react-redux';
 
-function AreaChartRechart3() {
+function AreaChartRechart3({ title }) {
 
     const data = [
         {
@@ -84,7 +84,7 @@ function AreaChartRechart3() {
         <div className='revenueDateChart' style={{ position: "relative" }}>
             <div className="rechartsContainer revenueChart">
                 <div className='top' >
-                    <div className='title'>Gross Profit Growth Rate</div>
+                    <div className='title'>{title}</div>
                     <div className='dateFilter22' onClick={openDateRange}>
                         <span className='image'><img src={filterImg} alt="" /></span>
                         <div className='date'>May, 01 - June 22 2023</div>

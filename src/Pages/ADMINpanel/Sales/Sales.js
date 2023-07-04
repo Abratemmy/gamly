@@ -15,6 +15,8 @@ import BarChartRechart from '../../../Components/RECHART/BarChart';
 import TableTop from '../../../Components/TableTop/TableTop';
 import NewMonthCalendar from '../../../Components/Date/newMonth';
 import GraphDate from '../../../Components/Date/GraphDate';
+import PercentageCard2 from '../../../Components/pageCard/PercentageCard2';
+import { Table, Thead, Tr, Td, Tbody } from "../../../Components/Table/Table"
 
 function Sales() {
     // sales card array
@@ -91,6 +93,10 @@ function Sales() {
     const [startMonthDate, setStartMonthDate] = useState(null)
     const [endMonthDate, setEndMonthDate] = useState(null)
     const [confirmDate, setConfirmDate] = useState(false);
+    const openDateToggle = () => {
+        setOpen(!open);
+        setConfirmDate(false)
+    }
     const confirmDateMonth = () => {
         setConfirmDate(true);
         setOpen(false)
@@ -103,9 +109,15 @@ function Sales() {
 
     // for a singleMonth
     const [openSingleMonth, setOpenSingleMonth] = useState(false);
-    // const [startMonthDate, setStartMonthDate] = useState(null)
-    // const [endMonthDate, setEndMonthDate] = useState(null)
+    const [startSingleMonthDate, setStartSingleMonthDate] = useState(null)
+    const [endSingleMonthDate, setEndSingleMonthDate] = useState(null)
     const [confirmSingleDate, setConfirmSingleDate] = useState(false);
+
+    const openSingleDateToggle = () => {
+        setOpenSingleMonth(!openSingleMonth);
+        setConfirmSingleDate(false)
+    }
+
     const confirmSingleDateMonth = () => {
         setConfirmSingleDate(true);
         setOpenSingleMonth(false)
@@ -169,10 +181,21 @@ function Sales() {
             <div className='Sales'>
                 <div className='container'>
                     <TopCard topCard={salesCard} cardName="Sales" />
-                    <PercentageCard leftText="Total Sales" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevSaleTotal}
-                        currentMonthTotalLeftHandSide={percentageData.currentSaleTotal} previousMonthTotalRightHandSide={percentageData.prevRevenueTotal}
-                        currentMonthTotalRightHandSide={percentageData.currentRevenueTotal}
-                    />
+
+                    <div className="row">
+                        <div className="col-lg-6 col-md-12 col-sm-12">
+                            <PercentageCard leftText="Total sales" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevSaleTotal}
+                                currentMonthTotalLeftHandSide={percentageData.currentSaleTotal}
+                            />
+                        </div>
+
+                        <div className="col-lg-6 col-md-12 col-sm-12">
+                            <PercentageCard2 prevMonth={prevMonth} previousMonthTotalRightHandSide={percentageData.prevRevenueTotal}
+                                currentMonthTotalRightHandSide={percentageData.currentRevenueTotal}
+                            />
+                        </div>
+                    </div>
+
                     <div className='Graph' style={{ padding: "10px 0px" }}>
                         <div className='row gx-5 gy-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
@@ -197,20 +220,20 @@ function Sales() {
                                 handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
                             />
                             <div className="scroll-container">
-                                <table className="table scroll">
-                                    <thead>
-                                        <tr style={{ position: 'relative', width: '100%' }}>
-                                            <td>S/N</td>
-                                            <td>Name</td>
-                                            <td>Total Gross Profit</td>
-                                            <td>Last Month</td>
-                                            <td>Last Week</td>
-                                            <td >
-                                                <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setOpenSingleMonth(!openSingleMonth)}>
+                                <Table className="table scroll">
+                                    <Thead className='thead'>
+                                        <Tr className="tableRow">
+                                            <Td>S/N</Td>
+                                            <Td>Name</Td>
+                                            <Td>Total Gross Profit</Td>
+                                            <Td>Last Month</Td>
+                                            <Td>Last Week</Td>
+                                            <Td >
+                                                <div style={{ position: "relative", cursor: "pointer" }} onClick={openSingleDateToggle}>
                                                     <span>
                                                         {confirmSingleDate && confirmSingleDate ? (
                                                             <>
-                                                                {startMonthDate.toLocaleDateString('en-us', { month: "short" })}
+                                                                {startSingleMonthDate.toLocaleDateString('en-us', { month: "short" })}
                                                             </>
                                                         ) :
                                                             <>{moment().format("MMMM")}</>
@@ -221,14 +244,14 @@ function Sales() {
                                                 </div>
                                                 {openSingleMonth && (
                                                     <div style={{ position: 'absolute', top: '70px', right: '0px' }}>
-                                                        <GraphDate startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
-                                                            endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmSingleDateMonth} cancelMonthDate={cancelSingleMonthDate} />
+                                                        <GraphDate startMonthDate={startSingleMonthDate} setStartMonthDate={setStartSingleMonthDate}
+                                                            endMonthDate={endSingleMonthDate} setEndMonthDate={setEndSingleMonthDate} confirmDate={confirmSingleDateMonth} cancelMonthDate={cancelSingleMonthDate} />
                                                     </div>
                                                 )}
-                                            </td>
+                                            </Td>
 
-                                            <td>
-                                                <div className='rateDropdown' onClick={() => setOpen(!open)}>
+                                            <Td>
+                                                <div className='dateRateDropdown' onClick={openDateToggle}>
                                                     <span><span style={{ textTransform: 'none' }}>Net profit rate</span> <br />
                                                         {confirmDate ? (
                                                             <>
@@ -243,16 +266,16 @@ function Sales() {
 
                                                 </div>
 
-                                            </td>
+                                            </Td>
                                             {open && (
-                                                <div style={{ position: 'absolute', top: '55px', right: '0px' }}>
+                                                <div className='tableDateDropdown'>
                                                     <NewMonthCalendar startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
                                                         endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} />
                                                 </div>
                                             )}
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                        </Tr>
+                                    </Thead>
+                                    <Tbody>
                                         {getSalesData?.slice ? (
                                             <>
                                                 {getSalesData?.filter((item) => {
@@ -261,28 +284,28 @@ function Sales() {
 
                                                 })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
                                                     return (
-                                                        <tr key={item?.id}>
-                                                            <td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
+                                                        <Tr key={item?.id}>
+                                                            <Td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
                                                                 <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
                                                             }
-                                                            </td>
-                                                            <td  >{item?.category}</td>
-                                                            <td  >${item?.price}.67</td>
-                                                            <td >${item?.rating?.rate * 10}.00</td>
-                                                            <td >${item?.rating.count}.45</td>
-                                                            <td  >$ {item?.price}</td>
-                                                            <td>
+                                                            </Td>
+                                                            <Td  >{item?.category}</Td>
+                                                            <Td  >${item?.price}.67</Td>
+                                                            <Td >${item?.rating?.rate * 10}.00</Td>
+                                                            <Td >${item?.rating.count}.45</Td>
+                                                            <Td  >$ {item?.price}</Td>
+                                                            <Td>
                                                                 {item?.price > 100 ? (<div className='increase'>8% <span style={{ paddingLeft: "6px" }}><img src={increaseImg} alt="" /></span></div>) :
                                                                     (<div className='decrease'>4% <span style={{ paddingLeft: "6px" }}><img src={decreaseImg} alt="" /></span></div>)}
-                                                            </td>
+                                                            </Td>
 
-                                                        </tr>
+                                                        </Tr>
                                                     )
                                                 })}
                                             </>
                                         ) : ("")}
-                                    </tbody>
-                                </table>
+                                    </Tbody>
+                                </Table>
                             </div>
                         </div>
                         <Pagination pageCount={pageCount} changePage={changePage} />

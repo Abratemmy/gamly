@@ -228,7 +228,7 @@ function Report() {
 
                 {openReport && (
                     <div className='popupContainer'>
-                        <div className='reportpopupBody' onClick={(e) => e.stopPropagation()}>
+                        <div className='reportpopupBody rightSidebar' onClick={(e) => e.stopPropagation()}>
                             <div className='top'>
                                 <div className='left'>
                                     <div className='head'>Report</div>

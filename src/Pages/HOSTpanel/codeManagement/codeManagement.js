@@ -11,7 +11,7 @@ import Pagination from '../../../Components/Pagination/Pagination';
 import TableProgressBar from '../../../Components/TableProgressBar/TableProgressBar';
 import { FailedMessage, ProcessingMessage, SuccessMessage } from '../../../Components/Message/Message';
 import PendingRequest from './PendingRequest';
-
+import closebtn from "../../../Assets/closebox.svg"
 function CodeManagement({ getPaymentData }) {
     // tabs
     const [toggleState, setToggleState] = useState(1);
@@ -177,7 +177,9 @@ function CodeManagement({ getPaymentData }) {
                         <div className='popupContainer'>
                             <div className='sendInvitePopupBody' onClick={(e) => e.stopPropagation()}>
                                 <form className='codeform' onSubmit={sendInvitationHandler}>
-                                    <div className='title'>Send Invite</div>
+                                    <div className='title'>Send Invite
+                                        <span><img src={closebtn} alt="" onClick={() => setSendInvite(false)} /> </span>
+                                    </div>
 
                                     <div className="inputDiv">
                                         <label>Email</label>

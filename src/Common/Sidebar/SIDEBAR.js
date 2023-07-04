@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./sidebar.css";
-import { useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import logo1 from "../../Assets/logo1.svg";
 import logo2 from "../../Assets/logo2.svg"
 import { AiOutlineMenuFold, AiOutlineClose } from "react-icons/ai"
@@ -12,6 +12,7 @@ import { AlertToggle } from '../../Components/Message/Message';
 function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected, defaultToggleState }) {
     // dark theme and light theme
     //dark mode finished
+    const { pathname } = useLocation();
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('userDataToken')));
     const dispatch = useDispatch()
@@ -50,7 +51,11 @@ function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected,
                                 return (
                                     <li onClick={handleClick} key={index}>
                                         <div onClick={defaultToggleState}>
-                                            <NavLink to={`/${item.link}`} exact className="sidebar-navlink " activeClassName="active">
+                                            <NavLink
+                                                to={`/${item.link}`}
+                                                // to={pathname.includes(`/${item.link2}`) ? `/${item.link2}` : `/${item.link}`}
+                                                isActive={() => [`/${item.link}`, `/${item.link2}`].includes(pathname)}
+                                                className="sidebar-navlink " activeClassName="active">
                                                 <span className="icon">{item.icon}</span><span className="text">{item.text}</span>
                                             </NavLink>
                                         </div>

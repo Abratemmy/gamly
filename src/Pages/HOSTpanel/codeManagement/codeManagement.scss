@@ -84,6 +84,15 @@
                 text-align: left;
                 color: #000000;
                 padding-bottom: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                span img{
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                }
             }
             .inputDiv{
                 padding: 6px 0px;

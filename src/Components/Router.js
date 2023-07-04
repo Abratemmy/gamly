@@ -21,6 +21,8 @@ import GameMetrics from '../Pages/HOSTpanel/GameMetrics/GameMetrics';
 import WithdrawalManagement from '../Pages/HOSTpanel/WithdrawalManagement/WithdrawalManagement';
 import Contest from '../Pages/HOSTpanel/Contest/Contest';
 import KYC from '../Pages/HOSTpanel/KYC/KYC';
+import SingleCreator from '../Pages/HOSTpanel/Creators/SingleCreator';
+import SingleTest from '../Pages/HOSTpanel/Creators/singleTest';
 
 const Router = () => {
     const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
@@ -32,7 +34,7 @@ const Router = () => {
             <Route element={<ProtectedRoute />}>
                 <Route exact path="/dashboard" caseSensitive={false} element={<Dashboard />} />
                 <Route exact path="/admin" caseSensitive={false} element={<Admin />} />
-                <Route exact path="/payout" caseSensitive={false} element={<Payout />} />
+                <Route exact path="/payout" caseSensitive={false} element={<Payout />}></Route>
                 <Route exact path="/payout/:id" caseSensitive={false} element={<SinglePayout />} />
                 <Route exact path="/revenue" caseSensitive={false} element={<Revenue />} />
                 <Route exact path="/sales" caseSensitive={false} element={<Sales />} />
@@ -42,12 +44,16 @@ const Router = () => {
                 {/* host */}
                 <Route exact path="/host_dashboard" caseSensitive={false} element={<Host />} />
                 <Route exact path="/code_management" caseSensitive={false} element={<CodeManagement />} />
-                <Route exact path="/creators" caseSensitive={false} element={<Creators />} />
+                <Route exact path="/creators" caseSensitive={false} element={<Creators />} >
+                    {/* <Route path={"/creators"} caseSensitive={false} element={<Creators />} />
+                    <Route path="/creators/:id" caseSensitive={false} element={<SingleCreator />} /> */}
+                </Route>
+                <Route exact path="/creators/:id" caseSensitive={false} element={<SingleCreator />} />
                 <Route exact path="/game_metrics" caseSensitive={false} element={<GameMetrics />} />
                 <Route exact path="/kyc" caseSensitive={false} element={<KYC />} />
                 <Route exact path="/withdrawal_management" caseSensitive={false} element={<WithdrawalManagement />} />
                 <Route exact path="/contest" caseSensitive={false} element={<Contest />} />
-
+                <Route exact path="/singletest" caseSensitive={false} element={<SingleTest />} />
                 {/* user */}
                 <Route exact path="/user" caseSensitive={false} element={<User />} />
                 <Route exact path="/user2" caseSensitive={false} element={<User2 />} />

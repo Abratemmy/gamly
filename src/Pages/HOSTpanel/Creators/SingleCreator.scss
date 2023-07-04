@@ -1,0 +1,385 @@
+.singleCreator{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+    
+    .topContent{
+        padding: 30px 0px 50px 0px;
+
+        .left{
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color:#878787;
+            text-decoration: none;
+        }
+        .iconspan{
+            padding-left: 6px;
+            .icon{
+                font-size: 18px;
+                position: relative;
+                top:-2px
+            }
+        }
+        .right{
+            font-family: Outfit;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: var(--grayColor700)
+        }
+    }
+    .hostStyleforTopCard .topCard .content{
+        width: 620px!important
+    }
+    .hostStyleforTopCard {
+        .topCard .content>:nth-child(1),
+        .topCard .content>:nth-child(2),
+        .topCard .content>:nth-child(3),
+        .topCard .content>:nth-child(4){
+            flex:1;
+            padding: 10px 0px 10px 5px
+        }
+    }
+    .percentageSession .percentageCard{
+        position: relative;
+        margin: -15px 0px 40px 0px;
+    }
+    .percentageCard {
+        .top{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--textFamily);
+            font-size: 8px;
+            font-weight: 700;
+            line-height: 12px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #525256;
+            .date{
+                background: linear-gradient(0deg, #E8E8E8, #E8E8E8),linear-gradient(0deg, rgba(210, 210, 210, 0.25), rgba(210, 210, 210, 0.25));
+                height: 18.27px;
+                padding: 5px 10px;
+                display: flex;
+                align-items: center;
+                border-radius: 3px;
+                border: 0.52px solid #E8E8E8;
+                font-family: var(--textFamily);
+                font-size: 8px;
+                font-weight: 500;
+                line-height: 10px;
+                letter-spacing: 0em;
+                text-align: center;
+                color: #8C8C8C;
+                cursor: pointer;
+                span{
+                    padding-left: 7px;
+                    font-size: 11px;
+                }
+            }
+        }
+
+        .UserContent{
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            .header{
+                font-family: var(--textFamily);
+                font-size: 21px;
+                font-weight: 700;
+                line-height: 19px;
+                letter-spacing: 0em;
+                text-align: left;
+                padding-bottom: 3px;
+                
+            }
+            span{
+                font-family: var(--textFamily);
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 16px;
+                letter-spacing: 0px;
+                 color: #2EDB2B
+            }
+        }
+    }
+    .allUserButton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .allUsersBtn{
+        width: 200px;
+        height:40px;
+        padding: 8px 24px 8px 24px;
+        border-radius: 4px;
+        border: 1px;
+        gap: 8px;
+        border: 1px solid #DA0D18;
+        background: transparent;
+        font-family: var(--textFamily);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.25px;
+        text-align: center;
+        color: var(--primaryColor)
+    }
+
+    .creatorRightSidebar{
+        position: fixed;
+        right:0;
+        top:0;
+        background: #fff;
+        width: 330px;
+        height: 100%;
+        padding: 20px 10px;
+
+        .closeBtn{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            img{
+                width: 30px;
+                height: 30px
+            }
+        }
+        .profile{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            .image{
+                width: 60px;
+                height: 60px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                    border-radius: 50%;
+                }
+            }
+            .name{
+                font-family: var(--textFamily);
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 30px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: var(--grayColor700);
+                span{
+                    font-family: var(--textFamily);
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    display: block;
+
+                }
+            }
+        }
+        .detail{
+            margin-top: 20px;
+            width: 80%;
+            border-top: 1px solid #E5E7EB;
+            padding-top: 7px;
+            .content{
+                padding-bottom: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .name{
+                    font-family: var(--textFamily);
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 22px;
+                    letter-spacing: 0em;
+                    text-align: right;
+                    color: var(--grayColor400)
+
+                }
+                .answer{
+                    font-family: var(--textFamily);
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 22px;
+                    letter-spacing: 0em;
+                    text-align: right;
+                    color: var(--grayColor700)
+                }
+            }
+        }
+        .pieChartSession{
+            padding: 40px 0px;
+        }
+        .rightsidebarBtn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            button{
+                width: 200px;
+                height: 40px;
+                padding: 8px 24px 8px 24px;
+                border-radius: 4px;
+                color: var(--primaryColor);
+                border: 1px solid #DA0D18;
+                background: transparent;
+            }
+        }
+    }
+}
+
+// getUsers styling
+.getUser{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+
+    .top{
+        padding: 30px 0px 30px 0px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        .topContent{
+            .left{
+                font-family: var(--textFamily);
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 25px;
+                letter-spacing: 0em;
+                text-align: left;
+                color:#878787;
+                text-decoration: none;
+            }
+            .iconspan{
+                padding-left: 6px;
+                .icon{
+                    font-size: 18px;
+                    position: relative;
+                    top:-2px
+                }
+            }
+            .right{
+                font-family: Outfit;
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 25px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: var(--grayColor700)
+            }
+        }
+        .backButton 
+        .backBtn{
+            width: 179px;
+            height: 54px;
+            padding: 13px 46px 12px 47px;
+            border-radius: 8px;
+            border: 1px solid #DCDEE6;
+            font-family: var(--interFamily);
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 29px;
+            letter-spacing: 0px;
+            text-align: center;
+            color:#121212;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            img{
+                width: 25px;
+                height: 22px;
+            }
+        }
+    }
+    .tableHeader{
+        padding-bottom: 30px;
+        font-family: var(--textFamily);
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: var(--grayColor700);
+        span{
+            display: block;
+            font-family: var(--textFamily);
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 14px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: var(--grayColor400);
+        }
+    }
+    .firstRowData{
+        width: 30%!important;
+        .data{
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .image{
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                    object-fit: contain;
+                }
+            }
+
+            .dataName {
+                width: 30%!important;
+                flex-grow: 1;  
+                text-align: left;
+
+                .username{
+                    display: block;
+                    font-family: var(--interFamily);
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 20px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: #667085;
+                }
+            }
+        }
+    }
+
+    .tbody .otherData{
+        padding-top: 19px!important;
+    }
+    .table thead .td,
+    .table .tbody .td{
+        font-size: 14px
+    }
+    .table .tbody .email{
+        width: 20%;
+    }
+    .table .tbody .userName{
+        width: 13%;
+    }
+    .table .tbody .income{
+        color: #288447;
+        width: 20%;
+
+    }
+}

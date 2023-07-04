@@ -149,27 +149,6 @@
         }
     }
     .reportpopupBody{
-        background: #fff;
-        position: absolute;
-        top:0;
-        right: 0;
-        width: 407px;
-        height: auto;
-        border-radius: 1px;
-        font-family: var(--textFamily);
-        animation: rightsidebar 1s;
-
-        @keyframes rightsidebar {
-            0% {
-                opacity: 0.5;
-                transform: translateX(30px);
-            }
-            
-            100% {
-                opacity: 1;
-                transform: translateX(0)
-            }
-        }
         
         .top{
             border-bottom: 1.3921px solid #EDEDED;

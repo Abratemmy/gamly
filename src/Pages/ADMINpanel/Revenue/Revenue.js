@@ -14,6 +14,7 @@ import GrossProfit from "./grossProfit";
 import ProgressBar from "../../../Components/RECHART/ProgressBar";
 import AreaChartRechart3 from "../../../Components/RECHART/AreaChart3";
 import RevenueTable from "./RevenueTable";
+import PercentageCard2 from "../../../Components/pageCard/PercentageCard2";
 
 function Revenue() {
     const revenueCard = [
@@ -70,14 +71,21 @@ function Revenue() {
 
                     <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
                         <TopCard topCard={revenueCard} cardName="Revenue" />
-                        <PercentageCard leftText="Total Revenue" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevRevenueTotal}
-                            currentMonthTotalLeftHandSide={percentageData.currentRevenueTotal} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
-                            currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
-                        />
-                        {/* <NewMonth /> */}
-                        {/* <CalendarMonth /> */}
 
-                        {/* <CalendarMonth /> */}
+                        <div className="row">
+                            <div className="col-lg-6 col-md-12 col-sm-12">
+                                <PercentageCard leftText="Total Revenue" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevRevenueTotal}
+                                    currentMonthTotalLeftHandSide={percentageData.currentRevenueTotal}
+                                />
+                            </div>
+
+                            <div className="col-lg-6 col-md-12 col-sm-12">
+                                <PercentageCard2 prevMonth={prevMonth} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
+                                    currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
+                                />
+                            </div>
+                        </div>
+
 
                         <div className="recharts">
                             <div className='Graph' style={{ padding: "10px 0px" }}>
@@ -87,7 +95,7 @@ function Revenue() {
                                     </div>
 
                                     <div className='col-lg-6 col-md-12 col-sm-12'>
-                                        <AreaChartRechart3 />
+                                        <AreaChartRechart3 title="Gross Profit Growth Rate" />
                                     </div>
                                 </div>
 

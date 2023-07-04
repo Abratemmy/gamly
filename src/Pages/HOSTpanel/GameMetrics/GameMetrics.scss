@@ -1,0 +1,45 @@
+.gameMetrics{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+
+    .top{
+        padding: 30px 0px 50px 0px;
+        font-family: var(--textFamily);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 25px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: var(--grayColor700);
+        span{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 20px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: var(--grayColor400);
+            display: block;
+            padding: 5px 0px;
+        }
+    }
+    .tbody .td{
+        font-size: 16px;
+    }
+    .tbody .name{
+        width: 18%
+    }
+    .tbody .username{
+        width: 14%
+    }
+    .tbody .social{
+        width: 15%
+    }
+    .paginationSession{
+        padding: 5px 0px 30px 0px;
+    }
+    .tbody .tableBodyRow{
+        cursor: pointer;
+    }
+}

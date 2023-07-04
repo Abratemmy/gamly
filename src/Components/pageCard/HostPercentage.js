@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import moment from 'moment';
 import uparrow from "../../Assets/uparr.svg";
 import downarrow from "../../Assets/downarr.svg";
-import "./Percentagecard.scss"
 import Duration from '../Duration/Duration';
 
-function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, currentMonthTotalLeftHandSide }) {
 
+function HostPercentage({ average, leftText, rightText, prevMonth, previousMonthTotal, currentMonthTotal }) {
     const monthyear = moment().format('YYYY-MMMM')
     const firstDay = moment(monthyear + "-01").format("YYYY-MMMM-DD");
     // Subtract 1 day to get the end of the previous month
     const prevMonthLastDay = moment(firstDay).subtract('1', 'days').format("MMMM DD, YYYY");
 
     // calculate percentage for sales
-    const perDifference = currentMonthTotalLeftHandSide - previousMonthTotalLeftHandSide
+    const perDifference = currentMonthTotal - previousMonthTotal
 
-    const percentageIncrease = Math.round((perDifference / previousMonthTotalLeftHandSide) * 100) * 100 / 100
-    const percentageDecrease = Math.round(-(perDifference / currentMonthTotalLeftHandSide) * 100) * 100 / 100
-
+    const percentageIncrease = Math.round((perDifference / previousMonthTotal) * 100) * 100 / 100
+    const percentageDecrease = Math.round(-(perDifference / currentMonthTotal) * 100) * 100 / 100
     return (
         <div>
             <div className='percentageCard'>
                 <div className="cardWrapper">
                     <div className='cardContent'>
                         <div className='top'>
-                            <div className='avg'>Avg. <span>$ 15, 000</span></div>
+                            <div className='avg'>Avg. <span>{average}</span></div>
                             <div className="dateCardWrapper">
                                 <Duration />
                             </div>
@@ -33,7 +31,7 @@ function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, c
                         <div className='contentWrapper'>
                             <div className='content content1'>
                                 <div className='lastMonth'>{prevMonth}</div>
-                                <div className='total'>${previousMonthTotalLeftHandSide && previousMonthTotalLeftHandSide.toLocaleString()}</div>
+                                <div className='total'>{previousMonthTotal && previousMonthTotal.toLocaleString()}</div>
                                 <div className='text'>{leftText} as on {prevMonthLastDay}</div>
 
                             </div>
@@ -41,14 +39,14 @@ function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, c
 
                             <div className='content content2'>
                                 <div className='lastMonth'>{moment().format("MMMM")}</div>
-                                <div className='total'>${currentMonthTotalLeftHandSide && currentMonthTotalLeftHandSide.toLocaleString()}</div>
-                                <div className='text'>{leftText} as on {moment().format("MMMM DD, YYYY")}</div>
+                                <div className='total'>{currentMonthTotal && currentMonthTotal.toLocaleString()}</div>
+                                <div className='text'>{rightText} as on {moment().format("MMMM DD, YYYY")}</div>
 
                             </div>
                         </div>
 
                         <div className='percentage'>
-                            {currentMonthTotalLeftHandSide > previousMonthTotalLeftHandSide ? (<div className='increase'>
+                            {currentMonthTotal > previousMonthTotal ? (<div className='increase'>
                                 {percentageIncrease}% <span>Increase from Previous Month</span>
                                 <img src={uparrow} alt="" />
                             </div>
@@ -66,4 +64,4 @@ function PercentageCard({ leftText, prevMonth, previousMonthTotalLeftHandSide, c
     )
 }
 
-export default PercentageCard
+export default HostPercentage

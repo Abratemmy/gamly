@@ -1,0 +1,38 @@
+.viewDetail .top{
+    padding: 30px 0px 0px 0px;
+}
+.viewMoreDetails{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+    
+    .singletopCard{
+        position: relative;
+        top:-10px
+    }
+    .topCard{
+        width: 650px;
+        .content{
+            width: 630px
+        }
+    } 
+
+    .percentCard {
+        width: 100%;
+       
+    }
+    
+    .table .thead .tableRow{
+        position: relative;
+        width: 100%;
+        .dateRateDropdown{
+            cursor: pointer;
+        }
+        .tableDateDropdown{
+            position: absolute;
+            top: 55px;
+            right:0
+        }
+    }
+}

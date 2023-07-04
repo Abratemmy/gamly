@@ -10,6 +10,7 @@ import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import NewMonthCalendar from '../../../Components/Date/newMonth';
 import CalendarMonth from '../../../Components/Date/calendar';
 import TableProgressBar from '../../../Components/TableProgressBar/TableProgressBar';
+import { Table, Thead, Tr, Td, Tbody } from "../../../Components/Table/Table"
 
 function RevenueTable() {
     const dispatch = useDispatch()
@@ -53,6 +54,10 @@ function RevenueTable() {
     const [startMonthDate, setStartMonthDate] = useState(null)
     const [endMonthDate, setEndMonthDate] = useState(null)
     const [confirmDate, setConfirmDate] = useState(false);
+    const openDateToggle = () => {
+        setOpen(!open);
+        setConfirmDate(false)
+    }
     const confirmDateMonth = () => {
         setConfirmDate(true);
         setOpen(false)
@@ -79,16 +84,16 @@ function RevenueTable() {
                     </section>
 
                     <div className="scroll-container">
-                        <table className="table scroll">
-                            <thead>
-                                <tr style={{ position: 'relative', width: '100%' }}>
-                                    <td>S/N</td>
-                                    <td>Name</td>
-                                    <td>Total Gross Profit</td>
-                                    <td>Last Month</td>
-                                    <td>Last Week</td>
-                                    <td style={{ position: 'relative' }}>
-                                        <div className='rateDropdown' onClick={() => setOpen(!open)}>
+                        <Table className="table scroll">
+                            <Thead className='thead'>
+                                <Tr className="tableRow">
+                                    <Td>S/N</Td>
+                                    <Td>Name</Td>
+                                    <Td>Total Gross Profit</Td>
+                                    <Td>Last Month</Td>
+                                    <Td>Last Week</Td>
+                                    <Td className="td">
+                                        <div className='dateRateDropdown' onClick={openDateToggle}>
 
                                             <span><span style={{ textTransform: 'none' }}>Growth rate</span> <br />
                                                 {confirmDate ? (
@@ -106,16 +111,16 @@ function RevenueTable() {
 
 
 
-                                    </td>
+                                    </Td>
                                     {open && (
-                                        <div style={{ position: 'absolute', top: '55px', right: '0px' }}>
+                                        <div className='tableDateDropdown'>
                                             <NewMonthCalendar startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
                                                 endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} />
                                         </div>
                                     )}
-                                </tr>
-                            </thead>
-                            <tbody>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
                                 {getRevenueData?.slice ? (
                                     <>
                                         {getRevenueData?.filter((item) => {
@@ -124,27 +129,27 @@ function RevenueTable() {
 
                                         })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
                                             return (
-                                                <tr key={item?.id}>
-                                                    <td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
+                                                <Tr key={item?.id}>
+                                                    <Td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
                                                         <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
                                                     }
-                                                    </td>
-                                                    <td  >{item?.category}</td>
-                                                    <td  >${item?.price}.67</td>
-                                                    <td >${item?.rating?.rate * 10}.00</td>
-                                                    <td >${item?.rating.count}.45</td>
-                                                    <td>
+                                                    </Td>
+                                                    <Td  >{item?.category}</Td>
+                                                    <Td  >${item?.price}.67</Td>
+                                                    <Td >${item?.rating?.rate * 10}.00</Td>
+                                                    <Td >${item?.rating.count}.45</Td>
+                                                    <Td>
                                                         {item?.price > 100 ? (<div className='increase'>8% <span style={{ paddingLeft: "6px" }}><img src={increaseImg} alt="" /></span></div>) :
                                                             (<div className='decrease'>4% <span style={{ paddingLeft: "6px" }}><img src={decreaseImg} alt="" /></span></div>)}
-                                                    </td>
+                                                    </Td>
 
-                                                </tr>
+                                                </Tr>
                                             )
                                         })}
                                     </>
                                 ) : ("")}
-                            </tbody>
-                        </table>
+                            </Tbody>
+                        </Table>
                     </div>
                 </div>
 

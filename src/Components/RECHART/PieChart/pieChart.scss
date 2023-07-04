@@ -1,0 +1,39 @@
+.pieWrapper{
+    display: flex;
+    align-items: center;
+    gap: 0rem;
+    .pieContainer{
+        width: 150px;
+        height: 150px;
+        position: relative;
+    }
+    .pieDetail{
+        .content{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0px;
+            img{
+                width: 25px;
+            }
+            .text{
+                font-family: var(--textFamily);
+                font-size: 21px;
+                font-weight: 700;
+                line-height: 31px;
+                letter-spacing: 0px;
+                color: #363636;
+                span{
+                    font-family: var(--textFamily);
+                    font-size: 15px;
+                    font-weight: 500;
+                    line-height: 29px;
+                    letter-spacing: 0px;
+                    text-align: left;
+                    color: #7D7D7D;
+                    display: block;
+                }
+            }
+        }
+    }
+}

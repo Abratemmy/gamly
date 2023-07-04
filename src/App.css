@@ -25,6 +25,8 @@
   --grayColor700: #2D3748;
   --lightGreen: #D7F0D3;
   --lightYellow: #F5E3C0;
+  --interFamily: 'Inter', sans-serif;
+  --greenColor: #288447
 }
 
 [data-theme="dark"]{
@@ -227,6 +229,18 @@
   font-weight: 400;
   color: var(--grayColor)
 }
+.table .thead .tableRow{
+  position: relative;
+  width: 100%;
+}
+.table .thead .tableRow .dateRateDropdown{
+      cursor: pointer;
+}
+.table .thead .tableRow  .tableDateDropdown{
+    position: absolute;
+    top: 55px;
+    right:0
+}
 
 .scroll-container {
   overflow: auto;
@@ -382,3 +396,26 @@ select option:hover{
 .doNotShowTableBar .tableProgressBar{
   display: none;
 }
+.rightSidebar{
+  background: #fff;
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 407px;
+  height: auto;
+  min-height: 100%;
+  border-radius: 1px;
+  font-family: var(--textFamily);
+  animation: rightsidebar 1s;
+}
+@keyframes rightsidebar {
+      0% {
+          opacity: 0.5;
+          transform: translateX(30px);
+      }
+      
+      100% {
+          opacity: 1;
+          transform: translateX(0)
+      }
+  }

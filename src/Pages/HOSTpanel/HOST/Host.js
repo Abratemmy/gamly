@@ -7,6 +7,7 @@ import moment from 'moment';
 import dateImg from '../../../Assets/date.svg'
 import uparrow from "../../../Assets/uparr.svg";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md"
+import HostPercentage from '../../../Components/pageCard/HostPercentage';
 
 function Host() {
     const dashboardCard = [
@@ -34,6 +35,11 @@ function Host() {
         console.log(event.target.id)
         setDropdown(false)
 
+    }
+
+    const percentageData = {
+        previousMonthTotal: 1000,
+        currentMonthTotal: 6000
     }
     return (
         <HostSidebar name="Dashboard">
@@ -79,49 +85,21 @@ function Host() {
                         </div>
                     </div>
 
-                    <div className='Session'>
+                    <div className='Session hostStyleforTopCard'>
                         <div className='header'>Sign Up</div>
                         <TopCard topCard={dashboardCard} />
 
-                        <div className='percentageCard'>
-                            <div className='cardWrapper'>
-                                <div className='row'>
-                                    <div className='col-lg-6 col-md-12 col-sm-12'>
-                                        <div className='cardContent'>
-                                            <div className='top'>
-                                                <div className='avg'>Avg. <span>$ 15, 000</span></div>
-                                                <div className="date">
-                                                    <div className="dateC">{prevMonth}, 01 - {moment().format("MMMM, DD YYYY")}
-                                                        <span><img src={dateImg} alt="" /></span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                        <div className='row g-4'>
+                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <HostPercentage average="1,500" leftText="Total Signup" rightText="Total profit" prevMonth={prevMonth}
+                                    previousMonthTotal={percentageData.previousMonthTotal} currentMonthTotal={percentageData.currentMonthTotal}
+                                />
+                            </div>
 
-                                            <div className='contentWrapper'>
-                                                <div className='content content1'>
-                                                    <div className='lastMonth'>{prevMonth}</div>
-                                                    <div className='total'>1, 000</div>
-                                                    <div className='text'>Total Signup as on {prevMonthLastDay}</div>
 
-                                                </div>
-
-                                                <div className='content content2'>
-                                                    <div className='lastMonth'>{moment().format("MMMM")}</div>
-                                                    <div className='total'>6,000</div>
-                                                    <div className='text'>Total profit as on {moment().format("MMMM DD, YYYY")}</div>
-
-                                                </div>
-                                            </div>
-                                            <div className='percentage'>
-                                                <div className='increase'>
-                                                    6% <span>Increase from Previous Month</span>
-                                                    <img src={uparrow} alt="" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className='col-lg-5 col-md-8 col-sm-12'>
+                            <div className='col-lg-5 col-md-8 col-sm-12'>
+                                <div className='percentageCard'>
+                                    <div className='cardWrapper'>
                                         <div className='cardContent rightContent'>
                                             <div className='topHeader'>
                                                 <div className='text'>Sign Up</div>

@@ -1,9 +1,12 @@
 import React from 'react';
 import "./KYC.scss";
+import HostSidebar from '../../../Components/PanelSIDEBAR/HostSidebar';
 
 function KYC() {
     return (
-        <div>KYC</div>
+        <HostSidebar name="KYC">
+
+        </HostSidebar>
     )
 }
 
