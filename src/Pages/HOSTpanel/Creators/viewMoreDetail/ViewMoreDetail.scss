@@ -7,6 +7,21 @@
     font-family: var(--textFamily);
     padding: var(--interfaceBorder);
     
+    .profile{
+        font-family: var(--interFamily);
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.022em;
+        text-align: left;
+        color:#252C32;  
+        span{
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: -0.014em;
+            text-align: left;
+            display: block;
+        }  
+    }
     .singletopCard{
         position: relative;
         top:-10px

@@ -22,7 +22,7 @@ function HostPercentage({ average, leftText, rightText, prevMonth, previousMonth
                 <div className="cardWrapper">
                     <div className='cardContent'>
                         <div className='top'>
-                            <div className='avg'>Avg. <span>{average}</span></div>
+                            <div className='avg'>{average ? <>Avg. <span>{average}</span></> : ""}</div>
                             <div className="dateCardWrapper">
                                 <Duration />
                             </div>

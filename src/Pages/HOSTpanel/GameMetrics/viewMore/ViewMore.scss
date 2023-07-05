@@ -1,0 +1,209 @@
+.singleGameMetric{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: var(--interfaceBorder);
+
+    .topContent{
+        padding: 20px 0px 10px 0px;
+        .left{
+            text-decoration: none;
+            color: #878787;
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            
+        }
+        .iconspan{
+            padding-left: 5px;
+        }
+        span{
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: var(--grayColor700);
+            
+            .icon{
+                font-size: 18px;
+                position: relative;
+                top:-2px
+            }
+        }
+    }
+
+    .firstSession{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .left {
+            font-family: var(--interFamily);
+            color: #252C32;
+            .name{
+                font-size: 24px;
+                font-weight: 700;
+                letter-spacing: -0.022em;
+                text-align: left; 
+            }
+            .id{ 
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: -0.014em;
+                text-align: left;
+            }
+            .title{
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 25px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: var(--grayColor700)
+            }
+        }
+        .right{
+            width: 400px;
+            border-radius: 5.885462284088135px;
+            border: 0.74px solid #F4F4F4;
+            background: #fff;
+            padding: 20px;
+            .top{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                .r-left{
+                    font-family: var(--textFamily2);
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 18px;
+                    letter-spacing: -0.02em;
+                    text-align: left;
+                    color: #25233A
+                }
+                .date{
+                    background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+                    border: 0.66px solid #DCDEE6;
+                    border-radius: 5px;
+                    padding: 7px 12px;
+                    font-family: var(--textFamily);
+                    font-size: 10px;
+                    font-weight: 500;
+                    line-height: 17px;
+                    letter-spacing: 0px;
+                    text-align: center;
+                    color: #121212;
+                    display: flex;
+                    align-items: center;
+                    gap: 7px;
+                    img{
+                        width: 16px;
+                        height: 16px;
+                        position: relative;
+                        top:-2px
+                    }
+                }
+            }
+
+            .content{
+                display: flex;
+                .c-left{
+                    flex:1
+                }
+                .c-right{
+                    flex:1
+                }
+                .c-left{
+                    background: var(--primaryColor);
+                    border-radius: 6px 0px 0px 6px;
+                    padding: 20px;
+                    color:#fff;
+                    font-family: var(--textFamily);
+                    .title{
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        letter-spacing: -0.02em;
+                        text-align: left;
+                        padding-bottom: 15px;
+                    }
+                    .total{
+                        font-size: 26px;
+                        font-weight: 700;
+                        line-height: 18px;
+                        letter-spacing: 0em;
+                        text-align: left;
+
+                    }
+                }
+                .c-right{
+                    border: 0.74px solid #E7E7E7;
+                    border:0px 1px 0px 0px;
+                    padding: 15px 5px;
+                    font-family: var(--textFamily);
+                    .title{
+                        display: flex;
+                        gap: 15px;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 18px;
+                        letter-spacing: -0.02em;
+                        text-align: left;
+                        padding: 0px 10px;
+                        div{
+                            font-size: 9px;
+                            font-weight: 400;
+                            line-height: 18px;
+                            letter-spacing: -0.02em;
+                            text-align: left;
+                            color:  #106DEE;
+                            padding-bottom: 15px;
+                            span{
+                                font-weight: 700;
+                            }
+                        }
+                    
+                    }
+                    .total{
+                        font-size: 21px;
+                        font-weight: 700;
+                        line-height: 18px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        color: #6D7D93;
+                        padding-left: 10px;
+                        padding-bottom: 15px;
+                    }
+                    .text{
+                        font-size: 9px;
+                        font-weight: 500;
+                        line-height: 11px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        color: #6D7D93;
+                        span{
+                            font-weight: 700;
+                            color: var(--primaryColor);
+                            img{
+                                width: 15px
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 768px) {
+        .firstSession{
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px
+        }
+    }
+}

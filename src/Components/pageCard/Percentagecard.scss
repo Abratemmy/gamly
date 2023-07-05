@@ -14,7 +14,8 @@
             border-radius: 6.48142px;
             padding: 10px;
             width: 100%;
-            height: auto;
+            min-height: 198px;
+            position: relative;
             .top{
                 display: flex;
                 align-items: center;
@@ -37,7 +38,7 @@
                     background: #FFFFFF;
                     display: flex;
                     align-items: center;
-                    justify-content: center;
+                    justify-content: flex-end;
                     font-family: 'Manrope', sans-serif;
                     color: #121212;
                     font-size: 13.2631px;
@@ -65,7 +66,6 @@
                    }
                 }
             }
-
             .contentWrapper{ 
                 display: flex;
                 align-items: center;
@@ -79,7 +79,7 @@
                     border-right: 2px solid #B5B5B5;
                 }
                 .content2{
-                    padding-left: 20px;
+                    padding-left: 10px;
                 }
                 .lastMonth{
                     font-family: var(--textFamily);
@@ -105,6 +105,74 @@
                 }
                 
             }
+            .gameMetricsWrapper{
+                .content{
+                    padding: 25px 10px 3px 20px;
+                    display: flex;
+                    align-items: center;
+                    .versus{
+                        font-family: 'Manrope', sans-serif;
+                        font-size: 12px;
+                        font-weight: 700;
+                        line-height: 21px;
+                        letter-spacing: 0em;
+                        text-align: center;
+                        color:#2A2A2C;
+                    }
+                    .total{
+                        color: var(--primaryColor);
+                        font-family: var(--textFamily);
+                        font-size: 36px;
+                        font-weight: 700;
+                        line-height: 21px;
+                        letter-spacing: 0px;
+                        text-align: left;
+                    }
+                    .subtotal{
+                        font-family: var(--textFamily);
+                        font-size: 11px;
+                        font-weight: 400;
+                        line-height: 21px;
+                        letter-spacing: 0px;
+                        text-align: left;
+                        text-transform: uppercase;
+                        padding-left: 10px;
+                    }
+                }
+                .content1{
+                    display: flex;
+                    gap: 10px;
+                    .gameCard{
+                        width: 34.92px;
+                        height: 34.92px;
+                        border-radius: 5px;
+                    }
+                    .gameMetric_content{
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+                        .card1{
+                            background: #462C65; 
+                        }
+                        .card2{
+                            background: #D7D709;
+                        }
+                        .text{
+                            font-family: var(--poppinFamily);
+                            font-size: 9px;
+                            font-weight: 500;
+                            line-height: 9px;
+                            letter-spacing: 0em;
+                            text-align: center;
+                            color:#000000;
+                            width: 60.41px;
+                            padding-top: 7px;
+                        }
+                    }
+                     
+                }
+            
+            }
             .percentage {
                 padding: 7px;
                 font-size: 10px;
@@ -124,6 +192,12 @@
                 img{
                     padding-left: 8px;
                 }
+            }
+        }
+        .gameMetricContent{
+            height: 198px;
+            .contentWrapper{
+                padding-top: 20px;
             }
         }
 
@@ -147,5 +221,143 @@
             font-size: 28.2915px!important;
         }
       
+    }
+
+    .gameMetricsContent{
+        .top{
+            position: absolute;
+            top:0;
+            left: 50px;
+            width: 104px;
+            height: 22.09043312072754px;
+            border-radius: 0px 0px 9px 8px;
+            background: var(--primaryColor);
+           
+            .megaText{
+                font-family: var(--textFamily);
+                font-size: 12px;
+                font-weight: 500;
+                letter-spacing: 0px;
+                text-align: center;
+                color:#fff;
+                margin: auto;
+            }
+        }
+        .contentWrapper{
+            padding: 10px 0px 5px;
+            .content{
+                padding-right: 5px!important;
+            }
+            .c-top{
+                display: flex;
+                align-items: flex-end;
+                justify-content: space-between;
+                font-family: var(--interFamily);
+                padding-bottom: 10px;
+                .c-text{               
+                    font-size: 10px;
+                    font-weight: 400;
+                    letter-spacing: 0px;
+                    text-align: left;
+                    color:#797777;
+                }
+                .redText, .blackText{
+                    font-size: 20px;
+                    font-weight: 500;
+                    line-height: 24px;
+                    letter-spacing: 0px;
+                    text-align: left;
+                    color: #CC131B;
+                }
+                .blackText{
+                    color: #000000
+                }
+                .sub-c-text{
+                font-size: 8px;
+                font-weight: 400;
+                line-height: 10px;
+                letter-spacing: 0px;
+                text-align: left;
+                color:#797777
+                }
+            }
+
+            .gameProgressBarCard{
+                display: flex;
+                gap: 5px; 
+                align-items: center;
+                width: 100%;
+                // justify-content: space-between;
+                .up{
+                    flex:1;
+                    display: flex;
+                    flex-direction: column;
+                    font-family: var(--poppinFamily);
+                    font-size: 10px;
+                    font-weight: 500;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color:#12B545;
+                    display: flex;
+                    align-items: flex-start;
+                    span{
+                        color:#000000;
+                        font-family: var(--textFamily);
+                        font-size: 12px;
+                        font-weight: 600;
+                        line-height: 15px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                    }
+                    
+                } 
+                .gameMetric_progressBar{
+                    flex: 8;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    padding: 5px 0px;
+                    .progress-line{
+                        margin-top: 3px;
+                    }
+                    .redtext{
+                        font-family: var(--poppinFamily);
+                        font-size: 8px;
+                        font-weight: 400;
+                        line-height: 12px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        color:#D40000;
+                        padding-top: 5px;
+                    }
+                }
+                .number{
+                    flex: 1;
+                    font-family: var(--textFamily);
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 15px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color:#000000;
+                }
+            }
+
+            .content2{
+                .total{
+                    color: var(--primaryColor)
+                }
+                .subtotal{
+                    font-family: var(--textFamily);
+                    font-size: 11px;
+                    font-weight: 400;
+                    line-height: 21px;
+                    letter-spacing: 0px;
+                    text-align: left;
+                    color: #2D3657;
+                    text-transform: uppercase;
+                }
+            }
+        }
     }
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import './rightSidebar.scss';
-import closeBtn from '../../../../Assets/cancel.svg';
 import Avatar from '../../../../Assets/Avatar.svg';
 import upArrow from '../../../../Assets/uparr.svg'
+import upArrow2 from '../../../../Assets/upArr2.svg'
+import { NavLink } from 'react-router-dom';
 
 function RightSidebar({ popupcontent, onClick }) {
     return (
@@ -31,7 +32,6 @@ function RightSidebar({ popupcontent, onClick }) {
 
             <div className="rightSidebarContent">
                 <div className='title'>Games Hosted</div>
-
                 <div className='cardWrapper'>
                     <div className='container'>
                         <div className='row g-2'>
@@ -39,7 +39,7 @@ function RightSidebar({ popupcontent, onClick }) {
                                 <div className='content'>
                                     <div className="heading">Total game</div>
                                     <div className='total'>25, 230</div>
-                                    <div className='imagespan'><img src={upArrow} alt='' /> <span>2.1%</span></div>
+                                    <div className='imagespan'><img src={upArrow2} alt='' /> <span>2.1%</span></div>
                                 </div>
                             </div>
 
@@ -47,7 +47,7 @@ function RightSidebar({ popupcontent, onClick }) {
                                 <div className='content'>
                                     <div className="heading">Last month</div>
                                     <div className='total'>3, 230</div>
-                                    <div className='imagespan'><img src={upArrow} alt='' /> <span>2.6%</span></div>
+                                    <div className='imagespan'><img src={upArrow2} alt='' /> <span>2.6%</span></div>
                                 </div>
                             </div>
 
@@ -55,23 +55,73 @@ function RightSidebar({ popupcontent, onClick }) {
                                 <div className='content'>
                                     <div className="heading">Last Week</div>
                                     <div className='total'>15, 230</div>
-                                    <div className='imagespan'><img src={upArrow} alt='' /> <span>3.1%</span></div>
+                                    <div className='imagespan'><img src={upArrow2} alt='' /> <span>3.1%</span></div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className='row'>
+                        <div className='row secondrowCard'>
                             <div className='col-lg-8 col-md-8 col-sm-9'>
                                 <div className='content'>
                                     <div className="heading">Last hosted game income</div>
                                     <div className='total'>15, 230</div>
-                                    <div className='text'><span>6% </span>increase from previos Hosted Game<img src={upArrow} alt='' /></div>
+                                    <div className='text'><span>6% </span>increase from previous Hosted Game<img src={upArrow} alt='' /></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div >
             </div >
+            <div className='hr-border' ></div>
+
+            <div className="rightSidebarContent">
+                <div className='title'>Contest Created</div>
+                <div className='cardWrapper'>
+                    <div className='container'>
+                        <div className='row g-2'>
+                            <div className='col-lg-4 col-md-4 col-sm-4 column'>
+                                <div className='content'>
+                                    <div className="heading">Total contest</div>
+                                    <div className='total'>25, 230</div>
+                                    <div className='imagespan'><img src={upArrow2} alt='' /> <span>2.1%</span></div>
+                                </div>
+                            </div>
+
+                            <div className='col-lg-4 col-md-4 col-sm-4 column'>
+                                <div className='content'>
+                                    <div className="heading">Last month</div>
+                                    <div className='total'>3, 230</div>
+                                    <div className='imagespan'><img src={upArrow2} alt='' /> <span>2.6%</span></div>
+                                </div>
+                            </div>
+
+                            <div className='col-lg-4 col-md-4 col-sm-4 column'>
+                                <div className='content'>
+                                    <div className="heading">Last Week</div>
+                                    <div className='total'>15, 230</div>
+                                    <div className='imagespan'><img src={upArrow2} alt='' /> <span>3.1%</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className='row secondrowCard'>
+                            <div className='col-lg-12 col-md-12 col-sm-12'>
+                                <div className='content' style={{ padding: "20px" }}>
+                                    <div className="heading" style={{ textAlign: "left" }}>Total contest created for last game</div>
+                                    <div className='total' style={{ textAlign: "left" }}>15, 230</div>
+                                    <div className='text' style={{ textAlign: "left" }}><span>6% </span>increase from previous Hosted Game<img src={upArrow} alt='' /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div >
+            </div >
+
+            <div className='viewMoreButton'>
+                <NavLink to={`/game_metrics/${popupcontent?.id}`} className="viewMore">View more</NavLink>
+            </div>
+
+
         </div >
     )
 }

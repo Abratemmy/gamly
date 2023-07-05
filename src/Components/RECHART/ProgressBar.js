@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import increaseImg from "../../Assets/whiteIncrease.svg";
 import decreaseImg from '../../Assets/whiteDecrease.svg'
 
-function ProgressBar({ lastMonthTotal, currentMonthTotal }) {
+function ProgressBar({ lastMonthTotal, currentMonthTotal, progressTitle }) {
 
     const valueTotal = currentMonthTotal + lastMonthTotal
 
@@ -44,7 +44,7 @@ function ProgressBar({ lastMonthTotal, currentMonthTotal }) {
         <div className="rechartsContainer progressChart">
             <div className='left'>
                 <div className='top'>
-                    <div className='title'>Analytics Comparison</div>
+                    <div className='title'>{progressTitle}</div>
                     <div className='monthDisplay'>
                         <div className='month' onClick={() => setOpenPrevMonth(!openPrevMonth)}>
                             {getPrevMonth === "1" ? "January" : getPrevMonth === "2" ? "February" : getPrevMonth === "3" ? "March" : getPrevMonth === "4" ? "April" :

@@ -48,7 +48,9 @@ function NetProfit() {
                 <div className='Graph' style={{ padding: "10px 0px" }}>
                     <div className='row gx-5 gy-5'>
                         <div className='col-lg-6 col-md-12 col-sm-12'>
-                            <ProgressBar lastMonthTotal={lastMonthTotal} currentMonthTotal={currentMonthTotal} />
+                            <ProgressBar lastMonthTotal={lastMonthTotal} currentMonthTotal={currentMonthTotal}
+                                progressTitle='Analytics Comparison'
+                            />
                         </div>
 
                         <div className='col-lg-6 col-md-12 col-sm-12'>

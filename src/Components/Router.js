@@ -23,6 +23,7 @@ import Contest from '../Pages/HOSTpanel/Contest/Contest';
 import KYC from '../Pages/HOSTpanel/KYC/KYC';
 import SingleCreator from '../Pages/HOSTpanel/Creators/SingleCreator';
 import SingleTest from '../Pages/HOSTpanel/Creators/singleTest';
+import ViewMore from '../Pages/HOSTpanel/GameMetrics/viewMore/ViewMore';
 
 const Router = () => {
     const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
@@ -50,6 +51,8 @@ const Router = () => {
                 </Route>
                 <Route exact path="/creators/:id" caseSensitive={false} element={<SingleCreator />} />
                 <Route exact path="/game_metrics" caseSensitive={false} element={<GameMetrics />} />
+                <Route exact path="/game_metrics/:id" caseSensitive={false} element={<ViewMore />} />
+
                 <Route exact path="/kyc" caseSensitive={false} element={<KYC />} />
                 <Route exact path="/withdrawal_management" caseSensitive={false} element={<WithdrawalManagement />} />
                 <Route exact path="/contest" caseSensitive={false} element={<Contest />} />
