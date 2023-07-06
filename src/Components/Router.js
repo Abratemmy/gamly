@@ -24,6 +24,9 @@ import KYC from '../Pages/HOSTpanel/KYC/KYC';
 import SingleCreator from '../Pages/HOSTpanel/Creators/SingleCreator';
 import SingleTest from '../Pages/HOSTpanel/Creators/singleTest';
 import ViewMore from '../Pages/HOSTpanel/GameMetrics/viewMore/ViewMore';
+import KYCDetail from '../Pages/HOSTpanel/KYC/KYCDetail/KYCDetail';
+import PendingKyc from '../Pages/HOSTpanel/KYC/PendingKYC/PendingKyc';
+import PendingKYCDetail from '../Pages/HOSTpanel/KYC/PendingKYC/pendingDetail';
 
 const Router = () => {
     const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
@@ -54,6 +57,9 @@ const Router = () => {
                 <Route exact path="/game_metrics/:id" caseSensitive={false} element={<ViewMore />} />
 
                 <Route exact path="/kyc" caseSensitive={false} element={<KYC />} />
+                <Route exact path="/kyc/:id" caseSensitive={false} element={<KYCDetail />} />
+                <Route exact path="/kyc/pending_verification" caseSensitive={false} element={<PendingKyc />} />
+                <Route exact path="/kyc/pending_verification/:id" caseSensitive={false} element={<PendingKYCDetail />} />
                 <Route exact path="/withdrawal_management" caseSensitive={false} element={<WithdrawalManagement />} />
                 <Route exact path="/contest" caseSensitive={false} element={<Contest />} />
                 <Route exact path="/singletest" caseSensitive={false} element={<SingleTest />} />

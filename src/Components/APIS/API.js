@@ -62,7 +62,7 @@ export const createCodeManagement = (newCodeManagement) => CODEMANAGEMENTAPI.pos
 export const updateCodeManagement = (id, updatedCodeManagement) => CODEMANAGEMENTAPI.put(`/${id}`, updatedCodeManagement);
 export const deleteCodeManagement = (id) => CODEMANAGEMENTAPI.delete(`/${id}`);
 
-// code Management
+// creator
 const CREATORSAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
 export const fetchCreators = () => CREATORSAPI.get('/');
 export const fetchSingleCreator = (id) => CREATORSAPI.get(`/${id}`);
@@ -70,10 +70,18 @@ export const createCreator = (newCreator) => CREATORSAPI.post('/', newCreator);
 export const updateCreator = (id, updatedCreator) => CREATORSAPI.put(`/${id}`, updatedCreator);
 export const deleteCreator = (id) => CREATORSAPI.delete(`/${id}`);
 
-// code Management
+// game metrics
 const GAMEMETRICAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
 export const fetchGameMetrics = () => GAMEMETRICAPI.get('/');
 export const fetchSingleGameMetric = (id) => GAMEMETRICAPI.get(`/${id}`);
 export const createGameMetric = (newGameMetric) => GAMEMETRICAPI.post('/', newGameMetric);
 export const updateGameMetric = (id, updatedGameMetric) => GAMEMETRICAPI.put(`/${id}`, updatedGameMetric);
 export const deleteGameMetric = (id) => GAMEMETRICAPI.delete(`/${id}`);
+
+// creator
+const KYCAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
+export const fetchKYC = () => KYCAPI.get('/');
+export const fetchSingleKYC = (id) => KYCAPI.get(`/${id}`);
+export const createKYC = (newKYC) => KYCAPI.post('/', newKYC);
+export const updateKYC = (id, updatedKYC) => KYCAPI.put(`/${id}`, updatedKYC);
+export const deleteKYC = (id) => KYCAPI.delete(`/${id}`);

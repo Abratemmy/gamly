@@ -9,7 +9,8 @@ import { salesReducer } from "./REDUCERS/salesReducer";
 import { revenueReducer } from "./REDUCERS/revenueReducer";
 import { codeManagementReducer } from "./REDUCERS/codeManagementReducer";
 import { creatorReducer } from "./REDUCERS/creatorReducer";
-import { gameMetricsReducer } from './REDUCERS/gameMetricsReducer'
+import { gameMetricsReducer } from './REDUCERS/gameMetricsReducer';
+import { kycReducer } from "./REDUCERS/kycReducer";
 
 const composeEnhancers = composeWithDevTools({
 
@@ -23,7 +24,8 @@ const rootReducer = combineReducers({
     revenueReducer,
     codeManagementReducer,
     creatorReducer,
-    gameMetricsReducer
+    gameMetricsReducer,
+    kycReducer
 })
 const store = createStore(
     rootReducer,

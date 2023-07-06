@@ -1,0 +1,143 @@
+.pendingKyc{
+    .tbody .tdAction{
+        // display: inline-block;
+    }
+    .tbody {
+        .td{
+            font-size: 16px;
+        }
+        .buttonaction{
+            display:flex;
+            gap: 5px;
+
+            .button{
+                width: 84px;
+                height: 26px;
+                border-radius: 7px;
+                text-align: center;
+                display: flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            }
+            .approve{
+                border: 1px solid #258e22;
+                color: #258E22;
+                font-size: 12px;
+            }
+            .decline{
+                border: 1px solid var(--primaryColor);
+                color: var(--primaryColor);
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.pendingKYCDetail{
+    .AccountDetails{
+        background: #fff;
+        padding: 10px 30px;
+        .header{
+            margin-bottom: 30px;
+            .title{
+                font-family: 'Manrope', sans-serif;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 27px;
+                letter-spacing: 0em;
+                text-align: left;
+                padding: 5px 10px;
+                border-bottom: 1px solid var(--primaryColor);
+                width: auto;
+                color: var(--primaryColor)
+            }
+        }
+        .wrapper{
+            background:  #F8F9FC
+        }
+        
+    }
+    .ApprovalBody{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        width: 379px;
+        border-radius: 8px;
+        padding: 10px 20px;
+        .top{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            .title{
+                font-family: var(--textFamily);
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 23px;
+                letter-spacing: -0.02em;
+                text-align: left;
+                color:#000000;
+            }
+            img{
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+        }
+        .form{
+            label{
+                display: block;
+                font-family: var(--textFamily);
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: #2D3657;
+                padding-bottom: 4px;
+            }
+            textarea{
+                width: 100%;
+                background: #E7E7E7;
+                border-radius: 4px;
+                border: 0.8px solid #E7E7E7;
+                outline: none;
+                font-family: var(--textFamily);
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 15px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: #757272;
+                padding: 10px;
+            }
+            textarea::placeholder{
+                color: #c2c2c2;
+            }
+            .submitButton{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin: 20px 0px 40px 0px;
+                .submitBtn{
+                    width: 180.65px;
+                    height: 42px;
+                    border-radius: 8px;
+                    background: var(--backgroundColor);
+                    color:#fff;
+                    border: 0.99px solid #DCDEE6;
+                    font-family: 'Manrope', sans-serif;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 25px;
+                    letter-spacing: 0px;
+                    text-align: center;
+
+                }
+            }
+        }
+    }
+}

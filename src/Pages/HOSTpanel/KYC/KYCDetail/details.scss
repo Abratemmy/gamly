@@ -1,0 +1,222 @@
+.KYC{
+    width: 100%;
+    position: relative;
+    font-family: var(--textFamily);
+    padding: 0px 35px;
+    
+    .detailTop{
+        padding: 20px 0px 40px 0px;
+
+        .left{
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color:#878787;
+            text-decoration: none;
+        }
+        .iconspan{
+            padding-left: 6px;
+            .icon{
+                font-size: 18px;
+                position: relative;
+                top:-2px
+            }
+        }
+        .right{
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: var(--grayColor700)
+        }
+    }
+}
+.kycDetails{
+    
+    .bloc-tabs .tabs{
+        padding: 5px 15px;
+        border-bottom: 3px solid #DDDDDD;
+    }
+    .active-tabs  {
+        background: transparent;
+        /* border-bottom: 1px solid transparent; */
+        color: var(--primaryColor);
+    }
+    .active-tabs::before {
+        bottom: -2px;
+    }
+    .tabContent{
+        padding-top: 30px;
+    }
+    .pendingKycButton{
+        width: 204px;
+        height: 42px;
+        border: 0.99px solid var(--primaryColor);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button{
+            color: var(--primaryColor);
+            font-family: 'Manrope', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 25px;
+            letter-spacing: 0px;
+            text-align: center;
+            border: none;
+            background: none;
+            width: 100%;
+        }
+
+
+
+
+    }
+    .AccountDetails{
+        position: relative;
+        .content{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10rem;
+            label{
+                font-family: var(--textFamily);
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: #4C535F;
+                padding-bottom: 5px;
+            }
+            .left, .right{
+                width: 100%;
+                padding-bottom: 15px;
+                
+            }
+            .inputText{
+                border: 1px solid #EAEAEA;
+                width: 100%;
+                height: 50px;
+                border-radius: 8px;
+                position: relative;
+                .input{
+                    position: absolute;
+                    font-family: var(--textFamily);
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 16px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: #8D98AA;
+                    margin: 0;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    padding-left: 10px;
+                }
+                .greenColorInput{
+                    color: #0D8F2E;
+                }
+            }
+            .wrapper{
+                padding-bottom: 15px;
+            }
+            .textareaWrapper{
+                label{
+                    display: block;
+                }
+                .textarea{
+                    border: 1px solid #EAEAEA;
+                    width: 100%;
+                    border-radius: 8px;
+                    position: relative;
+                    width: 100%;
+                    background: transparent;
+                    font-family: var(--textFamily);
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 16px;
+                    color: #8D98AA;
+                    padding: 5px 10px;
+                    outline: none;
+                }
+            }
+
+            .rightPdf{
+                width: 100%;
+                .wrapper{
+                    border: 1px dashed #D1D5DB;
+                    width: 70%;
+                    height: 120px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 3px;
+
+                    .pdfLink{
+                        color: var(--primaryColor);
+                        text-decoration: none;
+                        font-family: var(--textFamily);
+                        font-size: 12px;
+                        font-weight: 500;
+                        line-height: 16px;
+                        letter-spacing: 0px;
+
+                    }
+                }
+            }
+            .inputImage{
+                border: 1px dashed #000000;
+                height: 260px;
+                width: 401px;
+                border-radius: 8px;
+                padding: 10px;
+                margin-top: 15px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            .actionButton{
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 10px;
+                .button{
+                    width: 84px;
+                    height:26.25px;
+                    border-radius: 7.000040054321289px;
+                    border: 1px;
+                    background: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .approve{
+                    color: #258E22;
+                    border: 1px solid #258E22;
+                }
+                .decline{
+                    color: var(--primaryColor);
+                    border: 1px solid var(--primaryColor);
+                }
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .content{
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    }
+}
