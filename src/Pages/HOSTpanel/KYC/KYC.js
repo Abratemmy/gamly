@@ -43,7 +43,7 @@ function KYC() {
         <HostSidebar name="KYC">
             <div className='Creators kycWrapper'>
                 <div className='container'>
-                    <div className='top'>
+                    <div className='page-top'>
                         <div>
                             Creators
                             <span>Here’s a list of all creators</span>

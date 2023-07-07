@@ -409,13 +409,16 @@ select option:hover{
   animation: rightsidebar 1s;
 }
 @keyframes rightsidebar {
-      0% {
-          opacity: 0.5;
-          transform: translateX(30px);
-      }
-      
-      100% {
-          opacity: 1;
-          transform: translateX(0)
-      }
-  }
+    0% {
+        opacity: 0.5;
+        transform: translateX(30px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+.rightSidebar2{
+  width: 470px;
+}

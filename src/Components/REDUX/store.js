@@ -11,6 +11,7 @@ import { codeManagementReducer } from "./REDUCERS/codeManagementReducer";
 import { creatorReducer } from "./REDUCERS/creatorReducer";
 import { gameMetricsReducer } from './REDUCERS/gameMetricsReducer';
 import { kycReducer } from "./REDUCERS/kycReducer";
+import { hostWithdrawalReducer } from "./REDUCERS/withdrawalReducer";
 
 const composeEnhancers = composeWithDevTools({
 
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
     codeManagementReducer,
     creatorReducer,
     gameMetricsReducer,
-    kycReducer
+    kycReducer,
+    hostWithdrawalReducer
 })
 const store = createStore(
     rootReducer,

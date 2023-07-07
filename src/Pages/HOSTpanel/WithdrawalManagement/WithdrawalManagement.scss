@@ -1,0 +1,235 @@
+.withdrawalContainer{
+    .page-top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 50px;
+
+        .topButton{
+            width: 204.65px;
+            height: 42px;
+            padding: 7.942380905151367px 23.8271427154541px 7.942380905151367px 23.8271427154541px;
+            border-radius: 7.999999523162842px;
+            border: 0.9927976131439209px;
+            gap: 7.942380905151367px;
+            border: 0.99px solid var(--primaryColor);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            button{
+                background: transparent;
+                width: 100%;
+                border: none;
+                color: var(--primaryColor);
+                font-family: 'Manrope', sans-serif;
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 25px;
+                letter-spacing: 0px;
+                text-align: center;
+
+            }
+            
+        }
+    }
+    .table .thead .td{
+        font-family: var(--textFamily);
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0em;
+        text-align: left;
+        color: #1F2937
+    }
+    .table .tableRow{
+        cursor: pointer;
+    }
+    .table .tbody .td{
+        font-family: var(--textFamily);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+    .table .tbody .sN{
+        width: 6%;
+    }
+}
+.withdrwal-RightSidebar{
+    padding: 20px 0px;
+    .header{
+        display: flex;
+        align-items: center;
+        padding: 10px 10px 15px 10px;
+        border-bottom: 1.39px solid #EDEDED;
+        .left{
+            flex: 10;
+            text-align: center;
+            font-family: var(--textFamily);
+            .withdrawal{
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 29px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:#474747;
+                padding-bottom: 8px;
+            }
+            .money{
+                font-size: 24px;
+                font-weight: 600;
+                line-height: 39px;
+                letter-spacing: 0em;
+                text-align: center;
+                color: #121212;
+                padding-bottom: 8px;
+            }
+            .text{
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 28px;
+                letter-spacing: 0em;
+                text-align: center;
+                color: #1F2937;
+                padding-bottom: 5px;
+            }
+            .subText{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: center;
+                color: #4B5563;
+            }
+        }
+        .closeButton{
+            position: relative;
+            top:-10px;
+            button{
+                background: linear-gradient(0deg, #FFFFFF, #FFFFFF);
+                border: 1px solid #E5E7EB;
+                border-radius: 4px;
+                width: 40px;
+                height: 40px;
+                svg{
+                    width: 13.184999465942383px;
+                    height: 13.184999465942383px;
+
+                }
+            }
+        }
+    }
+    .cardContent{
+        border-radius: 7px;
+        border: 1.17px solid #12121238;
+        padding: 10px;
+        width: 100%;
+        height: 72.83px;
+        font-family: var(--textFamily);
+        text-align: left;
+        color: #1F2937;
+        .title{
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 18px;
+            letter-spacing: 0em;
+            padding-bottom: 4px;
+        }
+        .answer{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: 0em;
+
+        }
+    }
+    .cardContainer{
+        padding: 10px 10px 20px 20px;
+    }
+    .cardContainer {
+        .wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 13px;
+            padding-right: 10px;
+            font-family: var(--textFamily);
+            color:#1F2937;
+            .title{
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: left;
+            }
+            span{
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: right;
+
+            }
+            
+        }
+        .ActionButton{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 5px;
+            gap:10px;
+            button{
+                width: 129.09px;
+                height: 40.34px;
+                border-radius: 10.757122993469238px;
+                border: 1.5367231369018555px;
+                background: transparent;
+            }
+            .approve{
+                color: #258E22;
+                border: 1.54px solid #258E22;
+            }
+            .decline{
+                color: var(--primaryColor);
+                border: 1.54px solid var(--primaryColor)     
+            }
+        }
+        .WithdrawalStatus{
+            margin: 50px 0px 30px 0px;
+            text-align: center;
+            button{
+                width: 201px;
+                height: 40px;
+                border-radius: 10.757122993469238px;
+                background: var(--backgroundColor);
+                color:#fff;
+                font-family: var(--textFamily);
+                font-size: 18px;
+                font-weight: 400;
+                line-height: 37px;
+                letter-spacing: 0em;
+                text-align: center;
+                border: 1px solid #12121238
+
+            }
+        }
+    }
+    
+}
+.rightWithdrawalProgress{
+    .rechartsContainer{
+        border: 0.69px solid #EBEBEB!important;
+        height: 230.46px;
+        .top .title{
+            font-size:14px;
+        }
+    }
+
+    .progressChart .displayProgress{
+        padding-top: 50px!important;
+      }
+    .progressChart .displayProgress .wrapper{
+        padding-bottom: 40px;
+    }
+}

@@ -1,0 +1,128 @@
+.livestatWrapper{
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #DEDEDE;
+    background: #fff;
+    padding: 30px;
+    .liveContent{
+        border: 1px solid #DEDEDE;
+        border-radius: 8px;
+        .date{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 104px;
+            height: 28px;
+            border-radius: 0px 0px 9px 8px;
+            color: #fff;
+            text-align: center;
+            background: var(--backgroundColor);
+            font-family:var(--textFamily);
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 15px;
+            letter-spacing: 0px;
+            margin:0 auto;
+        }
+        .top{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 20px 5px;
+            .left, .right{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+                gap: 4px;
+                .name{
+                    text-align: center;
+                    font-family: var(--textFamily);
+                    font-size: 12px;
+                    font-weight: 500;
+                    line-height: 13px;
+                    letter-spacing: 0em;
+                    color:#000000;
+                    width: 70%;
+                }
+                .img{
+                    width: 27.5px;
+                    height: 27.5px;
+                }
+            }
+            .middle{
+                img{
+                    width: 92.49px;
+                    height: 41.38px;                 
+                }
+                @media screen and (min-width: 768px) and (max-width:850px) {
+                    img{
+                        width: 65.49px;
+                        height: 41.38px;                 
+                    }
+                }
+            }
+        }
+        .live-ProgressBar{
+            padding: 0px 35px 30px 35px ;
+            width: 100%;
+            .title{
+                font-family: var(--textFamily);
+                font-size: 10px;
+                font-weight: 500;
+                line-height: 13px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:#454545;
+            }
+            .liveProgress{
+                display: flex;
+                align-items: center;
+                width: 100%;
+                gap: 5px;
+                .number{
+                    flex:1;
+                    font-family: var(--textFamily);
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 15px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: #000000;
+                }
+                .displayProgress{
+                    flex:8;
+                }
+            }
+        }
+        .bottom{
+            height: 67px;
+            text-align: center;
+            border-top:1px solid #E2E2E2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            .title{
+                font-family: var(--textFamily);
+                font-size: 10px;
+                font-weight: 600;
+                line-height: 13px;
+                letter-spacing: 0em;
+                text-align: left;
+                color:#68686A;
+            }
+            .money{
+                font-family: var(--textFamily);
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 20px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: #c51717;
+            }
+        }
+    }
+}

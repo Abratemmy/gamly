@@ -289,7 +289,8 @@ height: 15.123px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5px
+  gap: 5px;
+  font-family: var(--textFamily);
 }
 .progressChart .left .top .title{
   color: #000000;

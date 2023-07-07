@@ -85,3 +85,11 @@ export const fetchSingleKYC = (id) => KYCAPI.get(`/${id}`);
 export const createKYC = (newKYC) => KYCAPI.post('/', newKYC);
 export const updateKYC = (id, updatedKYC) => KYCAPI.put(`/${id}`, updatedKYC);
 export const deleteKYC = (id) => KYCAPI.delete(`/${id}`);
+
+// creator
+const WITHDRAWALAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
+export const fetchHostWithdrawal = () => WITHDRAWALAPI.get('/');
+export const fetchSingleHostWithdrawal = (id) => WITHDRAWALAPI.get(`/${id}`);
+export const createHostWithdrawal = (newHostWithdrawal) => WITHDRAWALAPI.post('/', newHostWithdrawal);
+export const updateHostWithdrawal = (id, updatedHostWithdrawal) => WITHDRAWALAPI.put(`/${id}`, updatedHostWithdrawal);
+export const deleteHostWithdrawal = (id) => WITHDRAWALAPI.delete(`/${id}`);
