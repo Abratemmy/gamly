@@ -4,12 +4,12 @@ import './Prize.scss';
 import contestImg2 from '../../../../Assets/contestImg2.svg'
 function Prize() {
     const contestCardData = [
-        { winner: 50, distribution: 80 },
-        { winner: 50, distribution: 80 },
-        { winner: 50, distribution: 80 },
-        { winner: 50, distribution: 80 },
-        { winner: 50, distribution: 80 },
-        { winner: 50, distribution: 80 },
+        { winnerNumber: 50, prizeDistribution: 80, prizeDistributionName: 40, firstPrize: 55, secondPrize: 45, thirdPrize: 35, prizeDistributionType: 'Rahul small contest prize distribution' },
+        { winnerNumber: 50, prizeDistribution: 80, prizeDistributionName: 40, firstPrize: 55, secondPrize: 45, thirdPrize: 35, prizeDistributionType: 'Rahul small contest prize distribution' },
+        { winnerNumber: 50, prizeDistribution: 80, prizeDistributionName: 40, firstPrize: 55, secondPrize: 45, thirdPrize: 35, prizeDistributionType: 'Rahul small contest prize distribution' },
+        { winnerNumber: 50, prizeDistribution: 80, prizeDistributionName: 40, firstPrize: 55, secondPrize: 45, thirdPrize: 35, prizeDistributionType: 'Rahul small contest prize distribution' },
+        { winnerNumber: 50, prizeDistribution: 80, prizeDistributionName: 40, firstPrize: 55, secondPrize: 45, thirdPrize: 35, prizeDistributionType: 'Rahul small contest prize distribution' },
+        { winnerNumber: 50, prizeDistribution: 80, prizeDistributionName: 40, firstPrize: 55, secondPrize: 45, thirdPrize: 35, prizeDistributionType: 'Rahul small contest prize distribution' },
     ]
     return (
         <div className='prizeDistribution'>

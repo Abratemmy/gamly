@@ -24,11 +24,25 @@
             }
         }
     }
+    
     .tabs{ 
         padding: 5px 30px;
     }
     .tabContent{
-        padding: 40px 0px;
+        padding: 40px 0px 60px 0px;
+    }
+    @media screen and (max-width:1039px) {
+        .tabs{ 
+            padding: 5px 20px;
+            font-size: 13px;
+        }
+    }
+
+    @media screen and (max-width:768px) {
+        .bloc-tabs{ 
+            flex-direction: column;
+            gap: 25px
+        }
     }
 
 }

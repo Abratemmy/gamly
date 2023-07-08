@@ -118,6 +118,9 @@
 
     .Session {
         margin-top: 50px;
+    }
+
+    .smCard{
         .rightContent{
             padding: 10px 20px;
 
@@ -165,7 +168,8 @@
                 background: #fff;
                 right: 0px;
                 transition: var(--transition);
-                z-index:10
+                z-index:10;
+                box-shadow: 0px 8px 20px -4px #1718181F;
             }
             .list{
                 padding: 5px 7px;
@@ -173,7 +177,8 @@
                 font-size: 12px;
                 font-weight: 400;
                 font-family: var(--textFamily);
-                color: #202223
+                color: #202223;
+                cursor: pointer;
             }
             .SignupContent{
                 width: 100%;
@@ -184,6 +189,14 @@
                 justify-content: center;
                 .header{
                     text-align: center;
+                    font-family: var(--textFamily);
+                    font-size: 40px;
+                    font-weight: 700;
+                    line-height: 22px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color:#191919;
+                    padding-bottom: 15px;
                 }
                 span{
                     color: #2EDB2B;
@@ -196,6 +209,132 @@
                 }
             }
             
+        }
+    }
+
+    .hostChart{
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        margin: 50px 0px;
+        .title{
+            font-family: var(--textFamily);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 23px;
+            letter-spacing: 0em;
+            text-align: left;
+            color:#000;
+            padding-bottom: 50px;
+        }
+        .hwrapper{
+            border: 0.77px solid #ECECEC;
+            padding: 10px 20px;
+            border-radius: 6px;
+            width: 90%;
+            height: 220px;
+            .title{
+                padding-bottom: 7px;
+                font-weight: 500;
+                font-size: 15px;
+            }
+            .pieWrapper{
+                gap: 20px;
+                .pieDetail{
+                    .content{
+                        gap: 20px
+                    }
+                }
+            }
+        }
+        @media screen and (max-width:1115px) {
+            .hwrapper{
+                width: 100%;
+                .pieWrapper{
+                    gap: 10px;
+                    .pieDetail{
+                        .content{
+                            gap: 10px
+                        }
+                    }
+                    .pieContainer{
+                        width: 140px;
+                        height: 140px;
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .pieWrapper{
+                display: flex;
+                justify-content: space-between;
+                .pieContainer{
+                    flex: 4
+                }
+                .pieDetail{
+                    width: 60%;
+                    text-align: center;
+                }
+               
+            }
+        }
+        @media screen and (max-width: 420px) {
+            .hwrapper{
+                height: auto;
+            }
+            .pieWrapper{
+                flex-direction: column;
+                .pieDetail{
+                    width: 100%
+                }
+            }
+        }
+        .hostProgress .rechartsContainer{
+            height: 220px;
+            width: 100%;
+            .left{
+                border: 1px solid #ECECEC;
+                border-right: none;
+                border-top-left-radius: 8px;
+                border-bottom-left-radius: 8px;
+                .top .title{
+                    font-size: 14px
+                }
+                .top .monthDisplay{
+                    position: relative;
+                    top:-25px
+                }
+                .displayProgress{
+                    padding-top: 5px;
+                    position: relative;
+                    top:-15px
+                  }
+                  .displayProgress .wrapper{
+                    padding-right: 30px;
+                    padding-bottom: 30px;
+                  }
+                @media screen and (min-width: 991px) and (max-width:1065px){
+                    .top{
+                        flex-direction: column;
+                        gap: 3px;
+                        justify-content: flex-start!important;
+                        height: auto;
+                        .monthDisplay{
+                            position: relative;
+                            top:-45px;
+                            justify-content: flex-start;
+                        }
+                    }
+                }
+                @media screen and (max-width: 450px) {
+                    .top .monthDisplay{
+                        top:-35px
+                    }
+                    .displayProgress{
+                        top:-25px
+                      }
+                }
+            }
         }
     }
 }

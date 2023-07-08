@@ -9,3 +9,310 @@
         border-radius: 8px;
     }
 }
+.creatPrize{
+    .top{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding-bottom: 20px;
+        .name{
+            font-family: var(--textFamily);
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #374151;
+        }
+        button{
+            width: 179px;
+            height: 54px;
+            border: 1px solid #DCDEE6;
+            background: #fff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+    }
+    .formWrapper{
+            background: #fff;
+            border-radius: 8px;
+            padding: 30px 40px;
+            width: 70%;
+             
+        .formContainer{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 4rem;
+            .wrapper{
+                width: 100%;
+                position: relative;
+                .inputform{
+                    padding: 5px 0px 20px 0px;
+                }
+                label{
+                    font-family: var(--textFamily);
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 24px;
+                    letter-spacing: -0.25px;
+                    text-align: left;
+                    color: #141519;
+                }
+                input{
+                    width: 100%!important;
+                    height: 48px;
+                    border-radius: 4px;
+                    border: 1px solid #D1D5DB;
+                    outline: none;
+                    font-family: var(--textFamily);
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px;
+                    letter-spacing: -0.25px;
+                    text-align: left;
+                    color: #9CA3AF;
+                    padding: 0px 10px;
+                    background: transparent;
+                }
+                input::placeholder{
+                    color: #9CA3AF;
+                    font-size: 16px;
+                }
+                .selectDropdown{
+                    .dropdown-btn{
+                        height: 48px;
+                        color: #9CA3AF;
+                        font-family: var(--textFamily);
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
+                    .dropdown-content {
+                        top: 48px;
+                        background: #fff;
+                        text-align: left;
+                        border: 1px solid #F4F4F4;
+                        // height: 179px;
+                        padding: 10px 5px;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        .dropOverflow{
+                            min-height: 136px;
+                            max-height: 169px;
+                            overflow-y: auto;
+                        }
+                        .smDropOverflow{
+                            min-height: 90px;
+                        }
+                        .createNew{
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            height: 30px;
+                            .text{
+                                font-family: var(--textFamily);
+                                font-size: 12px;
+                                font-weight: 500;
+                                line-height: 28px;
+                                letter-spacing: 0px;
+                                text-align: left;
+                                color: #b10303;
+                                padding-left: 5px;
+                            }
+                            img{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .dropdown-item{
+                        font-family: var(--textFamily);
+                        font-size: 12px;
+                        font-weight: 500;
+                        line-height: 15px;
+                        letter-spacing: 0px;
+                        text-align: left;
+                        color:#000000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        background: transparent;
+                        margin: 2px 0px;
+                        .icon{
+                            font-size:13px;
+                        }
+                    }
+                    .dropdown-item.dropActive{
+                        background: var(--backgroundColor)!important;
+                        color:#fff!important;
+                        border-radius: 4px;
+                    }
+                }
+                .sm-text{
+                    font-family: var(--textFamily);
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 27px;
+                    letter-spacing: 0px;
+                    text-align: left;
+                    color: var(--primaryColor);
+                }
+            }
+        }
+        .winnerNumber{
+            position: relative;
+            padding: 20px 0px;
+            .title{
+                font-family: var(--textFamily);
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 27px;
+                letter-spacing: 0px;
+                text-align: left;
+                color:#000000;
+                padding-bottom: 5px;
+            }
+            .winnerWrapper{
+                display: flex;
+                align-items: center;
+                gap: 3rem;
+                .winnerText{
+                    width: 100px;
+                    height: 52px;
+                    border-radius: 24px;
+                    border: 1px solid #E0E0E0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: #696969;
+                    font-family: var(--textFamily);
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+                .winneractive{
+                    background: var(--backgroundColor);
+                    color:#fff;
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 1150px) {
+        .formWrapper{
+            width: 90%!important;
+        }
+        .ActionButton{
+            margin-top: 15px;
+        }
+    }
+    @media screen and (max-width: 780px) {
+        .formWrapper{
+            width: 100%!important;
+        }
+    }
+    @media screen and (max-width: 1000px) {
+        .formContainer{
+            flex-direction: column!important;
+            gap: 3px!important;
+            width: 100%!important;
+        }
+    }
+
+    .ActionButton{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        .button{
+            width: 105px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            border: 1px solid #DCDEE6;
+            background: #fff;
+            font-family: var(--textFamily);
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.25px;
+            text-align: center;
+            color: var(--primaryColor);
+            cursor: pointer;
+        }
+        .submit{
+            width: 80px;
+            background: var(--backgroundColor);
+            color:#fff;
+        }
+    }
+
+}
+
+.popupContainer .previewBody{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 555px;
+    background: #fff;
+    border-radius: 8px;
+    margin: 50px 0px!important;
+    .topHeader{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--textFamily);
+        padding: 25px;
+        border-bottom: 1px solid #E1E3E5;
+        .name{
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #374151;
+        }
+        img{
+            width: 16px;
+            height: 16px;
+        }
+    }
+    .contestWrapper{
+        border: none
+    }
+    .ActionButton{
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 0px 25px;
+        border-top: 1px solid #E2E2E2;
+        button{
+           width: 99px;
+           height: 40px;
+           border-radius: 4px; 
+           border: 1px solid var(--primaryColor);
+           color: var(--primaryColor);
+           font-family: var(--interFamily);
+           font-weight: 600;
+           font-size: 16px;
+           background: none;
+        }
+        .confirm{
+            background: var(--primaryColor);
+            color: #fff
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .popupContainer .previewBody{
+        width: 95%
+    }
+}

@@ -109,7 +109,7 @@ function ViewMoreDetail({ handleBackButton, singleCreatorDetail }) {
                     <div className='singletopCard'>
                         <TopCard topCard={singleDetailCard} cardName="Income" />
                     </div>
-                    <div className='percentCard'>
+                    <div className='percentCard' style={{ margin: '50px 0px' }}>
                         <div className='row gx-5 gy-0'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
                                 <div className='Wrapper1'>

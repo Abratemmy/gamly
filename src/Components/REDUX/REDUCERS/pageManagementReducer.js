@@ -1,11 +1,15 @@
-import { GETPAGEMANAGE, DELETEPAGEMANAGE, UPDATEPAGEMANAGE, CREATEPAGEMANAGE } from "../CONSTANT/actionTypes";
+import { END_LOADING, START_LOADING, GETPAGEMANAGE, DELETEPAGEMANAGE, UPDATEPAGEMANAGE, CREATEPAGEMANAGE } from "../CONSTANT/actionTypes";
 
-const initialState = { items: [] }
+const initialState = { items: [], isLoading: true }
 
 export const pageManagementReducer = (state = initialState, action) => {
     switch (action.type) {
+        case START_LOADING:
+            return { ...state, isLoading: true }
+        case END_LOADING:
+            return { ...state, isLoading: false }
         case GETPAGEMANAGE:
-            return action.payload;
+            return { ...state, getAllPage: action.payload };
         case CREATEPAGEMANAGE:
             return {
                 ...state,

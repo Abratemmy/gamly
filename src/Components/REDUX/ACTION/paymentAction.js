@@ -4,8 +4,10 @@ import { END_LOADING, GETPAYOUT, GETSINGLEPAYOUT, START_LOADING } from "../CONST
 
 export const getAllPAYMENTs = () => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchPayment();
         dispatch({ type: GETPAYOUT, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error.message)
     }

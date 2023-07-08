@@ -1,11 +1,13 @@
 import * as api from "../../APIS/API";
 
-import { GETSALES, DELETESALES, UPDATESALES, CREATESALES } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, GETSALES, DELETESALES, UPDATESALES, CREATESALES } from "../CONSTANT/actionTypes";
 
 export const getAllSALES = () => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchSales();
         dispatch({ type: GETSALES, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error.message)
     }

@@ -11,6 +11,7 @@ import AreaChartRechart from '../../../Components/RECHART/AreaChart';
 import AreaChartRechart2 from '../../../Components/RECHART/AreaChart2';
 import TableTop from '../../../Components/TableTop/TableTop';
 import TableProgressBar from '../../../Components/TableProgressBar/TableProgressBar';
+import PageLoader from '../../../Components/PAGELOADER/PageLoader';
 
 function Payout() {
     // payout card array
@@ -26,21 +27,21 @@ function Payout() {
     const newsVisited = pageNumber * newsPerPage
     console.log("newsVisited", newsVisited)
 
-    const getPaymentData = useSelector((state) => state.paymentReducer);
-    console.log("payment", getPaymentData)
+    const { payment, isLoading } = useSelector((state) => state.paymentReducer);
+    console.log("payment", payment)
 
-    const pageCount = Math.ceil(getPaymentData?.length / newsPerPage);
+    const pageCount = Math.ceil(payment?.length / newsPerPage);
     console.log("PAGECOUNT", pageCount)
 
     // newsVisited, newsVisited + newsPerPage
-    const progressWidth = ((newsVisited + newsPerPage) / getPaymentData?.length) * 100
+    const progressWidth = ((newsVisited + newsPerPage) / payment?.length) * 100
 
     const changePage = ({ selected }) => {
         setPageNumber(selected)
         // this is to scroll up when 
         // window.scrollTo(0, 0)
     }
-    const [products, setProducts] = useState(getPaymentData?.data);
+    const [products, setProducts] = useState(payment?.data);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
 
@@ -179,84 +180,90 @@ function Payout() {
         },
     ];
 
+    if (!payment) return <div>
+        <div className=''>No data for this page</div>
+    </div>;
+
     return (
         <AdminSidebar name="Payout">
-            <div className='Payout'>
-                <div className='container'>
-                    <div className=''>
-                        <TopCard topCard={payoutCard} cardName="Payout" />
-                    </div>
+            {isLoading ? (<PageLoader />) :
+                <div className='Payout'>
+                    <div className='container'>
+                        <div className=''>
+                            <TopCard topCard={payoutCard} cardName="Payout" />
+                        </div>
 
-                    {/* grapgh session */}
-                    <div className='GraphSession'>
-                        <div className='title'>Monthly Analytic Report</div>
-                        <div className='row gx-5 gy-5'>
-                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                        {/* grapgh session */}
+                        <div className='GraphSession'>
+                            <div className='title'>Monthly Analytic Report</div>
+                            <div className='row gx-5 gy-5'>
+                                <div className='col-lg-6 col-md-12 col-sm-12'>
 
-                                <AreaChartRechart data={chartData1} />
-                            </div>
+                                    <AreaChartRechart data={chartData1} />
+                                </div>
 
-                            <div className='col-lg-6 col-md-12 col-sm-12'>
-                                <AreaChartRechart2 data={chartData2} />
+                                <div className='col-lg-6 col-md-12 col-sm-12'>
+                                    <AreaChartRechart2 data={chartData2} />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="tableName">Payouts</div>
-                    <div className='tablePage tableSection'>
-                        <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
-                            handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
-                        />
-                        <div className="scroll-container">
-                            <table className="table scroll">
-                                <thead>
-                                    <tr>
-                                        <td>S/N</td>
-                                        <td>Date</td>
-                                        <td>Creator Name</td>
-                                        <td>Creator Id</td>
-                                        <td>Payout Id</td>
-                                        <td>Amount</td>
-                                        <td>Status</td>
-                                        <td>History</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {getPaymentData?.slice ? (
-                                        <>
-                                            {getPaymentData?.filter((item) => {
-                                                return search?.toLowerCase() === "" ? item :
-                                                    (item?.title?.toLowerCase().includes(search.toLowerCase()))
+                        <div className="tableName">Payouts</div>
+                        <div className='tablePage tableSection'>
+                            <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                                handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
+                            />
+                            <div className="scroll-container">
+                                <table className="table scroll">
+                                    <thead>
+                                        <tr>
+                                            <td>S/N</td>
+                                            <td>Date</td>
+                                            <td>Creator Name</td>
+                                            <td>Creator Id</td>
+                                            <td>Payout Id</td>
+                                            <td>Amount</td>
+                                            <td>Status</td>
+                                            <td>History</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {payment?.slice ? (
+                                            <>
+                                                {payment?.filter((item) => {
+                                                    return search?.toLowerCase() === "" ? item :
+                                                        (item?.title?.toLowerCase().includes(search.toLowerCase()))
 
-                                            })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
-                                                return (
-                                                    <tr key={item?.id}>
-                                                        <td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
-                                                            <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
-                                                        }
-                                                        </td>
-                                                        <td  >Date is here</td>
-                                                        <td  >{item?.title}</td>
-                                                        <td >{item?.id}</td>
-                                                        <td >{item?.rating.count}</td>
-                                                        <td  >$  {item?.price}</td>
-                                                        <td>Completed</td>
-                                                        <td><NavLink to={`/payout/${item.id}`} className="tableNav">View</NavLink></td>
-                                                    </tr>
-                                                )
-                                            })}
-                                        </>
-                                    ) : ("")}
-                                </tbody>
-                            </table>
+                                                })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
+                                                    return (
+                                                        <tr key={item?.id}>
+                                                            <td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
+                                                                <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
+                                                            }
+                                                            </td>
+                                                            <td  >Date is here</td>
+                                                            <td  >{item?.title}</td>
+                                                            <td >{item?.id}</td>
+                                                            <td >{item?.rating.count}</td>
+                                                            <td  >$  {item?.price}</td>
+                                                            <td>Completed</td>
+                                                            <td><NavLink to={`/payout/${item.id}`} className="tableNav">View</NavLink></td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                            </>
+                                        ) : ("")}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+                        <TableProgressBar data={payment} newsPerPage={newsPerPage} progressWidth={progressWidth} />
+
+
+                        <Pagination pageCount={pageCount} changePage={changePage} />
+
                     </div>
-                    <TableProgressBar data={getPaymentData} newsPerPage={newsPerPage} progressWidth={progressWidth} />
-
-
-                    <Pagination pageCount={pageCount} changePage={changePage} />
-
                 </div>
-            </div>
+            }
         </AdminSidebar>
     )
 }

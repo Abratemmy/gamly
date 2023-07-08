@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 
 function Pagination({ pageCount, changePage }) {
     return (
-        <div>
+        <div style={{ padding: '5px 0px 30px 0px' }}>
             <ReactPaginate
                 breakLabel="..."
 

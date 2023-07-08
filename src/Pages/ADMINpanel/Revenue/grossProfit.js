@@ -29,7 +29,7 @@ function GrossProfit() {
     return (
         <div>
             <TopCard topCard={profitCard} cardName="Gross Profit" />
-            <div className="row">
+            <div className="row gy-5" style={{ margin: '20px 0px 50px 0px' }}>
                 <div className="col-lg-6 col-md-12 col-sm-12">
                     <PercentageCard leftText="Total profit" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevTotalProfit}
                         currentMonthTotalLeftHandSide={percentageData.currentTotalProfit}

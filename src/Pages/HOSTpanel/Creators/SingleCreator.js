@@ -15,6 +15,8 @@ import Avatar from "../../../Assets/Avatar.svg";
 import pointGreen from '../../../Assets/pointGreen.svg';
 import pointYellow from '../../../Assets/pointYellow.svg'
 import Piechart from '../../../Components/RECHART/PieChart/PieChart';
+import greenLine from '../../../Assets/greenRectangle.svg';
+import pinkLine from '../../../Assets/pinkRectangle.svg'
 import GetUser from './getUser';
 import ViewMoreDetail from './viewMoreDetail/ViewMoreDetail';
 
@@ -48,6 +50,11 @@ function SingleCreator() {
         setPageNumber(selected)
     }
 
+    const PIECHARTCOLORS = ['#FFBBBE', '#86DEA4'];
+    const PIECenterText = {
+        title: "₹1,00,000"
+    }
+
     useEffect(() => {
         dispatch(getSINGLECREATOR(id))
     }, [id, dispatch])
@@ -68,7 +75,7 @@ function SingleCreator() {
                             <TopCard topCard={creatorCard} />
                         </div>
 
-                        <div className='percentageSession'>
+                        <div className='percentageSession' style={{ margin: '10px 0px' }}>
                             <div className='row g-3'>
                                 <div className='col-lg-6 col-md-12 col-sm-12'>
                                     <HostPercentage average="1,500" leftText="Total download" rightText="Total download" prevMonth={prevMonth}
@@ -171,7 +178,10 @@ function SingleCreator() {
                             </div>
 
                             <div className='pieChartSession'>
-                                <Piechart />
+                                <Piechart COLORS={PIECHARTCOLORS} centerText={PIECenterText}
+                                    total="₹50,000" total2="₹25,000" text="Total Income"
+                                    text2="Total Withdrawal " lineImage={greenLine} lineImage2={pinkLine}
+                                />
                             </div>
 
                             <div className='rightsidebarBtn'>

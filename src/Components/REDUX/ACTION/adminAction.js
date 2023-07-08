@@ -1,11 +1,13 @@
 import * as api from "../../APIS/API";
 
-import { FETCHADMIN, DELETEADMIN, UPDATEADMIN, CREATEADMIN } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, FETCHADMIN, DELETEADMIN, UPDATEADMIN, CREATEADMIN } from "../CONSTANT/actionTypes";
 
 export const getAllADMIN = () => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchAdmin();
         dispatch({ type: FETCHADMIN, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error.message)
     }

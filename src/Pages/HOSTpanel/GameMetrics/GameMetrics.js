@@ -102,7 +102,7 @@ function GameMetrics() {
 
             {openrightSidebar && (
                 <div className='popupContainer'>
-                    <div className='reportpopupBody rightSidebar' onClick={(e) => e.stopPropagation()}>
+                    <div className='rightSidebar rightSidebar2' onClick={(e) => e.stopPropagation()}>
                         <RightSidebar popupcontent={popupcontent} onClick={() => setOpenRightSidebar(false)} />
 
                     </div>

@@ -72,7 +72,7 @@ function Revenue() {
                     <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
                         <TopCard topCard={revenueCard} cardName="Revenue" />
 
-                        <div className="row">
+                        <div className="row gy-5 " style={{ margin: '20px 0px 50px 0px' }}>
                             <div className="col-lg-6 col-md-12 col-sm-12">
                                 <PercentageCard leftText="Total Revenue" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevRevenueTotal}
                                     currentMonthTotalLeftHandSide={percentageData.currentRevenueTotal}

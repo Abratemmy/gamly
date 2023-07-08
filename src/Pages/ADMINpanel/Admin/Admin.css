@@ -391,7 +391,19 @@ gap: 8px */
     background: var(--background);
     text-align: center;
     width: 100%;
-    z-index: 10
+    z-index: 10;
+    animation: select 1s;
+}
+@keyframes select{
+    0% {
+        opacity: 0.5;
+        transform: translateY(60px);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
 }
 .selectDropdown .dropdown-content .dropdown-item{
     padding: 7px;

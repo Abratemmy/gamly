@@ -1,30 +1,18 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Label } from 'recharts';
 import "./pieChart.scss";
-import greenLine from "../../../Assets/greenRectangle.svg";
-import pinkLine from "../../../Assets/pinkRectangle.svg"
+import uparr from "../../../Assets/uparr.svg";
+import downarr from "../../../Assets/downarr.svg"
+import CustomPieChartLabel from './customPieChartLabel';
 
 const data02 = [
     { name: '40%', value: 100 },
     { name: '60%', value: 150 }
 ];
 
-const COLORS = ['#FFBBBE', '#86DEA4'];
 
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
-    const radius = innerRadius + (outerRadius - innerRadius) * 0.2;
-    const x = cx + radius * Math.cos(-midAngle * RADIAN);
-    const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-    return (
-        <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
-            {`${(percent * 100).toFixed(0)}%`}
-        </text>
-    );
-};
-
-const Piechart = () => {
+const Piechart = ({ COLORS, centerText, showSecondLabel, percent, showPercent, percent2, lineImage, lineImage2, total, total2, text, text2 }) => {
     return (
         <div className='pieWrapper' >
             <div className='pieContainer'>
@@ -42,13 +30,14 @@ const Piechart = () => {
                             dataKey="value"
                             paddingAngle={0}
                             fill="#000"
-                            // radius={[10, 10, 0, 0]}
+                            tickLine={false}
                             cornerRadius={40}
+                            label={<CustomPieChartLabel centerText={centerText} showSecondLabel={showSecondLabel} />}
+                            stroke="none"
                         >
                             {data02.map((entry, index) => (
                                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                             ))}
-                            <Label value="₹1,00,000" position="center" />
                         </Pie>
                     </PieChart>
                 </ResponsiveContainer>
@@ -56,13 +45,26 @@ const Piechart = () => {
 
             <div className='pieDetail'>
                 <div className='content'>
-                    <div className='line'><img src={greenLine} alt="" /> </div>
-                    <div className='text'>₹50,000 <span>Total Income</span></div>
+                    <div className='line'><img src={lineImage} alt="" /> </div>
+                    <div className='text'>{total} <span>{text}</span></div>
+                    {showPercent === "true" && (
+                        <div className='right'>
+                            {percent >= 0 ? <div className='increase'>{percent}% <span><img src={uparr} alt='' /></span></div>
+                                : <div className='decrease'>{percent}% <span><img src={downarr} alt='' /></span></div>}
+                        </div>
+                    )}
+
                 </div>
 
                 <div className='content'>
-                    <div className='line'><img src={pinkLine} alt="" /> </div>
-                    <div className='text'>₹25,000 <span>Total Withdrawal</span></div>
+                    <div className='line'><img src={lineImage2} alt="" /> </div>
+                    <div className='text'>{total2} <span>{text2}</span></div>
+                    {showPercent === "true" && (
+                        <div className='right'>
+                            {percent2 >= 0 ? <div className='increase'>{percent2}% <span><img src={uparr} alt='' /></span></div>
+                                : <div className='decrease'>{percent2}% <span><img src={downarr} alt='' /></span></div>}
+                        </div>
+                    )}
                 </div>
             </div>
 

@@ -78,7 +78,7 @@ function RightSidebar({ popupcontent, onClick }) {
                 <div className='title'>Contest Created</div>
                 <div className='cardWrapper'>
                     <div className='container'>
-                        <div className='row g-2'>
+                        <div className='row g-2' style={{ width: '100%' }}>
                             <div className='col-lg-4 col-md-4 col-sm-4 column'>
                                 <div className='content'>
                                     <div className="heading">Total contest</div>

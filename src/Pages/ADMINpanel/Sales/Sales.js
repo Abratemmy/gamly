@@ -17,6 +17,8 @@ import NewMonthCalendar from '../../../Components/Date/newMonth';
 import GraphDate from '../../../Components/Date/GraphDate';
 import PercentageCard2 from '../../../Components/pageCard/PercentageCard2';
 import { Table, Thead, Tr, Td, Tbody } from "../../../Components/Table/Table"
+import NoDatafromApi from '../../../Components/PAGELOADER/NoDataFromApi';
+import PageLoader from '../../../Components/PAGELOADER/PageLoader';
 
 function Sales() {
     // sales card array
@@ -56,7 +58,7 @@ function Sales() {
     const newsPerPage = 10
     const newsVisited = pageNumber * newsPerPage
 
-    const getSalesData = useSelector((state) => state.salesReducer);
+    const { getSalesData, isLoading } = useSelector((state) => state.salesReducer);
     console.log("salesData", getSalesData)
 
     const pageCount = Math.ceil(getSalesData?.length / newsPerPage);
@@ -176,144 +178,148 @@ function Sales() {
             amt: 2100,
         },
     ];
+
+    // if (!getSalesData) return <NoDatafromApi />;
     return (
         <AdminSidebar name="sales">
-            <div className='Sales'>
-                <div className='container'>
-                    <TopCard topCard={salesCard} cardName="Sales" />
+            {isLoading ? <PageLoader /> :
+                <div className='Sales'>
+                    <div className='container'>
+                        <TopCard topCard={salesCard} cardName="Sales" />
 
-                    <div className="row">
-                        <div className="col-lg-6 col-md-12 col-sm-12">
-                            <PercentageCard leftText="Total sales" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevSaleTotal}
-                                currentMonthTotalLeftHandSide={percentageData.currentSaleTotal}
-                            />
-                        </div>
-
-                        <div className="col-lg-6 col-md-12 col-sm-12">
-                            <PercentageCard2 prevMonth={prevMonth} previousMonthTotalRightHandSide={percentageData.prevRevenueTotal}
-                                currentMonthTotalRightHandSide={percentageData.currentRevenueTotal}
-                            />
-                        </div>
-                    </div>
-
-                    <div className='Graph' style={{ padding: "10px 0px" }}>
-                        <div className='row gx-5 gy-5'>
-                            <div className='col-lg-6 col-md-12 col-sm-12'>
-                                <div className='title'>Analytics Report</div>
-                                <BarChartRechart />
+                        <div className="row gy-5" style={{ margin: '20px 0px 50px 0px' }}>
+                            <div className="col-lg-6 col-md-12 col-sm-12">
+                                <PercentageCard leftText="Total sales" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevSaleTotal}
+                                    currentMonthTotalLeftHandSide={percentageData.currentSaleTotal}
+                                />
                             </div>
 
-                            <div className='col-lg-6 col-md-12 col-sm-12'>
-                                <div className='title'>Sales Growth Rate</div>
-                                <AreaChartRechart data={chartData} />
+                            <div className="col-lg-6 col-md-12 col-sm-12">
+                                <PercentageCard2 prevMonth={prevMonth} previousMonthTotalRightHandSide={percentageData.prevRevenueTotal}
+                                    currentMonthTotalRightHandSide={percentageData.currentRevenueTotal}
+                                />
                             </div>
                         </div>
-                    </div>
 
-                    <div className='tableSession'>
-                        <div className="tableName">Creators Sales
-                            <span>Overview of creators gross profit</span>
+                        <div className='Graph' style={{ padding: "10px 0px" }}>
+                            <div className='row gx-5 gy-5'>
+                                <div className='col-lg-6 col-md-12 col-sm-12'>
+                                    <div className='title'>Analytics Report</div>
+                                    <BarChartRechart />
+                                </div>
+
+                                <div className='col-lg-6 col-md-12 col-sm-12'>
+                                    <div className='title'>Sales Growth Rate</div>
+                                    <AreaChartRechart data={chartData} />
+                                </div>
+                            </div>
                         </div>
 
-                        <div className='tablePage tableSection'>
-                            <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
-                                handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
-                            />
-                            <div className="scroll-container">
-                                <Table className="table scroll">
-                                    <Thead className='thead'>
-                                        <Tr className="tableRow">
-                                            <Td>S/N</Td>
-                                            <Td>Name</Td>
-                                            <Td>Total Gross Profit</Td>
-                                            <Td>Last Month</Td>
-                                            <Td>Last Week</Td>
-                                            <Td >
-                                                <div style={{ position: "relative", cursor: "pointer" }} onClick={openSingleDateToggle}>
-                                                    <span>
-                                                        {confirmSingleDate && confirmSingleDate ? (
-                                                            <>
-                                                                {startSingleMonthDate.toLocaleDateString('en-us', { month: "short" })}
-                                                            </>
-                                                        ) :
-                                                            <>{moment().format("MMMM")}</>
-                                                        }
-                                                    </span>
+                        <div className='tableSession'>
+                            <div className="tableName">Creators Sales
+                                <span>Overview of creators gross profit</span>
+                            </div>
 
-                                                    <span style={{ paddingLeft: '5px' }}><MdOutlineKeyboardArrowDown className='icon' style={{ fontSize: '16px', position: 'relative', top: '-1px' }} /> </span>
-                                                </div>
-                                                {openSingleMonth && (
-                                                    <div style={{ position: 'absolute', top: '70px', right: '0px' }}>
-                                                        <GraphDate startMonthDate={startSingleMonthDate} setStartMonthDate={setStartSingleMonthDate}
-                                                            endMonthDate={endSingleMonthDate} setEndMonthDate={setEndSingleMonthDate} confirmDate={confirmSingleDateMonth} cancelMonthDate={cancelSingleMonthDate} />
+                            <div className='tablePage tableSection'>
+                                <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                                    handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
+                                />
+                                <div className="scroll-container">
+                                    <Table className="table scroll">
+                                        <Thead className='thead'>
+                                            <Tr className="tableRow">
+                                                <Td>S/N</Td>
+                                                <Td>Name</Td>
+                                                <Td>Total Gross Profit</Td>
+                                                <Td>Last Month</Td>
+                                                <Td>Last Week</Td>
+                                                <Td >
+                                                    <div style={{ position: "relative", cursor: "pointer" }} onClick={openSingleDateToggle}>
+                                                        <span>
+                                                            {confirmSingleDate && confirmSingleDate ? (
+                                                                <>
+                                                                    {startSingleMonthDate.toLocaleDateString('en-us', { month: "short" })}
+                                                                </>
+                                                            ) :
+                                                                <>{moment().format("MMMM")}</>
+                                                            }
+                                                        </span>
+
+                                                        <span style={{ paddingLeft: '5px' }}><MdOutlineKeyboardArrowDown className='icon' style={{ fontSize: '16px', position: 'relative', top: '-1px' }} /> </span>
+                                                    </div>
+                                                    {openSingleMonth && (
+                                                        <div style={{ position: 'absolute', top: '70px', right: '0px' }}>
+                                                            <GraphDate startMonthDate={startSingleMonthDate} setStartMonthDate={setStartSingleMonthDate}
+                                                                endMonthDate={endSingleMonthDate} setEndMonthDate={setEndSingleMonthDate} confirmDate={confirmSingleDateMonth} cancelMonthDate={cancelSingleMonthDate} />
+                                                        </div>
+                                                    )}
+                                                </Td>
+
+                                                <Td>
+                                                    <div className='dateRateDropdown' onClick={openDateToggle}>
+                                                        <span><span style={{ textTransform: 'none' }}>Net profit rate</span> <br />
+                                                            {confirmDate ? (
+                                                                <>
+                                                                    {startMonthDate && startMonthDate.toLocaleDateString('en-us', { month: "short" })} - {endMonthDate && endMonthDate.toLocaleDateString('en-us', { month: "short" })}
+                                                                </>
+                                                            ) :
+                                                                <>{prevMonth} - {moment().format("MMMM")}</>
+                                                            }
+                                                        </span>
+
+                                                        <span><MdOutlineKeyboardArrowDown className='icon' /> </span>
+
+                                                    </div>
+
+                                                </Td>
+                                                {open && (
+                                                    <div className='tableDateDropdown'>
+                                                        <NewMonthCalendar startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
+                                                            endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} />
                                                     </div>
                                                 )}
-                                            </Td>
+                                            </Tr>
+                                        </Thead>
+                                        <Tbody>
+                                            {getSalesData?.slice ? (
+                                                <>
+                                                    {getSalesData?.filter((item) => {
+                                                        return search?.toLowerCase() === "" ? item :
+                                                            (item?.category?.toLowerCase().includes(search.toLowerCase()))
 
-                                            <Td>
-                                                <div className='dateRateDropdown' onClick={openDateToggle}>
-                                                    <span><span style={{ textTransform: 'none' }}>Net profit rate</span> <br />
-                                                        {confirmDate ? (
-                                                            <>
-                                                                {startMonthDate && startMonthDate.toLocaleDateString('en-us', { month: "short" })} - {endMonthDate && endMonthDate.toLocaleDateString('en-us', { month: "short" })}
-                                                            </>
-                                                        ) :
-                                                            <>{prevMonth} - {moment().format("MMMM")}</>
-                                                        }
-                                                    </span>
+                                                    })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
+                                                        return (
+                                                            <Tr key={item?.id}>
+                                                                <Td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
+                                                                    <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
+                                                                }
+                                                                </Td>
+                                                                <Td  >{item?.category}</Td>
+                                                                <Td  >${item?.price}.67</Td>
+                                                                <Td >${item?.rating?.rate * 10}.00</Td>
+                                                                <Td >${item?.rating.count}.45</Td>
+                                                                <Td  >$ {item?.price}</Td>
+                                                                <Td>
+                                                                    {item?.price > 100 ? (<div className='increase'>8% <span style={{ paddingLeft: "6px" }}><img src={increaseImg} alt="" /></span></div>) :
+                                                                        (<div className='decrease'>4% <span style={{ paddingLeft: "6px" }}><img src={decreaseImg} alt="" /></span></div>)}
+                                                                </Td>
 
-                                                    <span><MdOutlineKeyboardArrowDown className='icon' /> </span>
-
-                                                </div>
-
-                                            </Td>
-                                            {open && (
-                                                <div className='tableDateDropdown'>
-                                                    <NewMonthCalendar startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
-                                                        endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate} confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} />
-                                                </div>
-                                            )}
-                                        </Tr>
-                                    </Thead>
-                                    <Tbody>
-                                        {getSalesData?.slice ? (
-                                            <>
-                                                {getSalesData?.filter((item) => {
-                                                    return search?.toLowerCase() === "" ? item :
-                                                        (item?.category?.toLowerCase().includes(search.toLowerCase()))
-
-                                                })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
-                                                    return (
-                                                        <Tr key={item?.id}>
-                                                            <Td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
-                                                                <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
-                                                            }
-                                                            </Td>
-                                                            <Td  >{item?.category}</Td>
-                                                            <Td  >${item?.price}.67</Td>
-                                                            <Td >${item?.rating?.rate * 10}.00</Td>
-                                                            <Td >${item?.rating.count}.45</Td>
-                                                            <Td  >$ {item?.price}</Td>
-                                                            <Td>
-                                                                {item?.price > 100 ? (<div className='increase'>8% <span style={{ paddingLeft: "6px" }}><img src={increaseImg} alt="" /></span></div>) :
-                                                                    (<div className='decrease'>4% <span style={{ paddingLeft: "6px" }}><img src={decreaseImg} alt="" /></span></div>)}
-                                                            </Td>
-
-                                                        </Tr>
-                                                    )
-                                                })}
-                                            </>
-                                        ) : ("")}
-                                    </Tbody>
-                                </Table>
+                                                            </Tr>
+                                                        )
+                                                    })}
+                                                </>
+                                            ) : ("")}
+                                        </Tbody>
+                                    </Table>
+                                </div>
                             </div>
+                            <Pagination pageCount={pageCount} changePage={changePage} />
+
                         </div>
-                        <Pagination pageCount={pageCount} changePage={changePage} />
 
                     </div>
-
                 </div>
-            </div>
+            }
         </AdminSidebar>
     )
 }

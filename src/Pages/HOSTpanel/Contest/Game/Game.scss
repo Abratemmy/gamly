@@ -1,0 +1,78 @@
+.gameWrapper{
+    .card{
+        border: 1px solid #E9E9E9;
+        background: #fff;
+        padding: 20px 30px;
+        .title{
+            font-family: var(--textFamily);
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 15px;
+            letter-spacing: 0px;
+            text-align: center;
+            color:#545454;
+            padding-bottom: 20px;
+        }
+        .player{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap:2rem;
+            .left, .right{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 3px;
+                position: relative;
+                height: auto;
+                .color{
+                    width: 27.65px;
+                    height: 27.65;
+                    border-radius: 6px;
+                    background-color: #462c65!important;
+                    position: relative;
+                    color:#462c65;
+                }
+                .name{
+                    font-family: var(--textFamily);
+                    font-size: 14px;
+                    font-weight: 600;
+                    line-height: 18px;
+                    letter-spacing: 0em;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color:#000
+                }
+            }
+            .middle{
+                img{
+                    width: 86.49px;
+                    height: 41.38px
+                }
+            }
+        }
+        
+        .gameDays{
+            margin-top: 30px;
+            width: 176px;
+            height: 40px;
+            border-radius: 4px;
+            background: #5abb36;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color:#fff;
+            margin: auto;
+            font-family: var(--textFamily);
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
+            letter-spacing: -0.25px;
+            text-align: center;
+        }
+        .redBg{
+            background: var(--backgroundColor);
+        }
+    }
+}

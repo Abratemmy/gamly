@@ -13,6 +13,7 @@ import { GETPENDING, GETSUCCESS } from '../../../Components/REDUX/CONSTANT/actio
 import pointGreen from "../../../Assets/pointGreen.svg";
 import pointYellow from "../../../Assets/pointYellow.svg";
 import pointRed from "../../../Assets/pointRed.svg";
+import PageLoader from '../../../Components/PAGELOADER/PageLoader';
 
 function SinglePayout() {
     const dispatch = useDispatch();
@@ -70,106 +71,110 @@ function SinglePayout() {
         setProducts(filtered);
     };
 
-    if (!payment) return null;
-    if (isLoading) {
-        return <div>
-            <h1>Loading</h1>
-        </div>
-    }
+    if (!payment) return <div>
+        <div className=''>No data for this page</div>
+    </div>;
+    // if (isLoading) {
+    //     return <div>
+    //         <h1>Loading</h1>
+    //     </div>
+    // }
 
 
     return (
         <AdminSidebar name="Payout History">
-            <div className='payoutDetails'>
-                <div className='container'>
-                    <div className='firsttop'>
-                        <div className='left'>Payout <span><IoIosArrowForward className="icon" />Creator Payout</span></div>
-                        <div className='back'>
-                            <NavLink to="/payout" className="backNav">
-                                <img src={backNav} alt="" />
-                                <span>Back</span>
-                            </NavLink>
-                        </div>
-                    </div>
-
-                    <div className='topCard'>
-                        <div className='detail'>
-                            <div className='name' style={{ textTransform: "capitalize" }}>{payment?.category}</div>
-                            <div className='id'>ID: {payment?.id}</div>
-
-                            <p>Here’s all your payment history</p>
+            {isLoading ? (<div className='loadingPage'><PageLoader /></div>) :
+                <div className='payoutDetails'>
+                    <div className='container'>
+                        <div className='firsttop'>
+                            <div className='left'>Payout <span><IoIosArrowForward className="icon" />Creator Payout</span></div>
+                            <div className='back'>
+                                <NavLink to="/payout" className="backNav">
+                                    <img src={backNav} alt="" />
+                                    <span>Back</span>
+                                </NavLink>
+                            </div>
                         </div>
 
-                        <div className='whiteLogo'>
-                            <img src={whitelogo1} alt="" />
-                            <img src={whitelogo2} alt="" />
+                        <div className='topCard'>
+                            <div className='detail'>
+                                <div className='name' style={{ textTransform: "capitalize" }}>{payment?.category}</div>
+                                <div className='id'>ID: {payment?.id}</div>
+
+                                <p>Here’s all your payment history</p>
+                            </div>
+
+                            <div className='whiteLogo'>
+                                <img src={whitelogo1} alt="" />
+                                <img src={whitelogo2} alt="" />
+                            </div>
                         </div>
-                    </div>
 
-                    <div className='tablePage tableSection'>
-                        <section className='SP-payoutDetails'>
-                            <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
-                                handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search with payment Id"
-                            >
-                                <button className='downloadReport'>Download report</button>
-                            </TableTop>
-                        </section>
-                        <div className="scroll-container">
-                            <table className="table scroll">
-                                <thead>
-                                    <tr>
-                                        <td>S/N</td>
-                                        <td>Date</td>
-                                        <td>Payment Amount</td>
-                                        <td>Payment Id</td>
-                                        <td>Payout Method</td>
-                                        <td>Payout Id</td>
-                                        <td>Payment status</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {singleData?.slice ? (
-                                        <>
-                                            {singleData?.filter((item) => {
-                                                return search?.toLowerCase() === "" ? item :
-                                                    (item?.title?.toLowerCase().includes(search.toLowerCase()))
+                        <div className='tablePage tableSection'>
+                            <section className='SP-payoutDetails'>
+                                <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                                    handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search with payment Id"
+                                >
+                                    <button className='downloadReport'>Download report</button>
+                                </TableTop>
+                            </section>
+                            <div className="scroll-container">
+                                <table className="table scroll">
+                                    <thead>
+                                        <tr>
+                                            <td>S/N</td>
+                                            <td>Date</td>
+                                            <td>Payment Amount</td>
+                                            <td>Payment Id</td>
+                                            <td>Payout Method</td>
+                                            <td>Payout Id</td>
+                                            <td>Payment status</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {singleData?.slice ? (
+                                            <>
+                                                {singleData?.filter((item) => {
+                                                    return search?.toLowerCase() === "" ? item :
+                                                        (item?.title?.toLowerCase().includes(search.toLowerCase()))
 
-                                            })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
-                                                return (
-                                                    <tr key={item?.id}>
-                                                        <td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
-                                                            <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
-                                                        }
-                                                        </td>
-                                                        <td  >{item?.date}</td>
-                                                        <td  >${item?.payout_amount}</td>
-                                                        <td >{item?.payment_id}</td>
-                                                        <td >{item?.payment_method}</td>
-                                                        <td  > {item?.payout_id}</td>
-                                                        <td className='payout-status'>
-                                                            {item?.payment_status === GETSUCCESS ? <div className='success'>
-                                                                <img src={pointGreen} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Successful</span>
-                                                            </div> :
-                                                                item?.payment_status === GETPENDING ? <div className='pending'>
-                                                                    <img src={pointYellow} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Pending</span>
-                                                                </div> :
-                                                                    <div className='failed'>
-                                                                        <img src={pointRed} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Failed</span>
-                                                                    </div>
+                                                })?.slice(newsVisited, newsVisited + newsPerPage)?.map((item, index) => {
+                                                    return (
+                                                        <tr key={item?.id}>
+                                                            <td >{((pageNumber * 10) + index + 1).toString().length === 1 ?
+                                                                <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
                                                             }
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            })}
-                                        </>
-                                    ) : ("")}
-                                </tbody>
-                            </table>
+                                                            </td>
+                                                            <td  >{item?.date}</td>
+                                                            <td  >${item?.payout_amount}</td>
+                                                            <td >{item?.payment_id}</td>
+                                                            <td >{item?.payment_method}</td>
+                                                            <td  > {item?.payout_id}</td>
+                                                            <td className='payout-status'>
+                                                                {item?.payment_status === GETSUCCESS ? <div className='success'>
+                                                                    <img src={pointGreen} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Successful</span>
+                                                                </div> :
+                                                                    item?.payment_status === GETPENDING ? <div className='pending'>
+                                                                        <img src={pointYellow} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Pending</span>
+                                                                    </div> :
+                                                                        <div className='failed'>
+                                                                            <img src={pointRed} alt="" style={{ position: 'relative', top: '-2px' }} /> <span style={{ paddingLeft: "5px" }}>Failed</span>
+                                                                        </div>
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                            </>
+                                        ) : ("")}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+                        <Pagination pageCount={pageCount} changePage={changePage} />
                     </div>
-                    <Pagination pageCount={pageCount} changePage={changePage} />
                 </div>
-            </div>
+            }
         </AdminSidebar >
     )
 }

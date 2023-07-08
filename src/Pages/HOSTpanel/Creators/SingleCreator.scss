@@ -222,6 +222,9 @@
         }
         .pieChartSession{
             padding: 40px 0px;
+            .pieDetail .content{
+                justify-content: flex-start;
+            }
         }
         .rightsidebarBtn{
             display: flex;

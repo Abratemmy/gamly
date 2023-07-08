@@ -1,11 +1,13 @@
 import * as api from "../../APIS/API";
 
-import { GETPAGEMANAGE, DELETEPAGEMANAGE, UPDATEPAGEMANAGE, CREATEPAGEMANAGE } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, GETPAGEMANAGE, DELETEPAGEMANAGE, UPDATEPAGEMANAGE, CREATEPAGEMANAGE } from "../CONSTANT/actionTypes";
 
 export const getAllPAGEMANAGEMENT = () => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchPage();
         dispatch({ type: GETPAGEMANAGE, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error.message)
     }

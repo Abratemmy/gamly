@@ -92,8 +92,8 @@ function ViewMore() {
                         </div>
                     </div>
 
-                    <div className='PercentageSession'>
-                        <div className='row'>
+                    <div className='PercentageSession' style={{ marginTop: '40px' }}>
+                        <div className='row gy-5 gx-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
                                 <HostPercentage leftText="Games Hosted" rightText="Games Hosted" prevMonth={prevMonth}
                                     previousMonthTotal={percentageData.previousMonthTotal} currentMonthTotal={percentageData.currentMonthTotal}
@@ -101,14 +101,14 @@ function ViewMore() {
                             </div>
 
                             <div className='col-lg-6 col-md-12 col-sm-12'>
-                                <HostPercentage leftText="Games contested rate" rightText="Games contested rate" prevMonth={prevMonth}
+                                <HostPercentage leftText="Games contested" rightText="Games contested rate" prevMonth={prevMonth}
                                     previousMonthTotal={percentageData.previousContestedTotal} currentMonthTotal={percentageData.currentContestedTotal}
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <div className="recharts">
+                    <div className="recharts" style={{ margin: '50px 0px' }}>
                         <div className='Graph' style={{ padding: "10px 0px" }}>
                             <div className='row gx-5 gy-5'>
                                 <div className='col-lg-6 col-md-12 col-sm-12'>
@@ -128,7 +128,7 @@ function ViewMore() {
                         </div>
                     </div>
 
-                    <div className='gameMetricsPercentageCard'>
+                    <div className='gameMetricsPercentageCard' style={{ paddingBottom: '80px' }}>
                         <div className='row gx-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
                                 <GameMetricsCard1 />

@@ -1,11 +1,13 @@
 import * as api from "../../APIS/API";
 
-import { GETREPORT, DELETEREPORT, UPDATEREPORT, CREATEREPORT } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, GETREPORT, DELETEREPORT, UPDATEREPORT, CREATEREPORT } from "../CONSTANT/actionTypes";
 
 export const getAllREPORT = () => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchReport();
         dispatch({ type: GETREPORT, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error.message)
     }

@@ -5,6 +5,9 @@ import ContestPage from './CONTEST/ContestData';
 import Prize from './PrizeDistribution/Prize';
 import LiveStat from './LiveStat/LiveStat';
 import CreatePrize from './PrizeDistribution/createPrize';
+import Game from './Game/Game';
+import CreateNewContest from './CONTEST/CreateContest';
+import TimerComponent from './test';
 
 
 function Contest() {
@@ -28,7 +31,7 @@ function Contest() {
 
                             {toggleState === 2 && (
                                 <div className="right">
-                                    <button>Create New</button>
+                                    <button onClick={(() => setToggleState(6))}>Create New</button>
                                 </div>
                             )}
 
@@ -41,8 +44,9 @@ function Contest() {
                     )}
 
 
+                    {/* <TimerComponent /> */}
                     <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
-                        games
+                        <Game />
                     </div>
                     <div className={toggleState === 2 ? "tabContent active-tabContent" : "tabContent"}>
                         <ContestPage />
@@ -55,6 +59,9 @@ function Contest() {
                     </div>
                     <div className={toggleState === 5 ? "tabContent active-tabContent" : "tabContent"}>
                         <CreatePrize backButton={() => setToggleState(3)} />
+                    </div>
+                    <div className={toggleState === 6 ? "tabContent active-tabContent" : "tabContent"}>
+                        <CreateNewContest backButton={() => setToggleState(2)} />
                     </div>
                 </div>
             </div>

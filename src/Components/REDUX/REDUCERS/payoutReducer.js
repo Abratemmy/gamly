@@ -9,7 +9,7 @@ export const paymentReducer = (state = initialState, action) => {
         case END_LOADING:
             return { ...state, isLoading: false }
         case GETPAYOUT:
-            return action.payload;
+            return { ...state, payment: action.payload };
         case GETSINGLEPAYOUT:
             return { ...state, payment: action.payload }
         case CREATEPAYOUT:

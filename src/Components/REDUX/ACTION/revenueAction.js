@@ -1,11 +1,13 @@
 import * as api from "../../APIS/API";
 
-import { GETREVENUE, DELETEREVENUE, UPDATEREVENUE, CREATEREVENUE } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, GETREVENUE, DELETEREVENUE, UPDATEREVENUE, CREATEREVENUE } from "../CONSTANT/actionTypes";
 
 export const getAllREVENUE = () => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchRevenue();
         dispatch({ type: GETREVENUE, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
         console.log(error.message)
     }
