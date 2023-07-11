@@ -4,15 +4,12 @@ import cardlogo from '../../../Assets/hostCardLogo.svg'
 import "./Host.scss";
 import TopCard from '../../../Components/pageCard/TopCard';
 import moment from 'moment';
-import dateImg from '../../../Assets/date.svg'
-import downArrow from '../../../Assets/downarr.svg'
-import uparrow from "../../../Assets/uparr.svg";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md"
 import HostPercentage from '../../../Components/pageCard/HostPercentage';
 import Piechart from '../../../Components/RECHART/PieChart/PieChart';
 import redLine from '../../../Assets/redLine.svg';
 import greenLine from '../../../Assets/deepGreenLine.svg'
 import ProgressBar from '../../../Components/RECHART/ProgressBar';
+import SmallCard from '../../../Components/pageCard/smallCard/SmallCard';
 
 function Host() {
     const dashboardCard = [
@@ -29,26 +26,8 @@ function Host() {
     // Subtract 1 day to get the end of the previous month
     const prevMonthLastDay = moment(firstDay).subtract('1', 'days').format("MMMM DD, YYYY");
 
-
-    const [dropdown, setDropdown] = useState(false);
-    const openDropdown = () => {
-        setDropdown(!dropdown)
-    }
-    const [selected, setSelected] = useState("1hr");
-    const handleClick = (event) => {
-        setSelected(event.target.id);
-        setDropdown(false)
-    }
-    //creator function
-    const [creatordropdown, setCreatorDropdown] = useState(false);
-    const openCreatorDropdown = () => {
-        setCreatorDropdown(!creatordropdown)
-    }
-    const [creatorselected, setCreatorSelected] = useState("1hr");
-    const creatorHandleClick = (event) => {
-        setCreatorSelected(event.target.id);
-        setCreatorDropdown(false)
-    }
+    // small card content
+    const [smdropdown, setSmDropdown] = useState(false);
 
     const percentageData = {
         previousMonthTotal: 1000,
@@ -64,7 +43,7 @@ function Host() {
     const currentMonthTotal = 210000
     return (
         <HostSidebar name="Dashboard">
-            <div className='HostDashboard'>
+            <div className='HostDashboard allPages'>
                 <div className="container">
                     <div className='row g-3 topRow'>
                         <div className='col-lg-6 col-md-7 col-sm-12 cardWrapper'>
@@ -106,12 +85,12 @@ function Host() {
                         </div>
                     </div>
 
-                    <div className='Session hostStyleforTopCard'>
+                    <div className='Session pageCardDesign'>
                         <div className='header'>Sign Up</div>
                         <TopCard topCard={dashboardCard} />
                     </div>
 
-                    <div className='row gx-4'>
+                    <div className='row gx-4 gy-5'>
                         <div className='col-lg-6 col-md-12 col-sm-12'>
                             <HostPercentage average="1,500" leftText="Total Signup" rightText="Total profit" prevMonth={prevMonth}
                                 previousMonthTotal={percentageData.previousMonthTotal} currentMonthTotal={percentageData.currentMonthTotal}
@@ -119,55 +98,8 @@ function Host() {
                         </div>
 
 
-                        <div className='col-lg-5 col-md-8 col-sm-12'>
-                            <div className='percentageCard smCard'>
-                                <div className='cardWrapper'>
-                                    <div className='cardContent rightContent'>
-                                        <div className='topHeader'>
-                                            <div className='text'>Sign Up</div>
-                                            <button className='dropdown' onClick={openDropdown}>{selected === "24h" ? "Last 24 hours" : selected === "1hr" ? "Last 1 hour" :
-                                                selected === "24m" ? "Last 24 min" : selected === "30m" ? "Last 30 min" : selected === "10m" ? "Last 10 min" :
-                                                    "Last 5 min"
-                                            } <span><MdOutlineKeyboardArrowDown className='icon' /> </span></button>
-                                            {dropdown && (
-                                                <div className='hCardToggle'>
-                                                    <div className={selected === "1" ? "drop-active list" : "list"} onClick={handleClick}
-                                                        id={"24h"}>
-                                                        Last 24 Hrs
-                                                    </div>
-                                                    <div className={selected === "2" ? "drop-active list" : "list"} onClick={handleClick}
-                                                        id={"1h"}>
-                                                        Last 1 Hr
-                                                    </div>
-
-                                                    <div className={selected === "2" ? "drop-active list" : "list"} onClick={handleClick}
-                                                        id={"24m"}>
-                                                        Last 24 Min
-                                                    </div>
-
-                                                    <div className={selected === "2" ? "drop-active list" : "list"} onClick={handleClick}
-                                                        id={"30m"}>
-                                                        Last 30 Min
-                                                    </div>
-                                                    <div className={selected === "2" ? "drop-active list" : "list"} onClick={handleClick}
-                                                        id={"10m"}>
-                                                        Last 10 Min
-                                                    </div>
-                                                    <div className={selected === "2" ? "drop-active list" : "list"} onClick={handleClick}
-                                                        id={"5m"}>
-                                                        Last 5 min
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-
-                                        <div className="SignupContent">
-                                            <div className='header'>20,000</div>
-                                            <span>65% <img src={uparrow} alt="" /></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className='col-lg-5 col-md-9 col-sm-12'>
+                            <SmallCard smallCardTitle="Signup" Total="20,000" smCardDropdown={smdropdown} setSmCardDropdown={setSmDropdown} />
                         </div>
                     </div>
 
@@ -202,55 +134,8 @@ function Host() {
                                     />
                                 </div>
 
-                                <div className='col-lg-5 col-md-8 col-sm-12'>
-                                    <div className='percentageCard smCard'>
-                                        <div className='cardWrapper'>
-                                            <div className='cardContent rightContent'>
-                                                <div className='topHeader'>
-                                                    <div className='text'>Active</div>
-                                                    <button className='dropdown' onClick={openCreatorDropdown}>{creatorselected === "24h" ? "Last 24 hours" : creatorselected === "1hr" ? "Last 1 hour" :
-                                                        creatorselected === "24m" ? "Last 24 min" : creatorselected === "30m" ? "Last 30 min" : creatorselected === "10m" ? "Last 10 min" :
-                                                            "Last 5 min"
-                                                    } <span><MdOutlineKeyboardArrowDown className='icon' /> </span></button>
-                                                    {creatordropdown && (
-                                                        <div className='hCardToggle'>
-                                                            <div className={creatorselected === "1" ? "drop-active list" : "list"} onClick={creatorHandleClick}
-                                                                id={"24h"}>
-                                                                Last 24 Hrs
-                                                            </div>
-                                                            <div className={creatorselected === "2" ? "drop-active list" : "list"} onClick={creatorHandleClick}
-                                                                id={"1h"}>
-                                                                Last 1 Hr
-                                                            </div>
-
-                                                            <div className={creatorselected === "2" ? "drop-active list" : "list"} onClick={creatorHandleClick}
-                                                                id={"24m"}>
-                                                                Last 24 Min
-                                                            </div>
-
-                                                            <div className={creatorselected === "2" ? "drop-active list" : "list"} onClick={creatorHandleClick}
-                                                                id={"30m"}>
-                                                                Last 30 Min
-                                                            </div>
-                                                            <div className={creatorselected === "2" ? "drop-active list" : "list"} onClick={creatorHandleClick}
-                                                                id={"10m"}>
-                                                                Last 10 Min
-                                                            </div>
-                                                            <div className={creatorselected === "2" ? "drop-active list" : "list"} onClick={creatorHandleClick}
-                                                                id={"5m"}>
-                                                                Last 5 min
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-
-                                                <div className="SignupContent">
-                                                    <div className='header' style={{ color: 'var(--primaryColor)' }}>800</div>
-                                                    <span>65% <img src={uparrow} alt="" /></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div className='col-lg-5 col-md-9 col-sm-12 smCardDesign' >
+                                    <SmallCard smallCardTitle="Active" Total='800' smCardDropdown={smdropdown} setSmCardDropdown={setSmDropdown} />
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,4 @@
 .durationMonth{
-    position: relative;
     width: 176.45px;
     height: 42px;
 
@@ -26,15 +25,32 @@
         }
     }
     .DaysStyling{
-        right: -10px;
+        right: 0px;
+        // right: -10px;
          position: absolute;
         //  width: 650px;
-          max-width: 450px;
+        max-width: 450px;
         overflow-x: auto;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         background: #fff;
         padding: 0px;
-        z-index:10
+        z-index:100!important
 
+    }
+    @media screen and (max-width: 768px) {
+        .DaysStyling{
+            left: 0px!important;
+            max-width: auto!important;
+        }
+    }
+}
+@media screen and (max-width:500px) {
+    .durationMonth{
+        width: auto;
+        .duration{
+            width: 100%;
+            flex:1;
+            padding:0px 10px;
+        }
     }
 }

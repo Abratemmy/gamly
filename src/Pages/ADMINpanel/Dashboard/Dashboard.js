@@ -16,7 +16,7 @@ import "./chart.css"
 function Dashboard() {
     return (
         <AdminSidebar name="Dashboard">
-            <div className='Dashboard'>
+            <div className='Dashboard allPages'>
                 <div className="container">
                     <div className='top'>
                         <div className='text'>Welcome Vikram
@@ -102,7 +102,7 @@ function Dashboard() {
                     </section>
 
                     <section className='charts' >
-                        <div className='row'>
+                        <div className='row gy-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
                                 <Chart1 />
 

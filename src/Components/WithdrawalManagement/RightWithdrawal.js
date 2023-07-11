@@ -1,11 +1,11 @@
 import React from 'react';
-import Avatar from '../../../Assets/Avatar.svg'
+import Avatar from '../../Assets/Avatar.svg'
 import { NavLink } from 'react-router-dom';
-import upArrow from '../../../Assets/uparr.svg'
-import upArrow2 from '../../../Assets/upArr2.svg'
-import HostPercentage from '../../../Components/pageCard/HostPercentage';
+import upArrow from '../../Assets/uparr.svg'
+import upArrow2 from '../../Assets/upArr2.svg'
+import HostPercentage from '../../Components/pageCard/HostPercentage';
 import moment from 'moment'
-import ProgressBar from '../../../Components/RECHART/ProgressBar';
+import ProgressBar from '../../Components/RECHART/ProgressBar';
 
 function RightWithdrawal({ popupcontent, onClick }) {
     const prevMonth = moment().subtract(1, "month").format('MMMM')
@@ -46,7 +46,7 @@ function RightWithdrawal({ popupcontent, onClick }) {
                 <div className='cardWrapper'>
                     <div className='container'>
                         <div className='row g-2'>
-                            <div className='col-lg-4 col-md-4 col-sm-4 column'>
+                            <div className='col-lg-4 col-md-4 col-sm-6 '>
                                 <div className='content'>
                                     <div className="heading">Total game</div>
                                     <div className='total'>25, 230</div>
@@ -54,7 +54,7 @@ function RightWithdrawal({ popupcontent, onClick }) {
                                 </div>
                             </div>
 
-                            <div className='col-lg-4 col-md-4 col-sm-4 column'>
+                            <div className='col-lg-4 col-md-4 col-sm-6 '>
                                 <div className='content'>
                                     <div className="heading">Last month</div>
                                     <div className='total'>3, 230</div>
@@ -62,7 +62,7 @@ function RightWithdrawal({ popupcontent, onClick }) {
                                 </div>
                             </div>
 
-                            <div className='col-lg-4 col-md-4 col-sm-4 column'>
+                            <div className='col-lg-4 col-md-4 col-sm-6 '>
                                 <div className='content'>
                                     <div className="heading">Last Week</div>
                                     <div className='total'>15, 230</div>
@@ -85,7 +85,7 @@ function RightWithdrawal({ popupcontent, onClick }) {
             </div >
             <div className='hr-border' ></div>
 
-            <div className='' style={{ padding: '0px 20px' }}>
+            <div className='' style={{ padding: '30px 20px' }}>
                 <HostPercentage average="1, 500" leftText="Total withdrawal" rightText="Total withdrawal" prevMonth={prevMonth} previousMonthTotal={percentageData?.previousMonthTotal} currentMonthTotal={percentageData?.currentMonthTotal} />
             </div>
 

@@ -183,7 +183,7 @@ function Sales() {
     return (
         <AdminSidebar name="sales">
             {isLoading ? <PageLoader /> :
-                <div className='Sales'>
+                <div className='Sales allPages'>
                     <div className='container'>
                         <TopCard topCard={salesCard} cardName="Sales" />
 

@@ -52,7 +52,7 @@ function Revenue() {
 
     return (
         <AdminSidebar name="Revenue" defaultToggleState={() => setToggleState(1)}>
-            <div className="Revenue">
+            <div className="Revenue allPages">
                 <div className="container">
                     <div className="bloc-tabs" style={{ paddingTop: "20px" }}>
                         <div className="left">
@@ -83,6 +83,7 @@ function Revenue() {
                                 <PercentageCard2 prevMonth={prevMonth} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
                                     currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
                                 />
+
                             </div>
                         </div>
 

@@ -1,0 +1,19 @@
+.LoadingContainer{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+    background-color: rgba(157, 158, 160, 0.185);
+    .LoadingImage{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        width: 100%;
+        height: 90vh;
+        img{
+            width: 60px;
+            height: 60px
+        }
+    }
+}

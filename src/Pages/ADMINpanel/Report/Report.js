@@ -80,7 +80,7 @@ function Report() {
     return (
         <AdminSidebar name="Report">
             {isLoading ? <PageLoader /> :
-                <div className='ReportPage'>
+                <div className='ReportPage allPages'>
                     <div className='' style={{ padding: "20px 0px 40px 0px" }}>
                         <div className="container">
                             <div className='ReportWrapper'>
@@ -96,22 +96,22 @@ function Report() {
                                         </div>
                                     </div>
 
-                                    <div className='col-lg-7 col-md-12 col' >
+                                    <div className='col-lg-7 col-md-12' >
                                         <div className=''>
-                                            <div className='row gx-3'>
-                                                <div className="col-4">
+                                            <div className='row gx-3 gy-3'>
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
                                                     <div className='content'>
                                                         <label>Match Id</label>
                                                         <input className='inputBox' />
                                                     </div>
                                                 </div>
-                                                <div className="col-4">
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
                                                     <div className='content'>
                                                         <label>Challenge Id</label>
                                                         <input className='inputBox' />
                                                     </div>
                                                 </div>
-                                                <div className="col-4">
+                                                <div className="col-lg-4 col-md-4 col-sm-6">
                                                     <div className='content'>
                                                         <label>Sport Type</label>
                                                         <div className='inputBox' onClick={() => setSelectSportActive(!selectSportActive)}>

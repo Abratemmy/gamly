@@ -26,7 +26,7 @@ function Admin() {
     const newsVisited = pageNumber * newsPerPage
     const [search, setSearch] = useState('')
 
-    const { adminData, isLoading } = useSelector((state) => state.adminReducer);
+    const { adminData, isLoading, isError } = useSelector((state) => state.adminReducer);
     console.log("adminData", adminData)
 
     const getSalesData = useSelector((state) => state.salesReducer);
@@ -128,258 +128,260 @@ function Admin() {
         dispatch(getAllADMIN())
     }, [dispatch])
 
-    if (!adminData) return <div>
-        <div className=''>No data for this page</div>
-    </div>;
-
     return (
         <AdminSidebar name="Admins">
-            {isLoading ? (<PageLoader />) :
-                <div className='adminPage'>
-                    <div className='container'>
-                        <div className='first'>
-                            <div className='top-text'>Here's a list of your gamly admins</div>
-                            <div className='top-button'>
-                                <button className='button' onClick={AddAdmin}><BiPlus className="icon" /> <span>Add Admin</span></button>
-                            </div>
-                        </div>
-
-
-                        <section className='AdminTableWrapper'>
-                            <div className='firstSession'>
-                                <div className='input'>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text"><BiSearch className="icon" style={{ color: 'var(--grayColor)' }} /></span>
-                                        <input type="text" className="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping"
-                                            onChange={(e) => setSearch(e.target.value)} value={search}
-                                        />
+            {isError ? <div className='pageErrorApi'>Error Message
+                <span>"Your team plan allows 1000 mock server calls per month. Contact your team Admin to up your limit."</span>
+            </div> :
+                <>
+                    {isLoading ? (<PageLoader />) :
+                        <div className='adminPage allPages'>
+                            <div className='container'>
+                                <div className='first'>
+                                    <div className='top-text'>Here's a list of your gamly admins</div>
+                                    <div className='top-button'>
+                                        <button className='button' onClick={AddAdmin}><BiPlus className="icon" /> <span>Add Admin</span></button>
                                     </div>
                                 </div>
 
-                                <div className='RefreshComp'>
-                                    <button onClick={() => setSearch(" ")}><BiRefresh className='r-icon' /> <span>Refresh</span></button>
-                                </div>
-                            </div>
 
-                            <div className="AdminTable">
-                                <div className='header'>Admin <span> 1000 admins </span></div>
-                                <div className='tableWrapper'>
-                                    <div className="scroll-container">
-                                        <table className="table scroll">
-                                            <thead>
-                                                <tr >
-                                                    <td>Name</td>
-                                                    <td>Role <span><BsQuestionCircle className="icon" /> </span></td>
-                                                    <td>Email Address</td>
-                                                    <td>Access</td>
-                                                    <td>Date added</td>
-                                                    <td></td>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                                {adminData?.adminList?.slice ? (
-                                                    <>
-                                                        {adminData?.adminList?.filter((item) => {
-                                                            return search?.toLowerCase() === "" ? item :
-                                                                (item?.email?.toLowerCase().includes(search.toLowerCase()) || item?.name?.toLowerCase().includes(search.toLowerCase()))
-
-                                                        })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
-                                                            return (
-                                                                <tr key={data?.id}>
-                                                                    <td width="25%" className=''>
-                                                                        <div className='imageName'>
-                                                                            {data?.image ? (
-                                                                                <><img src={data?.image} alt="" /> </>
-                                                                            ) : (
-                                                                                <>
-                                                                                    <span class="imageSpan" style={{ marginRight: "8px" }}>{data?.name?.split(/\s/).reduce((response, word) => response += word.slice(0, 1), '')}</span>
-                                                                                </>
-                                                                            )}
-                                                                            {data?.name}
-                                                                        </div>
-                                                                    </td>
-                                                                    <td width="10%" className='grayColor '>{data?.role}</td>
-                                                                    <td width="20%" className='grayColor'>{data?.email}</td>
-                                                                    <td width="25%" className='grayColor'>{data?.role === "Admin" ?
-                                                                        <div className='left'>
-                                                                            <span className='green'><img src={pointGreen} alt="" className='access' /> Users</span>
-                                                                            <span className='yellow'><img src={pointYellow} alt="" className='access' /> Creators</span>
-                                                                        </div>
-                                                                        :
-                                                                        <div className='right'>
-                                                                            <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
-                                                                        </div>
-                                                                    }
-
-                                                                    </td>
-                                                                    <td width="15%" className='grayColor'>2023-06-21</td>
-                                                                    <td width="10%" className='tableAction'>
-                                                                        <button onClick={() => deleteContent(data, index)}><img src={deleteImg} alt="" className='' /></button>
-                                                                        <button onClick={() => changeContent(data, index)}><img src={editImg} alt="" className='' /></button>
-                                                                    </td>
-                                                                </tr>
-                                                            )
-                                                        })}
-                                                    </>
-                                                ) : ("")}
-                                            </tbody>
-                                        </table>
-
-                                    </div>
-                                </div>
-
-                                {/* pagination starts here */}
-                                <Pagination pageCount={pageCount} changePage={changePage} />
-                            </div>
-
-                        </section>
-
-                    </div>
-
-                    {alerttoggle && (
-                        <AlertToggle topic="Edit Admin?" text="Are you sure you want to edit this admin ?"
-                            closeAlertToggle={() => setalerttoggle(false)} performAction={formToggle} subText="edit"
-                        />
-                    )}
-
-                    {openForm && (
-                        <div className='popupContainer'>
-                            <div className='formpopupBody' onClick={(e) => e.stopPropagation()}>
-
-                                <div className='heading'>
-                                    <div className='text'>Edit Admin</div>
-                                    <button onClick={() => setopenForm(false)}>
-                                        <img src={cancelImg} alt="" />
-                                    </button>
-                                </div>
-
-                                <form onSubmit={handleEditForm} className='formWrapper'>
-                                    <div className='formInput'>
-                                        <div className='inputfield'>
-                                            <label>Name</label>
-                                            <input type="text"
-                                                name="title" value={popupcontent.name}
-                                                onChange={(e) => {
-                                                    setPopupcontent({ ...popupcontent, name: e.target.value });
-                                                }}
-
-                                            />
-                                            {errors ? <span className='error'> {errors.name}</span> : ""}
-                                        </div>
-
-                                        <div className='inputfield'>
-                                            <label>Email</label>
-                                            <input type="email"
-                                                name="email" value={popupcontent.email}
-                                                onChange={(e) => {
-                                                    setPopupcontent({ ...popupcontent, email: e.target.value });
-                                                }}
-                                            />
-                                            {errors ? <span className='error'> {errors.email}</span> : ""}
-                                        </div>
-
-                                        <div className='inputfield'>
-                                            <label>Role</label>
-                                            <div className='selectDropdown'>
-                                                <div className='dropdown-btn' onChange={(e) => {
-                                                    setPopupcontent({ ...popupcontent, role: e.target.value });
-                                                }} onClick={() => setSelectRoleActive(!selectRoleActive)}>
-                                                    {roleSelected} <span><MdOutlineKeyboardArrowDown className='icon' /></span>
-                                                </div>
-                                                {selectRoleActive && (
-                                                    <div className='dropdown-content'>
-                                                        {roleData?.map((option) => (
-                                                            <div className="dropdown-item"
-                                                                onClick={(e) => {
-                                                                    setRoleSelected(option);
-                                                                    setSelectRoleActive(false)
-                                                                }}
-                                                            >
-                                                                {option}
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                )}
+                                <section className='AdminTableWrapper'>
+                                    <div className='firstSession'>
+                                        <div className='input'>
+                                            <div class="input-group flex-nowrap">
+                                                <span class="input-group-text"><BiSearch className="icon" style={{ color: 'var(--grayColor)' }} /></span>
+                                                <input type="text" className="form-control" placeholder="Search" aria-label="Username" aria-describedby="addon-wrapping"
+                                                    onChange={(e) => setSearch(e.target.value)} value={search}
+                                                />
                                             </div>
                                         </div>
 
-                                        <div className='inputfield'>
-                                            <label>Access</label>
-                                            <div className='selectDropdown'>
-                                                <div className='dropdown-btn' onClick={() => setSelectAccessActive(!selectAccessActive)}>
-                                                    {accessSelected === "Both" ? <div className="">
-                                                        <span className='green'><img src={pointGreen} alt="" /> Users</span>
-                                                        <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
-                                                    </div>
-                                                        : accessSelected === "Users" ? <div className=''>
-                                                            <span className='green'><img src={pointGreen} alt="" /> Users</span>
+                                        <div className='RefreshComp'>
+                                            <button onClick={() => setSearch(" ")}><BiRefresh className='r-icon' /> <span>Refresh</span></button>
+                                        </div>
+                                    </div>
+
+                                    <div className="AdminTable">
+                                        <div className='header'>Admin <span> 1000 admins </span></div>
+                                        <div className='tableWrapper'>
+                                            <div className="scroll-container">
+                                                <table className="table scroll">
+                                                    <thead>
+                                                        <tr >
+                                                            <td>Name</td>
+                                                            <td>Role <span><BsQuestionCircle className="icon" /> </span></td>
+                                                            <td>Email Address</td>
+                                                            <td>Access</td>
+                                                            <td>Date added</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        {adminData?.adminList?.slice ? (
+                                                            <>
+                                                                {adminData?.adminList?.filter((item) => {
+                                                                    return search?.toLowerCase() === "" ? item :
+                                                                        (item?.email?.toLowerCase().includes(search.toLowerCase()) || item?.name?.toLowerCase().includes(search.toLowerCase()))
+
+                                                                })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
+                                                                    return (
+                                                                        <tr key={data?.id}>
+                                                                            <td width="25%" className=''>
+                                                                                <div className='imageName'>
+                                                                                    {data?.image ? (
+                                                                                        <><img src={data?.image} alt="" /> </>
+                                                                                    ) : (
+                                                                                        <>
+                                                                                            <span class="imageSpan" style={{ marginRight: "8px" }}>{data?.name?.split(/\s/).reduce((response, word) => response += word.slice(0, 1), '')}</span>
+                                                                                        </>
+                                                                                    )}
+                                                                                    {data?.name}
+                                                                                </div>
+                                                                            </td>
+                                                                            <td width="10%" className='grayColor '>{data?.role}</td>
+                                                                            <td width="20%" className='grayColor'>{data?.email}</td>
+                                                                            <td width="25%" className='grayColor'>{data?.role === "Admin" ?
+                                                                                <div className='left'>
+                                                                                    <span className='green'><img src={pointGreen} alt="" className='access' /> Users</span>
+                                                                                    <span className='yellow'><img src={pointYellow} alt="" className='access' /> Creators</span>
+                                                                                </div>
+                                                                                :
+                                                                                <div className='right'>
+                                                                                    <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
+                                                                                </div>
+                                                                            }
+
+                                                                            </td>
+                                                                            <td width="15%" className='grayColor'>2023-06-21</td>
+                                                                            <td width="10%" className='tableAction'>
+                                                                                <button onClick={() => deleteContent(data, index)}><img src={deleteImg} alt="" className='' /></button>
+                                                                                <button onClick={() => changeContent(data, index)}><img src={editImg} alt="" className='' /></button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    )
+                                                                })}
+                                                            </>
+                                                        ) : ("")}
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                        </div>
+
+                                        {/* pagination starts here */}
+                                        <Pagination pageCount={pageCount} changePage={changePage} />
+                                    </div>
+
+                                </section>
+
+                            </div>
+
+                            {alerttoggle && (
+                                <AlertToggle topic="Edit Admin?" text="Are you sure you want to edit this admin ?"
+                                    closeAlertToggle={() => setalerttoggle(false)} performAction={formToggle} subText="edit"
+                                />
+                            )}
+
+                            {openForm && (
+                                <div className='popupContainer'>
+                                    <div className='formpopupBody' onClick={(e) => e.stopPropagation()}>
+
+                                        <div className='heading'>
+                                            <div className='text'>Edit Admin</div>
+                                            <button onClick={() => setopenForm(false)}>
+                                                <img src={cancelImg} alt="" />
+                                            </button>
+                                        </div>
+
+                                        <form onSubmit={handleEditForm} className='formWrapper'>
+                                            <div className='formInput'>
+                                                <div className='inputfield'>
+                                                    <label>Name</label>
+                                                    <input type="text"
+                                                        name="title" value={popupcontent.name}
+                                                        onChange={(e) => {
+                                                            setPopupcontent({ ...popupcontent, name: e.target.value });
+                                                        }}
+
+                                                    />
+                                                    {errors ? <span className='error'> {errors.name}</span> : ""}
+                                                </div>
+
+                                                <div className='inputfield'>
+                                                    <label>Email</label>
+                                                    <input type="email"
+                                                        name="email" value={popupcontent.email}
+                                                        onChange={(e) => {
+                                                            setPopupcontent({ ...popupcontent, email: e.target.value });
+                                                        }}
+                                                    />
+                                                    {errors ? <span className='error'> {errors.email}</span> : ""}
+                                                </div>
+
+                                                <div className='inputfield'>
+                                                    <label>Role</label>
+                                                    <div className='selectDropdown'>
+                                                        <div className='dropdown-btn' onChange={(e) => {
+                                                            setPopupcontent({ ...popupcontent, role: e.target.value });
+                                                        }} onClick={() => setSelectRoleActive(!selectRoleActive)}>
+                                                            {roleSelected} <span><MdOutlineKeyboardArrowDown className='icon' /></span>
                                                         </div>
-                                                            : <div>
+                                                        {selectRoleActive && (
+                                                            <div className='dropdown-content'>
+                                                                {roleData?.map((option) => (
+                                                                    <div className="dropdown-item"
+                                                                        onClick={(e) => {
+                                                                            setRoleSelected(option);
+                                                                            setSelectRoleActive(false)
+                                                                        }}
+                                                                    >
+                                                                        {option}
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </div>
+
+                                                <div className='inputfield'>
+                                                    <label>Access</label>
+                                                    <div className='selectDropdown'>
+                                                        <div className='dropdown-btn' onClick={() => setSelectAccessActive(!selectAccessActive)}>
+                                                            {accessSelected === "Both" ? <div className="">
+                                                                <span className='green'><img src={pointGreen} alt="" /> Users</span>
                                                                 <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
                                                             </div>
-                                                    }
-                                                    <span><MdOutlineKeyboardArrowDown className='icon' /></span>
-                                                </div>
-                                                {selectAccessActive && (
-                                                    <div className='dropdown-content'>
-                                                        {accessData?.map((option) => (
-                                                            <div className="dropdown-item"
-                                                                onClick={(e) => {
-                                                                    setaccessSelected(option);
-                                                                    setSelectAccessActive(false)
-                                                                }}
-                                                            >
-                                                                {option}
+                                                                : accessSelected === "Users" ? <div className=''>
+                                                                    <span className='green'><img src={pointGreen} alt="" /> Users</span>
+                                                                </div>
+                                                                    : <div>
+                                                                        <span className='yellow'><img src={pointYellow} alt="" /> Creators</span>
+                                                                    </div>
+                                                            }
+                                                            <span><MdOutlineKeyboardArrowDown className='icon' /></span>
+                                                        </div>
+                                                        {selectAccessActive && (
+                                                            <div className='dropdown-content'>
+                                                                {accessData?.map((option) => (
+                                                                    <div className="dropdown-item"
+                                                                        onClick={(e) => {
+                                                                            setaccessSelected(option);
+                                                                            setSelectAccessActive(false)
+                                                                        }}
+                                                                    >
+                                                                        {option}
+                                                                    </div>
+                                                                ))}
                                                             </div>
-                                                        ))}
+                                                        )}
+
                                                     </div>
-                                                )}
 
+                                                </div>
+                                                <div className='inputfield'>
+                                                    <label>Password</label>
+                                                    <div className="inner-addon left-addon">
+                                                        <input type={passwordShown ? "text" : "password"} placeholder="Password" value={popupcontent.password} name="password"
+                                                            onChange={(e) => {
+                                                                setPopupcontent({ ...popupcontent, password: e.target.value });
+                                                            }}
+                                                        />
+                                                        <img src={Passwordeye} alt="" onClick={togglePassword} className="show-icon" />
+                                                    </div>
+
+                                                    {errors ? <span className='error'> {errors.password}</span> : ""}
+
+                                                </div>
+                                            </div>
+                                            <div className='submitButton'>
+                                                <button onClick={() => setopenForm(false)}>Cancel</button>
+                                                <button type="submit">Edit Admin</button>
                                             </div>
 
-                                        </div>
-                                        <div className='inputfield'>
-                                            <label>Password</label>
-                                            <div className="inner-addon left-addon">
-                                                <input type={passwordShown ? "text" : "password"} placeholder="Password" value={popupcontent.password} name="password"
-                                                    onChange={(e) => {
-                                                        setPopupcontent({ ...popupcontent, password: e.target.value });
-                                                    }}
-                                                />
-                                                <img src={Passwordeye} alt="" onClick={togglePassword} className="show-icon" />
-                                            </div>
+                                        </form>
 
-                                            {errors ? <span className='error'> {errors.password}</span> : ""}
-
-                                        </div>
                                     </div>
-                                    <div className='submitButton'>
-                                        <button onClick={() => setopenForm(false)}>Cancel</button>
-                                        <button type="submit">Edit Admin</button>
+                                </div>
+                            )}
+                            {deleteToggle && (
+                                <AlertToggle topic="Delete Admin?" text="Are you sure you want to delete this admin ? "
+                                    closeAlertToggle={() => setDeletetoggle(false)} performAction={() => deleteAdmin(popupcontent.id)} subText="delete"
+                                />
+
+                            )}
+
+                            {/* main form to add admin code is down here */}
+                            {addAdminForm && (
+                                <div className='popupContainer'>
+                                    <div className='formpopupBody' onClick={(e) => e.stopPropagation()}>
+                                        <AddAdminPage setAddAdminForm={setAddAdminForm} />
                                     </div>
-
-                                </form>
-
-                            </div>
+                                </div>
+                            )}
                         </div>
-                    )}
-                    {deleteToggle && (
-                        <AlertToggle topic="Delete Admin?" text="Are you sure you want to delete this admin ? "
-                            closeAlertToggle={() => setDeletetoggle(false)} performAction={() => deleteAdmin(popupcontent.id)} subText="delete"
-                        />
-
-                    )}
-
-                    {/* main form to add admin code is down here */}
-                    {addAdminForm && (
-                        <div className='popupContainer'>
-                            <div className='formpopupBody' onClick={(e) => e.stopPropagation()}>
-                                <AddAdminPage setAddAdminForm={setAddAdminForm} />
-                            </div>
-                        </div>
-                    )}
-                </div>
+                    }
+                </>
             }
         </AdminSidebar>
     )

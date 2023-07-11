@@ -21,7 +21,7 @@ function PanelDropdown({ panelSelected, setPanelSelected }) {
                 navigate('/host_dashboard')
 
             } else if (event.target.id === 'user') {
-                navigate('/user')
+                navigate('/user_dashboard')
 
             } else {
                 navigate('/')

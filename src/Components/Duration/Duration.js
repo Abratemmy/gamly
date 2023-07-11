@@ -78,7 +78,7 @@ function Duration({ getDateData }) {
             } */}
 
             {dateToggle && (
-                <div className='' style={{ right: "-10px", position: 'absolute' }}>
+                <div className=''>
                     <DurationMonth startMonthDate={startMonthDate} setStartMonthDate={setStartMonthDate}
                         endMonthDate={endMonthDate} setEndMonthDate={setEndMonthDate}
                         confirmDate={confirmDateMonth} cancelMonthDate={cancelMonthDate} dateError={dateError}

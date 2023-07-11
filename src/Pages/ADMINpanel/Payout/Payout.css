@@ -78,23 +78,24 @@ table .tableNav:hover{
     top: -2px
 }
 .payoutDetails .firsttop .back{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.payoutDetails .firsttop .backNav{
     width: 179px;
     height: 54px;
     background: #fff;
     border: 1px solid #DCDEE6;
     border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.payoutDetails .firsttop .backNav{
     color: #121212;
     font-weight: 500;
     font-size: 16px;
     font-family: var(--textFamily2);
     text-decoration: none;
-    width: 100%; 
-    text-align: center;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .payoutDetails .firsttop .backNav span{
     padding-left: 20px;
@@ -157,4 +158,36 @@ table .tableNav:hover{
     letter-spacing: -0.02em;
     color: #000000;
     padding-bottom: 10px;
+}
+@media screen and (max-width: 500px) {
+    .payoutDetails .firsttop{
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        width: 100%;
+        gap: 18px
+    }
+    .payoutDetails .firsttop .back{
+        width: 100%;
+    }
+    .payoutDetails .firsttop .backNav{
+        justify-content: center!important;
+    }
+    .payoutDetails .topCard{
+        width: 95%;
+    }
+    .payoutDetails .topCard .name{
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .payoutDetails .topCard .id{
+        font-weight: 600;
+        font-size: 14px;
+    }
+    .SP-payoutDetails .tableTop .right{
+        flex-direction: column!important;
+        gap: 10px;
+    }
+    .SP-payoutDetails .downloadReport{
+        width: 100%
+    }
 }

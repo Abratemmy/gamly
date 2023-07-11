@@ -102,7 +102,7 @@ function CodeManagement({ getPaymentData }) {
     }, [dispatch])
     return (
         <HostSidebar name="Code Managements" defaultToggleState={() => setToggleState(1)}>
-            <div className='codeManagement'>
+            <div className='codeManagement allPages'>
 
                 <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
 

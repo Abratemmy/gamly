@@ -35,7 +35,7 @@ function GetUser({ handleBackButton }) {
         // window.scrollTo(0, 0)
     }
     return (
-        <div className='getUser'>
+        <div className='getUser allPages'>
             <div className='container'>
                 <div className='top'>
                     <div className='topContent'>

@@ -36,9 +36,9 @@ function SingleCreator() {
     }
 
     const [search, setSearch] = useState('')
-    const [pageNumber, setPageNumber] = useState(0);
-    const newsPerPage = 10
-    const newsVisited = pageNumber * newsPerPage
+    // const [pageNumber, setPageNumber] = useState(0);
+    // const newsPerPage = 10
+    // const newsVisited = pageNumber * newsPerPage
 
     const { creator } = useSelector((state) => state.creatorReducer);
     console.log("creator", creator)
@@ -46,9 +46,11 @@ function SingleCreator() {
 
     // const pageCount = Math.ceil(getAllCreators?.length / newsPerPage);
     // const progressWidth = ((newsVisited + newsPerPage) / getAllCreators?.length) * 100
-    const changePage = ({ selected }) => {
-        setPageNumber(selected)
-    }
+    // const changePage = ({ selected }) => {
+    //     setPageNumber(selected)
+    // }
+
+    const [opencreator, setOpencreator] = useState(true)
 
     const PIECHARTCOLORS = ['#FFBBBE', '#86DEA4'];
     const PIECenterText = {
@@ -62,7 +64,7 @@ function SingleCreator() {
     return (
         <HostSidebar name="Creators">
             <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
-                <div className='singleCreator'>
+                <div className='singleCreator allPages'>
                     <div className='container'>
                         <div className='topContent'>
                             <NavLink to="/creators" className='left'>Creators</NavLink>
@@ -70,7 +72,7 @@ function SingleCreator() {
                             <span className='right'>Creator Details</span>
                         </div>
 
-                        <div className='Session hostStyleforTopCard'>
+                        <div className='Session pageCardDesign'>
                             <div className='header'>User</div>
                             <TopCard topCard={creatorCard} />
                         </div>
@@ -125,10 +127,10 @@ function SingleCreator() {
                         </div>
                     </div>
 
-                    <div className='creatorRightSidebar'>
+                    <div className='creatorRightSidebar rightSidebar singleRight'>
                         <div className='rightsidebarBody'>
                             <div className='closeBtn'>
-                                <img src={closeImg} alt="" />
+                                <img src={closeImg} alt="" onClick={() => setOpencreator(!opencreator)} />
                             </div>
                             <div className='profile'>
                                 <div className='image'>
@@ -196,7 +198,7 @@ function SingleCreator() {
 
             {/* getUsers */}
             <div className={toggleState === 2 ? "tabContent active-tabContent" : "tabContent"}>
-                <GetUser handleBackButton={() => setToggleState(1)} search={search} />
+                <GetUser handleBackButton={() => setToggleState(1)} search={search} setSearch={setSearch} />
             </div>
 
             {/* view more user details */}

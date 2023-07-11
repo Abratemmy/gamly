@@ -180,21 +180,21 @@ function Payout() {
         },
     ];
 
-    if (!payment) return <div>
-        <div className=''>No data for this page</div>
-    </div>;
+    // if (!payment) return <div>
+    //     <div className=''>No data for this page</div>
+    // </div>;
 
     return (
         <AdminSidebar name="Payout">
             {isLoading ? (<PageLoader />) :
-                <div className='Payout'>
+                <div className='Payout allPages'>
                     <div className='container'>
                         <div className=''>
                             <TopCard topCard={payoutCard} cardName="Payout" />
                         </div>
 
                         {/* grapgh session */}
-                        <div className='GraphSession'>
+                        <div className='GraphSession  Graph'>
                             <div className='title'>Monthly Analytic Report</div>
                             <div className='row gx-5 gy-5'>
                                 <div className='col-lg-6 col-md-12 col-sm-12'>

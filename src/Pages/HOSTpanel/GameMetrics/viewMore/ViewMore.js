@@ -48,7 +48,7 @@ function ViewMore() {
 
     return (
         <HostSidebar name="Game Metrics">
-            <div className='singleGameMetric'>
+            <div className='singleGameMetric allPages'>
                 <div className='container'>
                     <div className='topContent'>
                         <NavLink to="/game_metrics" className='left'>Game Metrics</NavLink>
@@ -129,7 +129,7 @@ function ViewMore() {
                     </div>
 
                     <div className='gameMetricsPercentageCard' style={{ paddingBottom: '80px' }}>
-                        <div className='row gx-5'>
+                        <div className='row gx-5 gy-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
                                 <GameMetricsCard1 />
                             </div>

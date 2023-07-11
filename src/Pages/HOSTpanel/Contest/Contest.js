@@ -18,7 +18,7 @@ function Contest() {
 
     return (
         <HostSidebar name="Contest" defaultToggleState={() => setToggleState(1)}>
-            <div className='overallContest'>
+            <div className='overallContest allPages'>
                 <div className='container'>
                     {((toggleState === 1) || (toggleState === 2) || (toggleState === 3) || (toggleState === 4)) && (
                         <div className="bloc-tabs" style={{ paddingTop: "20px" }}>

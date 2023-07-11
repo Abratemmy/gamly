@@ -36,7 +36,7 @@ function Creators() {
 
     return (
         <HostSidebar name="Creators">
-            <div className='Creators'>
+            <div className='Creators allPages'>
                 <div className='container'>
                     <div className='page-top'>
                         Creators

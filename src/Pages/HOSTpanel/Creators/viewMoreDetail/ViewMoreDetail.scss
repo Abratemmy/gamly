@@ -50,4 +50,10 @@
             right:0
         }
     }
+    @media screen and (max-width:500px){
+        .Wrapper1, .Wrapper2{
+            margin: 0px 15px 0px 18px;
+        }
+    }
+    
 }

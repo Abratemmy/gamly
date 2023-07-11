@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import PanelDropdown from '../../Components/PanelDropdown/panelDropdown';
 
 
-function Navbar({ name, panelSelected, setPanelSelected }) {
+function Navbar({ name, panelSelected, setPanelSelected, children }) {
     // dark theme and light theme
     // const switchTheme = () => {
     //     const newTheme = theme === "light" ? "dark" : "light"
@@ -25,16 +25,13 @@ function Navbar({ name, panelSelected, setPanelSelected }) {
                     <div className="left">
                         <div className="name"> {name}</div>
                         <PanelDropdown panelSelected={panelSelected} setPanelSelected={setPanelSelected} />
+                        <div className=''>{children}</div>
                     </div>
                     <div className='right'>
                         <div class="input-group flex-nowrap">
                             <span class="input-group-text"><BiSearch className="icon" /></span>
                             <input type="text" class="form-control" placeholder="Type here..." aria-label="Username" aria-describedby="addon-wrapping" />
                         </div>
-                        {/* <div className='inputContainer' >
-                            <BiSearch className="icon" />
-                            <input type="text" className="form-control" placeholder="Type here..." />
-                        </div> */}
 
                         <div className='switchColor'>
                             <span className="navlink">

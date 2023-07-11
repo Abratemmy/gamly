@@ -4,6 +4,37 @@
         align-items: center;
         justify-content: space-between;
         padding-bottom: 50px;
+        .backbtn{
+            border:  1px solid #DCDEE6;
+            width: 178px;
+            height: 54px;
+            border-radius: 8px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            button{
+                border: none;
+                background: none;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                justify-content: center;
+                color: #121212;
+                font-family: Inter;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 29px;
+                letter-spacing: 0px;
+                text-align: center;
+                
+                img{
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
 
         .topButton{
             width: 204.65px;
@@ -231,5 +262,144 @@
       }
     .progressChart .displayProgress .wrapper{
         padding-bottom: 40px;
+    }
+}
+
+.withdrawalPopup{
+    position: relative;
+    width: 480px;
+    background: #fff;
+    border-radius: 33px;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 50px;
+    padding: 20px;
+
+    .openPopup{
+        .image{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            svg{
+                cursor: pointer;
+            }
+        }
+        .headerDetail{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-direction: column;
+            gap: 6px;
+            border-bottom: 1.39px solid #EDEDED;
+            font-family: var(--poppinFamily);
+            padding-bottom: 10px;
+            .subtitle{
+                font-size: 22px;
+                font-weight: 400;
+                line-height: 33px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:#474747;
+            }
+            .money{
+                color:#121212;
+                font-size: 33px;
+                font-weight: 600;
+                line-height: 45px;
+                letter-spacing: 0em;
+                text-align: center;   
+            }
+            .text{
+                font-family: HK Guise;
+                font-size: 10px;
+                line-height: 12px;
+                letter-spacing: 0em;
+                text-align: center;
+                color: #4b5563;
+                width: 245px;
+                margin: auto;
+            }
+        }
+        .popupCard{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin: 15px 0px;
+            .cardContent{
+                flex:1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                .content{
+                    width: 100%;
+                    border-radius: 8px;
+                    border: 1.39px solid #12121238;
+                    padding: 15px 10px;
+                    .title{
+                        font-family: var(--poppinFamily);
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 22px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        color:#121212;
+                        padding-bottom: 4px;
+                    }
+                    .answer{
+                        font-family: var(--poppinFamily);
+                        font-size: 18px;
+                        font-weight: 500;
+                        line-height: 25px;
+                        letter-spacing: 0em;
+                        text-align: left;
+                        color:#121212;
+                    }
+                }
+            }
+        }
+        .popupcontent{
+            padding: 10px;
+            .content{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 15px;
+                padding-bottom: 18px;
+                .title{
+                    font-family: var(--textFamily);
+                    font-size: 11.7px;
+                    font-weight: 500;
+                    line-height: 15px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color:#4B5563;
+                }
+                .answer{
+                    font-family: var(--textFamily);
+                    font-size: 11.7px;
+                    font-weight: 500;
+                    line-height: 15px;
+                    letter-spacing: 0em;
+                    text-align: right;
+                    color:#1F2937;
+                }
+                .approved{
+                    background: #DEF3E3;
+                    color: #107028;
+                    padding: 7px 10px;
+                    border-radius: 7px;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 510px) {
+    .withdrawalPopup{
+        width: 95%;
+        padding: 12px;
     }
 }

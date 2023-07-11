@@ -1,6 +1,6 @@
 .panel{
     position: relative;
-    z-index: 20;
+    z-index: 10;
 }
 
 .panel{
@@ -46,4 +46,10 @@
 .panel .activePanel{
     background: var(--lightPink);
     color: var(--primaryColor);
+}
+@media screen and (max-width: 500px) {
+    .panel{
+        width: 113px;
+        height: 33px;
+    }
 }

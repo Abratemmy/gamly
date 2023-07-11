@@ -1,5 +1,5 @@
 import React from 'react'
-import imageDownload from "../../../../Assets/imageDownload.svg"
+import imageDownload from "../../../Assets/imageDownload.svg"
 
 function PanCard({ kycData }) {
     return (

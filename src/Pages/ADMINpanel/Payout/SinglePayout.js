@@ -84,7 +84,7 @@ function SinglePayout() {
     return (
         <AdminSidebar name="Payout History">
             {isLoading ? (<div className='loadingPage'><PageLoader /></div>) :
-                <div className='payoutDetails'>
+                <div className='payoutDetails allPages'>
                     <div className='container'>
                         <div className='firsttop'>
                             <div className='left'>Payout <span><IoIosArrowForward className="icon" />Creator Payout</span></div>

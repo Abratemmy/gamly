@@ -2,7 +2,6 @@
 
 .percentageCard{
     position: relative;
-
     .cardWrapper{
         width: 100%;
 
@@ -95,7 +94,12 @@
                     font-weight: 700;
                     font-size: 35.2915px;
                     padding-bottom: 10px;
-                }   
+                }  
+                @media screen and (max-width: 500px) {
+                    .total{
+                        font-size: 24px;
+                    }
+                } 
                 .text{
                     color: #2D3657;
                     font-size: 11.9px;
@@ -127,6 +131,11 @@
                         letter-spacing: 0px;
                         text-align: left;
                     }
+                    @media screen and (max-width: 600px) {
+                        .total{
+                            font-size: 25px;
+                        }
+                    }
                     .subtotal{
                         font-family: var(--textFamily);
                         font-size: 11px;
@@ -136,6 +145,14 @@
                         text-align: left;
                         text-transform: uppercase;
                         padding-left: 10px;
+                    }
+                }
+                @media screen and (max-width:600px) {
+                    .content{
+                        padding: 20px 4px 5px 5px;
+                        .subtotal{
+                            padding-left: 2px;
+                        }
                     }
                 }
                 .content1{

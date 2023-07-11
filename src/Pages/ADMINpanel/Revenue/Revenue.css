@@ -28,3 +28,12 @@
     text-align: left;
     color:#23233A
 }
+@media screen and (max-width: 500px) {
+    .Revenue .recharts{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .table .tbody .td{
+        width: 20%!important;
+    }
+}

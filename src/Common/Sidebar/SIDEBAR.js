@@ -94,18 +94,19 @@ function SIDEBAR({ children, sidebarData, name, setPanelSelected, panelSelected,
                 </div>
 
                 <div className="interface-content">
-                    <div className="mobileView">
-                        <div className="nav-icon" onClick={handleClick}>
-                            {click === true ? <div>
-                                <span className="" onClick={handleClick} > <AiOutlineClose className="icon newnav-cancel" />   </span>
-                            </div> : <div>
-                                <span className="" onClick={handleClick} > <AiOutlineMenuFold className='icon' />   </span>
-                            </div>
-                            }
-                        </div>
-                    </div>
+                    <Navbar name={name} setPanelSelected={setPanelSelected} panelSelected={panelSelected}>
+                        <div className="mobileView">
 
-                    <Navbar name={name} setPanelSelected={setPanelSelected} panelSelected={panelSelected} />
+                            <div className="nav-icon" onClick={handleClick}>
+                                {click === true ? <div>
+                                    <span className="" onClick={handleClick} > <AiOutlineClose className="icon newnav-cancel" />   </span>
+                                </div> : <div>
+                                    <span className="" onClick={handleClick} > <AiOutlineMenuFold className='icon' />   </span>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </Navbar>
                     {children}
                 </div>
             </div>

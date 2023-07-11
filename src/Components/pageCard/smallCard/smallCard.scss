@@ -1,0 +1,92 @@
+.smCard{
+    .rightContent{
+        padding: 10px 20px;
+
+        .topHeader{
+            position: relative;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            border-bottom: 0.56px solid #D2D2D240;
+            .text{
+                font-family: var(--textFamily);
+                font-size: 15px;
+                font-weight: 700;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: left;
+                color:#525256
+            }
+            button{
+                background: #E8E8E8;
+                padding: 7.369565010070801px 14.739130020141602px 7.369565010070801px 14.739130020141602px;
+                border-radius: 3.6847825050354004px;
+                border: 0.9211956262588501px;
+                gap: 7.369565010070801px;
+                color:#666666;
+                font-size:12px;
+                font-family: var(--textFamily);
+                font-weight: 500;
+                .icon{
+                    font-size: 18px;
+                    position: relative;
+                    top: -1px
+                }
+            }
+
+        }
+        .hCardToggle{
+            position: absolute;
+            top: 35px;
+            width: 112px;
+            padding: 8px 0px 8px 0px;
+            border-radius: 0px 0px 8px 8px;
+            gap: 4px;
+            background: #fff;
+            right: 0px;
+            transition: var(--transition);
+            z-index:10;
+            box-shadow: 0px 8px 20px -4px #1718181F;
+        }
+        .list{
+            padding: 5px 7px;
+            border-bottom : 1px solid #f5f5f5;
+            font-size: 12px;
+            font-weight: 400;
+            font-family: var(--textFamily);
+            color: #202223;
+            cursor: pointer;
+        }
+        .SignupContent{
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .header{
+                text-align: center;
+                font-family: var(--textFamily);
+                font-size: 40px;
+                font-weight: 700;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: left;
+                color:#191919;
+                padding-bottom: 15px;
+            }
+            span{
+                color: #2EDB2B;
+                font-family: var(--textFamily);
+                font-size: 17px;
+                font-weight: 700;
+                line-height: 19px;
+                letter-spacing: 0px;
+
+            }
+        }
+        
+    }
+}

@@ -112,3 +112,22 @@
 .topCard .content .decrease{
     color: #DA0D18
 }
+
+@media screen and (max-width: 500px) {
+    .topCard{
+        height: 200px;
+    }
+    .topCard .content{
+        height: 140px;
+    }
+    .topCard .content>:nth-child(1) .amount{
+        font-size: 24px;
+        line-height: 14px;
+    }
+    .topCard .content>:nth-child(2) .amount,
+    .topCard .content>:nth-child(3) .amount,
+    .topCard .content>:nth-child(4) .amount{
+        font-size: 20px;
+        line-height: 24px;
+    }
+}

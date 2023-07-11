@@ -1,5 +1,5 @@
 import React from 'react';
-import pointGreen from '../../../Assets/pointGreen.svg';
+import pointGreen from '../../Assets/pointGreen.svg';
 
 function RightSidebar({ popupcontent, onClick, withdrawalStatus }) {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import useLocalStorage from 'use-local-storage';
+import { Routes, Route } from 'react-router-dom';
+// import useLocalStorage from 'use-local-storage';
 import Admin from '../Pages/ADMINpanel/Admin/Admin';
 import AccessDenied from '../Pages/ADMINpanel/AccessDenied/AccessDenied';
 import Dashboard from '../Pages/ADMINpanel/Dashboard/Dashboard';
@@ -11,25 +11,32 @@ import PManagement from '../Pages/ADMINpanel/PageManagement/PageManagement';
 import Report from '../Pages/ADMINpanel/Report/Report';
 import Sales from '../Pages/ADMINpanel/Sales/Sales';
 import Host from '../Pages/HOSTpanel/HOST/Host';
-import User from '../Pages/USERpanel/USER/User';
 import SignIn from '../Common/Authentication/SignIn';
 import ProtectedRoute from '../util/ProtectedRoute';
-import User2 from '../Pages/USERpanel/USER/user2';
 import CodeManagement from '../Pages/HOSTpanel/codeManagement/codeManagement';
 import Creators from '../Pages/HOSTpanel/Creators/Creators';
 import GameMetrics from '../Pages/HOSTpanel/GameMetrics/GameMetrics';
-import WithdrawalManagement from '../Pages/HOSTpanel/WithdrawalManagement/WithdrawalManagement';
 import Contest from '../Pages/HOSTpanel/Contest/Contest';
-import KYC from '../Pages/HOSTpanel/KYC/KYC';
 import SingleCreator from '../Pages/HOSTpanel/Creators/SingleCreator';
 import SingleTest from '../Pages/HOSTpanel/Creators/singleTest';
 import ViewMore from '../Pages/HOSTpanel/GameMetrics/viewMore/ViewMore';
-import KYCDetail from '../Pages/HOSTpanel/KYC/KYCDetail/KYCDetail';
-import PendingKyc from '../Pages/HOSTpanel/KYC/PendingKYC/PendingKyc';
-import PendingKYCDetail from '../Pages/HOSTpanel/KYC/PendingKYC/pendingDetail';
+import DashboardUser from '../Pages/USERpanel/Dashboard/Dashboard';
+import User from '../Pages/USERpanel/USER/User';
+import UserKYC from '../Pages/USERpanel/USERKYC/UserKYC';
+import UserKYCDetail from '../Pages/USERpanel/USERKYC/UserKYCDetail';
+import PendingUserKyc from '../Pages/USERpanel/USERKYC/pendingUserKyc'
+import PendingUserKycDetail from '../Pages/USERpanel/USERKYC/PendingUserKycDetail';
+import CreatorKYC from '../Pages/HOSTpanel/CREATORKYC/CreatorKYC';
+import CreatorKYCDetail from '../Pages/HOSTpanel/CREATORKYC/CreatorKYCdetail';
+import CreatorPendingKYC from '../Pages/HOSTpanel/CREATORKYC/CreatorPendingKYC';
+import CreatorPendingDetail from '../Pages/HOSTpanel/CREATORKYC/CreatorPendingDetail';
+import UserWithdrawal from '../Pages/USERpanel/Withdrawal/UserWithdrawal';
+import UserPendingWithdrawal from '../Pages/USERpanel/Withdrawal/UserPendingWithdrawal';
+import CreatorWithdrawal from '../Pages/HOSTpanel/WithdrawalManagement/CreatorWithdrawal';
+import CreatorPendingWithdrawal from '../Pages/HOSTpanel/WithdrawalManagement/CreatorPendingWithdrawal';
 
 const Router = () => {
-    const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
+    // const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
 
     return (
         <Routes >
@@ -55,17 +62,24 @@ const Router = () => {
                 <Route exact path="/creators/:id" caseSensitive={false} element={<SingleCreator />} />
                 <Route exact path="/game_metrics" caseSensitive={false} element={<GameMetrics />} />
                 <Route exact path="/game_metrics/:id" caseSensitive={false} element={<ViewMore />} />
+                <Route exact path="/creator_kyc" caseSensitive={false} element={<CreatorKYC />} />
+                <Route exact path="/creator_kyc/:id" caseSensitive={false} element={<CreatorKYCDetail />} />
+                <Route exact path='/creator_kyc/pending_verification' caseSensitive={false} element={<CreatorPendingKYC />} />
+                <Route exact path="/creator_kyc/pending_verification/:id" caseSensitive={false} element={<CreatorPendingDetail />} />
 
-                <Route exact path="/kyc" caseSensitive={false} element={<KYC />} />
-                <Route exact path="/kyc/:id" caseSensitive={false} element={<KYCDetail />} />
-                <Route exact path="/kyc/pending_verification" caseSensitive={false} element={<PendingKyc />} />
-                <Route exact path="/kyc/pending_verification/:id" caseSensitive={false} element={<PendingKYCDetail />} />
-                <Route exact path="/withdrawal_management" caseSensitive={false} element={<WithdrawalManagement />} />
+                <Route exact path="/creator_withdrawal" caseSensitive={false} element={<CreatorWithdrawal />} />
+                <Route exact path="/creator_withdrawal/pending" caseSensitive={false} element={<CreatorPendingWithdrawal />} />
                 <Route exact path="/contest" caseSensitive={false} element={<Contest />} />
                 <Route exact path="/singletest" caseSensitive={false} element={<SingleTest />} />
                 {/* user */}
+                <Route exact path="/user_dashboard" caseSensitive={false} element={<DashboardUser />} />
                 <Route exact path="/user" caseSensitive={false} element={<User />} />
-                <Route exact path="/user2" caseSensitive={false} element={<User2 />} />
+                <Route exact path='/user_kyc' caseSensitive={false} element={<UserKYC />} />
+                <Route exact path="/user_kyc/:id" caseSensitive={false} element={<UserKYCDetail />} />
+                <Route exact path="/user_kyc/pending_verification" caseSensitive={false} element={<PendingUserKyc />} />
+                <Route exact path="/user_kyc/pending_verification/:id" caseSensitive={false} element={<PendingUserKycDetail />} />
+                <Route exact path="/user_withdrawal" caseSensitive={false} element={<UserWithdrawal />} />
+                <Route exact path='/user_withdrawal/pending' caseSensitive={false} element={<UserPendingWithdrawal />} />
 
                 {/* page not found */}
                 <Route path='*' caseSensitive={false} element={<AccessDenied />} />

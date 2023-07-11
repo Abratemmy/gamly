@@ -31,7 +31,7 @@ function PManagement() {
     const newsPerPage = 10
     const newsVisited = pageNumber * newsPerPage
 
-    const { getAllPage, isLoading } = useSelector((state) => state.pageManagementReducer);
+    const { getAllPage, isLoading, isError } = useSelector((state) => state.pageManagementReducer);
     console.log("AllPages", getAllPage)
     const pageCount = Math.ceil(getAllPage?.pageList?.length / newsPerPage);
 
@@ -40,6 +40,7 @@ function PManagement() {
         // this is to scroll up when 
         // window.scrollTo(0, 0)
     }
+
     const progressWidth = ((newsVisited + newsPerPage) / getAllPage?.pageList?.length) * 100
     const [currentId, setCurrentId] = useState(null);
 
@@ -82,98 +83,104 @@ function PManagement() {
 
     return (
         <AdminSidebar name="Page Management" defaultToggleState={() => setToggleState(1)}>
-            {isLoading ? <PageLoader /> :
-                <div className='PManagement'>
-                    <div className='container'>
-                        <div className='pageContainer'>
-                            <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
-                                <div className="tabWrapper">
-                                    <div className='AddPage'>
-                                        <span onClick={() => setToggleState(2)}>
-                                            <IoMdAdd className="icon" />Add Page
-                                        </span>
-                                    </div>
+            {isError ? <div className='pageErrorApi'>Error Message
+                <span>"Your team plan allows 1000 mock server calls per month. Contact your team Admin to up your limit."</span>
+            </div> :
+                <>
+                    {isLoading ? <PageLoader /> :
+                        <div className='PManagement allPages'>
+                            <div className='container'>
+                                <div className='pageContainer'>
+                                    <div className={toggleState === 1 ? "tabContent active-tabContent" : "tabContent"}>
+                                        <div className="tabWrapper">
+                                            <div className='AddPage'>
+                                                <span onClick={() => setToggleState(2)}>
+                                                    <IoMdAdd className="icon" />Add Page
+                                                </span>
+                                            </div>
 
-                                    <div className='tableSection'>
-                                        <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
-                                            handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
-                                        />
-                                        <div className="scroll-container">
-                                            <table className="table scroll">
-                                                <thead>
-                                                    <tr >
-                                                        <td >S/N</td>
-                                                        <td >Page name</td>
-                                                        <td >Page Title</td>
-                                                        <td >Web title</td>
-                                                        <td >Created By</td>
-                                                        <td >Modified By</td>
-                                                        <td >Status</td>
-                                                        <td ></td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {/*  */}
-                                                    {getAllPage?.pageList?.slice ? (
-                                                        <>
-                                                            {getAllPage?.pageList?.filter((item) => {
-                                                                return search?.toLowerCase() === "" ? item :
-                                                                    (item?.page_name?.toLowerCase().includes(search.toLowerCase()) || item?.Page_title?.toLowerCase().includes(search.toLowerCase()))
+                                            <div className='tableSection'>
+                                                <TableTop handleRefresh={() => setSearch(" ")} setSearch={setSearch} search={search}
+                                                    handleSelect={handleSelect} startDate={startDate} endDate={endDate} placeHolder="Search"
+                                                />
+                                                <div className="scroll-container">
+                                                    <table className="table scroll">
+                                                        <thead>
+                                                            <tr >
+                                                                <td >S/N</td>
+                                                                <td >Page name</td>
+                                                                <td >Page Title</td>
+                                                                <td >Web title</td>
+                                                                <td >Created By</td>
+                                                                <td >Modified By</td>
+                                                                <td >Status</td>
+                                                                <td ></td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {/*  */}
+                                                            {getAllPage?.pageList?.slice ? (
+                                                                <>
+                                                                    {getAllPage?.pageList?.filter((item) => {
+                                                                        return search?.toLowerCase() === "" ? item :
+                                                                            (item?.page_name?.toLowerCase().includes(search.toLowerCase()) || item?.Page_title?.toLowerCase().includes(search.toLowerCase()))
 
-                                                            })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
-                                                                return (
-                                                                    <tr key={data?.id}>
-                                                                        <td >
-                                                                            {((pageNumber * 10) + index + 1).toString().length === 1 ?
-                                                                                <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
-                                                                            }
-                                                                        </td>
-                                                                        <td >{data?.page_name}</td>
-                                                                        <td  >{data?.Page_title}</td>
-                                                                        <td >{data?.page_url}</td>
-                                                                        <td >{data?.created_by}</td>
-                                                                        <td >modifier name</td>
-                                                                        <td className='PM_Status'> {data.status === STATUSACTIVE ? <> <span><img src={pointGreen} alt="" className="iconActive" /></span>Active</> :
-                                                                            data.status === STATUSPROCESSING ? <> <span><img src={pointYellow} alt="" className="iconProcessing" /></span>Processing</> :
-                                                                                <> <span><img src={pointRed} alt="" className="iconPending" /></span>Deactivated</>
-                                                                        }
-                                                                        </td>
-                                                                        <td className='tableAction'>
-                                                                            <button onClick={() => deleteContent(data, index)}><img src={deleteImg} alt="" className='action' /></button>
-                                                                            <div onClick={() => setToggleState(2)}><button onClick={() => setCurrentId(data.page_id)}><MdOutlineModeEditOutline className='action' /></button>
-                                                                            </div>
-                                                                        </td>
-                                                                    </tr>
-                                                                )
-                                                            })}
-                                                        </>
-                                                    ) : ("")}
+                                                                    })?.slice(newsVisited, newsVisited + newsPerPage)?.map((data, index) => {
+                                                                        return (
+                                                                            <tr key={data?.id}>
+                                                                                <td >
+                                                                                    {((pageNumber * 10) + index + 1).toString().length === 1 ?
+                                                                                        <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
+                                                                                    }
+                                                                                </td>
+                                                                                <td >{data?.page_name}</td>
+                                                                                <td  >{data?.Page_title}</td>
+                                                                                <td >{data?.page_url}</td>
+                                                                                <td >{data?.created_by}</td>
+                                                                                <td >modifier name</td>
+                                                                                <td className='PM_Status'> {data.status === STATUSACTIVE ? <> <span><img src={pointGreen} alt="" className="iconActive" /></span>Active</> :
+                                                                                    data.status === STATUSPROCESSING ? <> <span><img src={pointYellow} alt="" className="iconProcessing" /></span>Processing</> :
+                                                                                        <> <span><img src={pointRed} alt="" className="iconPending" /></span>Deactivated</>
+                                                                                }
+                                                                                </td>
+                                                                                <td className='tableAction'>
+                                                                                    <button onClick={() => deleteContent(data, index)}><img src={deleteImg} alt="" className='action' /></button>
+                                                                                    <div onClick={() => setToggleState(2)}><button onClick={() => setCurrentId(data.page_id)}><MdOutlineModeEditOutline className='action' /></button>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        )
+                                                                    })}
+                                                                </>
+                                                            ) : ("")}
 
-                                                </tbody>
-                                            </table>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <TableProgressBar data={getAllPage?.pageList} newsPerPage={newsPerPage} progressWidth={progressWidth} />
+
+
+                                            {/* pagination starts here */}
+                                            <Pagination pageCount={pageCount} changePage={changePage} />
+
+                                            {deleteToggle && (
+                                                <AlertToggle topic={`Delete ${popupcontent?.page_name} page?`} text={`Are you sure you want to delete the ${popupcontent?.page_name} page ?`}
+                                                    closeAlertToggle={() => setDeletetoggle(false)} performAction={() => deletePage(popupcontent.id)} subText="delete"
+                                                />
+
+                                            )}
+
                                         </div>
                                     </div>
-                                    <TableProgressBar data={getAllPage?.pageList} newsPerPage={newsPerPage} progressWidth={progressWidth} />
-
-
-                                    {/* pagination starts here */}
-                                    <Pagination pageCount={pageCount} changePage={changePage} />
-
-                                    {deleteToggle && (
-                                        <AlertToggle topic={`Delete ${popupcontent?.page_name} page?`} text={`Are you sure you want to delete the ${popupcontent?.page_name} page ?`}
-                                            closeAlertToggle={() => setDeletetoggle(false)} performAction={() => deletePage(popupcontent.id)} subText="delete"
-                                        />
-
-                                    )}
-
+                                    <div className={toggleState === 2 ? "tabContent active-tabContent" : "tabContent"}>
+                                        <AddPage setToggleState={() => setToggleState(1)} currentId={currentId} setCurrentId={setCurrentId} />
+                                    </div>
                                 </div>
                             </div>
-                            <div className={toggleState === 2 ? "tabContent active-tabContent" : "tabContent"}>
-                                <AddPage setToggleState={() => setToggleState(1)} currentId={currentId} setCurrentId={setCurrentId} />
-                            </div>
                         </div>
-                    </div>
-                </div>
+                    }
+                </>
             }
         </AdminSidebar>
     )

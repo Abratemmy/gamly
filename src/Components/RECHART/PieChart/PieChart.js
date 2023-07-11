@@ -12,7 +12,7 @@ const data02 = [
 
 
 
-const Piechart = ({ COLORS, centerText, showSecondLabel, percent, showPercent, percent2, lineImage, lineImage2, total, total2, text, text2 }) => {
+const Piechart = ({ COLORS, centerText, showSecondLabel, percent, todayPieData, showPercent, percent2, percent3, lineImage, lineImage2, lineImage3, total, total2, total3, text, text2, text3 }) => {
     return (
         <div className='pieWrapper' >
             <div className='pieContainer'>
@@ -44,6 +44,19 @@ const Piechart = ({ COLORS, centerText, showSecondLabel, percent, showPercent, p
             </div>
 
             <div className='pieDetail'>
+                {todayPieData === 'true' && (
+                    <div className='content'>
+                        <div className='line'><img src={lineImage3} alt="" /> </div>
+                        <div className='text'>{total3} <span>{text3}</span></div>
+                        {showPercent === "true" && (
+                            <div className='right'>
+                                {percent3 >= 0 ? <div className='increase'>{percent3}% <span><img src={uparr} alt='' /></span></div>
+                                    : <div className='decrease'>{percent3}% <span><img src={downarr} alt='' /></span></div>}
+                            </div>
+                        )}
+
+                    </div>
+                )}
                 <div className='content'>
                     <div className='line'><img src={lineImage} alt="" /> </div>
                     <div className='text'>{total} <span>{text}</span></div>

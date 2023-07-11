@@ -1,0 +1,334 @@
+.userDashboard{
+    position: relative;
+    font-family: var(--textFamily);
+    padding: 30px;
+    
+    .pageTop{
+        background: #fff;
+        box-shadow: 0px 3.500000238418579px 5.500000476837158px 0px #00000005;
+        border-radius: 15px;
+        padding: 20px;
+        width: 70%;
+        font-family: var(--textFamily);
+        color: var(--grayColor700);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: 40px;
+        .title{
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 25px;
+            letter-spacing: 0em;
+            text-align: left;
+            span{
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 20px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: var(--grayColor400)
+            }
+        }
+        .cardBorder{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 182px;
+            height: 79.22px;
+            border: 0.65px solid #DADADA;
+            border-radius: 5px;
+            padding: 20px 10px;
+            .left{
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 16px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: var(--grayColor400);
+                span{
+                    display: block;
+                    color: var(--grayColor700);
+                    font-size: 21px;
+                    font-weight: 700;
+                    line-height: 29px;
+                    letter-spacing: 0em;
+                    text-align: left;
+
+                }
+            }
+        }
+    }
+    @media screen and (min-width: 400px) and (max-width: 955px){
+        .pageTop{
+            width: 95%;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .pageTop{
+            flex-direction: column;
+            width: 100%;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+    }
+
+    .firstSession{
+        display: flex;
+        gap:20px;
+        width: 100%;
+        align-items: center;
+        // .singletopCard{
+        //     position: relative;
+        //     top:-10px
+        // }
+        // .topCard{
+        //     width: 650px;
+        //     .content{
+        //         width: 630px
+        //     }
+        // } 
+        .pageCardDesign{
+            width: 640px;
+            position: relative;
+            .topCard{
+                margin-top: 0px;
+                width: 630px;
+                height: 185px;
+                background: transparent;
+                border: none;
+                border-radius: 8px;
+                box-sizing: none;
+                padding: 0px;
+            }
+            .topCard .content{
+                width: 630px;
+                height: 178px;
+            }
+            .topCard .content>:nth-child(2),
+            .topCard .content>:nth-child(3),
+            .topCard .content>:nth-child(4){
+                flex:1;
+                padding: 20px 0px 20px 5px
+            }
+            .topCard .content>:nth-child(2) .subtitle,
+            .topCard .content>:nth-child(3) .subtitle,
+            .topCard .content>:nth-child(2) .amount,
+            .topCard .content>:nth-child(3) .amount{
+                padding-left: 10px;
+                padding-bottom: 30px;
+            }
+        }
+        @media screen and (max-width: 800px) {
+            .pageCardDesign{
+                width: 100%;
+            }
+        }
+        .smCard1{
+            width: 230px;
+            .rightContent {
+                .topHeader {
+                    .text, button, .icon{
+                        font-size: 10px;
+                    }
+                    
+                }
+                .SignupContent .header{
+                    font-size: 24px;
+                    padding-bottom: 7px;
+                }
+                .SignupContent span{
+                    font-size: 11px;
+                }
+            }
+        }
+        .percentageCard .cardWrapper .cardContent{
+            height: 178px!important;
+            min-height: 178px!important;
+            
+        }
+        .smCard .rightContent .SignupContent{
+            height: 130px!important;
+        }
+
+        @media screen and (min-width:900px) and (max-width:1115px){
+            .pageCardDesign{
+                width: 480px;
+                .topCard{
+                    width: 470px
+                }
+            }
+        }
+    }
+   
+    @media screen and (max-width:900px) {
+        .firstSession{
+            flex-direction: column;
+            gap: 40px;
+            align-items: flex-start;
+        }
+    }
+    .secondSession{
+        padding: 50px 0px;
+    }
+    .sessionBg{
+        margin: 50px 0px 80px 0px;
+        width: 100%;
+        background: #fff;
+        border-radius: 6px;
+        padding: 20px 20px 50px 20px;
+        .hwrapper{
+            border: 0.77px solid #ECECEC;
+            height: 282px;
+            padding: 10px 30px 20px 10px;
+            border-radius: 6px;
+            .title{
+                font-family: var(--textFamily);
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 19px;
+                letter-spacing: -0.02em;
+                text-align: left;
+                color:#000000
+            }
+            .pieWrapper{
+                width: 100%;
+                .pieContainer{
+                    width: 170px;
+                    height: 170px
+                }
+                .pieDetail .content{
+                    justify-content: space-between;
+                    width: 100%;
+                    gap: 20px
+                }
+                .content .line {
+                    img{
+                        width: 40px
+                       
+                    }
+                }
+               
+                .content{
+                    .right {
+                        padding-left: 20px;
+                        span img{
+                            width: 16px
+                        }
+                    }
+                }
+            }
+            @media screen and (min-width: 990px) and (max-width:1115px){               
+                .pieWrapper{
+                    gap: 0px;
+                    .content .line {
+                        img{
+                            width: 20px               
+                        }
+                    }
+                    .content{
+                        gap: 5px;
+                        padding: 2px;
+                        padding-bottom: 25px;
+                        margin-bottom: 5px;
+                        .text{
+                            font-size: 16px;
+                            line-height: 18px;
+                            span{
+                                font-size: 13px;
+                                line-height: 16px;
+                            }
+                        }
+                        .right{
+                            position: absolute;
+                            bottom: 5px;
+                            left: 30px
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 450px) {
+            .hwrapper{
+                height: auto;
+                .pieWrapper{
+                    flex-direction: column;
+                    .content{
+                        padding: 5px;
+                        .text{
+                            font-size: 17px;
+                            line-height: 24px;
+                            span{
+                                font-size: 12px ;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+           
+        }
+
+        .userProgress{
+            height: 282px;
+            .rechartsContainer{
+                height: 282px;
+                .left{
+                    border: 1px solid #ECECEC;
+                    border-right: none;
+                    border-top-left-radius: 8px;
+                    border-bottom-left-radius: 8px;
+                    .top .title{
+                        font-size: 14px
+                    }
+                    .top .monthDisplay{
+                        position: relative;
+                    }
+                    .displayProgress{
+                        padding-top: 55px;
+                        position: relative;
+                      }
+                      .displayProgress .wrapper{
+                        padding-right: 30px;
+                        padding-bottom: 45px;
+                      }
+                    @media screen and (min-width: 991px) and (max-width:1065px){
+                        .top{
+                            flex-direction: column;
+                            gap: 15px;
+                            justify-content: flex-start!important;
+                            height: auto;
+                            align-items: flex-start;
+                            .monthDisplay{
+                                position: relative;
+                                justify-content: flex-start;
+                                align-items: flex-start;
+                            }
+                        }
+                    }
+                 
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width:500px) {
+    .userDashboard{
+        padding: 30px 5px;
+    }
+    .secondSession{
+        padding: 0px 0px 50px 0px;
+    }
+    .secondSession,  
+    .thirdSession{
+        margin: 0px 3px!important;
+    }
+    .thirdSession{
+        .col-sm-12{
+            padding-left: 20px!important;
+            padding-right: 20px!important;
+        }
+    }
+}

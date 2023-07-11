@@ -93,3 +93,11 @@ export const fetchSingleHostWithdrawal = (id) => WITHDRAWALAPI.get(`/${id}`);
 export const createHostWithdrawal = (newHostWithdrawal) => WITHDRAWALAPI.post('/', newHostWithdrawal);
 export const updateHostWithdrawal = (id, updatedHostWithdrawal) => WITHDRAWALAPI.put(`/${id}`, updatedHostWithdrawal);
 export const deleteHostWithdrawal = (id) => WITHDRAWALAPI.delete(`/${id}`);
+
+// user
+const USERAPI = axios.create({ baseURL: 'https://jsonplaceholder.typicode.com/users' })
+export const fetchUsers = () => USERAPI.get('/');
+export const fetchSingleUser = (id) => USERAPI.get(`/${id}`);
+export const createUser = (newUser) => USERAPI.post('/', newUser);
+export const updateUser = (id, updatedUser) => USERAPI.put(`/${id}`, updatedUser);
+export const deleteUser = (id) => USERAPI.delete(`/${id}`);

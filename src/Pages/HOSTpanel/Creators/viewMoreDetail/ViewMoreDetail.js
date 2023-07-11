@@ -80,7 +80,7 @@ function ViewMoreDetail({ handleBackButton, singleCreatorDetail }) {
     }
     return (
         <div className=''>
-            <div className='getUser viewDetail'>
+            <div className='getUser viewDetail allPages'>
                 <div className='container'>
                     <div className='top'>
                         <div className='topContent'>
@@ -99,7 +99,7 @@ function ViewMoreDetail({ handleBackButton, singleCreatorDetail }) {
                 </div>
             </div>
 
-            <div className='viewMoreDetails'>
+            <div className='viewMoreDetails allPages'>
                 <div className='container'>
                     <div className='profile'>
                         {singleCreatorDetail?.name}
@@ -109,8 +109,9 @@ function ViewMoreDetail({ handleBackButton, singleCreatorDetail }) {
                     <div className='singletopCard'>
                         <TopCard topCard={singleDetailCard} cardName="Income" />
                     </div>
-                    <div className='percentCard' style={{ margin: '50px 0px' }}>
-                        <div className='row gx-5 gy-0'>
+
+                    <div className='percentCard' style={{ margin: '20px 0px 50px 0px' }}>
+                        <div className='row gx-5 gy-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
                                 <div className='Wrapper1'>
                                     <PercentageCard leftText="Total Revenue" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevIncomeTotal}

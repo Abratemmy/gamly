@@ -95,6 +95,11 @@
                 text-align: center;
                 color:#0B0B0B;
             }
+            @media screen and (max-width: 500px) {
+                .total{
+                    font-size: 25px;
+                }
+            }
             .imagespan{
                 text-align: center;
                 svg{

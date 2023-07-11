@@ -1,0 +1,26 @@
+.userPage{
+    .table{
+        .tbody{
+            .totalIncome{
+                width: 13%!important;
+            }
+            
+            .status,
+            .detail{
+                width: 10%!important;
+            }
+            .detail{
+                cursor: pointer;
+            }
+        }
+    }
+    .singleRight{
+        .rightsidebarBody{
+            padding: 30px 20px 10px 20px;
+
+            .detail .content{
+                padding: 8px 0px
+            }
+        }
+    }
+}

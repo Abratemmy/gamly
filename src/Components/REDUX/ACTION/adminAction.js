@@ -1,6 +1,6 @@
 import * as api from "../../APIS/API";
 
-import { START_LOADING, END_LOADING, FETCHADMIN, DELETEADMIN, UPDATEADMIN, CREATEADMIN } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, FETCHADMIN, DELETEADMIN, UPDATEADMIN, CREATEADMIN, PAGE_ERROR } from "../CONSTANT/actionTypes";
 
 export const getAllADMIN = () => async (dispatch) => {
     try {
@@ -9,6 +9,8 @@ export const getAllADMIN = () => async (dispatch) => {
         dispatch({ type: FETCHADMIN, payload: data })
         dispatch({ type: END_LOADING })
     } catch (error) {
+        dispatch({ type: END_LOADING })
+        dispatch({ type: PAGE_ERROR })
         console.log(error.message)
     }
 }

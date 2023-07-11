@@ -74,7 +74,7 @@ function RevenueTable() {
         setActive(active)
     }, [dispatch, active])
 
-    if (!getRevenueData) return <NoDatafromApi />;
+    // if (!getRevenueData) return <NoDatafromApi />;
     return (
         <div>
             {isLoading ? <PageLoader /> :
@@ -124,7 +124,7 @@ function RevenueTable() {
                                         )}
                                     </Tr>
                                 </Thead>
-                                <Tbody>
+                                <Tbody className="tbody">
                                     {getRevenueData?.slice ? (
                                         <>
                                             {getRevenueData?.filter((item) => {
@@ -138,11 +138,11 @@ function RevenueTable() {
                                                             <>0{(pageNumber * 10) + index + 1}</> : <>{(pageNumber * 10) + index + 1}</>
                                                         }
                                                         </Td>
-                                                        <Td  >{item?.category}</Td>
-                                                        <Td  >${item?.price}.67</Td>
-                                                        <Td >${item?.rating?.rate * 10}.00</Td>
-                                                        <Td >${item?.rating.count}.45</Td>
-                                                        <Td>
+                                                        <Td className="td"  >{item?.category}</Td>
+                                                        <Td className="td"  >${item?.price}.67</Td>
+                                                        <Td className="td" >${item?.rating?.rate * 10}.00</Td>
+                                                        <Td className="td" >${item?.rating.count}.45</Td>
+                                                        <Td className="td">
                                                             {item?.price > 100 ? (<div className='increase'>8% <span style={{ paddingLeft: "6px" }}><img src={increaseImg} alt="" /></span></div>) :
                                                                 (<div className='decrease'>4% <span style={{ paddingLeft: "6px" }}><img src={decreaseImg} alt="" /></span></div>)}
                                                         </Td>

@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./TableTop.scss";
 import { BiSearch, BiRefresh } from "react-icons/bi";
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
-import DateCalendar from '../Date/Date';
-import DurationMonth from '../Date/durationMonth';
 import Duration from '../Duration/Duration';
 
 function TableTop({ handleRefresh, setSearch, search, handleSelect, startDate, endDate, children, placeHolder }) {
-
-    const [dateToggle, setDateToggle] = useState(false);
-    const openDateRange = () => {
-        setDateToggle(prev => !prev)
-    }
 
     return (
         <div className='tableTop'>

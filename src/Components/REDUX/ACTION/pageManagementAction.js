@@ -1,6 +1,6 @@
 import * as api from "../../APIS/API";
 
-import { START_LOADING, END_LOADING, GETPAGEMANAGE, DELETEPAGEMANAGE, UPDATEPAGEMANAGE, CREATEPAGEMANAGE } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, GETPAGEMANAGE, DELETEPAGEMANAGE, UPDATEPAGEMANAGE, CREATEPAGEMANAGE, PAGE_ERROR } from "../CONSTANT/actionTypes";
 
 export const getAllPAGEMANAGEMENT = () => async (dispatch) => {
     try {
@@ -9,6 +9,8 @@ export const getAllPAGEMANAGEMENT = () => async (dispatch) => {
         dispatch({ type: GETPAGEMANAGE, payload: data })
         dispatch({ type: END_LOADING })
     } catch (error) {
+        dispatch({ type: END_LOADING })
+        dispatch({ type: PAGE_ERROR })
         console.log(error.message)
     }
 }

@@ -38,21 +38,6 @@
     gap: 15px;
     position: relative;
 
-    .duration{
-        border: 1px solid #dcdee6;
-        border-radius: 8px;
-        background: var(--backgroundColor);
-        color:#fff;
-        width: 180px;
-        height: 42px;
-        font-size: 14px;
-        font-family: 'Noto Sans', sans-serif;;
-        .iconDropdown{
-            font-size: 23px;
-            position: relative;
-            top:-1px
-        }
-    }
     .refresh{
         border: 1px solid #dcdee6;
         width: 159.8px;
@@ -85,4 +70,29 @@
         align-items: flex-start;
         justify-content: flex-start;
     }
+}
+@media screen and (max-width: 500px) {
+    .tableTop .input-group{
+        width: 100%;
+    }
+    .tableTop .form-control{
+        width: 100%;
+    }
+    .tableTop .right{
+        gap: 5px;
+        width: 100%;
+    }
+    .tableTop .right .refresh{
+        border: 1px solid #dcdee6;
+        width: 100%;
+        padding: 0px 10px;
+        flex:1
+    }
+}
+@media screen and (max-width: 800px) {
+    .tableTop .right{
+        gap: 5px;
+        width: 100%;
+    }
+  
 }

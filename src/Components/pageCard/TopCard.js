@@ -5,7 +5,7 @@ import './TopCard.scss'
 
 function TopCard({ topCard, cardName }) {
     return (
-        <div style={{ width: '100%', overflowX: 'auto' }}>
+        <div style={{ width: '100%', overflowX: 'auto', overflowY: 'none!important' }}>
             <div className='topCard'>
                 <div className='header'>{cardName}</div>
 

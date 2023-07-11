@@ -41,7 +41,7 @@ function GameMetrics() {
     }, [dispatch])
     return (
         <HostSidebar name="Game Metrics">
-            <div className='gameMetrics'>
+            <div className='gameMetrics allPages'>
                 <div className='container'>
                     <div className='top'>
                         Game Metrics<span>Here’s a list of all creators</span>

@@ -1,22 +1,30 @@
 import * as api from "../../APIS/API";
 
-import { GETWITHDRAWALMANAGEMENT, DELETEWITHDRAWALMANAGEMENT, UPDATEWITHDRAWALMANAGEMENT, CREATEWITHDRAWALMANAGEMENT, GETSINGLEWITHDRAWALMANAGEMENT } from "../CONSTANT/actionTypes";
+import { START_LOADING, END_LOADING, GETWITHDRAWALMANAGEMENT, DELETEWITHDRAWALMANAGEMENT, UPDATEWITHDRAWALMANAGEMENT, CREATEWITHDRAWALMANAGEMENT, GETSINGLEWITHDRAWALMANAGEMENT, PAGE_ERROR } from "../CONSTANT/actionTypes";
 
 export const getAllWITHDRAWAL = () => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchHostWithdrawal();
         dispatch({ type: GETWITHDRAWALMANAGEMENT, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
+        dispatch({ type: END_LOADING })
+        dispatch({ type: PAGE_ERROR })
         console.log(error.message)
     }
 }
 
 export const getSINGLEWITHDRAWAL = (id) => async (dispatch) => {
     try {
+        dispatch({ type: START_LOADING })
         const { data } = await api.fetchSingleHostWithdrawal(id);
 
         dispatch({ type: GETSINGLEWITHDRAWALMANAGEMENT, payload: data })
+        dispatch({ type: END_LOADING })
     } catch (error) {
+        dispatch({ type: END_LOADING })
+        dispatch({ type: PAGE_ERROR })
         console.log(error.message)
     }
 }

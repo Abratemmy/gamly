@@ -35,10 +35,10 @@
             color: var(--grayColor700)
         }
     }
-    .hostStyleforTopCard .topCard .content{
+    .pageCardDesign .topCard .content{
         width: 620px!important
     }
-    .hostStyleforTopCard {
+    .pageCardDesign {
         .topCard .content>:nth-child(1),
         .topCard .content>:nth-child(2),
         .topCard .content>:nth-child(3),
@@ -142,105 +142,8 @@
         background: #fff;
         width: 330px;
         height: 100%;
-        padding: 20px 10px;
-
-        .closeBtn{
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-
-            img{
-                width: 30px;
-                height: 30px
-            }
-        }
-        .profile{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            .image{
-                width: 60px;
-                height: 60px;
-
-                img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    border-radius: 50%;
-                }
-            }
-            .name{
-                font-family: var(--textFamily);
-                font-size: 24px;
-                font-weight: 500;
-                line-height: 30px;
-                letter-spacing: 0em;
-                text-align: left;
-                color: var(--grayColor700);
-                span{
-                    font-family: var(--textFamily);
-                    font-size: 16px;
-                    font-weight: 400;
-                    line-height: 20px;
-                    letter-spacing: 0em;
-                    text-align: left;
-                    display: block;
-
-                }
-            }
-        }
-        .detail{
-            margin-top: 20px;
-            width: 80%;
-            border-top: 1px solid #E5E7EB;
-            padding-top: 7px;
-            .content{
-                padding-bottom: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                .name{
-                    font-family: var(--textFamily);
-                    font-size: 14px;
-                    font-weight: 400;
-                    line-height: 22px;
-                    letter-spacing: 0em;
-                    text-align: right;
-                    color: var(--grayColor400)
-
-                }
-                .answer{
-                    font-family: var(--textFamily);
-                    font-size: 14px;
-                    font-weight: 400;
-                    line-height: 22px;
-                    letter-spacing: 0em;
-                    text-align: right;
-                    color: var(--grayColor700)
-                }
-            }
-        }
-        .pieChartSession{
-            padding: 40px 0px;
-            .pieDetail .content{
-                justify-content: flex-start;
-            }
-        }
-        .rightsidebarBtn{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            button{
-                width: 200px;
-                height: 40px;
-                padding: 8px 24px 8px 24px;
-                border-radius: 4px;
-                color: var(--primaryColor);
-                border: 1px solid #DA0D18;
-                background: transparent;
-            }
-        }
+        padding: 20px 10px; 
+        z-index: 30!important 
     }
 }
 
@@ -250,7 +153,6 @@
     position: relative;
     font-family: var(--textFamily);
     padding: var(--interfaceBorder);
-
     .top{
         padding: 30px 0px 30px 0px;
         display: flex;
@@ -285,29 +187,47 @@
                 color: var(--grayColor700)
             }
         }
-        .backButton 
-        .backBtn{
-            width: 179px;
-            height: 54px;
-            padding: 13px 46px 12px 47px;
-            border-radius: 8px;
-            border: 1px solid #DCDEE6;
-            font-family: var(--interFamily);
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 29px;
-            letter-spacing: 0px;
-            text-align: center;
-            color:#121212;
+        .backButton {
             display: flex;
             align-items: center;
-            gap: 10px;
-            background: #fff;
-            img{
-                width: 25px;
-                height: 22px;
+            justify-content: flex-end;
+        
+            .backBtn{
+                width: 179px;
+                height: 54px;
+                padding: 13px 46px 12px 47px;
+                border-radius: 8px;
+                border: 1px solid #DCDEE6;
+                font-family: var(--interFamily);
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 29px;
+                letter-spacing: 0px;
+                text-align: center;
+                color:#121212;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                img{
+                    width: 25px;
+                    height: 22px;
+                }
             }
         }
+       
+    }
+    @media screen and (max-width: 500px){
+            .top{
+                flex-direction: column-reverse;
+                gap: 18px;
+                .backButton{
+                    width: 100%;
+                }
+            }
     }
     .tableHeader{
         padding-bottom: 30px;
@@ -384,5 +304,106 @@
         color: #288447;
         width: 20%;
 
+    }
+}
+
+.singleRight .rightsidebarBody{
+        
+    .closeBtn{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        img{
+            width: 30px;
+            height: 30px
+        }
+    }
+    .profile{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        .image{
+            width: 60px;
+            height: 60px;
+
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                border-radius: 50%;
+            }
+        }
+        .name{
+            font-family: var(--textFamily);
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 30px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: var(--grayColor700);
+            span{
+                font-family: var(--textFamily);
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 20px;
+                letter-spacing: 0em;
+                text-align: left;
+                display: block;
+
+            }
+        }
+    }
+    .detail{
+        margin-top: 20px;
+        width: 80%;
+        border-top: 1px solid #E5E7EB;
+        padding-top: 7px;
+        .content{
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .name{
+                font-family: var(--textFamily);
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: right;
+                color: var(--grayColor400)
+
+            }
+            .answer{
+                font-family: var(--textFamily);
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 22px;
+                letter-spacing: 0em;
+                text-align: right;
+                color: var(--grayColor700)
+            }
+        }
+    }
+    .pieChartSession{
+        padding: 40px 0px;
+        .pieDetail .content{
+            justify-content: flex-start;
+        }
+    }
+    .rightsidebarBtn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button{
+            width: 200px;
+            height: 40px;
+            padding: 8px 24px 8px 24px;
+            border-radius: 4px;
+            color: var(--primaryColor);
+            border: 1px solid #DA0D18;
+            background: transparent;
+        }
     }
 }
