@@ -1,9 +1,8 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Router from './Components/Router';
 import useLocalStorage from 'use-local-storage';
-
+import Router from './Components/Common/Router'
 
 function App() {
   const [theme, setTheme] = useLocalStorage("theme" ? "dark" : "light")
