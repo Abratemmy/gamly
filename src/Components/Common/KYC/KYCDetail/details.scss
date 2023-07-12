@@ -223,6 +223,11 @@
             }
         }
 
+        @media screen and (min-width: 510px) and (max-width: 950px) {
+            .content{
+                gap: 3rem
+            }
+        }
         @media screen and (max-width: 500px) {
             .content{
                 flex-direction: column;

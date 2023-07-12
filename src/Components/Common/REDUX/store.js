@@ -1,18 +1,20 @@
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import { adminReducer } from "./REDUCERS/adminReducer";
-import { paymentReducer } from "./REDUCERS/payoutReducer";
-import { pageManagementReducer } from "./REDUCERS/pageManagementReducer";
-import { reportReducer } from "./REDUCERS/reportReducer";
-import { salesReducer } from "./REDUCERS/salesReducer";
-import { revenueReducer } from "./REDUCERS/revenueReducer";
-import { codeManagementReducer } from "./REDUCERS/codeManagementReducer";
-import { creatorReducer } from "./REDUCERS/creatorReducer";
-import { gameMetricsReducer } from './REDUCERS/gameMetricsReducer';
-import { kycReducer } from "./REDUCERS/kycReducer";
-import { withdrawalReducer } from "./REDUCERS/withdrawalReducer";
-import { userReducer } from "./REDUCERS/userReducer";
+import { adminReducer } from "../../Admin/REDUCER/adminReducer";
+import { paymentReducer } from "../../Admin/REDUCER/payoutReducer";
+import { pageManagementReducer } from "../../Admin/REDUCER/pageManagementReducer";
+import { reportReducer } from "../../Admin/REDUCER/reportReducer";
+import { salesReducer } from "../../Admin/REDUCER/salesReducer";
+import { revenueReducer } from "../../Admin/REDUCER/revenueReducer";
+import { codeManagementReducer } from "../../Host/HOSTREDUCER/codeManagementReducer";
+import { creatorReducer } from "../../Host/HOSTREDUCER/creatorReducer";
+import { gameMetricsReducer } from '../../Host/HOSTREDUCER/gameMetricsReducer';
+import { kycReducer } from "../../Host/HOSTREDUCER/kycReducer";
+import { withdrawalReducer } from "../../Host/HOSTREDUCER/withdrawalReducer";
+import { userReducer } from "../../User/USERREDUCER/userReducer";
+import { userWithdrawalReducer } from "../../User/USERREDUCER/userWithdrawalReducer";
+import { userKycReducer } from "../../User/USERREDUCER/userKYCReducer";
 
 const composeEnhancers = composeWithDevTools({
 
@@ -29,7 +31,9 @@ const rootReducer = combineReducers({
     gameMetricsReducer,
     kycReducer,
     withdrawalReducer,
-    userReducer
+    userReducer,
+    userWithdrawalReducer,
+    userKycReducer
 })
 const store = createStore(
     rootReducer,
