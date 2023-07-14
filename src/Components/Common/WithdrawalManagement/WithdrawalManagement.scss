@@ -248,6 +248,11 @@
     }
     
 }
+.rightSidebar-Percentage .monthCalendar .react-datepicker{
+    position: absolute;
+    right:0;
+    top: 40px;
+}
 .rightWithdrawalProgress{
     .rechartsContainer{
         border: 0.69px solid #EBEBEB!important;

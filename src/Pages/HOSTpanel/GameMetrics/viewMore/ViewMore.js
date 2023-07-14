@@ -12,6 +12,7 @@ import HostPercentage from '../../../../Components/Common/pageCard/HostPercentag
 import ProgressBar from '../../../../Components/Common/RECHART/ProgressBar';
 import GameMetricsCard1 from '../../../../Components/Common/pageCard/gameMetricsCard1';
 import GameMetricsProgressCard from '../../../../Components/Common/pageCard/gameMetricsCard2';
+import Duration from '../../../../Components/Common/Duration/Duration';
 
 function ViewMore() {
     const { id } = useParams();
@@ -64,11 +65,12 @@ function ViewMore() {
                         </div>
 
                         <div className='right'>
-                            <div className='top'>
+                            <div className='top durationStylingForHost'>
                                 <div className='r-Left'>Contest</div>
-                                <div className='date'>
-                                    {prevMonthfirstDay} - {moment().format("MMMM, DD YYYY")}
-                                    <span><img src={dateImg} alt="" /> </span>
+                                <div className=''>
+                                    <Duration />
+                                    {/* {prevMonthfirstDay} - {moment().format("MMMM, DD YYYY")}
+                                    <span><img src={dateImg} alt="" /> </span> */}
                                 </div>
                             </div>
 
@@ -93,14 +95,14 @@ function ViewMore() {
                     </div>
 
                     <div className='PercentageSession' style={{ marginTop: '40px' }}>
-                        <div className='row gy-5 gx-5'>
-                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                        <div className='row gy-5 gx-5 '>
+                            <div className='col-lg-6 col-md-12 col-sm-12 durationStylingForHost'>
                                 <HostPercentage leftText="Games Hosted" rightText="Games Hosted" prevMonth={prevMonth}
                                     previousMonthTotal={percentageData.previousMonthTotal} currentMonthTotal={percentageData.currentMonthTotal}
                                 />
                             </div>
 
-                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                            <div className='col-lg-6 col-md-12 col-sm-12 durationStylingForHost'>
                                 <HostPercentage leftText="Games contested" rightText="Games contested rate" prevMonth={prevMonth}
                                     previousMonthTotal={percentageData.previousContestedTotal} currentMonthTotal={percentageData.currentContestedTotal}
                                 />
@@ -130,7 +132,7 @@ function ViewMore() {
 
                     <div className='gameMetricsPercentageCard' style={{ paddingBottom: '80px' }}>
                         <div className='row gx-5 gy-5'>
-                            <div className='col-lg-6 col-md-12 col-sm-12'>
+                            <div className='col-lg-6 col-md-12 col-sm-12 durationStylingForHost'>
                                 <GameMetricsCard1 />
                             </div>
 

@@ -11,6 +11,7 @@
     border-radius: 0.3rem;
     position: relative;
     width: fit-content;
+    height: 100%;
     padding: 1px!important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
@@ -139,5 +140,10 @@
     color: #333333;
   }
 
+    .react-datepicker{
+       top: 0px;
+    }
 
 }
+
+

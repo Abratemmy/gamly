@@ -290,3 +290,11 @@
         }
     }
 }
+.durationStylingForHost{
+    position: relative;
+    .monthCalendar .react-datepicker{
+        position: absolute;
+        right:0;
+        top: 40px;
+    }
+}

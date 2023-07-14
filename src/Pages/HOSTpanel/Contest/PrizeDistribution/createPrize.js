@@ -3,7 +3,7 @@ import backarrow from '../../../../Assets/backNav.svg'
 import addMore from '../../../../Assets/addMore.svg';
 import { IoIosArrowUp } from 'react-icons/io';
 import closeImg from '../../../../Assets/cancel.svg';
-import ContestCard from '../../../../Components/Common/ContestCard/ContestCard';
+import ContestCard from '../../../../Components/Host/ContestCard/ContestCard';
 
 
 function CreatePrize({ backButton }) {

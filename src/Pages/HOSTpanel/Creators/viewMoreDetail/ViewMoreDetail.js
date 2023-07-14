@@ -113,7 +113,7 @@ function ViewMoreDetail({ handleBackButton, singleCreatorDetail }) {
                     <div className='percentCard' style={{ margin: '20px 0px 50px 0px' }}>
                         <div className='row gx-5 gy-5'>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
-                                <div className='Wrapper1'>
+                                <div className='Wrapper1 durationStylingForHost'>
                                     <PercentageCard leftText="Total Revenue" prevMonth={prevMonth} previousMonthTotalLeftHandSide={percentageData.prevIncomeTotal}
                                         currentMonthTotalLeftHandSide={percentageData.currentIncomeTotal}
                                     />
@@ -121,7 +121,7 @@ function ViewMoreDetail({ handleBackButton, singleCreatorDetail }) {
 
                             </div>
                             <div className='col-lg-6 col-md-12 col-sm-12'>
-                                <div className='Wrapper2'>
+                                <div className='Wrapper2 durationStylingForHost'>
                                     <PercentageCard2 prevMonth={prevMonth} previousMonthTotalRightHandSide={percentageData.prevRGrowthTotal}
                                         currentMonthTotalRightHandSide={percentageData.currentRGrowthTotal}
                                     />

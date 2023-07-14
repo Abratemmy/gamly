@@ -27,7 +27,8 @@ function Host() {
     const prevMonthLastDay = moment(firstDay).subtract('1', 'days').format("MMMM DD, YYYY");
 
     // small card content
-    const [smdropdown, setSmDropdown] = useState(false);
+    const [smdropdown1, setSmDropdown1] = useState(false);
+    const [smdropdown2, setSmDropdown2] = useState(false);
 
     const percentageData = {
         previousMonthTotal: 1000,
@@ -91,7 +92,7 @@ function Host() {
                     </div>
 
                     <div className='row gx-4 gy-5'>
-                        <div className='col-lg-6 col-md-12 col-sm-12'>
+                        <div className='col-lg-6 col-md-12 col-sm-12 durationStylingForHost' style={{ position: 'relative' }}>
                             <HostPercentage average="1,500" leftText="Total Signup" rightText="Total profit" prevMonth={prevMonth}
                                 previousMonthTotal={percentageData.previousMonthTotal} currentMonthTotal={percentageData.currentMonthTotal}
                             />
@@ -99,7 +100,7 @@ function Host() {
 
 
                         <div className='col-lg-5 col-md-9 col-sm-12'>
-                            <SmallCard smallCardTitle="Signup" Total="20,000" smCardDropdown={smdropdown} setSmCardDropdown={setSmDropdown} />
+                            <SmallCard smallCardTitle="Signup" Total="20,000" smCardDropdown={smdropdown1} setSmCardDropdown={setSmDropdown1} />
                         </div>
                     </div>
 
@@ -128,14 +129,14 @@ function Host() {
 
                         <div style={{ margin: '50px 0px' }}>
                             <div className='row gy-5'>
-                                <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <div className='col-lg-6 col-md-12 col-sm-12 durationStylingForHost' style={{ position: 'relative' }}>
                                     <HostPercentage average="1,500" leftText="Active creators" rightText="Active creators" prevMonth={prevMonth}
                                         previousMonthTotal={percentageData.previousMonthTotal} currentMonthTotal={percentageData.currentMonthTotal}
                                     />
                                 </div>
 
                                 <div className='col-lg-5 col-md-9 col-sm-12 smCardDesign' >
-                                    <SmallCard smallCardTitle="Active" Total='800' smCardDropdown={smdropdown} setSmCardDropdown={setSmDropdown} />
+                                    <SmallCard smallCardTitle="Active" Total='800' smCardDropdown={smdropdown2} setSmCardDropdown={setSmDropdown2} />
                                 </div>
                             </div>
                         </div>

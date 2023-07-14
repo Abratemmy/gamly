@@ -7,6 +7,8 @@ import './newMonth.scss'
 import lessthan from "../../../Assets/lessthan.svg";
 import greaterthan from "../../../Assets/greaterthan.svg"
 
+
+
 function DurationMonth({ dateError, onChangeDateHandler, confirmDate, cancelMonthDate, startMonthDate, setStartMonthDate, endMonthDate, setEndMonthDate }) {
     const years = range(1990, getYear(new Date()) + 100, 1);
 
@@ -16,16 +18,50 @@ function DurationMonth({ dateError, onChangeDateHandler, confirmDate, cancelMont
         </span>
     );
     console.log("date",)
-    const renderMonthContent = (month, shortMonth, longMonth) => {
-        const tooltipText = `Tooltip for month: ${longMonth}`;
-        return <span title={tooltipText}>{shortMonth}</span>;
+
+    const renderMonthContents = (month, date) => {
+        const isStartDate = startMonthDate && startMonthDate.toDateString() === date.toDateString();
+        const isEndDate = endMonthDate && endMonthDate.toDateString() === date.toDateString();
+        const isInBetween = startMonthDate && endMonthDate && date > startMonthDate && date < endMonthDate;
+
+        return (
+            <div className={`custom-day ${isStartDate ? 'first-date' : ''} ${isEndDate ? 'last-date' : ''} ${isInBetween ? 'in-between' : ''}`}>
+                {month}
+            </div>
+        );
+    };
+
+    const renderMonth = (props) => {
+        const { monthDate } = props;
+        const year = monthDate.getFullYear();
+        const month = monthDate.getMonth();
+
+        const isFirstMonth = startMonthDate && startMonthDate.getFullYear() === year && startMonthDate.getMonth() === month;
+        const isLastMonth = endMonthDate && endMonthDate.getFullYear() === year && endMonthDate.getMonth() === month;
+        const isWithinRange = startMonthDate && endMonthDate && startMonthDate < monthDate && monthDate < endMonthDate;
+
+        let className = '';
+        if (isFirstMonth) {
+            className = 'first-month';
+        } else if (isLastMonth) {
+            className = 'last-month';
+        } else if (isWithinRange) {
+            className = 'within-range';
+        }
+
+        return (
+            <div className={`custom-month ${className}`}>
+                {props.children}
+            </div>
+        );
     };
 
 
     // const [open, setOpen] = useState(false);
     return (
-        <div className='monthCalendar'>
+        <div className='monthCalendar durationMonth'>
             <DatePicker
+                wrapperClassName="datePicker"
                 className="custom-input-style"
                 renderCustomHeader={({
                     date,
@@ -71,7 +107,7 @@ function DurationMonth({ dateError, onChangeDateHandler, confirmDate, cancelMont
                 endDate={endMonthDate}
                 onChange={onChangeDateHandler}
                 dateFormat="MMM"
-                renderMonthContent={renderMonthContent}
+                renderMonthContents={renderMonth}
                 showMonthYearPicker
                 shouldCloseOnSelect={false}
                 customInput={<ExampleCustomInput />}
@@ -86,7 +122,6 @@ function DurationMonth({ dateError, onChangeDateHandler, confirmDate, cancelMont
                 </div>
 
             </DatePicker>
-
         </div>
     )
 }

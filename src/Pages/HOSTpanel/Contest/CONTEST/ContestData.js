@@ -1,5 +1,5 @@
 import React from 'react';
-import ContestCard from '../../../../Components/Common/ContestCard/ContestCard';
+import ContestCard from '../../../../Components/Host/ContestCard/ContestCard';
 
 function ContestPage() {
     const contestCardData = [

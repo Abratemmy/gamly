@@ -70,6 +70,7 @@
         color: #444444
     }
 
+
     .react-datepicker__day--selected, 
     .react-datepicker__day--in-selecting-range, 
     .react-datepicker__day--in-range, 
@@ -95,6 +96,23 @@
         background-color: var(--primaryColor);
         color: #ffffff!important;
     }
+    // .first-date {
+    //     border-radius: 50px;
+    //     background-color: var(--primaryColor)!important;
+    //     color: #ffffff!important;
+    //   }
+      
+    //   .last-date {
+    //     border-radius: 50px;
+    //     background-color: var(--primaryColor)!important;
+    //     color: #ffffff!important;
+    //   }
+    //   .in-between {
+    //     background-color: #F2F7FE;
+    //     color: #333333;
+    //   }
+
+    
 .react-datepicker__input-container {
     position: relative;
     display: inline-block;
@@ -172,22 +190,46 @@
         }
     }
 }
-.react-calendar{
-    background-color: #fff!important;
-    color: #000;
-    border: 1px solid #dcdee6;
-    border-radius: 8px;
-    display: inline-block;
-    position: relative;
-    width: 332px!important;
-    height: 270px!important;
-    gap: 4px!important;
-    box-shadow: 0px 8px 20px 0px #0000001F!important;
-    box-shadow: 0px 3px 6px 0px #00000014!important;
+
+.durationMonth {
+    .react-datepicker{
+        position: absolute;
+        right:0;
+       top: 40px;
+    }
 }
-.react-calendar__navigation {
-    display: flex;
-    height: 30px!important;
-    margin-bottom: 0.3em!important;
-    padding-top: 15px!important;
-}
+
+// .durationMonth {
+//     .custom-month {
+//         position: relative;
+//         padding: 10px;
+//       }
+      
+//       .custom-month.first-month {
+//         content: 'Start';
+//         position: absolute;
+ 
+//         background-color: #ff7f50!important;
+//         color: #fff;
+//       }
+      
+//       .custom-month.last-month {
+//         content: 'End';
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         padding: 5px;
+//         background-color: #ff7f50!important;
+//         color: #fff;
+//       }
+      
+//       .custom-month.within-range {
+//         content: 'Within Range';
+//         position: absolute;
+//         top: 0;
+//         right: 0;
+//         padding: 5px;
+//         background-color:green !important;
+//         color: #000;
+//       }
+// }

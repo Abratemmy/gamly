@@ -84,7 +84,7 @@ function RightWithdrawal({ popupcontent, onClick }) {
             </div >
             <div className='hr-border' ></div>
 
-            <div className='' style={{ padding: '30px 20px' }}>
+            <div className='rightSidebar-Percentage' style={{ padding: '30px 20px', position: 'relative' }}>
                 <HostPercentage average="1, 500" leftText="Total withdrawal" rightText="Total withdrawal" prevMonth={prevMonth} previousMonthTotal={percentageData?.previousMonthTotal} currentMonthTotal={percentageData?.currentMonthTotal} />
             </div>
 

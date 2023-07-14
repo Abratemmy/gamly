@@ -239,7 +239,9 @@
 .table .thead .tableRow{
   position: relative;
   width: 100%;
+  /* background-color: blue!important; */
 }
+
 .table .thead .tableRow .dateRateDropdown{
       cursor: pointer;
 }

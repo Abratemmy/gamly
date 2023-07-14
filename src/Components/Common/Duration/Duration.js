@@ -3,8 +3,9 @@ import './Duration.scss'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
 import DurationMonth from '../Date/durationMonth';
 import DateRangePicker from '../Date/DAYSCalendar/DateRangePicker';
-import moment from 'moment'
-import MonthYearRangePicker from '../Date/calendar';
+import MyDatePicker from '../Date/DAYSCalendar/text';
+
+
 
 function Duration({ getDateData }) {
     const [dateToggle, setDateToggle] = useState(false);
@@ -69,6 +70,7 @@ function Duration({ getDateData }) {
             <button onClick={openDateRange} className='duration'>
                 Select duration <span><MdOutlineKeyboardArrowDown className='iconDropdown' /></span>
             </button>
+            {/* <MyDatePicker /> */}
 
             {/* {confirmDate && (
                 <>
@@ -89,7 +91,7 @@ function Duration({ getDateData }) {
             )}
 
             {openDatewithDays && (
-                <div style={{}} className='DaysStyling'>
+                <div className='DaysStyling' >
                     <DateRangePicker startDate={startMonthDate} endDate={endMonthDate} setStartDate={setStartMonthDate}
                         setEndDate={setEndMonthDate} onChangeDateHandler={onChangeDateHandler} />
 

@@ -79,7 +79,7 @@ function SingleCreator() {
 
                         <div className='percentageSession' style={{ margin: '10px 0px' }}>
                             <div className='row g-3'>
-                                <div className='col-lg-6 col-md-12 col-sm-12'>
+                                <div className='col-lg-6 col-md-12 col-sm-12 durationStylingForHost'>
                                     <HostPercentage average="1,500" leftText="Total download" rightText="Total download" prevMonth={prevMonth}
                                         previousMonthTotal={percentageData.previousMonthTotal} currentMonthTotal={percentageData.currentMonthTotal}
                                     />

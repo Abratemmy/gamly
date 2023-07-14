@@ -19,7 +19,9 @@ function DashboardUser() {
         { subtitle: "Last Month", amount: 30000, span: 3, text: "decrease From Previous Month" },
         { subtitle: "Last Week", amount: 16000, span: 5, text: "Increase From Previous Week" }
     ]
-    const [smdropdown, setSmDropdown] = useState(false)
+    const [smdropdown1, setSmDropdown1] = useState(false)
+    const [smdropdown2, setSmDropdown2] = useState(false)
+    const [smdropdown3, setSmDropdown3] = useState(false)
     // percentageData
     const prevMonth = moment().subtract(1, "month").format('MMMM')
     const percentageData = {
@@ -68,7 +70,7 @@ function DashboardUser() {
 
                         </div>
                         <div className='smCard1'>
-                            <SmallCard smallCardTitle="User Retention" Total='20,000' smCardDropdown={smdropdown} setSmCardDropdown={setSmDropdown} />
+                            <SmallCard smallCardTitle="User Retention" Total='20,000' smCardDropdown={smdropdown1} setSmCardDropdown={setSmDropdown1} />
                         </div>
                     </div>
 
@@ -81,7 +83,7 @@ function DashboardUser() {
 
 
                         <div className='col-lg-5 col-md-9 col-sm-12'>
-                            <SmallCard smallCardTitle="Download" Total="20,000" smCardDropdown={smdropdown} setSmCardDropdown={setSmDropdown} />
+                            <SmallCard smallCardTitle="Download" Total="20,000" smCardDropdown={smdropdown2} setSmCardDropdown={setSmDropdown2} />
                         </div>
                     </div>
 
@@ -131,7 +133,7 @@ function DashboardUser() {
 
 
                             <div className='col-lg-5 col-md-9 col-sm-12'>
-                                <SmallCard smallCardTitle="Active" Total="20,000" smCardDropdown={smdropdown} setSmCardDropdown={setSmDropdown} />
+                                <SmallCard smallCardTitle="Active" Total="20,000" smCardDropdown={smdropdown3} setSmCardDropdown={setSmDropdown3} />
                             </div>
                         </div>
                     </div>
