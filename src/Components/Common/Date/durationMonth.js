@@ -107,7 +107,7 @@ function DurationMonth({ dateError, onChangeDateHandler, confirmDate, cancelMont
                 endDate={endMonthDate}
                 onChange={onChangeDateHandler}
                 dateFormat="MMM"
-                renderMonthContents={renderMonth}
+                renderMonth={renderMonth}
                 showMonthYearPicker
                 shouldCloseOnSelect={false}
                 customInput={<ExampleCustomInput />}

@@ -199,37 +199,37 @@
     }
 }
 
-// .durationMonth {
-//     .custom-month {
-//         position: relative;
-//         padding: 10px;
-//       }
+.durationMonth {
+    .custom-month {
+        position: relative;
+        padding: 10px;
+      }
       
-//       .custom-month.first-month {
-//         content: 'Start';
-//         position: absolute;
+      .custom-month.first-month {
+        content: 'Start';
+        position: absolute;
  
-//         background-color: #ff7f50!important;
-//         color: #fff;
-//       }
+        background-color: #ff7f50!important;
+        color: #fff;
+      }
       
-//       .custom-month.last-month {
-//         content: 'End';
-//         position: absolute;
-//         top: 0;
-//         right: 0;
-//         padding: 5px;
-//         background-color: #ff7f50!important;
-//         color: #fff;
-//       }
+      .custom-month.last-month {
+        content: 'End';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px;
+        background-color: #ff7f50!important;
+        color: #fff;
+      }
       
-//       .custom-month.within-range {
-//         content: 'Within Range';
-//         position: absolute;
-//         top: 0;
-//         right: 0;
-//         padding: 5px;
-//         background-color:green !important;
-//         color: #000;
-//       }
-// }
+      .custom-month.within-range {
+        content: 'Within Range';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 5px;
+        background-color:green !important;
+        color: #000;
+      }
+}
